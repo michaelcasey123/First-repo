@@ -1,0 +1,1796 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Pets.ie</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+	<link rel="stylesheet" href="jquery.mobile-1.1.1.min.css" />
+	<link rel="stylesheet" href="petsie.css" />
+	<script src="jquery-1.8.0.js"></script>
+	<script src="jquery.mobile-1.1.1.min.js"></script>
+	<script src="petsie.js"></script>
+	<script src="cordova-2.0.0.js"></script>
+	<script src="cameral.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
+
+<!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /><!--Associated with map-->
+	
+<script type="text/javascript" charset="utf-8"></script>
+ 
+</head> 
+<body> 
+<script>
+
+// Trying to make these variables global
+var $animal;
+var $county;
+var $photoID;
+var $listingType;
+var $keyword;
+var $lat;
+var $lng;
+var $zoom;
+
+</script>
+
+
+
+
+
+
+<!-- Start of Home page -->
+<div data-role="page" id="home">
+
+	<div data-role="header">
+		<h1>Home</h1>
+<!--	<a href="#contact" data-icon="arrow-l">Contact Us</a> -->
+	</div><!-- /header -->
+
+	<div id="content" data-role="content">	
+
+<span class="topleftspan">
+<!--<a href="#rehome" data-role="button" data-inline="true" data-theme="b">Rehome Pets</a> -->
+<a href="#rehome"><img src="tiles/rehomePetsTileSmall.png"/></a>
+
+</span>
+
+
+<span class="toprightspan">
+
+</span>
+
+
+
+<span class="centreleftspan">
+<!-- <a href="#lost" data-role="button" data-inline="true" data-theme="b">Lost Pets</a> -->
+<a href="#lost"><img src="tiles/lostPetsTileSmall.png"/></a>
+</span>
+
+
+<span class="centrerightspan">
+<!-- <a href="#found" data-role="button" data-inline="true" data-theme="b">Found Pets</a> -->
+<a href="#found"><img src="tiles/foundPetsTileSmall.png"/></a>
+</span>
+
+
+
+<span class="bottomleftspan">
+<!--<a href="#login" data-role="button" data-inline="true" data-theme="b">Add A Listing/My Listings</a> -->
+<a href="#login"><img src="tiles/addAListingTileSmall.png"/></a>
+</span>
+
+<span class="bottomrightspan">
+
+</span>
+
+	</div><!-- /content -->
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="searchbutton">Search</a>
+ 	<a href="#about" data-role="button" class="aboutbutton" data-transition="pop">About</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+</div><!-- End of Home page -->
+
+
+
+
+
+
+
+<!-- Start of About Dialog box -->
+<div data-role="dialog" id="about" data-close-btn-text="Close">
+
+	<div data-role="header">
+		<h1>About Dialog</h1>
+        <!--<a href="#home" data-rel="back">Back</a>
+        <a href="#contact">Contact Us</a>-->
+    </div><!-- /header -->
+
+	<div data-role="content">
+	<h1 style="text-align: center;">This App</h1>
+	<h2 style="text-align: center;">communicates with the www.Pets.ie Database</h2>
+	<p style="text-align: center;"><a href="#home" data-role="button" data-theme="b" data-inline="true" data-icon="home" data-rel="back">OK</a></p>
+		<br/>
+		<br/>
+		<!-- data-iconpos="notext" - use this above without OK to just get a home icon -->
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>About</h4>
+	</div><!-- /footer -->
+</div><!-- End of About page -->
+
+
+
+
+    
+<!-- Start of Rehome Pets page -->
+<div data-role="page" id="rehome">
+
+	<div data-role="header">
+		<h1>Rehome a Pet</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<form action="http://localhost/petsie/rehome.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+
+	<label for="rehomeAnimal" class="select">Animal type:</label>
+	<select name="rehomeAnimal" id="rehomeAnimal">
+		<option value="All">All Animals</option>
+		<option value="Dog">Dogs</option>
+		<option value="Cat">Cats</option>
+		<option value="Bird">Birds</option>
+		<option value="Rabbit">Rabbits</option>
+		<option value="Horse">Horses & Ponies</option>
+		<option value="Others">Other Animals</option>
+	</select>
+	<br/>
+	<label for="rehomeCounty" class="select">County of Ireland:</label>
+	<select name="rehomeCounty" id="rehomeCounty">
+		<option value="All">All Counties</option>
+		<option value="Antrim">Antrim</option>
+		<option value="Armagh">Armagh</option>
+		<option value="Carlow">Carlow</option>
+		<option value="Cavan">Cavan</option>
+		<option value="Clare">Clare</option>
+		<option value="Cork">Cork</option>
+		<option value="Derry">Derry</option>
+		<option value="Donegal">Donegal</option>
+		<option value="Down">Down</option>
+		<option value="Dublin">Dublin</option>
+		<option value="Fermanagh">Fermanagh</option>
+		<option value="Galway">Galway</option>
+		<option value="Kerry">Kerry</option>
+		<option value="Kildare">Kildare</option>
+		<option value="Kilkenny">Kilkenny</option>
+		<option value="Laois">Laois</option>
+		<option value="Leitrim">Leitrim</option>
+		<option value="Limerick">Limerick</option>
+		<option value="Longford">Longford</option>
+		<option value="Louth">Louth</option>
+		<option value="Mayo">Mayo</option>
+		<option value="Meath">Meath</option>
+		<option value="Monaghan">Monaghan</option>
+		<option value="Offaly">Offaly</option>
+		<option value="Roscommon">Roscommon</option>
+		<option value="Sligo">Sligo</option>
+		<option value="Tipperary">Tipperary</option>
+		<option value="Tyrone">Tyrone</option>
+		<option value="Waterford">Waterford</option>
+		<option value="Westmeath">Westmeath</option>
+		<option value="Wexford">Wexford</option>
+		<option value="Wicklow">Wicklow</option>
+	</select>
+	
+
+<label for="rehomeKeyword">Keyword:</label>
+<input type="text" name="rehomeKeyword" id="rehomeKeyword" value="" placeholder="Rescue" data-mini="true" />
+
+</form>
+
+	<div style="text-align: center;" id="rehomeSearchText"></div>
+	
+	<div style="text-align: center;" id="rehomeDdmenuResults"><br/></div>
+
+<!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
+
+
+
+	<p style="text-align: center;"><a href="#rehome2" data-role="button" id="searchButtonRehome" data-icon="pets" data-theme="b" data-inline="true">Find Pet</a></p> <!-- end button -->	
+
+
+
+    </div><!-- /content -->
+<br/>
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Rehome Pets page--> 
+    
+
+
+
+
+
+
+
+<!-- Start of Rehome Pets View of Results page -->
+<div data-role="page" id="rehome2">
+
+	<div data-role="header">
+		<h1>Re-home Pets List</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+	<div style="text-align: center;"><a data-role="button" id="toggleButtonRehome" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Gallery</a></div> <!-- end button -->	
+
+	<div style="text-align: center;" id="rehome2searchText"><br/></div>
+<br/>
+<ul data-role='listview' id='rehomedblist'> 
+	<li>Server Response Below:</li> 
+</ul>
+
+<!--Temporary Text: -->
+<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
+
+
+
+<div style="text-align: center;" id="rehomePhotoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
+
+
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+
+
+<span class="selectedRehomeButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+
+<div id="RehomeButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#rehome3" data-role="button" id="selectedRehomeButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span>
+
+
+    </div><!-- /content -->
+
+
+<span class="footerbar"> <!--Temporary - This page will need to scroll-->
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#rehome" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Rehome Pets View of Results page -->
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Rehome Chosen Pet Listing page -->
+<div data-role="page" id="rehome3">
+
+	<div data-role="header">
+		<h1>Chosen Rehome Listing</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<div id="rehomeChosenListing">
+
+<!--Temporary text: -->
+<p>The Chosen pet details - Advert Title, Description, Pet type, County, Price (including free), contact phone number and email address if allowed and photo will be shown here.</p>
+
+</div>
+
+<div style="text-align: center;" id="rehomeChosenPhotoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" />
+
+
+    </div><!-- /content -->
+
+
+<span class="footerbar"> 
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#rehome2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Rehome Chosen Pet Listing page -->
+
+
+
+
+
+
+
+
+<!--If a page is needed for the toggle to the gallery it will appear here.-->
+
+
+
+
+
+
+<!-- Start of Lost Pets page -->
+<div data-role="page" id="lost">
+
+	<div data-role="header">
+		<h1>Lost Pets</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<form action="http://localhost/petsie/lost.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+
+
+	<label for="lostAnimal" class="select">Animal type:</label>
+	<select name="lostAnimal" id="lostAnimal">
+		<option value="All">All Animals</option>
+		<option value="Dog">Dogs</option>
+		<option value="Cat">Cats</option>
+		<option value="Bird">Birds</option>
+		<option value="Rabbit">Rabbits</option>
+		<option value="Horse">Horses & Ponies</option>
+		<option value="Others">Other Animals</option>
+	</select>
+	<br/>
+	<label for="lostCounty" class="select">County of Ireland:</label>
+	<select name="lostCounty" id="lostCounty">
+		<option value="All">All Counties</option>
+		<option value="Antrim">Antrim</option>
+		<option value="Armagh">Armagh</option>
+		<option value="Carlow">Carlow</option>
+		<option value="Cavan">Cavan</option>
+		<option value="Clare">Clare</option>
+		<option value="Cork">Cork</option>
+		<option value="Derry">Derry</option>
+		<option value="Donegal">Donegal</option>
+		<option value="Down">Down</option>
+		<option value="Dublin">Dublin</option>
+		<option value="Fermanagh">Fermanagh</option>
+		<option value="Galway">Galway</option>
+		<option value="Kerry">Kerry</option>
+		<option value="Kildare">Kildare</option>
+		<option value="Kilkenny">Kilkenny</option>
+		<option value="Laois">Laois</option>
+		<option value="Leitrim">Leitrim</option>
+		<option value="Limerick">Limerick</option>
+		<option value="Longford">Longford</option>
+		<option value="Louth">Louth</option>
+		<option value="Mayo">Mayo</option>
+		<option value="Meath">Meath</option>
+		<option value="Monaghan">Monaghan</option>
+		<option value="Offaly">Offaly</option>
+		<option value="Roscommon">Roscommon</option>
+		<option value="Sligo">Sligo</option>
+		<option value="Tipperary">Tipperary</option>
+		<option value="Tyrone">Tyrone</option>
+		<option value="Waterford">Waterford</option>
+		<option value="Westmeath">Westmeath</option>
+		<option value="Wexford">Wexford</option>
+		<option value="Wicklow">Wicklow</option>
+	</select>
+	
+<label for="lostKeyword">Keyword:</label>
+<input type="text" name="lostKeyword" id="lostKeyword" value="" placeholder="White" data-mini="true" />
+
+</form>
+		
+
+	<div style="text-align: center;" id="lostDdmenuResults"><br/></div>
+<!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
+	
+	<p style="text-align: center;"><a href="#lost2" data-role="button" id="searchButtonLost" data-icon="pets" data-theme="b" data-inline="true">Find Pet</a></p> <!-- end button -->	
+
+
+
+
+    </div><!-- /content -->
+
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+</div><!-- End of Lost Pets page--> 
+
+
+
+
+
+
+
+
+<!-- Start of Lost Pets Detailed Search page -->
+<div data-role="page" id="lost2">
+
+	<div data-role="header">
+		<h1>Lost Pets List</h1>
+
+    </div><!-- /header -->
+
+    <div data-role="content">	
+
+
+	<div style="text-align: center;"><a href="#lostMap1" data-role="button" id="toggleButtonLost2" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->	
+
+
+	<div style="text-align: center;" id="lost2SearchText"><br/></div>
+
+
+<ul data-role='listview' id='lost2dblist'> 
+	
+	<li>Server Response Below:</li> 
+</ul>
+
+<!--Temporary Text: -->
+<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
+
+
+
+
+<div style="text-align: center;" id="lost2photoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="lost2photoFromServer" src="" />
+
+
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+
+
+<span class="selectedLostButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+
+<div id="LostButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#lost3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span>
+
+
+
+
+    </div><!-- /content -->
+
+<span class="footerbar"> <!--This is temporary, this page will need to scroll. -->
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#lost" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+</div><!-- End of Lost Pets Detailed Search page--> 
+
+
+
+
+
+
+
+
+<!-- Start of Lost Chosen Pet Listing page -->
+<div data-role="page" id="lost3">
+
+	<div data-role="header">
+		<h1>Chosen Pet</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<div id="lostChosenListing">
+
+<!--Temporary text: -->
+<p>The Lost pet details - Advert Title, Description, Pet type, County, date lost, contact phone number and email address if allowed and photo will be shown here.</p>
+
+</div>
+
+<div style="text-align: center;" id="lostChosenPhotoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="lostChosenPhotoFromServer" src="" />
+
+
+    </div><!-- /content -->
+
+
+<span class="footerbar"> 
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#lost2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Lost Chosen Pet Listing page -->
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Lost Map1 page -->
+<div data-role="page" id="lostMap1" class="page-mapLost1">
+
+    <div data-role="content" style="width:100%; height:100%; padding:0;">
+
+	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
+
+	<div id="map_canvasLost" style="width:320px; height:470px;"></div>
+    </div><!-- /content -->
+
+</div><!-- End of Lost Map1 page -->
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Found Pets page -->
+<div data-role="page" id="found">
+
+	<div data-role="header">
+		<h1>Found Pets</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<form action="http://localhost/petsie/found.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+
+	<label for="foundAnimal" class="select">Animal type:</label>
+	<select name="foundAnimal" id="foundAnimal">
+		<option value="All">All Animals</option>
+		<option value="Dog">Dogs</option>
+		<option value="Cat">Cats</option>
+		<option value="Bird">Birds</option>
+		<option value="Rabbit">Rabbits</option>
+		<option value="Horse">Horses & Ponies</option>
+		<option value="Others">Other Animals</option>
+	</select>
+	<br/>
+	<label for="foundCounty" class="select">County of Ireland:</label>
+	<select name="foundCounty" id="foundCounty">
+		<option value="All">All Counties</option>
+		<option value="Antrim">Antrim</option>
+		<option value="Armagh">Armagh</option>
+		<option value="Carlow">Carlow</option>
+		<option value="Cavan">Cavan</option>
+		<option value="Clare">Clare</option>
+		<option value="Cork">Cork</option>
+		<option value="Derry">Derry</option>
+		<option value="Donegal">Donegal</option>
+		<option value="Down">Down</option>
+		<option value="Dublin">Dublin</option>
+		<option value="Fermanagh">Fermanagh</option>
+		<option value="Galway">Galway</option>
+		<option value="Kerry">Kerry</option>
+		<option value="Kildare">Kildare</option>
+		<option value="Kilkenny">Kilkenny</option>
+		<option value="Laois">Laois</option>
+		<option value="Leitrim">Leitrim</option>
+		<option value="Limerick">Limerick</option>
+		<option value="Longford">Longford</option>
+		<option value="Louth">Louth</option>
+		<option value="Mayo">Mayo</option>
+		<option value="Meath">Meath</option>
+		<option value="Monaghan">Monaghan</option>
+		<option value="Offaly">Offaly</option>
+		<option value="Roscommon">Roscommon</option>
+		<option value="Sligo">Sligo</option>
+		<option value="Tipperary">Tipperary</option>
+		<option value="Tyrone">Tyrone</option>
+		<option value="Waterford">Waterford</option>
+		<option value="Westmeath">Westmeath</option>
+		<option value="Wexford">Wexford</option>
+		<option value="Wicklow">Wicklow</option>
+	</select>
+	
+<label for="foundKeyword">Keyword:</label>
+<input type="text" name="foundKeyword" id="foundKeyword" value="" placeholder="Black" data-mini="true" />
+
+</form>
+
+	
+	<div style="text-align: center;" id="foundDdmenuResults"><br/></div>
+<!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
+	
+	<p style="text-align: center;"><a href="#found2" data-role="button" id="searchButtonFound" data-icon="pets" data-theme="b" data-inline="true">Find Pet</a></p> <!-- end button -->	
+
+
+    </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+
+</div><!-- End of Found Pets page-->
+
+
+
+
+
+
+
+
+<!-- Start of Found Pets Detailed Search page -->
+<div data-role="page" id="found2">
+
+	<div data-role="header">
+		<h1>Found Pets List</h1>
+
+    </div><!-- /header -->
+
+    <div data-role="content">	
+
+	<div style="text-align: center;"><a href="#foundMap1" data-role="button" id="toggleButtonFound2" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->	
+
+	<div style="text-align: center;" id="foundPetsSearchText"><br/></div>
+
+
+<ul data-role='listview' id='foundPetsdblist'> 
+	<li>Server Response Below:</li> 
+</ul>
+
+<!--Temporary Text: -->
+<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
+
+
+<div style="text-align: center;" id="foundPetsPhotoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
+
+
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+
+
+<span class="selectedFoundButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+
+<div id="FoundButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#found3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span>
+
+
+    </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#found" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+</div><!-- End of Found Pets Detailed Search page--> 
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Found Chosen Pet Listing page -->
+<div data-role="page" id="found3">
+
+	<div data-role="header">
+		<h1>Chosen Pet</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<div id="foundChosenListing">
+
+<!--Temporary text: -->
+<p>The Found pet details - Advert Title, Description, Pet type, County, date found, contact phone number and email address if allowed and photo will be shown here.</p>
+
+</div>
+
+<div style="text-align: center;" id="foundChosenPhotoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="foundChosenPhotoFromServer" src="" />
+
+
+    </div><!-- /content -->
+
+
+<span class="footerbar"> 
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#found2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Found Chosen Pet Listing page -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Found Map1 page -->
+<div data-role="page" id="foundMap1" class="page-mapFound1">
+
+    <div data-role="content" style="width:100%; height:100%; padding:0;">
+
+	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
+
+	<div id="map_canvasFound" style="width:320px; height:470px;"></div>
+    </div><!-- /content -->
+
+</div><!-- End of Found Map1 page -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Start of Login Page - leads to Add A Listing page below -->
+
+<!-- Start of Login page -->
+<div data-role="page" id="login">
+
+	<div data-role="header">
+		<h1>Login to Pets.ie</h1>
+
+    </div><!-- /header -->
+	
+    <div data-role="content">	
+<!--
+Register/Login
+
+Login
+(note If you have registered before then you can login using your email address and password)
+Email: text box
+Password: text box
+Login Button. arrow right on right.
+
+Login via Facebook
+Login via Twitter
+Login via Google+
+
+Register now
+(note Registration is free and will only take a few seconds to complete.)
+Your Details
+First Name:
+Last Name:
+Location: (Drop-down list of counties of Ireland)
+Are you acting on behalf of an animal welfare organisation? Yes No radio buttons default No
+Your Contact Details
+Telephone: (note: This number will not be displayed on the website)
+Email: (note: Used for logging in. Will not be displayed on the website)
+Re-enter email:
+Login Password
+(note For security, please choose a password that has more than 6 characters)
+Password:
+Repeat Password:
+Register Button arrow right on right.
+
+-->
+Already registered? Login now!
+						
+<div style="text-align: center;"><a href="#addalisting" data-role="button" id="loginButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Login</a></div>
+
+<!--Use Phonegap to get values for email address and password stored in the phone to login. If this fails, server-side code should present the user with text input boxes for email address and password or invite the user to login via Facebook, Twitter or Google+ -->
+
+
+Register here with your details:
+
+<form action="http://localhost/petsie/registration.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+
+<label for="firstName" class="ui-hidden-accessible">First Name:</label>
+<input type="text" name="firstName" id="firstName" value="" placeholder="First Name:" data-mini="true" />
+
+<label for="secondName" class="ui-hidden-accessible">Second Name:</label>
+<input type="text" name="secondName" id="secondName" value="" placeholder="Second Name:" data-mini="true" />
+
+	<label for="registerCounty" class="select"></label>
+	<select name="registerCounty" id="registerCounty" data-mini="true">
+		<option value="None">Choose County</option>
+		<option value="Antrim">Antrim</option>
+		<option value="Armagh">Armagh</option>
+		<option value="Carlow">Carlow</option>
+		<option value="Cavan">Cavan</option>
+		<option value="Clare">Clare</option>
+		<option value="Cork">Cork</option>
+		<option value="Derry">Derry</option>
+		<option value="Donegal">Donegal</option>
+		<option value="Down">Down</option>
+		<option value="Dublin">Dublin</option>
+		<option value="Fermanagh">Fermanagh</option>
+		<option value="Galway">Galway</option>
+		<option value="Kerry">Kerry</option>
+		<option value="Kildare">Kildare</option>
+		<option value="Kilkenny">Kilkenny</option>
+		<option value="Laois">Laois</option>
+		<option value="Leitrim">Leitrim</option>
+		<option value="Limerick">Limerick</option>
+		<option value="Longford">Longford</option>
+		<option value="Louth">Louth</option>
+		<option value="Mayo">Mayo</option>
+		<option value="Meath">Meath</option>
+		<option value="Monaghan">Monaghan</option>
+		<option value="Offaly">Offaly</option>
+		<option value="Roscommon">Roscommon</option>
+		<option value="Sligo">Sligo</option>
+		<option value="Tipperary">Tipperary</option>
+		<option value="Tyrone">Tyrone</option>
+		<option value="Waterford">Waterford</option>
+		<option value="Westmeath">Westmeath</option>
+		<option value="Wexford">Wexford</option>
+		<option value="Wicklow">Wicklow</option>
+	</select>
+
+<label for="contactPhoneNumber" class="ui-hidden-accessible">Phone Number:</label>
+<input type="text" name="contactPhoneNumber" id="contactPhoneNumber" value="" placeholder="Phone Number:" data-mini="true" />
+
+<label for="contactEmail" class="ui-hidden-accessible">Email Address:</label>
+<input type="text" name="contactEmail" id="contactEmail" value="" placeholder="Email Address:" data-mini="true" />
+
+<label for="password" class="ui-hidden-accessible">Password:</label>
+<input type="text" name="password" id="password" value="" placeholder="Password: (min. 6 characters)" data-mini="true" />
+
+</form>
+
+<div style="text-align: center;"><a href="#addalisting" data-role="button" id="registerButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Register</a></div>
+
+<div>Login via:</div>
+<a href="#addalisting"><img src="tiles/socialicons.png" height="42" width="122"/></a>
+
+
+
+    </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+</div><!-- End of Login page-->
+
+
+
+
+
+
+
+
+<!-- Start of Add A Listing page -->
+<div data-role="page" id="addalisting">
+
+	<div data-role="header">
+		<h1>Add A Listing</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+	<label for="listingType" class="select">Choose Listing Type:</label>
+	<select name="listingType" id="listingType">
+		<option value="petWanted">Pet Wanted</option>
+		<option value="petLost">I Have Lost A Pet</option>
+		<option value="petFound">I Have Found A Pet</option>
+		<option value="petForRehome">My Pet Needs a New Home</option>
+		
+	</select>
+	
+
+	<label for="addAnimal" class="select">Pet Type:</label>
+	<select name="addAnimal" id="addAnimal">
+		<option value="dog">Dog</option>
+		<option value="cat">Cat</option>
+		<option value="bird">Bird</option>
+		<option value="rabbit">Rabbit</option>
+		<option value="equine">Horse or Pony</option>
+		<option value="other">Other Animal</option>
+	</select>
+	
+	
+	<label for="addCounty" class="select">County of Ireland:</label>
+	<select name="addCounty" id="addCounty">
+		<option value="Antrim">Antrim</option>
+		<option value="Armagh">Armagh</option>
+		<option value="Carlow">Carlow</option>
+		<option value="Cavan">Cavan</option>
+		<option value="Clare">Clare</option>
+		<option value="Cork">Cork</option>
+		<option value="Derry">Derry</option>
+		<option value="Donegal">Donegal</option>
+		<option value="Down">Down</option>
+		<option value="Dublin">Dublin</option>
+		<option value="Fermanagh">Fermanagh</option>
+		<option value="Galway">Galway</option>
+		<option value="Kerry">Kerry</option>
+		<option value="Kildare">Kildare</option>
+		<option value="Kilkenny">Kilkenny</option>
+		<option value="Laois">Laois</option>
+		<option value="Leitrim">Leitrim</option>
+		<option value="Limerick">Limerick</option>
+		<option value="Longford">Longford</option>
+		<option value="Louth">Louth</option>
+		<option value="Mayo">Mayo</option>
+		<option value="Meath">Meath</option>
+		<option value="Monaghan">Monaghan</option>
+		<option value="Offaly">Offaly</option>
+		<option value="Roscommon">Roscommon</option>
+		<option value="Sligo">Sligo</option>
+		<option value="Tipperary">Tipperary</option>
+		<option value="Tyrone">Tyrone</option>
+		<option value="Waterford">Waterford</option>
+		<option value="Westmeath">Westmeath</option>
+		<option value="Wexford">Wexford</option>
+		<option value="Wicklow">Wicklow</option>
+	</select>
+
+<div style="text-align: center;" id="addalistingDdmenuResults"><br/></div>
+
+
+	<div style="text-align: center;"><a href="#addalisting2" data-role="button" id="addListingButton" data-icon="pets" data-theme="b" data-inline="true">Continue</a></div> <!-- end button -->	
+
+<div style="text-align: center;"><a href="#myListings" data-role="button" id="myListingsButton" data-icon="pets" data-theme="b" data-inline="true">My Listings</a></div> <!-- end button -->
+
+    </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Add A Listing page -->
+
+
+
+
+
+
+
+
+
+<!-- Start of Add A Listing2 page -->
+<div data-role="page" id="addalisting2">
+
+	<div data-role="header">
+		<h1>Add A Listing</h1>
+    </div><!-- /header -->
+	
+    <div data-role="content">	
+
+<form action="http://localhost/petsie/addalisting.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+
+<!-- don't forget listingType, addAnimal and addCounty at the top: -->
+
+<label for="listingType"></label>
+<label for="addAnimal"></label>
+<label for="addCounty"></label>
+
+<label for="advertTitle" class="ui-hidden-accessible">Advert Title:</label>
+<input type="text" name="advertTitle" id="advertTitle" value="" placeholder="Advert Title:" data-mini="true"/>
+
+<label for="description" class="ui-hidden-accessible">Description:</label>
+<input type="text" name="description" id="description" value="" placeholder="Description:" data-mini="true"/>
+
+<div id="priceDiv">
+<label for="price" class="ui-hidden-accessible">Price:</label>
+<input type="text" name="price" id="price" value="" placeholder="Price: EUR (default free of charge)" data-mini="true" />
+</div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
+
+<div id="addAListingCalendarDiv">
+Date Lost/Found:
+<div data-role="fieldcontain">
+  <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+<!--    <legend></legend> -->
+    <label for="addAListingSelectDay">Day</label>
+    <select name="addAListingSelectDay" id="addAListingSelectDay">
+    <option>Day</option>
+    <option value="01">1</option>
+    <option value="02">2</option>
+    <option value="03">3</option>
+    <option value="04">4</option>
+    <option value="05">5</option>
+    <option value="06">6</option>
+    <option value="07">7</option>
+    <option value="08">8</option>
+    <option value="09">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+    </select>
+    <label for="addAListingSelectMonth">Month</label>
+    <select name="addAListingSelectMonth" id="addAListingSelectMonth">
+    <option>Month</option>
+    <option value="01">Jan</option>
+    <option value="02">Feb</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">Sept</option>
+    <option value="10">Oct</option>
+    <option value="11">Nov</option>
+    <option value="12">Dec</option>
+    </select>
+    <label for="addAListingSelectYear">Year</label>
+    <select name="addAListingSelectYear" id="addAListingSelectYear">
+    <option>Year</option>
+    <option value="2012">2012</option>
+    <option value="2012">2013</option>
+    <option value="2012">2014</option>
+    </select>
+  </fieldset>
+</div> <!--end div fieldcontain-->
+</div> <!--end div calendarDiv-->
+
+<label for="addAListingContactPhoneNumber" class="ui-hidden-accessible">Phone Number:</label>
+<input type="text" name="addAListingContactPhoneNumber" id="addAListingContactPhoneNumber" value="" placeholder="0879395088" data-mini="true" />
+<!-- Set placeholder equal to phone number variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
+
+<label for="addAListingContactEmail" class="ui-hidden-accessible">Email Address:</label>
+<input type="text" name="addAListingContactEmail" id="addAListingContactEmail" value="" placeholder="michael.casey@webelevate.ie" data-mini="true" />
+<!-- Set placeholder equal to phone number variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
+
+<input type="checkbox" name="addAListingEmailAgree" id="addAListingEmailAgree" data-mini="true"/>
+<label for="addAListingEmailAgree">Allow contact by email?</label>
+
+<input type="checkbox" name="addAListingTandCsAgree" id="addAListingTandCsAgree" data-mini="true"/>
+<label for="addAListingTandCsAgree">Agree to Advert Terms & Conditions</label>
+
+</form>
+
+
+
+
+<!--
+Advert Title: (Text box)
+Description: (text box 900 characters)
+Price: € text box / check box Free to good home
+
+Contact Details
+Phone no: pre-filled Radio button Display this phone no. default selected
+Alternate phone no: (text box) Radio button Display a different phone no.
+Email: pre-filled Check box Allow contact by email? default not checked.
+Terms & Conditions: Check box default unchecked I agree to the Advertising Terms & Conditions
+
+
+Button Back arrow left on left Next button arrow right on right
+Next screen Upload photos
+Next Screen preview advert
+Last screeen Payment (not applicable to app)
+
+Lost & Found Pet
+
+Date Lost / Found: Drop down list Day(1-31) - Month(Jan-Dec) Year(2011&2012-current year?) (rolladex type?)
+Pet type drop down list
+County Drop down list
+Map Location: Select a county first
+Advert Title: Text box
+Description: Text box 900 characters
+Contact Details as above
+Ts & Cs as above
+
+Next screen upload photos
+Next screen preview advert
+
+
+Pet Wanted:
+
+Pet type: as above
+County: as above
+Advert Title: as above
+Description: as above
+
+Contact Details as above
+Ts & Cs as above
+
+Next screen preview advert
+
+-->
+
+
+	<div style="text-align: center;"><a href="#termsandconditions" data-role="button" id="t&csbutton" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Terms & Conditions</a></div>  <!-- end of terms and conditions button -->
+
+	<div style="text-align: center;"><a href="#addalisting3" data-role="button" id="addListing2Button" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-mini="true" data-theme="b">Next</a></div>
+
+<!--If petWanted then <a href="#addalisting4"> above. -->
+
+   </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Add A Listing2 page -->
+
+
+
+
+
+
+<!-- Start of Add A Listing3 page -->
+<div data-role="page" id="addalisting3">
+
+	<div data-role="header">
+		<h1>Upload Photo</h1>
+
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+	<button id="addAListingCapture">Take Photo</button>
+
+
+
+<!-- These are button/s to fetch a photo from the phone's album/library
+     They fire functions in camera.js -->
+
+	<button id="addAListingGetImage">Select Library Animal Photo</button> 
+	
+
+	<img style="display:none;width:290px;" id="addAListingAnimalImage" src="" />
+
+
+	<div id="addAListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
+
+
+	<div style="text-align: center;"><a data-role="button" id="addAListingUploadButton" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Upload</a></div>  <!-- end button -->	
+
+<!--The line below probably won't be used -->	
+<!--	<div style="text-align: center;" id="dbInsertResults"></div> -->
+
+	
+	<div style="text-align: center;" id="addAListingUploadText"><br/></div>
+	
+
+	<div style="text-align: center;"><a href="#previewAddedListing" data-role="button" id="reviewAdButton" data-iconpos="right" data-icon="arrow-r" data-theme="b" data-inline="true" data-mini="true">Review advert now</a></div>  <!-- end button -->	
+
+
+
+   </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting2" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Add A Listing3 page -->
+
+
+
+
+
+
+
+<!-- Start of Preview Added Pet Listing page -->
+<div data-role="page" id="previewAddedListing">
+
+	<div data-role="header">
+		<h1>Preview Listing</h1>
+
+    </div><!-- /header -->
+
+    <div data-role="content">	
+
+<!--Temporary Text:-->
+The added listing will be shown here.<br/>It will be replaced with a response from the server.
+
+<!--The added listing will be displayed here.-->
+
+
+<div id="addedListing">
+
+</div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
+
+	<img style="display:none;width:290px;" id="previewAddedListingAnimalImage" src="" />
+
+<div style="text-align: center;"><a href="javascript:uploadlisting()" data-role="button" id="uploadAddedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Save</a></div>
+
+
+   </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting3" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Preview Added Pet Listing page -->
+
+
+
+
+
+
+
+
+<!-- Start of My Listings page -->
+<div data-role="page" id="myListings">
+
+	<div data-role="header">
+		<h1>My Listings</h1>
+
+    </div><!-- /header -->
+
+    <div data-role="content">	
+
+	<div style="text-align: center;" id="myListingsSearchText"></div>
+
+
+<ul data-role='listview' id='myListingsdblist'> 
+<br/>	
+	<li>Server Response Below:</li> 
+</ul>
+<!--Temporary Text:-->
+<br/><br/><br/>
+There will be a response from the server database corresponding to the user's previously uploaded adverts here. This will be a series of list items, each of which can be clicked to fetch the associated photo. The button below the photo 'Select This Listing' will bring this listing to the edit page.
+
+
+
+<div style="text-align: center;" id="myListingsPhotoText"><br/></div><!--space for error message-->
+	<img style="width:290px;" id="myListingsPhotoFromServer" src="" />
+
+
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for editing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+
+
+<span class="selectedListingButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+<div id="myListingsButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#chosenPetListing" data-role="button" id="selectedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span><!--This is temporary. Scrolling will be necessary for this page.-->
+
+  </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of My Listings page -->
+
+
+
+
+
+
+
+<!-- Start of Chosen Pet Listing page -->
+<div data-role="page" id="chosenPetListing">
+
+	<div data-role="header">
+		<h1>Chosen Listing</h1>
+<a href="#editUpdateListing" data-iconpos="right" data-icon="arrow-r" class="ui-btn-right">Edit</a>
+    </div><!-- /header -->
+
+    <div data-role="content">	
+
+
+<!--Temporary Text:-->
+
+The Chosen Pet Listing will be displayed here. This will be a full download from the database under the headings 'Listing Type', 'Animal', 'County',  'Advert Title', 'Description', 'Price'/'Date Lost/Found' as appropriate, 'Phone no.', 'email address', 'Allow contact by email?' complete with the photo. This will be as on the Preview Pet Listing Page.
+
+	<div id="chosenPetListingDiv"></div>
+
+<img style="width:290px;" id="chosenPetListingPhotoFromServer" src="" />
+
+<!--The Delete Listing button will need the id of the chosen pet listing -->
+
+<div style="text-align: center;"><a href="javascript:deleteListing('$photoID')" data-role="button" id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="b" data-mini="true">Delete Listing</a></div>
+
+
+
+
+
+  </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#myListings" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Chosen Pet Listing page -->
+
+
+
+
+
+
+
+<!-- Start of Chosen Edit/Update Pet Listing page -->
+<div data-role="page" id="editUpdateListing">
+
+	<div data-role="header">
+		<h1>Edit Listing</h1>
+
+<a href="#previewEditedListing" data-iconpos="right" data-icon="arrow-r"  class="ui-btn-right">Save</a>
+    </div><!-- /header -->
+
+    <div data-role="content">
+
+<!--There will be a form here with values from the server:-->
+<form>
+
+<label for="editUpdateListingAdvertTitle">Advert Title:</label>
+<input type="text" name="editUpdateListingAdvertTitle" id="editUpdateListingAdvertTitle" value="" placeholder="Data from server" data-mini="true"/>
+
+<label for="editUpdateListingDescription">Description:</label>
+<input type="text" name="editUpdateListingDescription" id="editUpdateListingDescription" value="" placeholder="Data from server" data-mini="true"/>
+
+<div id="editUpdateListingPriceDiv">
+<label for="editUpdateListingPrice">Price:</label>
+<input type="text" name="editUpdateListingPrice" id="editUpdateListingPrice" value="" placeholder="Data from server" data-mini="true" />
+</div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
+
+<div id="editUpdateListingCalendarDiv">
+Date Lost/Found:
+<div data-role="fieldcontain">
+  <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+<!--    <legend></legend> -->
+    <label for="editUpdateListingSelectDay">Day</label>
+    <select name="editUpdateListingSelectDay" id="editUpdateListingSelectDay">
+    <option>Day</option>
+    <option value="01">1</option>
+    <option value="02">2</option>
+    <option value="03">3</option>
+    <option value="04">4</option>
+    <option value="05">5</option>
+    <option value="06">6</option>
+    <option value="07">7</option>
+    <option value="08">8</option>
+    <option value="09">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+    </select>
+    <label for="editUpdateListingSelectMonth">Month</label>
+    <select name="editUpdateListingSelectMonth" id="editUpdateListingSelectMonth">
+    <option>Month</option>
+    <option value="01">Jan</option>
+    <option value="02">Feb</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">Sept</option>
+    <option value="10">Oct</option>
+    <option value="11">Nov</option>
+    <option value="12">Dec</option>
+    </select>
+    <label for="editUpdateListingSelectYear">Year</label>
+    <select name="editUpdateListingSelectYear" id="editUpdateListingSelectYear">
+    <option>Year</option>
+    <option value="2012">2012</option>
+    <option value="2012">2013</option>
+    <option value="2012">2014</option>
+    </select>
+  </fieldset>
+</div> <!--end div fieldcontain-->
+</div> <!--end div calendarDiv-->
+
+<label for="editUpdateListingContactPhoneNumber">Phone Number:</label>
+<input type="text" name="editUpdateListingContactPhoneNumber" id="editUpdateListingContactPhoneNumber" value="" placeholder="Data from server" data-mini="true" />
+<!-- Set placeholder equal to phone number variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
+
+<label for="editUpdateListingContactEmail">Email Address:</label>
+<input type="text" name="editUpdateListingContactEmail" id="editUpdateListingContactEmail" value="" placeholder="Data from server" data-mini="true" />
+<!-- Set placeholder equal to phone number variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
+
+<input type="checkbox" name="editUpdateListingEmailAgree" id="editUpdateListingEmailAgree" data-mini="true"/>
+<label for="editUpdateListingEmailAgree">Allow contact by email?</label>
+
+</form>
+
+<img style="width:290px;" id="editUpdateListingPhotoFromServer" src="" />
+
+
+	<button id="editUpdateListingCapture">Take New Photo</button>
+
+
+
+<!-- These are button/s to fetch a photo from the phone's album/library
+     They fire functions in camera.js -->
+
+	<button id="editUpdateListingGetImage">Get new library animal photo</button> 
+	
+
+	<img style="display:none;width:290px;" id="editUpdateListingAnimalImage" src="" />
+<!--The line above is to check image on screen before upload and belongs to the next screen-->
+
+	<div id="editUpdateListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
+
+
+  </div><!-- /content -->
+<!--This footer bar needs to scroll down rather than being fixed-->
+<!-- <span class="footerbar"> -->
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#chosenPetListing" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+<!-- </span> -->
+
+</div><!-- End of Chosen Edit/Update Pet Listing page -->
+
+
+
+
+
+
+<!-- Start of Preview Edited Pet Listing page -->
+<div data-role="page" id="previewEditedListing">
+
+	<div data-role="header">
+		<h1>Preview Listing</h1>
+
+    </div><!-- /header -->
+
+    <div data-role="content">
+	
+<!--The Edited listing will be displayed here.-->
+
+
+<!--Temporary Text:-->
+The updated listing will be shown here.<br/>It will be replaced with a response from the server.
+
+
+<div id="previewEditedListingDiv">
+
+</div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
+
+	<img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src="" />
+
+<!--The Upload button will need the id of the chosen pet listing -->
+
+<div style="text-align: center;"><a href="javascript:updatelisting('$photoID')" data-role="button" id="uploadEditedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Upload Listing</a></div>
+
+
+
+   </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#editUpdateListing" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
+</div><!-- End of Preview Added Pet Listing page -->
+
+
+
+
+
+<!-- Start of Terms & Conditions Dialog box -->
+<div data-role="dialog" id="termsandconditions" data-close-btn-text="Close">
+
+	<div data-role="header">
+		<h1>T & Cs</h1>
+        <!--<a href="#home" data-rel="back">Back</a>
+
+    </div><!-- /header -->
+
+	<div data-role="content">
+<p>Advertising Terms & Conditions</p>
+<p>
+Pets.ie may take any action with respect to user submitted information that it deems necessary or appropriate in its sole discretion if it believes it may create liability for Pets.ie. In accordance with Pets.ie's advertising guidelines, Pets.ie will not tolerate any advertisements that:
+</p><p>
+Are of an illegal, abusive or of an offending nature<br/>
+May cause disruption to the service provided on the Pets.ie website<br/>
+Do not relate to the categories or sections on the Pets.ie website<br/>
+Are submitted by so called 'Puppy Farms' or by persons involved in illegal activities<br/>
+Encourage seasonal breeding; such as 'pets for Christmas'<br/>
+Advertise rare, dangerous, wild, endangered or protected species<br/>
+Offer a shipping service for animals<br/>
+Contradict ISPCA recommendations
+</p><p>
+Pets.ie does not accept any responsibility for the animals, goods or services advertised on this website.
+</p><p>
+Pets.ie can review ads for the purpose of ensuring that all ads placed on the Pets.ie website conform to Pets.ie's Advertising Terms & Conditions. If Pets.ie itself finds, or is notified by a user of this website, that certain communications do not conform to these Advertising Terms & Conditions, Pets.ie may investigate the allegation and determine in good faith and at its sole discretion whether to remove the advertisement or contact local authorities.
+</p><p>
+Pets.ie reserves the right to remove any advertisements that are deemed, at Pets.ie's sole discretion, to breach Pets.ie's Advertising Terms & Conditions guidelines. Pets.ie accepts no liability or responsibility to users for the performance or non-performance of such activity. Pets.ie reserves the right to expel users and to prevent their further access to this website for violations of these Terms or the law. Pets.ie does not accept any responsibility for failure to contact an advertiser or to notify the advertisers of rejection of advertisements on the Pets.ie website. Pets.ie accepts no liability or responsibility to users for the performance or non-performance of such activity.
+</p><p>
+Advertisers agree to indemnify and hold Pets.ie, its officers, directors, employees, agents, licensors and suppliers, harmless from and against any claims, actions or demands, liabilities and settlements, including without limitation, reasonable legal and accounting fees resulting from, or alleged to result from, their use of this website and its content, in a manner that breaches or is alleged to breach these terms and conditions.
+</p>
+
+	<p style="text-align: center;"><a href="#addalisting2" data-role="button" data-theme="b" data-inline="true" data-rel="back">Close</a></p>
+		<br/>
+		<br/>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>T & Cs</h4>
+	</div><!-- /footer -->
+</div><!-- End of Terms and Conditions dialog page -->
+
+
+
+
+
+
+
+
+
+    
+<!-- Start of contact page
+<div data-role="page" id="contact">
+
+	<div data-role="header">
+		<h1>Contact Us</h1><a href="#home" data-icon="home">Home</a>
+	</div>
+
+	<div data-role="content">	
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>	
+		<p style="text-align: center;">Contact Us information...
+		<br/>
+		<br/>
+		<br/>
+		<br/>www.pets.ie</p>
+		<br/>
+		<br/>
+		<br/>
+		<br/>	
+		<br/>
+		<br/>
+		<br/>		
+		
+
+	</div>
+
+	<div data-role="footer">
+		<h4>Contact Us</h4>
+	</div>
+</div> -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	.ui-icon-shell {
+		background-image: url("app-icon-shell-highres.png");
+		background-size: 18px 18px;
+	}
+	...more HD icon rules go here...
+}
+
+.ui-icon-pets {
+	background-image: url("app-icon-pets.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	.ui-icon-shell {
+		background-image: url("app-icon-pets-highres.png");
+		background-size: 18px 18px;
+	}
+	...more HD icon rules go here...
+}
+
+
+
+.ui-li .ui-btn-text a.ui-link-inherit {white-space: normal;}
+
+.ui-bar {width:320px} 
+
+/*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
+
+
+.topleftspan{position:absolute; left:0px; top:45px;}
+
+.toprightspan{position:absolute; left:160px; top:45px;}
+
+.centreleftspan{position:absolute; left:0px; top:185px;}
+
+.centrerightspan{position:absolute; left:160px; top:185px;}
+
+.bottomleftspan{position:absolute; left:0px; top:325px;}
+
+.bottomrightspan{position:absolute; left:160px; top:325px;}
+
+.footerbar{position:absolute; top:465px;} 
+
+.searchbutton {padding-left:9%; padding-right:9%;} /* home page search button */
+
+.screen1homebutton {padding-right:20%;}
+
+.screen1searchbutton {padding-left:20%;}
+
+.screen3homebutton {padding-left:8%; padding-right:8%;}
+
+.selectedListingButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+
+.selectedRehomeButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+
+.selectedLostButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+
+.selectedFoundButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+
+

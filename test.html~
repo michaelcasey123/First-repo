@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<!--	<script src="petsie.js"></script> -->
+<script type="text/javascript">
+
+var globalstore={};
+var globalled;
+
+function testCounty(){
+document.getElementById("testing").innerHTML="County read as "+globalled;
+}
+
+function setCounty(){
+globalled="Donegal";
+document.getElementById("verifying").innerHTML="County set as "+globalled;
+}
+
+</script>
+
+</head>
+<body>
+
+<button onClick="setCounty()">Set County</button>
+<button onClick="testCounty()">Test</button>
+
+
+<div id="verifying"></div>
+
+<div id="testing"></div>
+
+
+</body>
+</html>
