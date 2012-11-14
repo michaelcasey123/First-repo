@@ -1,4 +1,4 @@
 First-repo
 ==========
 
-This is a general purpose repo not aligned to any particular project
+These files are related to the pets.ie mobile app build
