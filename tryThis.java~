@@ -1,0 +1,59 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bundle params = new Bundle();
+params.putString(Facebook.TOKEN, token);   
+params.putString("message", "graph api");       
+mAsyncRunner.request("/me/feed", params,"POST", new SampleUploadListener(),null);
+
+
+/* you can get access token by using
+
+      token = mFacebook.getAccessToken(); */

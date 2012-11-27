@@ -27,6 +27,8 @@ $('.page-mapLost1').live("pagecreate", function(){
         };
         var map = new google.maps.Map(document.getElementById("map_canvasLost"),
             mapOptions);
+
+	google.maps.event.trigger(map,'resize');
 	}
 
 
@@ -63,7 +65,7 @@ else if ($county=="Cavan") {$lat=54.5; $lng=-8.25; $zoom=8;}
 else if ($county=="Clare") {$lat=53.4; $lng=-10.05; $zoom=8;}
 else if ($county=="Cork") {$lat=52.5; $lng=-9.65; $zoom=8;}
 else if ($county=="Derry") {$lat=54.4; $lng=-7.45; $zoom=9;}
-else if ($county=="Donegal") {$lat=55.5; $lng=-8.75; $zoom=8;}
+else if ($county=="Donegal") {$lat=55; $lng=-7.8; $zoom=8;} // old values
 else if ($county=="Down") {$lat=54.8; $lng=-6.4; $zoom=9;}
 else if ($county=="Dublin") {$lat=53.6; $lng=-6.5; $zoom=10;}
 else if ($county=="Fermanagh") {$lat=54.8; $lng=-8.1; $zoom=9;}

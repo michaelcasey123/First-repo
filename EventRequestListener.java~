@@ -1,0 +1,63 @@
+private class EventRequestListener implements RequestListener {
+ 
+	public void onComplete(String response, Object state) {
+		try {
+			// process the response here: executed in background thread
+			Log.d(TAG, "Response: " + response.toString());
+			final JSONObject json = new JSONObject(response);
+			JSONArray d = json.getJSONArray("data");
+ 
+			for (int i = 0; i &lt; d.length(); i++) {
+				JSONObject event = d.getJSONObject(i);
+				FbEvent newEvent = new FbEvent(event.getString("id"),
+						event.getString("name"),
+						event.getString("start_time"),
+						event.getString("end_time"),
+						event.getString("location"));
+				events.add(newEvent);
+ 
+			}
+ 
+			// then post the processed result back to the UI thread
+			// if we do not do this, an runtime exception will be generated
+			// e.g. "CalledFromWrongThreadException: Only the original
+			// thread that created a view hierarchy can touch its views."
+			FacebookTutorialActivity.this.runOnUiThread(new Runnable() {
+				public void run() {
+					for (FbEvent event : events) {
+						TextView view = new TextView(
+								getApplicationContext());
+						view.setText(event.getTitle());
+						view.setTextSize(16);
+ 
+						eventLayout.addView(view);
+					}
+				}
+			});
+		} catch (JSONException e) {
+			Log.w(TAG, "JSON Error in response");
+		}
+	}
+ 
+	public void onIOException(IOException e, Object state) {
+		// TODO Auto-generated method stub
+ 
+	}
+ 
+	public void onFileNotFoundException(FileNotFoundException e,
+			Object state) {
+		// TODO Auto-generated method stub
+ 
+	}
+ 
+	public void onMalformedURLException(MalformedURLException e,
+			Object state) {
+		// TODO Auto-generated method stub
+ 
+	}
+ 
+	public void onFacebookError(FacebookError e, Object state) {
+		// TODO Auto-generated method stub
+ 
+	}
+}

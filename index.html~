@@ -18,6 +18,61 @@
  
 </head> 
 <body> 
+<!--Facebook Login code below-->
+
+<div id="fb-root"></div>
+<script>
+  // Additional JS functions here
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '411666472238883', // App ID
+      channelUrl : '//http://michaelcasey123.zxq.net/jqmobile/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional init code here
+    FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    // connected
+  } else if (response.status === 'not_authorized') {
+    // not_authorized
+  } else {
+      // not_logged_in
+      login();
+  }
+ });
+
+  };
+
+function login() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            // connected
+        } else {
+            // cancelled
+        }
+    });
+}
+
+
+
+// Under normal circumstances you should attach this FB.login() call to a Javascript onClick event as the call results in a popup window being opened, which will be blocked by most browsers.
+// This has been attached to the button "Login to Facebook?" (FacebookLogin) on page FBRegister.
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+
+
 <script>
 
 // Trying to make these variables global
@@ -593,8 +648,8 @@ var $zoom;
 <!-- Start of Lost Map1 page -->
 <div data-role="page" id="lostMap1" class="page-mapLost1">
 
-<!--    <div data-role="content" style="width:100%; height:100%; padding:0;"> -->
-	<div data-role="content">
+    <div data-role="content" style="width:100%; height:100%; padding:0;">
+
 	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
 	<div id="map_canvasLost" style="width:320px; height:470px;"></div>
@@ -836,8 +891,8 @@ var $zoom;
 <!-- Start of Found Map1 page -->
 <div data-role="page" id="foundMap1" class="page-mapFound1">
 
-<!--    <div data-role="content" style="width:100%; height:100%; padding:0;"> -->
-    <div data-role="content">
+    <div data-role="content" style="width:100%; height:100%; padding:0;">
+
 	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
 	<div id="map_canvasFound" style="width:320px; height:470px;"></div>
@@ -874,10 +929,6 @@ Login
 Email: text box
 Password: text box
 Login Button. arrow right on right.
-
-Login via Facebook
-Login via Twitter
-Login via Google+
 
 Register now
 (note Registration is free and will only take a few seconds to complete.)
@@ -965,9 +1016,10 @@ Register here with your details:
 <div style="text-align: center;"><a href="#addalisting" data-role="button" id="registerButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Register</a></div>
 
 <div>Login via:</div>
+<!--
 <a href="#addalisting"><img src="tiles/socialicons.png" height="42" width="122"/></a>
-
-
+-->
+<a href="#FBRegister"><img src="tiles/facebookicon.jpg" height="42" width="42"/></a>
 
     </div><!-- /content -->
 
@@ -984,6 +1036,55 @@ Register here with your details:
 	</div><!-- /footer -->
 </span>
 </div><!-- End of Login page-->
+
+
+
+
+
+
+
+
+<!-- Start of Facebook Register page -->
+<div data-role="page" id="FBRegister">
+
+	<div data-role="header">
+		<h1>FB Register</h1>
+	<a href="#login" data-role="button" data-icon="back">Back</a>
+    </div><!-- /header -->
+
+	
+    <div data-role="content">	
+
+<!--The following code is from Facebook--> 
+<!--
+<div id="fb-root"></div>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<iframe src="https://www.facebook.com/plugins/registration?
+             client_id=113869198637480&
+             redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fecho%2F&
+             fields=name,birthday,gender,location,email"
+        scrolling="auto"c
+        frameborder="no"
+        style="border:none"
+        allowTransparency="true"
+        width="300px"
+        height="330">
+</iframe>
+-->
+	<div style="text-align: center;"><a href="javascript:login()" data-role="button" id="FacebookLogin" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Login to Facebook?</a></div> <!-- end button -->
+
+    </div><!--/content-->
+
+</div><!--End of Facebook Register page-->
+
 
 
 

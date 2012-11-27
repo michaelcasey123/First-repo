@@ -1,0 +1,35 @@
+private class IDRequestListener implements RequestListener {
+ 
+  public void onComplete(String response, Object state) {
+  	try {
+  		// process the response here: executed in background thread
+  		Log.d(TAG, "Response: " + response.toString());
+  		JSONObject json = Util.parseJson(response);
+  		final String id = json.getString("id");
+ 
+  		// then post the processed result back to the UI thread
+  		// if we do not do this, an runtime exception will be generated
+  		// e.g. "CalledFromWrongThreadException: Only the original
+  		// thread that created a view hierarchy can touch its views."
+  		FacebookTutorialActivity.this.runOnUiThread(new Runnable() {
+  			public void run() {
+  				userID = id;
+  				mText.setText("Hello there, " + id + "!");
+  			}
+  		});
+  	} catch (JSONException e) {
+  		Log.w(TAG, "JSON Error in response");
+  	} catch (FacebookError e) {
+  		Log.w(TAG, "Facebook Error: " + e.getMessage());
+  	}
+ 
+  }
+ 
+  public void onIOException(IOException e, Object state) {}
+ 
+  public void onFileNotFoundException(FileNotFoundException e, Object state) {}
+ 
+  public void onMalformedURLException(MalformedURLException e, Object state) {}
+ 
+  public void onFacebookError(FacebookError e, Object state) {}
+}
