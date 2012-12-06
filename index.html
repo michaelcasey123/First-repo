@@ -46,6 +46,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Home</h1>
+ 	<a href="#about" data-role="button" class="ui-btn-right" data-transition="pop">About</a>
 <!--	<a href="#contact" data-icon="arrow-l">Contact Us</a> -->
 	</div><!-- /header -->
 
@@ -87,18 +88,19 @@ var $zoom;
 </span>
 
 	</div><!-- /content -->
+
+<!--Footer bar removed
 <span class="footerbar">
 	<div data-role="footer" class="ui-bar">
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#home" data-role="button" data-icon="home" class="homebutton">Home</a>
 	<a href="#home" data-role="button" data-icon="search" class="searchbutton">Search</a>
  	<a href="#about" data-role="button" class="aboutbutton" data-transition="pop">About</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
-	</div><!-- /footer -->
-</span>
+
 </div><!-- End of Home page -->
 
 
@@ -139,7 +141,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Rehome a Pet</h1>
-
+	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
     </div><!-- /header -->
 
 	
@@ -152,10 +154,11 @@ var $zoom;
 		<option value="All">All Animals</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
+		<option value="Equine">Equine</option>
 		<option value="Bird">Birds</option>
-		<option value="Rabbit">Rabbits</option>
-		<option value="Horse">Horses & Ponies</option>
-		<option value="Others">Other Animals</option>
+		<option value="Exotic">Exotic</option>
+		<option value="SmallFurries">Small Furries</option>
+		<option value="Aquatic">Aquatic</option>
 	</select>
 	<br/>
 	<label for="rehomeCounty" class="select">County of Ireland:</label>
@@ -215,18 +218,15 @@ var $zoom;
 
     </div><!-- /content -->
 <br/>
+<!--Footer bar removed
 <span class="footerbar">
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
 	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
-
 	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
-</span>
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
 </div><!-- End of Rehome Pets page--> 
     
@@ -240,8 +240,10 @@ var $zoom;
 <!-- Start of Rehome Pets View of Results page -->
 <div data-role="page" id="rehome2">
 
-	<div data-role="header">
+    <div data-role="header">
+	<a href="#rehome" data-role="button" data-icon="back">Back</a>
 		<h1>Re-home Pets List</h1>
+	<a href="#home" data-role="button" data-icon="home" >Home</a>
 
     </div><!-- /header -->
 
@@ -256,19 +258,12 @@ var $zoom;
 	<li>Server Response Below:</li> 
 </ul>
 
-<!--Temporary Text: -->
-<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
 
-
-
-<div style="text-align: center;" id="rehomePhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
-
-<span class="selectedRehomeButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
 
 <div id="RehomeButtonFromServer">
 
@@ -277,27 +272,20 @@ var $zoom;
 <div style="text-align: center;"><a href="#rehome3" data-role="button" id="selectedRehomeButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
 
 </div>
-</span>
 
 
     </div><!-- /content -->
 
-
-<span class="footerbar"> <!--Temporary - This page will need to scroll-->
+<!--Footer bar removed
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#rehome" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
 	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
 	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
 
-	</div><!-- /footer -->
-</span>
+
 
 </div><!-- End of Rehome Pets View of Results page -->
 
@@ -314,8 +302,9 @@ var $zoom;
 <div data-role="page" id="rehome3">
 
 	<div data-role="header">
+	<a href="#rehome2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Rehome Listing</h1>
-
+	<a href="#home" data-role="button" data-icon="home" >Home</a>
     </div><!-- /header -->
 
 	
@@ -334,22 +323,17 @@ var $zoom;
 
     </div><!-- /content -->
 
-
+<!--Footer bar removed
 <span class="footerbar"> 
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#rehome2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
 	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
 	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
-	</div><!-- /footer -->
-</span>
 
 </div><!-- End of Rehome Chosen Pet Listing page -->
 
@@ -372,7 +356,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Lost Pets</h1>
-
+	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
     </div><!-- /header -->
 
 	
@@ -383,13 +367,14 @@ var $zoom;
 
 	<label for="lostAnimal" class="select">Animal type:</label>
 	<select name="lostAnimal" id="lostAnimal">
-		<option value="All">All Animals</option>
+<option value="All">All Animals</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
+		<option value="Equine">Equine</option>
 		<option value="Bird">Birds</option>
-		<option value="Rabbit">Rabbits</option>
-		<option value="Horse">Horses & Ponies</option>
-		<option value="Others">Other Animals</option>
+		<option value="Exotic">Exotic</option>
+		<option value="SmallFurries">Small Furries</option>
+		<option value="Aquatic">Aquatic</option>
 	</select>
 	<br/>
 	<label for="lostCounty" class="select">County of Ireland:</label>
@@ -434,7 +419,7 @@ var $zoom;
 
 </form>
 		
-
+	<div style="text-align: center;" id="lostSearchText"></div>
 	<div style="text-align: center;" id="lostDdmenuResults"><br/></div>
 <!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
 	
@@ -445,19 +430,17 @@ var $zoom;
 
     </div><!-- /content -->
 
-
+<!--Footer bar removed
 <span class="footerbar">
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
 	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
-	</div><!-- /footer -->
-</span>
+
 </div><!-- End of Lost Pets page--> 
 
 
@@ -471,8 +454,9 @@ var $zoom;
 <div data-role="page" id="lost2">
 
 	<div data-role="header">
+	<a href="#lost" data-role="button" data-icon="back">Back</a>
 		<h1>Lost Pets List</h1>
-
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -489,11 +473,6 @@ var $zoom;
 	<li>Server Response Below:</li> 
 </ul>
 
-<!--Temporary Text: -->
-<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
-
-
-
 
 <div style="text-align: center;" id="lost2photoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="lost2photoFromServer" src="" />
@@ -502,8 +481,6 @@ var $zoom;
 <!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
 
-<span class="selectedLostButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
-
 <div id="LostButtonFromServer">
 
 <!--Temporary button below. This button is written from the server-->
@@ -511,28 +488,21 @@ var $zoom;
 <div style="text-align: center;"><a href="#lost3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
 
 </div>
-</span>
-
-
 
 
     </div><!-- /content -->
 
-<span class="footerbar"> <!--This is temporary, this page will need to scroll. -->
+
+<!--Footer bar removed
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#lost" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
 	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
 	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
 
-	</div><!-- /footer -->
-</span>
+
 </div><!-- End of Lost Pets Detailed Search page--> 
 
 
@@ -546,8 +516,9 @@ var $zoom;
 <div data-role="page" id="lost3">
 
 	<div data-role="header">
+	<a href="#lost2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Pet</h1>
-
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
 	
@@ -566,22 +537,17 @@ var $zoom;
 
     </div><!-- /content -->
 
-
+<!--Footer bar removed
 <span class="footerbar"> 
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#lost2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
 	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
 	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
-	</div><!-- /footer -->
-</span>
 
 </div><!-- End of Lost Chosen Pet Listing page -->
 
@@ -620,7 +586,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Found Pets</h1>
-
+	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
     </div><!-- /header -->
 
 	
@@ -630,13 +596,14 @@ var $zoom;
 
 	<label for="foundAnimal" class="select">Animal type:</label>
 	<select name="foundAnimal" id="foundAnimal">
-		<option value="All">All Animals</option>
+<option value="All">All Animals</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
+		<option value="Equine">Equine</option>
 		<option value="Bird">Birds</option>
-		<option value="Rabbit">Rabbits</option>
-		<option value="Horse">Horses & Ponies</option>
-		<option value="Others">Other Animals</option>
+		<option value="Exotic">Exotic</option>
+		<option value="SmallFurries">Small Furries</option>
+		<option value="Aquatic">Aquatic</option>
 	</select>
 	<br/>
 	<label for="foundCounty" class="select">County of Ireland:</label>
@@ -681,7 +648,7 @@ var $zoom;
 
 </form>
 
-	
+	<div style="text-align: center;" id="foundSearchText"></div>	
 	<div style="text-align: center;" id="foundDdmenuResults"><br/></div>
 <!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
 	
@@ -690,18 +657,15 @@ var $zoom;
 
     </div><!-- /content -->
 
+<!--Footer bar removed
 <span class="footerbar">
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
 	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
-
 	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
-</span>
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
 
 </div><!-- End of Found Pets page-->
@@ -717,8 +681,9 @@ var $zoom;
 <div data-role="page" id="found2">
 
 	<div data-role="header">
+	<a href="#found" data-role="button" data-icon="back">Back</a>
 		<h1>Found Pets List</h1>
-
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -732,9 +697,6 @@ var $zoom;
 	<li>Server Response Below:</li> 
 </ul>
 
-<!--Temporary Text: -->
-<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
-
 
 <div style="text-align: center;" id="foundPetsPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
@@ -743,8 +705,6 @@ var $zoom;
 <!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
 
-<span class="selectedFoundButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
-
 <div id="FoundButtonFromServer">
 
 <!--Temporary button below. This button is written from the server-->
@@ -752,26 +712,18 @@ var $zoom;
 <div style="text-align: center;"><a href="#found3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
 
 </div>
-</span>
-
 
     </div><!-- /content -->
 
-<span class="footerbar">
+<!--Footer bar removed
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#found" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
 	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
 	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
 
-	</div><!-- /footer -->
-</span>
 </div><!-- End of Found Pets Detailed Search page--> 
 
 
@@ -787,8 +739,9 @@ var $zoom;
 <div data-role="page" id="found3">
 
 	<div data-role="header">
+	<a href="#found2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Pet</h1>
-
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
 	
@@ -807,22 +760,17 @@ var $zoom;
 
     </div><!-- /content -->
 
-
+<!--Footer bar removed
 <span class="footerbar"> 
 	<div data-role="footer" class="ui-bar">
-
 	<div data-role="controlgroup" data-type="horizontal">
-
 	<a href="#found2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
 	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
 	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
 	</div> <!--/controlgroup-->
+<!--	</div><!-- /footer -->
+<!--</span>-->
 
-	</div><!-- /footer -->
-</span>
 
 </div><!-- End of Found Chosen Pet Listing page -->
 
@@ -1024,12 +972,14 @@ Register here with your details:
 
 	<label for="addAnimal" class="select">Pet Type:</label>
 	<select name="addAnimal" id="addAnimal">
-		<option value="dog">Dog</option>
-		<option value="cat">Cat</option>
-		<option value="bird">Bird</option>
-		<option value="rabbit">Rabbit</option>
-		<option value="equine">Horse or Pony</option>
-		<option value="other">Other Animal</option>
+		<option value="All">All Animals</option>
+		<option value="Dog">Dogs</option>
+		<option value="Cat">Cats</option>
+		<option value="Equine">Equine</option>
+		<option value="Bird">Birds</option>
+		<option value="Exotic">Exotic</option>
+		<option value="SmallFurries">Small Furries</option>
+		<option value="Aquatic">Aquatic</option>
 	</select>
 	
 	

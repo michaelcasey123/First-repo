@@ -1,13 +1,79 @@
 <!--
 // These are only global to index.html. No other files can access these.
+// Pet database search variables
 var $animal;
 var $county;
 var $photoID;
 var $listingType;
 var $keyword;
+// Mapping variables for Google Maps
 var $lat;
 var $lng;
 var $zoom;
+/* Login variables from Facebook
+var $id;
+var $name;
+var $firstName;
+var $lastName;
+var $userName;
+var $gender;
+var $locale;
+var $email;
+*/
+// The following functions get the phone's file system and read the file written by Android in petsie.java
+
+    // Wait for Cordova to load
+/*    
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // Cordova is ready
+    // This needs to be done immediately after Facebook Login or from existing file from previous login
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    }
+
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("facebookUserInfo", null, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.file(gotFile, fail);
+    }
+
+    function gotFile(file){
+        readDataUrl(file);
+        readAsText(file);
+    }
+
+    // I don't think I need this function. Check when file written, whether it's data or text. Also locate it on the phone if possible.
+
+     function readDataUrl(file) {
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {
+            console.log("Read as data URL");
+            console.log(evt.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function readAsText(file) {
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {
+            console.log("Read as text");
+            console.log(evt.target.result); // presumably the file's contents are written to the browser debug console. How do I see this from the phone? Are they shown on the Eclipse LogCat? They need to be assigned to variables.
+        };
+        reader.readAsText(file);
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
+
+*/
+
+
 
 // When map page opens display map
 
@@ -65,7 +131,7 @@ else if ($county=="Cavan") {$lat=54.5; $lng=-8.25; $zoom=8;}
 else if ($county=="Clare") {$lat=53.4; $lng=-10.05; $zoom=8;}
 else if ($county=="Cork") {$lat=52.5; $lng=-9.65; $zoom=8;}
 else if ($county=="Derry") {$lat=54.4; $lng=-7.45; $zoom=9;}
-else if ($county=="Donegal") {$lat=55; $lng=-7.8; $zoom=8;} // old values
+else if ($county=="Donegal") {$lat=55.5; $lng=-8.75; $zoom=8;}
 else if ($county=="Down") {$lat=54.8; $lng=-6.4; $zoom=9;}
 else if ($county=="Dublin") {$lat=53.6; $lng=-6.5; $zoom=10;}
 else if ($county=="Fermanagh") {$lat=54.8; $lng=-8.1; $zoom=9;}
@@ -162,32 +228,12 @@ $('#foundCounty').bind("change", function(){// use change rather than click here
 
 
 
-$(document).ready(function(){
-$('#findAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#findAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
-
-
-
-
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// Rehome Search Button function here
 
 $(document).ready(function(){
-$('#findCounty').bind("change", function(){// use change rather than click here
-	$county=$('#findCounty').val();//store county menu item in county variable
-	$('#searchDdmenuResults').html("You chose: " + $animal + " in " + $county);
-});//close bind function
-});//close document ready function
-
-
-
-// Search Button function here
-
-$(document).ready(function(){
-  $("#searchButton").bind("click", function(){//function fires when button id "searchButton" is pressed
+  $("#searchButtonRehome").bind("click", function(){//function fires when button id "searchButtonRehome" is pressed
 	//window.alert("Search button clicked");//check button
-	showCustomer();// function which communicates the animal and county to the server using 			XMLHttpRequest.send()
+	showRehomePet();// function which communicates the animal and county to the server using 			XMLHttpRequest.send()
 });// end click function
 });// end document ready function
 
@@ -195,12 +241,12 @@ $(document).ready(function(){
 
 
 // the function below uses AJAX to contact the localhost server with data for a database search
-function showCustomer()
+function showRehomePet()
 {
 var xmlhttp;
 if (($animal == "") || ($county == "")) // if nothing has been chosen
   {
-  document.getElementById("dbSearchResults").innerHTML="Animal or county missing?"; // output nothing
+  document.getElementById("rehomeSearchText").innerHTML="Animal or county missing?"; // output nothing
   return; // and leave the function
   }
 //else
@@ -216,20 +262,112 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    $('#dblist').append(xmlhttp.responseText);// append the list from jqueryInput2.php to dblist
-    $('#dblist').listview('refresh');
+    $('#rehomedblist').append(xmlhttp.responseText);// append the list from searchLocalDB.php to dblist
+    $('#rehomedblist').listview('refresh');
     }
   };
-xmlhttp.open("GET","http://192.168.1.102/mtcdb1query/jqueryInput2l.php?firstname="+$animal+"&theCounty="+$county,true);
+//xmlhttp.open("GET","http://192.168.1.102/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://localhost/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
 
 
 
+// Lost Search Button function here
+
+$(document).ready(function(){
+  $("#searchButtonLost").bind("click", function(){//function fires when button id "searchButtonLost" is pressed
+	//window.alert("Search button clicked");//check button
+	showLostPet();// function which communicates the animal and county to the server using 			XMLHttpRequest.send()
+});// end click function
+});// end document ready function
+
+
+
+
+// the function below uses AJAX to contact the localhost server with data for a database search
+function showLostPet()
+{
+var xmlhttp;
+if (($animal == "") || ($county == "")) // if nothing has been chosen
+  {
+  document.getElementById("lostSearchText").innerHTML="Animal or county missing?"; // output nothing
+  return; // and leave the function
+  }
+//else
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    $('#lost2dblist').append(xmlhttp.responseText);// append the list from searchLocalDB.php to dblist
+    $('#lost2dblist').listview('refresh');
+    }
+  };
+//xmlhttp.open("GET","http://192.168.1.102/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://localhost/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.send();
+}
+
+
+
+
+// Found Search Button function here
+
+$(document).ready(function(){
+  $("#searchButtonFound").bind("click", function(){//function fires when button id "searchButtonFound" is pressed
+	//window.alert("Search button clicked");//check button
+	showFoundPet();// function which communicates the animal and county to the server using 			XMLHttpRequest.send()
+});// end click function
+});// end document ready function
+
+
+
+
+// the function below uses AJAX to contact the localhost server with data for a database search
+function showFoundPet()
+{
+var xmlhttp;
+if (($animal == "") || ($county == "")) // if nothing has been chosen
+  {
+  document.getElementById("foundSearchText").innerHTML="Animal or county missing?"; // output nothing
+  return; // and leave the function
+  }
+//else
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    $('#foundPetsdblist').append(xmlhttp.responseText);// append the list from searchLocalDB.php to dblist
+    $('#foundPetsdblist').listview('refresh');
+    }
+  };
+//xmlhttp.open("GET","http://192.168.1.102/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://localhost/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.send();
+}
+
+
+
 
 // the function below uses AJAX to contact the localhost server with an ID from the search results data for a database search to get the photo of the animal required. $photoID is taken from the dblist item pressed.
-function showCustomerPhoto($photoID)
+function showPetPhoto($photoID)
 {
 var xmlhttp;
 /*
@@ -254,9 +392,12 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("photoFromServer").src=xmlhttp.responseText; // write the response from the server into the img src
     }
   };
-xmlhttp.open("GET","http://192.168.1.102/mtcdb1query/getPhotol.php?theID="+$photoID,true);
+//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
+
+
 
 
 // The function below is to initialise the map
@@ -398,7 +539,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("dbInsertResults").innerHTML=xmlhttp.responseText; // write the response from the server into the div
     }
   };
-xmlhttp.open("GET","http://192.168.1.102/mtcdb1query/jqueryInput4l.php?firstname="+$animal+"&theCounty="+$county,true);// uploads the animal and county on click of the upload button
+xmlhttp.open("GET","http://192.168.1.102/petsie/jqueryInput4l.php?firstname="+$animal+"&theCounty="+$county,true);// uploads the animal and county on click of the upload button
 xmlhttp.send();
 }
 

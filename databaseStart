@@ -1,0 +1,21 @@
+petID, petType, petAddress1, petAddress2, petCity, petCounty, petEmail, petPhoneNo, petImageSource
+
+Check the Pets.ie database table to find similar concepts to reduce later work.
+These would be the columns of the pet table. 
+
+I will continue to use the mtcdb1 database and add the pet table.
+
+Use a sql table dump to edit the contents.
+
+CREATE TABLE pet
+(
+	petID char(10) not null	PRIMARY KEY,
+	petType varchar(50) not null,
+	petAddress1 varchar(100) not null,
+	petAddress2 varchar(100) null,
+	petCity varchar(100) null,
+	petCounty varchar(100) not null,
+	petEmail varchar(100) null,
+	petPhoneNo varchar(100) null,
+	petImageSource varchar(100) null
+);

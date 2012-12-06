@@ -27,17 +27,17 @@
 /*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
 
 
-.topleftspan{position:absolute; left:0px; top:45px;}
+.topleftspan{position:absolute; left:0px; top:90px;}
 
-.toprightspan{position:absolute; left:160px; top:45px;}
+.toprightspan{position:absolute; left:160px; top:90px;}
 
-.centreleftspan{position:absolute; left:0px; top:185px;}
+.centreleftspan{position:absolute; left:0px; top:230px;}
 
-.centrerightspan{position:absolute; left:160px; top:185px;}
+.centrerightspan{position:absolute; left:160px; top:230px;}
 
-.bottomleftspan{position:absolute; left:0px; top:325px;}
+.bottomleftspan{position:absolute; left:0px; top:370px;}
 
-.bottomrightspan{position:absolute; left:160px; top:325px;}
+.bottomrightspan{position:absolute; left:160px; top:370px;}
 
 .footerbar{position:absolute; top:465px;} 
 
@@ -51,17 +51,10 @@
 
 .selectedListingButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
 
-.selectedRehomeButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+/*.selectedRehomeButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
 
 .selectedLostButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
 
 .selectedFoundButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
-/* The values below are associated with the map */ 
-/*
-      html { height: 100% }
-      body { height: 95%; margin: 0; padding: 0 }*/
 
-.page-mapLost1, ui-content { width:100%; height: 100%; padding:0;}
-
-.page-mapFound1, ui-content { width:100%; height: 100%; padding:0;}
 
