@@ -691,7 +691,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Login to Pets.ie</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 	
     <div data-role="content">	
@@ -798,8 +798,23 @@ Register here with your details:
 
     </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
 
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 </div><!-- End of Login page-->
+
+
+
+
 
 
 
@@ -816,7 +831,7 @@ Register here with your details:
 
 	<div data-role="header">
 		<h1>Add A Listing</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -824,6 +839,7 @@ Register here with your details:
 
 	<label for="listingType" class="select">Choose Listing Type:</label>
 	<select name="listingType" id="listingType">
+		<option value="petWanted">Pet Wanted</option>
 		<option value="petLost">I Have Lost A Pet</option>
 		<option value="petFound">I Have Found A Pet</option>
 		<option value="petForRehome">My Pet Needs a New Home</option>
@@ -889,6 +905,19 @@ Register here with your details:
 
     </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Add A Listing page -->
 
 
@@ -903,9 +932,7 @@ Register here with your details:
 <div data-role="page" id="addalisting2">
 
 	<div data-role="header">
-	<a href="#addalisting" data-role="button" data-icon="back">Back</a>
 		<h1>Add A Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 	
     <div data-role="content">	
@@ -1046,6 +1073,19 @@ Ts & Cs as above
 Next screen upload photos
 Next screen preview advert
 
+
+Pet Wanted:
+
+Pet type: as above
+County: as above
+Advert Title: as above
+Description: as above
+
+Contact Details as above
+Ts & Cs as above
+
+Next screen preview advert
+
 -->
 
 
@@ -1056,6 +1096,19 @@ Next screen preview advert
 <!--If petWanted then <a href="#addalisting4"> above. -->
 
    </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Add A Listing2 page -->
 
@@ -1068,9 +1121,8 @@ Next screen preview advert
 <div data-role="page" id="addalisting3">
 
 	<div data-role="header">
-	<a href="#addalisting2" data-role="button" data-icon="back">Back</a>
 		<h1>Upload Photo</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -1107,6 +1159,19 @@ Next screen preview advert
 
    </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting2" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Add A Listing3 page -->
 
 
@@ -1119,9 +1184,8 @@ Next screen preview advert
 <div data-role="page" id="previewAddedListing">
 
 	<div data-role="header">
-	<a href="#addalisting3" data-role="button" data-icon="back">Back</a>
 		<h1>Preview Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -1143,6 +1207,19 @@ The added listing will be shown here.<br/>It will be replaced with a response fr
 
    </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting3" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Preview Added Pet Listing page -->
 
 
@@ -1157,7 +1234,7 @@ The added listing will be shown here.<br/>It will be replaced with a response fr
 
 	<div data-role="header">
 		<h1>My Listings</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -1194,6 +1271,19 @@ There will be a response from the server database corresponding to the user's pr
 
   </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of My Listings page -->
 
 
@@ -1206,9 +1296,8 @@ There will be a response from the server database corresponding to the user's pr
 <div data-role="page" id="chosenPetListing">
 
 	<div data-role="header">
-	<a href="#myListings" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Listing</h1>
-	<a href="#editUpdateListing" data-iconpos="right" data-icon="arrow-r">Edit</a>
+<a href="#editUpdateListing" data-iconpos="right" data-icon="arrow-r" class="ui-btn-right">Edit</a>
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -1228,11 +1317,20 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 
 
 
+
+
   </div><!-- /content -->
 
 <span class="footerbar">
 	<div data-role="footer" class="ui-bar">
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#myListings" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
 	</div><!-- /footer -->
 </span>
 
@@ -1248,9 +1346,9 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 <div data-role="page" id="editUpdateListing">
 
 	<div data-role="header">
-	<a href="#chosenPetListing" data-role="button" data-icon="back">Back</a>
 		<h1>Edit Listing</h1>
-	<a href="#previewEditedListing" data-iconpos="right" data-icon="arrow-r">Save</a>
+
+<a href="#previewEditedListing" data-iconpos="right" data-icon="arrow-r"  class="ui-btn-right">Save</a>
     </div><!-- /header -->
 
     <div data-role="content">
@@ -1369,10 +1467,19 @@ Date Lost/Found:
 
 
   </div><!-- /content -->
-
+<!--This footer bar needs to scroll down rather than being fixed-->
+<!-- <span class="footerbar"> -->
 	<div data-role="footer" class="ui-bar">
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#chosenPetListing" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
 	</div><!-- /footer -->
+<!-- </span> -->
 
 </div><!-- End of Chosen Edit/Update Pet Listing page -->
 
@@ -1385,9 +1492,8 @@ Date Lost/Found:
 <div data-role="page" id="previewEditedListing">
 
 	<div data-role="header">
-	<a href="#editUpdateListing" data-role="button" data-icon="back">Back</a>
 		<h1>Preview Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
     <div data-role="content">
@@ -1413,6 +1519,18 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
    </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#editUpdateListing" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Preview Added Pet Listing page -->
 
@@ -1425,7 +1543,7 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
 	<div data-role="header">
 		<h1>T & Cs</h1>
-        <!--<a href="#home" data-rel="back">Back</a> -->
+        <!--<a href="#home" data-rel="back">Back</a>
 
     </div><!-- /header -->
 

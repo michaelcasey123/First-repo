@@ -735,7 +735,7 @@ $('#listingType').bind("change", function(){// use change rather than click here
 
 function priceReplace()
 {
-if ($listingType=="petWanted" || $listingType=="petLost" || $listingType=="petFound")
+if ($listingType=="petLost" || $listingType=="petFound")
 	{
 	$('#priceDiv').html("");
 	}
@@ -746,7 +746,7 @@ if ($listingType=="petWanted" || $listingType=="petLost" || $listingType=="petFo
 
 function calendarReplace()
 {
-if ($listingType=="petWanted" || $listingType=="petForRehome")
+if ($listingType=="petForRehome")
 	{
 	$('#addAListingCalendarDiv').html("");
 	}
