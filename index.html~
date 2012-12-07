@@ -52,6 +52,10 @@ var $zoom;
 
 	<div id="content" data-role="content">	
 
+<span class="logospan">
+<img src="tiles/logo_pets_ie.png">
+</span>
+
 <span class="topleftspan">
 <!--<a href="#rehome" data-role="button" data-inline="true" data-theme="b">Rehome Pets</a> -->
 <a href="#rehome"><img src="tiles/rehomePetsTileSmall.png"/></a>
@@ -89,17 +93,6 @@ var $zoom;
 
 	</div><!-- /content -->
 
-<!--Footer bar removed
-<span class="footerbar">
-	<div data-role="footer" class="ui-bar">
-	<div data-role="controlgroup" data-type="horizontal">
-	<a href="#home" data-role="button" data-icon="home" class="homebutton">Home</a>
-	<a href="#home" data-role="button" data-icon="search" class="searchbutton">Search</a>
- 	<a href="#about" data-role="button" class="aboutbutton" data-transition="pop">About</a>
-	</div> <!--/controlgroup-->
-<!--	</div><!-- /footer -->
-<!--</span>-->
-
 
 </div><!-- End of Home page -->
 
@@ -131,6 +124,11 @@ var $zoom;
 		<h4>About</h4>
 	</div><!-- /footer -->
 </div><!-- End of About page -->
+
+
+
+
+
 
 
 
@@ -218,18 +216,12 @@ var $zoom;
 
     </div><!-- /content -->
 <br/>
-<!--Footer bar removed
-<span class="footerbar">
-	<div data-role="footer" class="ui-bar">
-	<div data-role="controlgroup" data-type="horizontal">
-	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
-	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
-	</div> <!--/controlgroup-->
-<!--	</div><!-- /footer -->
-<!--</span>-->
+
 
 </div><!-- End of Rehome Pets page--> 
     
+
+
 
 
 
@@ -242,7 +234,7 @@ var $zoom;
 
     <div data-role="header">
 	<a href="#rehome" data-role="button" data-icon="back">Back</a>
-		<h1>Re-home Pets List</h1>
+		<h1>Rehome a Pet</h1>
 	<a href="#home" data-role="button" data-icon="home" >Home</a>
 
     </div><!-- /header -->
@@ -262,29 +254,13 @@ var $zoom;
 	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
 
 
-<div id="RehomeButtonFromServer">
-
-<!--Temporary button below. This button is written from the server-->
-
-<div style="text-align: center;"><a href="#rehome3" data-role="button" id="selectedRehomeButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
-
-</div>
+<div style="text-align: center;" id="RehomeListingButtonDiv"></div>
 
 
     </div><!-- /content -->
-
-<!--Footer bar removed
-	<div data-role="footer" class="ui-bar">
-	<div data-role="controlgroup" data-type="horizontal">
-	<a href="#rehome" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-	</div> <!--/controlgroup-->
-<!--	</div><!-- /footer -->
-
 
 
 </div><!-- End of Rehome Pets View of Results page -->
@@ -303,36 +279,21 @@ var $zoom;
 
 	<div data-role="header">
 	<a href="#rehome2" data-role="button" data-icon="back">Back</a>
-		<h1>Chosen Rehome Listing</h1>
+		<h1>Chosen Pet</h1>
 	<a href="#home" data-role="button" data-icon="home" >Home</a>
     </div><!-- /header -->
 
 	
     <div data-role="content">	
 
-<div id="rehomeChosenListing">
+<div id="rehomeChosenListing"></div>
 
-<!--Temporary text: -->
-<p>The Chosen pet details - Advert Title, Description, Pet type, County, Price (including free), contact phone number and email address if allowed and photo will be shown here.</p>
-
-</div>
 
 <div style="text-align: center;" id="rehomeChosenPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
-
-<!--Footer bar removed
-<span class="footerbar"> 
-	<div data-role="footer" class="ui-bar">
-	<div data-role="controlgroup" data-type="horizontal">
-	<a href="#rehome2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-	</div> <!--/controlgroup-->
-<!--	</div><!-- /footer -->
-<!--</span>-->
 
 
 </div><!-- End of Rehome Chosen Pet Listing page -->
@@ -356,7 +317,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Lost Pets</h1>
-
+	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
     </div><!-- /header -->
 
 	
@@ -426,23 +387,9 @@ var $zoom;
 	<p style="text-align: center;"><a href="#lost2" data-role="button" id="searchButtonLost" data-icon="pets" data-theme="b" data-inline="true">Find Pet</a></p> <!-- end button -->	
 
 
-
-
     </div><!-- /content -->
 
 
-<span class="footerbar">
-	<div data-role="footer" class="ui-bar">
-
-	<div data-role="controlgroup" data-type="horizontal">
-
-	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
-	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
-
-	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
-</span>
 </div><!-- End of Lost Pets page--> 
 
 
@@ -456,8 +403,9 @@ var $zoom;
 <div data-role="page" id="lost2">
 
 	<div data-role="header">
-		<h1>Lost Pets List</h1>
-
+	<a href="#lost" data-role="button" data-icon="back">Back</a>
+		<h1>Lost Pets</h1>
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -479,36 +427,14 @@ var $zoom;
 	<img style="width:290px;" id="lost2photoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
 
 
-<span class="selectedLostButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
-
-<div id="LostButtonFromServer">
-
-<!--Temporary button below. This button is written from the server-->
-
-<div style="text-align: center;"><a href="#lost3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
-
-</div>
-</span>
+<div id="LostListingButtonDiv"></div>
 
 
     </div><!-- /content -->
 
-	<div data-role="footer" class="ui-bar">
-
-	<div data-role="controlgroup" data-type="horizontal">
-
-	<a href="#lost" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
-	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
-	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
-	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
 
 </div><!-- End of Lost Pets Detailed Search page--> 
 
@@ -523,19 +449,15 @@ var $zoom;
 <div data-role="page" id="lost3">
 
 	<div data-role="header">
+	<a href="#lost2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Pet</h1>
-
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
 	
     <div data-role="content">	
 
-<div id="lostChosenListing">
-
-<!--Temporary text: -->
-<p>The Lost pet details - Advert Title, Description, Pet type, County, date lost, contact phone number and email address if allowed and photo will be shown here.</p>
-
-</div>
+<div id="lostChosenListing"></div>
 
 <div style="text-align: center;" id="lostChosenPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="lostChosenPhotoFromServer" src="" />
@@ -543,22 +465,6 @@ var $zoom;
 
     </div><!-- /content -->
 
-
-<span class="footerbar"> 
-	<div data-role="footer" class="ui-bar">
-
-	<div data-role="controlgroup" data-type="horizontal">
-
-	<a href="#lost2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
-	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
-	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
-	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
-</span>
 
 </div><!-- End of Lost Chosen Pet Listing page -->
 
@@ -597,7 +503,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Found Pets</h1>
-
+	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
     </div><!-- /header -->
 
 	
@@ -668,19 +574,6 @@ var $zoom;
 
     </div><!-- /content -->
 
-<span class="footerbar">
-	<div data-role="footer" class="ui-bar">
-
-	<div data-role="controlgroup" data-type="horizontal">
-
-	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
-	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
-
-	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
-</span>
-
 
 </div><!-- End of Found Pets page-->
 
@@ -695,8 +588,9 @@ var $zoom;
 <div data-role="page" id="found2">
 
 	<div data-role="header">
-		<h1>Found Pets List</h1>
-
+	<a href="#found" data-role="button" data-icon="back">Back</a>
+		<h1>Found Pets</h1>
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -715,37 +609,13 @@ var $zoom;
 	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
+<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
 
 
-<span class="selectedFoundButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
-
-<div id="FoundButtonFromServer">
-
-<!--Temporary button below. This button is written from the server-->
-
-<div style="text-align: center;"><a href="#found3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
-
-</div>
-</span>
-
+<div id="FoundListingButtonDiv"></div>
 
     </div><!-- /content -->
 
-
-	<div data-role="footer" class="ui-bar">
-
-	<div data-role="controlgroup" data-type="horizontal">
-
-	<a href="#found" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
-	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
-	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
-	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
 
 </div><!-- End of Found Pets Detailed Search page--> 
 
@@ -762,19 +632,15 @@ var $zoom;
 <div data-role="page" id="found3">
 
 	<div data-role="header">
+	<a href="#found2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Pet</h1>
-
+	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
 	
     <div data-role="content">	
 
-<div id="foundChosenListing">
-
-<!--Temporary text: -->
-<p>The Found pet details - Advert Title, Description, Pet type, County, date found, contact phone number and email address if allowed and photo will be shown here.</p>
-
-</div>
+<div id="foundChosenListing"></div>
 
 <div style="text-align: center;" id="foundChosenPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="foundChosenPhotoFromServer" src="" />
@@ -782,22 +648,6 @@ var $zoom;
 
     </div><!-- /content -->
 
-
-<span class="footerbar"> 
-	<div data-role="footer" class="ui-bar">
-
-	<div data-role="controlgroup" data-type="horizontal">
-
-	<a href="#found2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
-
-	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
-
-	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
-
-	</div> <!--/controlgroup-->
-
-	</div><!-- /footer -->
-</span>
 
 </div><!-- End of Found Chosen Pet Listing page -->
 

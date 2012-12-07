@@ -19,7 +19,7 @@ $sqlQuery = "SELECT petID, petType, petAddress1, petCounty, petPhoneNo, petEmail
 $result = mysql_query($sqlQuery);
 
 if ($result) {
-// $htmlString is a variable to build the complete list (formerly table) before displaying it
+// $htmlString is a variable to build the complete list before displaying it
 	$htmlString = "";
 	
 	while($pet = mysql_fetch_assoc($result))
@@ -36,8 +36,6 @@ if ($result) {
 		$htmlString .=  $pet["petCounty"];
 		$htmlString .=  ", ";
 		$htmlString .=  $pet["petPhoneNo"];
-		$htmlString .=  ", ";
-		$htmlString .=  $pet["petEmail"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
 		

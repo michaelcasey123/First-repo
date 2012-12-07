@@ -24,7 +24,7 @@ if ($result) {
 	
 	while($pet = mysql_fetch_assoc($result))
 	{
-		$htmlString .=  "<li><a href='javascript:showPetPhoto(" ; // start list item 
+		$htmlString .=  "<li><a href='javascript:showFoundPetPhoto(" ; // start list item 
 		$htmlString .=  $pet["petID"] ; //add photoID
 		$htmlString .=  ")'>";//close the function call and tag				
 		$htmlString .=  $pet["petID"];// start writing the list element
@@ -36,8 +36,6 @@ if ($result) {
 		$htmlString .=  $pet["petCounty"];
 		$htmlString .=  ", ";
 		$htmlString .=  $pet["petPhoneNo"];
-		$htmlString .=  ", ";
-		$htmlString .=  $pet["petEmail"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
 		

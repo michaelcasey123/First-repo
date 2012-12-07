@@ -1,0 +1,7 @@
+Uncaught cannot call methods on button prior to initialization; attempted to call method 'refresh'
+
+$('#testBtn').button();          // initialize button
+$('#testBtn').button('refresh'); // then call refresh
+
+Uncaught TypeError: Cannot call method 'removeClass' of undefined
+Seems to be related to the theme 'b' or whatever and could just be an idiotic bug.
