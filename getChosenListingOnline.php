@@ -1,0 +1,44 @@
+<?php
+$theID = $_GET["theID"];// this is the ID from the chosen animal
+
+//echo "getChosenListingOnline.php acknowledges. The petID is ".$theID;// debug code
+
+//		          DB_HOST,   DB_USER,  DB_PASSWORD, 
+$link_id = mysql_connect('localhost', '778331_root', 'friend88**');
+if (!$link_id)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+//		DB_DATABASE
+mysql_select_db("michaelcasey123_zxq_mtcdb1", $link_id);
+
+$sqlQuery = "SELECT petType, petAddress1, petAddress2, petCounty, petPhoneNo, petEmail FROM pet WHERE petID = '".$theID."'";
+$result = mysql_query($sqlQuery);
+
+if ($result) {
+// $htmlString is a variable to build the complete listing before sending it back to the calling function
+while($pet = mysql_fetch_assoc($result))
+{
+	$htmlString = "<p>";
+	$htmlString .=  $pet["petType"];
+	$htmlString .= "<br/>"; 
+	$htmlString .= $pet["petAddress1"]; 
+	$htmlString .= "<br/>"; 
+	$htmlString .= $pet["petAddress2"]; 
+	$htmlString .= "<br/>"; 
+	$htmlString .= $pet["petCounty"]; 
+	$htmlString .= "</p><p>"; 
+	$htmlString .= $pet["petPhoneNo"]; 
+	$htmlString .= "</p><p>"; 
+	$htmlString .= $pet["petEmail"];
+	$htmlString .= "</p>";
+}
+	echo $htmlString ; // send this back to the calling function
+
+}else
+{die("Failure: " . mysql_error($link_id));}
+
+die();// get out of database
+
+mysql_close($link_id); // close the connection
+?>

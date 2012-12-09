@@ -1,20 +1,20 @@
 <?php
-//echo "rehomeSearchLocalDB.php acknowledges.";// debug code
+//echo "foundSearchOnlineDB.php acknowledges.";// debug code
 //$q = $_POST["q"]; // debug code
 $pettype = $_GET["pettype"];
 $theCounty = $_GET["theCounty"];
 //echo " The animal is ".$pettype." and the county is ".$theCounty;//debug code
 
 //		           DB_HOST,  DB_USER,  DB_PASSWORD, 
-$link_id = mysql_connect('localhost', 'root', 'friend88**');
+$link_id = mysql_connect('localhost', '778331_root', 'friend88**');
 if (!$link_id)
   {
   die('Could not connect: ' . mysql_error());
   }
 //		 DB_DATABASE
-mysql_select_db("mtcdb1", $link_id);
+mysql_select_db("michaelcasey123_zxq_mtcdb1", $link_id);
 
-$sqlQuery = "SELECT petID, petType, petAddress1, petCounty, petPhoneNo, petEmail FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Rehome'";
+$sqlQuery = "SELECT petID, petType, petAddress1, petCounty, petPhoneNo, petEmail FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Found'";
 
 $result = mysql_query($sqlQuery);
 
@@ -24,7 +24,7 @@ if ($result) {
 	
 	while($pet = mysql_fetch_assoc($result))
 	{
-		$htmlString .=  "<li><a href='javascript:showRehomePetPhoto(" ; // start list item 
+		$htmlString .=  "<li><a href='javascript:showFoundPetPhoto(" ; // start list item 
 		$htmlString .=  $pet["petID"] ; //add photoID
 		$htmlString .=  ")'>";//close the function call and tag				
 		$htmlString .=  $pet["petID"];// start writing the list element
@@ -42,7 +42,6 @@ if ($result) {
 	}
 	if ($htmlString=="") {echo "<li>Sorry. <br/>No results were found for your search.<br/>Please try again</li>";}
 	else {echo $htmlString ;} // send this back to the calling function
-
 }else{
 
 die("Failure: " . mysql_error($link_id));

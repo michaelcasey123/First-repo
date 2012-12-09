@@ -824,7 +824,6 @@ Register here with your details:
 
 	<label for="listingType" class="select">Choose Listing Type:</label>
 	<select name="listingType" id="listingType">
-		<option value="petWanted">Pet Wanted</option>
 		<option value="petLost">I Have Lost A Pet</option>
 		<option value="petFound">I Have Found A Pet</option>
 		<option value="petForRehome">My Pet Needs a New Home</option>
@@ -1045,19 +1044,6 @@ Contact Details as above
 Ts & Cs as above
 
 Next screen upload photos
-Next screen preview advert
-
-
-Pet Wanted:
-
-Pet type: as above
-County: as above
-Advert Title: as above
-Description: as above
-
-Contact Details as above
-Ts & Cs as above
-
 Next screen preview advert
 
 -->

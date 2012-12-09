@@ -14,7 +14,7 @@ if (!$link_id)
 //		 DB_DATABASE
 mysql_select_db("mtcdb1", $link_id);
 
-$sqlQuery = "SELECT petID, petType, petAddress1, petAddress2, petCounty, petPhoneNo, petEmail FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Rehome'";
+$sqlQuery = "SELECT petID, petType, petAddress1, petCounty, petPhoneNo, petEmail FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Rehome'";
 
 $result = mysql_query($sqlQuery);
 
@@ -40,8 +40,8 @@ if ($result) {
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
 		
 	}
-
-	echo $htmlString ; // send this back to the calling function
+	if ($htmlString=="") {echo "<p>Sorry. <br/>No results were found for your search.<br/>Please try again</p>";}
+	else {echo $htmlString ;} // send this back to the calling function
 
 }else{
 

@@ -10,7 +10,6 @@
 	<script src="petsie.js"></script>
 	<script src="cordova-2.0.0.js"></script>
 	<script src="cameral.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
 
 <!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /><!--Associated with map-->
 	
@@ -18,10 +17,6 @@
  
 </head> 
 <body> 
-
-
-
-
 <script>
 
 // Trying to make these variables global
@@ -46,15 +41,10 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Home</h1>
- 	<a href="#about" data-role="button" class="ui-btn-right" data-transition="pop">About</a>
 <!--	<a href="#contact" data-icon="arrow-l">Contact Us</a> -->
 	</div><!-- /header -->
 
 	<div id="content" data-role="content">	
-
-<span class="logospan">
-<img src="tiles/logo_pets_ie.png">
-</span>
 
 <span class="topleftspan">
 <!--<a href="#rehome" data-role="button" data-inline="true" data-theme="b">Rehome Pets</a> -->
@@ -92,8 +82,18 @@ var $zoom;
 </span>
 
 	</div><!-- /content -->
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+	<div data-role="controlgroup" data-type="horizontal">
 
+	<a href="#home" data-role="button" data-icon="home" class="homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="searchbutton">Search</a>
+ 	<a href="#about" data-role="button" class="aboutbutton" data-transition="pop">About</a>
 
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 </div><!-- End of Home page -->
 
 
@@ -128,18 +128,13 @@ var $zoom;
 
 
 
-
-
-
-
-
     
 <!-- Start of Rehome Pets page -->
 <div data-role="page" id="rehome">
 
 	<div data-role="header">
 		<h1>Rehome a Pet</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -152,11 +147,10 @@ var $zoom;
 		<option value="All">All Animals</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
-		<option value="Equine">Equine</option>
 		<option value="Bird">Birds</option>
-		<option value="Exotic">Exotic</option>
-		<option value="SmallFurries">Small Furries</option>
-		<option value="Aquatic">Aquatic</option>
+		<option value="Rabbit">Rabbits</option>
+		<option value="Horse">Horses & Ponies</option>
+		<option value="Others">Other Animals</option>
 	</select>
 	<br/>
 	<label for="rehomeCounty" class="select">County of Ireland:</label>
@@ -216,7 +210,18 @@ var $zoom;
 
     </div><!-- /content -->
 <br/>
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
 
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Rehome Pets page--> 
     
@@ -227,15 +232,11 @@ var $zoom;
 
 
 
-
-
 <!-- Start of Rehome Pets View of Results page -->
 <div data-role="page" id="rehome2">
 
-    <div data-role="header">
-	<a href="#rehome" data-role="button" data-icon="back">Back</a>
-		<h1>Rehome a Pet</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
+	<div data-role="header">
+		<h1>Re-home Pets List</h1>
 
     </div><!-- /header -->
 
@@ -250,18 +251,48 @@ var $zoom;
 	<li>Server Response Below:</li> 
 </ul>
 
+<!--Temporary Text: -->
+<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
 
+
+
+<div style="text-align: center;" id="rehomePhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
 
-<div style="text-align: center;" id="RehomeListingButtonDiv"></div>
+<span class="selectedRehomeButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+
+<div id="RehomeButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#rehome3" data-role="button" id="selectedRehomeButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span>
 
 
     </div><!-- /content -->
 
+
+<span class="footerbar"> <!--Temporary - This page will need to scroll-->
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#rehome" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Rehome Pets View of Results page -->
 
@@ -278,16 +309,19 @@ var $zoom;
 <div data-role="page" id="rehome3">
 
 	<div data-role="header">
-	<a href="#rehome2" data-role="button" data-icon="back">Back</a>
-		<h1>Chosen Pet</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
+		<h1>Chosen Rehome Listing</h1>
+
     </div><!-- /header -->
 
 	
     <div data-role="content">	
 
-<div id="rehomeChosenListing"></div>
+<div id="rehomeChosenListing">
 
+<!--Temporary text: -->
+<p>The Chosen pet details - Advert Title, Description, Pet type, County, Price (including free), contact phone number and email address if allowed and photo will be shown here.</p>
+
+</div>
 
 <div style="text-align: center;" id="rehomeChosenPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" />
@@ -295,6 +329,22 @@ var $zoom;
 
     </div><!-- /content -->
 
+
+<span class="footerbar"> 
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#rehome2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#rehome2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Rehome Chosen Pet Listing page -->
 
@@ -317,7 +367,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Lost Pets</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -328,14 +378,13 @@ var $zoom;
 
 	<label for="lostAnimal" class="select">Animal type:</label>
 	<select name="lostAnimal" id="lostAnimal">
-<option value="All">All Animals</option>
+		<option value="All">All Animals</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
-		<option value="Equine">Equine</option>
 		<option value="Bird">Birds</option>
-		<option value="Exotic">Exotic</option>
-		<option value="SmallFurries">Small Furries</option>
-		<option value="Aquatic">Aquatic</option>
+		<option value="Rabbit">Rabbits</option>
+		<option value="Horse">Horses & Ponies</option>
+		<option value="Others">Other Animals</option>
 	</select>
 	<br/>
 	<label for="lostCounty" class="select">County of Ireland:</label>
@@ -380,16 +429,30 @@ var $zoom;
 
 </form>
 		
-	<div style="text-align: center;" id="lostSearchText"></div>
+
 	<div style="text-align: center;" id="lostDdmenuResults"><br/></div>
 <!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
 	
 	<p style="text-align: center;"><a href="#lost2" data-role="button" id="searchButtonLost" data-icon="pets" data-theme="b" data-inline="true">Find Pet</a></p> <!-- end button -->	
 
 
+
+
     </div><!-- /content -->
 
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 </div><!-- End of Lost Pets page--> 
 
 
@@ -403,9 +466,8 @@ var $zoom;
 <div data-role="page" id="lost2">
 
 	<div data-role="header">
-	<a href="#lost" data-role="button" data-icon="back">Back</a>
-		<h1>Lost Pets</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+		<h1>Lost Pets List</h1>
+
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -422,20 +484,50 @@ var $zoom;
 	<li>Server Response Below:</li> 
 </ul>
 
+<!--Temporary Text: -->
+<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
+
+
+
 
 <div style="text-align: center;" id="lost2photoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="lost2photoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
 
-<div id="LostListingButtonDiv"></div>
+<span class="selectedLostButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+
+<div id="LostButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#lost3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span>
+
+
 
 
     </div><!-- /content -->
 
+<span class="footerbar"> <!--This is temporary, this page will need to scroll. -->
+	<div data-role="footer" class="ui-bar">
 
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#lost" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 </div><!-- End of Lost Pets Detailed Search page--> 
 
 
@@ -449,15 +541,19 @@ var $zoom;
 <div data-role="page" id="lost3">
 
 	<div data-role="header">
-	<a href="#lost2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Pet</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
 	
     <div data-role="content">	
 
-<div id="lostChosenListing"></div>
+<div id="lostChosenListing">
+
+<!--Temporary text: -->
+<p>The Lost pet details - Advert Title, Description, Pet type, County, date lost, contact phone number and email address if allowed and photo will be shown here.</p>
+
+</div>
 
 <div style="text-align: center;" id="lostChosenPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="lostChosenPhotoFromServer" src="" />
@@ -466,7 +562,27 @@ var $zoom;
     </div><!-- /content -->
 
 
+<span class="footerbar"> 
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#lost2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#lost2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Lost Chosen Pet Listing page -->
+
+
+
+
 
 
 
@@ -480,14 +596,45 @@ var $zoom;
 <!-- Start of Lost Map1 page -->
 <div data-role="page" id="lostMap1" class="page-mapLost1">
 
-    <div data-role="content" style="width:100%; height:100%; padding:0;">
+    <div data-role="content" style="width:100%; height:100%; padding:0"><!--This is right-->
+
+<style>
+      html { height: 100% }
+      body { height: 95%; margin: 0; padding: 0 }
+	#map_canvasLost { width:100%; height: 95%; padding: 0; }
+</style>
 
 	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-	<div id="map_canvasLost" style="width:320px; height:470px;"></div>
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
+
+<script type="text/javascript">
+
+      function initializeLost() {
+	mapCounty();
+        var mapOptions = {
+          center: new google.maps.LatLng($lat, $lng), // $lat, $lng and $zoom are taken from function mapCounty() in petsie.js
+          zoom: $zoom,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvasLost"),
+            mapOptions);
+
+	//google.maps.event.trigger(map,'resize');
+
+      }
+
+    </script>
+
+	<div id="map_canvasLost" style="width:100%; height:92%"></div><!--This is right-->
+
     </div><!-- /content -->
 
 </div><!-- End of Lost Map1 page -->
+
+
+
 
 
 
@@ -503,7 +650,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Found Pets</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -513,14 +660,13 @@ var $zoom;
 
 	<label for="foundAnimal" class="select">Animal type:</label>
 	<select name="foundAnimal" id="foundAnimal">
-<option value="All">All Animals</option>
+		<option value="All">All Animals</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
-		<option value="Equine">Equine</option>
 		<option value="Bird">Birds</option>
-		<option value="Exotic">Exotic</option>
-		<option value="SmallFurries">Small Furries</option>
-		<option value="Aquatic">Aquatic</option>
+		<option value="Rabbit">Rabbits</option>
+		<option value="Horse">Horses & Ponies</option>
+		<option value="Others">Other Animals</option>
 	</select>
 	<br/>
 	<label for="foundCounty" class="select">County of Ireland:</label>
@@ -565,7 +711,7 @@ var $zoom;
 
 </form>
 
-	<div style="text-align: center;" id="foundSearchText"></div>	
+	
 	<div style="text-align: center;" id="foundDdmenuResults"><br/></div>
 <!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
 	
@@ -573,6 +719,19 @@ var $zoom;
 
 
     </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 
 </div><!-- End of Found Pets page-->
@@ -588,9 +747,8 @@ var $zoom;
 <div data-role="page" id="found2">
 
 	<div data-role="header">
-	<a href="#found" data-role="button" data-icon="back">Back</a>
-		<h1>Found Pets</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+		<h1>Found Pets List</h1>
+
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -604,19 +762,46 @@ var $zoom;
 	<li>Server Response Below:</li> 
 </ul>
 
+<!--Temporary Text: -->
+<p>There will be a number of list elements here corresponding to the result of the database query for that animal in that county and that keyword. Pressing on a list item will bring up a photo of that animal.</p>
+
 
 <div style="text-align: center;" id="foundPetsPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
+<!--There will be a button here, (below the photo) written from the server with the id of the listing for viewing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
 
-<div id="FoundListingButtonDiv"></div>
+<span class="selectedFoundButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
+
+<div id="FoundButtonFromServer">
+
+<!--Temporary button below. This button is written from the server-->
+
+<div style="text-align: center;"><a href="#found3" data-role="button" id="selectedLostButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
+
+</div>
+</span>
+
 
     </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
 
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#found" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 </div><!-- End of Found Pets Detailed Search page--> 
 
 
@@ -632,15 +817,19 @@ var $zoom;
 <div data-role="page" id="found3">
 
 	<div data-role="header">
-	<a href="#found2" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Pet</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
 	
     <div data-role="content">	
 
-<div id="foundChosenListing"></div>
+<div id="foundChosenListing">
+
+<!--Temporary text: -->
+<p>The Found pet details - Advert Title, Description, Pet type, County, date found, contact phone number and email address if allowed and photo will be shown here.</p>
+
+</div>
 
 <div style="text-align: center;" id="foundChosenPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="foundChosenPhotoFromServer" src="" />
@@ -648,6 +837,22 @@ var $zoom;
 
     </div><!-- /content -->
 
+
+<span class="footerbar"> 
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#found2" data-role="button" data-icon="back" class="screen2backbutton">Back</a>
+
+	<a href="#found2" data-role="button" data-icon="search" class="screen2searchbutton">View All Listings</a>
+
+	<a href="#home" data-role="button" data-icon="home" class="screen2homebutton">Home</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Found Chosen Pet Listing page -->
 
@@ -665,11 +870,39 @@ var $zoom;
 <!-- Start of Found Map1 page -->
 <div data-role="page" id="foundMap1" class="page-mapFound1">
 
-    <div data-role="content" style="width:100%; height:100%; padding:0;">
+    <div data-role="content" style="width:100%; height:100%; padding:0"><!--This is right-->
+
+<style>
+      html { height: 100% }
+      body { height: 95%; margin: 0; padding: 0 }
+	#map_canvasFound { width:100%; height: 95%; padding: 0; } 
+</style>
 
 	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-	<div id="map_canvasFound" style="width:320px; height:470px;"></div>
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
+
+<script type="text/javascript">
+
+      function initializeFound() {
+	mapCounty();
+        var mapOptions = {
+          center: new google.maps.LatLng($lat, $lng), // $lat, $lng and $zoom are taken from function mapCounty() in petsie.js
+          zoom: $zoom,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvasFound"),
+            mapOptions);
+
+	//google.maps.event.trigger(map,'resize');
+
+      }
+
+    </script>
+
+	<div id="map_canvasFound" style="width:100%; height:92%"></div><!--This is right-->
+
     </div><!-- /content -->
 
 </div><!-- End of Found Map1 page -->
@@ -691,7 +924,7 @@ var $zoom;
 
 	<div data-role="header">
 		<h1>Login to Pets.ie</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 	
     <div data-role="content">	
@@ -703,6 +936,10 @@ Login
 Email: text box
 Password: text box
 Login Button. arrow right on right.
+
+Login via Facebook
+Login via Twitter
+Login via Google+
 
 Register now
 (note Registration is free and will only take a few seconds to complete.)
@@ -789,20 +1026,26 @@ Register here with your details:
 
 <div style="text-align: center;"><a href="#addalisting" data-role="button" id="registerButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Register</a></div>
 
-
-<!--
 <div>Login via:</div>
+<a href="#addalisting"><img src="tiles/socialicons.png" height="42" width="122"/></a>
 
-<a href="#FBRegister"><img src="tiles/facebookicon.jpg" height="42" width="42"/></a>
--->
+
 
     </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
 
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 </div><!-- End of Login page-->
-
-
-
 
 
 
@@ -816,7 +1059,7 @@ Register here with your details:
 
 	<div data-role="header">
 		<h1>Add A Listing</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -824,6 +1067,7 @@ Register here with your details:
 
 	<label for="listingType" class="select">Choose Listing Type:</label>
 	<select name="listingType" id="listingType">
+		<option value="petWanted">Pet Wanted</option>
 		<option value="petLost">I Have Lost A Pet</option>
 		<option value="petFound">I Have Found A Pet</option>
 		<option value="petForRehome">My Pet Needs a New Home</option>
@@ -833,14 +1077,12 @@ Register here with your details:
 
 	<label for="addAnimal" class="select">Pet Type:</label>
 	<select name="addAnimal" id="addAnimal">
-		<option value="All">All Animals</option>
-		<option value="Dog">Dogs</option>
-		<option value="Cat">Cats</option>
-		<option value="Equine">Equine</option>
-		<option value="Bird">Birds</option>
-		<option value="Exotic">Exotic</option>
-		<option value="SmallFurries">Small Furries</option>
-		<option value="Aquatic">Aquatic</option>
+		<option value="dog">Dog</option>
+		<option value="cat">Cat</option>
+		<option value="bird">Bird</option>
+		<option value="rabbit">Rabbit</option>
+		<option value="equine">Horse or Pony</option>
+		<option value="other">Other Animal</option>
 	</select>
 	
 	
@@ -889,6 +1131,19 @@ Register here with your details:
 
     </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+
+	<a href="#home" data-role="button" data-icon="home" class="screen1homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen1searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Add A Listing page -->
 
 
@@ -903,9 +1158,7 @@ Register here with your details:
 <div data-role="page" id="addalisting2">
 
 	<div data-role="header">
-	<a href="#addalisting" data-role="button" data-icon="back">Back</a>
 		<h1>Add A Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 	
     <div data-role="content">	
@@ -1047,6 +1300,18 @@ Next screen upload photos
 Next screen preview advert
 
 
+Pet Wanted:
+
+Pet type: as above
+County: as above
+Advert Title: as above
+Description: as above
+
+Contact Details as above
+Ts & Cs as above
+
+Next screen preview advert
+
 -->
 
 
@@ -1057,6 +1322,19 @@ Next screen preview advert
 <!--If petWanted then <a href="#addalisting4"> above. -->
 
    </div><!-- /content -->
+
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Add A Listing2 page -->
 
@@ -1069,9 +1347,8 @@ Next screen preview advert
 <div data-role="page" id="addalisting3">
 
 	<div data-role="header">
-	<a href="#addalisting2" data-role="button" data-icon="back">Back</a>
 		<h1>Upload Photo</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
 	
@@ -1108,6 +1385,19 @@ Next screen preview advert
 
    </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting2" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Add A Listing3 page -->
 
 
@@ -1120,9 +1410,8 @@ Next screen preview advert
 <div data-role="page" id="previewAddedListing">
 
 	<div data-role="header">
-	<a href="#addalisting3" data-role="button" data-icon="back">Back</a>
 		<h1>Preview Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -1144,6 +1433,19 @@ The added listing will be shown here.<br/>It will be replaced with a response fr
 
    </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting3" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of Preview Added Pet Listing page -->
 
 
@@ -1158,7 +1460,7 @@ The added listing will be shown here.<br/>It will be replaced with a response fr
 
 	<div data-role="header">
 		<h1>My Listings</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -1195,6 +1497,19 @@ There will be a response from the server database corresponding to the user's pr
 
   </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#addalisting" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
+
 </div><!-- End of My Listings page -->
 
 
@@ -1207,9 +1522,8 @@ There will be a response from the server database corresponding to the user's pr
 <div data-role="page" id="chosenPetListing">
 
 	<div data-role="header">
-	<a href="#myListings" data-role="button" data-icon="back">Back</a>
 		<h1>Chosen Listing</h1>
-	<a href="#editUpdateListing" data-iconpos="right" data-icon="arrow-r">Edit</a>
+<a href="#editUpdateListing" data-iconpos="right" data-icon="arrow-r" class="ui-btn-right">Edit</a>
     </div><!-- /header -->
 
     <div data-role="content">	
@@ -1229,11 +1543,20 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 
 
 
+
+
   </div><!-- /content -->
 
 <span class="footerbar">
 	<div data-role="footer" class="ui-bar">
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#myListings" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
 	</div><!-- /footer -->
 </span>
 
@@ -1249,9 +1572,9 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 <div data-role="page" id="editUpdateListing">
 
 	<div data-role="header">
-	<a href="#chosenPetListing" data-role="button" data-icon="back">Back</a>
 		<h1>Edit Listing</h1>
-	<a href="#previewEditedListing" data-iconpos="right" data-icon="arrow-r">Save</a>
+
+<a href="#previewEditedListing" data-iconpos="right" data-icon="arrow-r"  class="ui-btn-right">Save</a>
     </div><!-- /header -->
 
     <div data-role="content">
@@ -1370,10 +1693,19 @@ Date Lost/Found:
 
 
   </div><!-- /content -->
-
+<!--This footer bar needs to scroll down rather than being fixed-->
+<!-- <span class="footerbar"> -->
 	<div data-role="footer" class="ui-bar">
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#chosenPetListing" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
 	</div><!-- /footer -->
+<!-- </span> -->
 
 </div><!-- End of Chosen Edit/Update Pet Listing page -->
 
@@ -1386,9 +1718,8 @@ Date Lost/Found:
 <div data-role="page" id="previewEditedListing">
 
 	<div data-role="header">
-	<a href="#editUpdateListing" data-role="button" data-icon="back">Back</a>
 		<h1>Preview Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
+
     </div><!-- /header -->
 
     <div data-role="content">
@@ -1414,6 +1745,18 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
    </div><!-- /content -->
 
+<span class="footerbar">
+	<div data-role="footer" class="ui-bar">
+
+	<div data-role="controlgroup" data-type="horizontal">
+	<a href="#editUpdateListing" data-role="button" data-icon="back" class="screen3backbutton">Back</a>
+	<a href="#home" data-role="button" data-icon="home" class="screen3homebutton">Home</a>
+	<a href="#home" data-role="button" data-icon="search" class="screen3searchbutton">Search</a>
+
+	</div> <!--/controlgroup-->
+
+	</div><!-- /footer -->
+</span>
 
 </div><!-- End of Preview Added Pet Listing page -->
 
@@ -1426,7 +1769,7 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
 	<div data-role="header">
 		<h1>T & Cs</h1>
-        <!--<a href="#home" data-rel="back">Back</a> -->
+        <!--<a href="#home" data-rel="back">Back</a>
 
     </div><!-- /header -->
 
