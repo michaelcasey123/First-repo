@@ -26,19 +26,18 @@
 
 /*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
 
-.logospan{position:absolute; left:46px; top 25px;}
 
-.topleftspan{position:absolute; left:5px; top:155px;}
+.topleftspan{position:absolute; left:0px; top:5px;}
 
-.toprightspan{position:absolute; left:160px; top:150px;}
+.toprightspan{position:absolute; left:160px; top:5px;}
 
-.centreleftspan{position:absolute; left:5px; top:275px;}
+.centrespan{position:absolute; left:0px; top:205px;}
 
-.centrerightspan{position:absolute; left:165px; top:275px;}
+.bottomleftspan{position:absolute; left:0px; top:281px;}
 
-.bottomleftspan{position:absolute; left:5px; top:395px;}
+.bottomrightspan{position:absolute; left:160px; top:281px;}
 
-.bottomrightspan{position:absolute; left:160px; top:390px;}
+.basespan{position:absolute; left:0px; top:455px;}
 
 .footerbar{position:absolute; top:465px;}
 

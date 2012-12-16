@@ -32,7 +32,35 @@ $('.page-mapLost1').live("pagecreate", function(){
             mapOptions);
 
 	google.maps.event.trigger(map,'resize');
-	}
+
+var json = [
+  	{
+  	 "title": "Lost Dog",
+   	 "lat": 53.344,
+   	 "lng": -6.264
+   	},
+	{
+ 	  "title": "Lost Dog",
+ 	  "lat": 53.518,
+ 	  "lng": -6.096
+  	}
+]
+
+for (var i = 0, length = json.length; i < length; i++) {
+  var data = json[i],
+      latLng = new google.maps.LatLng(data.lat, data.lng); 
+
+  // Creating a marker and putting it on the map
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    title: data.title,
+    icon: 'tiles/Paw2.png'
+  });
+}
+
+
+}
 
 
 
@@ -61,16 +89,16 @@ $('.page-mapFound1').live("pagecreate", function(){
 
 
 function mapCounty(){
-     if ($county=="Antrim") {$lat=54.4; $lng=-6.65; $zoom=9;}
+     if ($county=="Antrim") {$lat=55.4; $lng=-6.65; $zoom=9;}
 else if ($county=="Armagh") {$lat=54.8; $lng=-7; $zoom=9;}
 else if ($county=="Carlow") {$lat=53.2; $lng=-7.3; $zoom=9;}
 else if ($county=="Cavan") {$lat=54.5; $lng=-8.25; $zoom=8;}
 else if ($county=="Clare") {$lat=53.4; $lng=-10.05; $zoom=8;}
 else if ($county=="Cork") {$lat=52.5; $lng=-9.65; $zoom=8;}
-else if ($county=="Derry") {$lat=54.4; $lng=-7.45; $zoom=9;}
+else if ($county=="Derry") {$lat=55.4; $lng=-7.45; $zoom=9;}
 else if ($county=="Donegal") {$lat=55.5; $lng=-8.75; $zoom=8;}
 else if ($county=="Down") {$lat=54.8; $lng=-6.4; $zoom=9;}
-else if ($county=="Dublin") {$lat=53.6; $lng=-6.5; $zoom=10;}
+else if ($county=="Dublin") {$lat=53.6; $lng=-6.45; $zoom=10;}
 else if ($county=="Fermanagh") {$lat=54.8; $lng=-8.1; $zoom=9;}
 else if ($county=="Galway") {$lat=53.9; $lng=-10.2; $zoom=8;}
 else if ($county=="Kerry") {$lat=52.5; $lng=-10.75; $zoom=8;}
