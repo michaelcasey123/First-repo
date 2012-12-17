@@ -33,31 +33,41 @@ $('.page-mapLost1').live("pagecreate", function(){
 
 	google.maps.event.trigger(map,'resize');
 
-var json = [
-  	{
-  	 "title": "Lost Dog",
-   	 "lat": 53.344,
-   	 "lng": -6.264
-   	},
-	{
- 	  "title": "Lost Dog",
- 	  "lat": 53.518,
- 	  "lng": -6.096
-  	}
-]
+/*
+var txt = '{"data":[{"lat":53.344, "lng":-6.264},{"lat":53.518, "lng":-6.096}]}';
+var json = JSON.parse(txt);
+*/
 
-for (var i = 0, length = json.length; i < length; i++) {
-  var data = json[i],
-      latLng = new google.maps.LatLng(data.lat, data.lng); 
+
+var http_request = new XMLHttpRequest();
+
+http_request.onreadystatechange=function()
+  {
+var json;
+    if (http_request.readyState==4 && http_request.status==200)
+    {
+//    document.getElementById("map_canvasLost").innerHTML=http_request.responseText;// debug code
+      json = JSON.parse(http_request.responseText);
+//    document.getElementById("map_canvasLost").innerHTML=json.data.length; // debug code
+ }
+
+
+
+for (var i = 0; i < json.data.length; i++) {
+      latLng = new google.maps.LatLng(json.data[i].lat, json.data[i].lng); 
 
   // Creating a marker and putting it on the map
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    title: data.title,
     icon: 'tiles/Paw2.png'
-  });
-}
+    });
+  }
+
+
+};
+http_request.open("GET","http://michaelcasey123.zxq.net/petsie/lostMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.send();
 
 
 }
@@ -83,7 +93,45 @@ $('.page-mapFound1').live("pagecreate", function(){
             mapOptions);
 
 	google.maps.event.trigger(map,'resize');
-	}
+
+/*
+var txt = '{"data":[{"lat":53.344, "lng":-6.264},{"lat":53.518, "lng":-6.096}]}';
+var json = JSON.parse(txt);
+*/
+
+
+var http_request = new XMLHttpRequest();
+
+http_request.onreadystatechange=function()
+  {
+var json; 
+   if (http_request.readyState==4 && http_request.status==200)
+    {
+//    document.getElementById("map_canvasFound").innerHTML=http_request.responseText;// debug code
+      json = JSON.parse(http_request.responseText);
+//    document.getElementById("map_canvasFound").innerHTML=json.data.length; // debug code
+ }
+
+for (var i = 0; i < json.data.length; i++) {
+      latLng = new google.maps.LatLng(json.data[i].lat, json.data[i].lng); 
+
+  // Creating a marker and putting it on the map
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    icon: 'tiles/Paw2.png'
+    });
+  }
+
+
+};
+http_request.open("GET","http://michaelcasey123.zxq.net/petsie/foundMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.send();
+
+
+
+
+}
 
 
 

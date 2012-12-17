@@ -109,6 +109,7 @@ var http_request = new XMLHttpRequest();
 
 http_request.onreadystatechange=function()
   {
+var json;
     if (http_request.readyState==4 && http_request.status==200)
     {
 //    document.getElementById("map_canvasLost").innerHTML=http_request.responseText;// debug code
@@ -158,7 +159,43 @@ $('.page-mapFound1').live("pagecreate", function(){
             mapOptions);
 
 	google.maps.event.trigger(map,'resize');
-	}
+
+/*
+var txt = '{"data":[{"lat":53.344, "lng":-6.264},{"lat":53.518, "lng":-6.096}]}';
+var json = JSON.parse(txt);
+*/
+
+
+var http_request = new XMLHttpRequest();
+
+http_request.onreadystatechange=function()
+  {
+var json; 
+   if (http_request.readyState==4 && http_request.status==200)
+    {
+//    document.getElementById("map_canvasFound").innerHTML=http_request.responseText;// debug code
+      json = JSON.parse(http_request.responseText);
+//    document.getElementById("map_canvasFound").innerHTML=json.data.length; // debug code
+ }
+
+for (var i = 0; i < json.data.length; i++) {
+      latLng = new google.maps.LatLng(json.data[i].lat, json.data[i].lng); 
+
+  // Creating a marker and putting it on the map
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    icon: 'tiles/Paw2.png'
+    });
+  }
+
+
+};
+http_request.open("GET","http://localhost/petsie/foundMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.send();
+
+
+}
 
 
 

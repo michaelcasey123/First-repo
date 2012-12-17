@@ -32,7 +32,45 @@ $('.page-mapLost1').live("pagecreate", function(){
             mapOptions);
 
 	google.maps.event.trigger(map,'resize');
-	}
+
+/*
+var txt = '{"data":[{"lat":53.344, "lng":-6.264},{"lat":53.518, "lng":-6.096}]}';
+var json = JSON.parse(txt);
+*/
+
+
+var http_request = new XMLHttpRequest();
+
+http_request.onreadystatechange=function()
+  {
+var json;
+    if (http_request.readyState==4 && http_request.status==200)
+    {
+//    document.getElementById("map_canvasLost").innerHTML=http_request.responseText;// debug code
+      json = JSON.parse(http_request.responseText);
+//    document.getElementById("map_canvasLost").innerHTML=json.data.length; // debug code
+ }
+
+
+
+for (var i = 0; i < json.data.length; i++) {
+      latLng = new google.maps.LatLng(json.data[i].lat, json.data[i].lng); 
+
+  // Creating a marker and putting it on the map
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    icon: 'tiles/Paw2.png'
+    });
+  }
+
+
+};
+http_request.open("GET","http://localhost/petsie/lostMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.send();
+
+
+}
 
 
 
@@ -55,22 +93,60 @@ $('.page-mapFound1').live("pagecreate", function(){
             mapOptions);
 
 	google.maps.event.trigger(map,'resize');
-	}
+
+/*
+var txt = '{"data":[{"lat":53.344, "lng":-6.264},{"lat":53.518, "lng":-6.096}]}';
+var json = JSON.parse(txt);
+*/
+
+
+var http_request = new XMLHttpRequest();
+
+http_request.onreadystatechange=function()
+  {
+var json; 
+   if (http_request.readyState==4 && http_request.status==200)
+    {
+//    document.getElementById("map_canvasFound").innerHTML=http_request.responseText;// debug code
+      json = JSON.parse(http_request.responseText);
+//    document.getElementById("map_canvasFound").innerHTML=json.data.length; // debug code
+ }
+
+for (var i = 0; i < json.data.length; i++) {
+      latLng = new google.maps.LatLng(json.data[i].lat, json.data[i].lng); 
+
+  // Creating a marker and putting it on the map
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    icon: 'tiles/Paw2.png'
+    });
+  }
+
+
+};
+http_request.open("GET","http://localhost/petsie/foundMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.send();
+
+
+
+
+}
 
 
 
 
 function mapCounty(){
-     if ($county=="Antrim") {$lat=54.4; $lng=-6.65; $zoom=9;}
+     if ($county=="Antrim") {$lat=55.4; $lng=-6.65; $zoom=9;}
 else if ($county=="Armagh") {$lat=54.8; $lng=-7; $zoom=9;}
 else if ($county=="Carlow") {$lat=53.2; $lng=-7.3; $zoom=9;}
 else if ($county=="Cavan") {$lat=54.5; $lng=-8.25; $zoom=8;}
 else if ($county=="Clare") {$lat=53.4; $lng=-10.05; $zoom=8;}
 else if ($county=="Cork") {$lat=52.5; $lng=-9.65; $zoom=8;}
-else if ($county=="Derry") {$lat=54.4; $lng=-7.45; $zoom=9;}
+else if ($county=="Derry") {$lat=55.4; $lng=-7.45; $zoom=9;}
 else if ($county=="Donegal") {$lat=55.5; $lng=-8.75; $zoom=8;}
 else if ($county=="Down") {$lat=54.8; $lng=-6.4; $zoom=9;}
-else if ($county=="Dublin") {$lat=53.6; $lng=-6.5; $zoom=10;}
+else if ($county=="Dublin") {$lat=53.6; $lng=-6.45; $zoom=10;}
 else if ($county=="Fermanagh") {$lat=54.8; $lng=-8.1; $zoom=9;}
 else if ($county=="Galway") {$lat=53.9; $lng=-10.2; $zoom=8;}
 else if ($county=="Kerry") {$lat=52.5; $lng=-10.75; $zoom=8;}
