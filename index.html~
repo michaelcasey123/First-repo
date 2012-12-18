@@ -44,52 +44,44 @@ var $zoom;
 <!-- Start of Home page -->
 <div data-role="page" id="home">
 
-	<div data-role="header">
+<!--	<div data-role="header">
 		<h1>Home</h1>
- 	<a href="#about" data-role="button" class="ui-btn-right" data-transition="pop">About</a>
-<!--	<a href="#contact" data-icon="arrow-l">Contact Us</a> -->
+ 	<a href="#about" data-role="button" class="ui-btn-right" data-transition="pop">About</a> 
 	</div><!-- /header -->
 
 	<div id="content" data-role="content">	
 
-<span class="logospan">
-<img src="tiles/logo_pets_ie.png">
-</span>
+
 
 <span class="topleftspan">
-<!--<a href="#rehome" data-role="button" data-inline="true" data-theme="b">Rehome Pets</a> -->
-<a href="#rehome"><img src="tiles/rehomePetsTileSmall.png"/></a>
-
+<a href="#rehome"><img src="tiles/RehomeAPet.png"/></a>
 </span>
 
 
 <span class="toprightspan">
-
+<a href="#login"><img src="tiles/AddAListing.png"/></a>
 </span>
 
 
-
-<span class="centreleftspan">
-<!-- <a href="#lost" data-role="button" data-inline="true" data-theme="b">Lost Pets</a> -->
-<a href="#lost"><img src="tiles/lostPetsTileSmall.png"/></a>
+<span class="centrespan">
+<img src="tiles/PetsieStrip.png"/>
 </span>
-
-
-<span class="centrerightspan">
-<!-- <a href="#found" data-role="button" data-inline="true" data-theme="b">Found Pets</a> -->
-<a href="#found"><img src="tiles/foundPetsTileSmall.png"/></a>
-</span>
-
 
 
 <span class="bottomleftspan">
-<!--<a href="#login" data-role="button" data-inline="true" data-theme="b">Add A Listing/My Listings</a> -->
-<a href="#login"><img src="tiles/addAListingTileSmall.png"/></a>
+<a href="#lost"><img src="tiles/LostPets.png"/></a>
 </span>
+
 
 <span class="bottomrightspan">
-
+<a href="#found"><img src="tiles/FoundPets.png"/></a>
 </span>
+
+
+<span class="basespan">
+<a href="#about" data-transition="pop"><img src="tiles/InformationStrip.png"/></a>
+</span>
+
 
 	</div><!-- /content -->
 
@@ -484,7 +476,8 @@ var $zoom;
 
 	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-	<div id="map_canvasLost" style="width:320px; height:470px;"></div>
+<!--	<div id="map_canvasLost" style="width:320px; height:470px;"></div> -->
+	<div id="map_canvasLost" style="width:100%; height:100%;"></div>
     </div><!-- /content -->
 
 </div><!-- End of Lost Map1 page -->
@@ -669,7 +662,8 @@ var $zoom;
 
 	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-	<div id="map_canvasFound" style="width:320px; height:470px;"></div>
+<!--	<div id="map_canvasFound" style="width:320px; height:470px;"></div> -->
+	<div id="map_canvasFound" style="width:100%; height:100%;"></div>
     </div><!-- /content -->
 
 </div><!-- End of Found Map1 page -->
