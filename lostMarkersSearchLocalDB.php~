@@ -1,12 +1,7 @@
 <?php
-//echo "lostMarkersSearchLocalDB.php acknowledges.";// debug code
 
 $pettype = $_GET["pettype"];
 $theCounty = $_GET["theCounty"];
-//echo " The animal is ".$pettype." and the county is ".$theCounty;//debug code
-
-
-
 
 //		           DB_HOST,  DB_USER,  DB_PASSWORD, 
 $link_id = mysql_connect('localhost', 'root', 'friend88**');
@@ -23,22 +18,19 @@ $result = mysql_query($sqlQuery);
 
 if ($result) {
 // $jsonString is a variable to build the complete json object before displaying it
-	$jsonString = "{'data':[";  // open the outer object and array
+	$jsonString = '{"data":[';  // open the outer object and array
 	
 	while($pet = mysql_fetch_assoc($result))
 	{
-		$jsonString .=  "{'lat':";//start contents of array
-		$jsonString .=  $pet["petLatitude"] ; //add Latitude figure
-		$jsonString .=  ",'lng':";// introduce lng			
-		$jsonString .=  $pet["petLongitude"];// add Longitude figure
-		$jsonString .=  "},"; // close the inner object
-				
+		$jsonString .=  '{"lat":';//start contents of array
+		$jsonString .=  $pet['petLatitude'] ; //add Latitude figure
+		$jsonString .=  ',"lng":';// introduce lng			
+		$jsonString .=  $pet['petLongitude'];// add Longitude figure
+		$jsonString .=  '},'; // close the inner object
 	}
 
 		$jsonString = rtrim($jsonString,","); // remove the last comma
-		$jsonString .=  "]}"; // close the array and outer object 
-
-
+		$jsonString .=  ']}'; // close the array and outer object 
 
 	
 	echo $jsonString ; // send this string to the calling function
@@ -50,9 +42,7 @@ die("Failure: " . mysql_error($link_id));
 }
 
 die();// get out of database?
-	
 
 mysql_close($link_id); // close the connection
-
 
 ?>

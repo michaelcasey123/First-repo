@@ -51,35 +51,32 @@ var $zoom;
 
 	<div id="content" data-role="content">	
 
-
+<span class="logospan">
+<a href="#about" data-transition="pop"><img src="tiles/petsieNewScreenLogo.png"/></a>
+</span>
 
 <span class="topleftspan">
-<a href="#rehome"><img src="tiles/RehomeAPet.png"/></a>
+<a href="#rehome"><img src="tiles/petsieNewScreenPetsForHomes.png"/></a>
 </span>
 
 
 <span class="toprightspan">
-<a href="#login"><img src="tiles/AddAListing.png"/></a>
-</span>
-
-
-<span class="centrespan">
-<img src="tiles/PetsieStrip.png"/>
+<a href="#login"><img src="tiles/petsieNewScreenAddaListing.png"/></a>
 </span>
 
 
 <span class="bottomleftspan">
-<a href="#lost"><img src="tiles/LostPets.png"/></a>
+<a href="#lost"><img src="tiles/petsieNewScreenLostPets.png"/></a>
 </span>
 
 
 <span class="bottomrightspan">
-<a href="#found"><img src="tiles/FoundPets.png"/></a>
+<a href="#found"><img src="tiles/petsieNewScreenFoundPets.png"/></a>
 </span>
 
 
 <span class="basespan">
-<a href="#about" data-transition="pop"><img src="tiles/InformationStrip.png"/></a>
+<a href="#about" data-transition="pop"><img src="tiles/petsieNewScreenInfo.png"/></a>
 </span>
 
 
@@ -104,8 +101,10 @@ var $zoom;
     </div><!-- /header -->
 
 	<div data-role="content">
-	<h1 style="text-align: center;">This App</h1>
-	<h2 style="text-align: center;">communicates with the www.Pets.ie Database</h2>
+	<h2 style="text-align: center;">Press 'Pets For Homes' for available pets.</h2>
+	<h2 style="text-align: center;">Press 'Add A Listing' to advertise pets or report a lost or found pet.</h2>
+	<h2 style="text-align: center;">Press 'Lost Pets' to see pets reported lost.</h2>
+	<h2 style="text-align: center;">Press 'Found Pets' to see pets reported found.</h2>
 	<p style="text-align: center;"><a href="#home" data-role="button" data-theme="b" data-inline="true" data-icon="home" data-rel="back">OK</a></p>
 		<br/>
 		<br/>
@@ -130,7 +129,7 @@ var $zoom;
 <div data-role="page" id="rehome">
 
 	<div data-role="header">
-		<h1>Rehome a Pet</h1>
+		<h1>Available Pets</h1>
 	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
     </div><!-- /header -->
 
@@ -141,7 +140,7 @@ var $zoom;
 
 	<label for="rehomeAnimal" class="select">Animal type:</label>
 	<select name="rehomeAnimal" id="rehomeAnimal">
-		<option value="All">All Animals</option>
+		<option value="">Animal Type</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
 		<option value="Equine">Equine</option>
@@ -153,7 +152,7 @@ var $zoom;
 	<br/>
 	<label for="rehomeCounty" class="select">County of Ireland:</label>
 	<select name="rehomeCounty" id="rehomeCounty">
-		<option value="All">All Counties</option>
+		<option value="">County</option>
 		<option value="Antrim">Antrim</option>
 		<option value="Armagh">Armagh</option>
 		<option value="Carlow">Carlow</option>
@@ -226,7 +225,7 @@ var $zoom;
 
     <div data-role="header">
 	<a href="#rehome" data-role="button" data-icon="back">Back</a>
-		<h1>Rehome a Pet</h1>
+		<h1>Available Pets</h1>
 	<a href="#home" data-role="button" data-icon="home" >Home</a>
 
     </div><!-- /header -->
@@ -243,8 +242,9 @@ var $zoom;
 </ul>
 
 
-	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
+	<img style="width:450px;" id="rehomePhotoFromServer" src="" />
 
+<div style="text-align: center;" id="rehomePhotoFromServerText"></div><!--Temporary test div-->
 
 <!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
 
@@ -282,7 +282,7 @@ var $zoom;
 
 
 <div style="text-align: center;" id="rehomeChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" />
+	<img style="width:450px;" id="rehomeChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
@@ -320,7 +320,7 @@ var $zoom;
 
 	<label for="lostAnimal" class="select">Animal type:</label>
 	<select name="lostAnimal" id="lostAnimal">
-<option value="All">All Animals</option>
+<option value="">Animal Type</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
 		<option value="Equine">Equine</option>
@@ -332,7 +332,7 @@ var $zoom;
 	<br/>
 	<label for="lostCounty" class="select">County of Ireland:</label>
 	<select name="lostCounty" id="lostCounty">
-		<option value="All">All Counties</option>
+		<option value="">County</option>
 		<option value="Antrim">Antrim</option>
 		<option value="Armagh">Armagh</option>
 		<option value="Carlow">Carlow</option>
@@ -416,7 +416,7 @@ var $zoom;
 
 
 <div style="text-align: center;" id="lost2photoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="lost2photoFromServer" src="" />
+	<img style="width:450px;" id="lost2photoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
@@ -452,7 +452,7 @@ var $zoom;
 <div id="lostChosenListing"></div>
 
 <div style="text-align: center;" id="lostChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="lostChosenPhotoFromServer" src="" />
+	<img style="width:450px;" id="lostChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
@@ -476,8 +476,7 @@ var $zoom;
 
 	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-<!--	<div id="map_canvasLost" style="width:320px; height:470px;"></div> -->
-	<div id="map_canvasLost" style="width:100%; height:100%;"></div>
+	<div id="map_canvasLost" style="width:480px; height:705px;"></div>
     </div><!-- /content -->
 
 </div><!-- End of Lost Map1 page -->
@@ -506,7 +505,7 @@ var $zoom;
 
 	<label for="foundAnimal" class="select">Animal type:</label>
 	<select name="foundAnimal" id="foundAnimal">
-<option value="All">All Animals</option>
+<option value="">Animal Type</option>
 		<option value="Dog">Dogs</option>
 		<option value="Cat">Cats</option>
 		<option value="Equine">Equine</option>
@@ -518,7 +517,7 @@ var $zoom;
 	<br/>
 	<label for="foundCounty" class="select">County of Ireland:</label>
 	<select name="foundCounty" id="foundCounty">
-		<option value="All">All Counties</option>
+		<option value="All">County</option>
 		<option value="Antrim">Antrim</option>
 		<option value="Armagh">Armagh</option>
 		<option value="Carlow">Carlow</option>
@@ -599,7 +598,7 @@ var $zoom;
 
 
 <div style="text-align: center;" id="foundPetsPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
+	<img style="width:450px;" id="foundPetsPhotoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
@@ -636,7 +635,7 @@ var $zoom;
 <div id="foundChosenListing"></div>
 
 <div style="text-align: center;" id="foundChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="foundChosenPhotoFromServer" src="" />
+	<img style="width:450px;" id="foundChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
@@ -662,8 +661,8 @@ var $zoom;
 
 	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-<!--	<div id="map_canvasFound" style="width:320px; height:470px;"></div> -->
-	<div id="map_canvasFound" style="width:100%; height:100%;"></div>
+	<div id="map_canvasFound" style="width:480px; height:705px;"></div>
+
     </div><!-- /content -->
 
 </div><!-- End of Found Map1 page -->
@@ -723,19 +722,26 @@ Already registered? Login now!
 <!--Use Phonegap to get values for email address and password stored in the phone to login. If this fails, server-side code should present the user with text input boxes for email address and password or invite the user to login via Facebook, Twitter or Google+ -->
 
 
-Register here with your details:
+New User Register Below:
 
 <form action="http://localhost/petsie/registration.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+
+	<label for="nameTitle" class="select"></label>
+	<select name="nameTitle" id="nameTitle" data-mini="true">
+		<option value="ms" selected>Ms</option>
+		<option value="mrs">Mrs</option>
+		<option value="mr">Mr</option>
+	</select>
 
 <label for="firstName" class="ui-hidden-accessible">First Name:</label>
 <input type="text" name="firstName" id="firstName" value="" placeholder="First Name:" data-mini="true" />
 
-<label for="secondName" class="ui-hidden-accessible">Second Name:</label>
-<input type="text" name="secondName" id="secondName" value="" placeholder="Second Name:" data-mini="true" />
+<label for="secondName" class="ui-hidden-accessible">Surname:</label>
+<input type="text" name="secondName" id="secondName" value="" placeholder="Surname:" data-mini="true" />
 
 	<label for="registerCounty" class="select"></label>
 	<select name="registerCounty" id="registerCounty" data-mini="true">
-		<option value="None">Choose County</option>
+		<option value="Dublin" selected>Dublin</option>
 		<option value="Antrim">Antrim</option>
 		<option value="Armagh">Armagh</option>
 		<option value="Carlow">Carlow</option>
@@ -745,7 +751,6 @@ Register here with your details:
 		<option value="Derry">Derry</option>
 		<option value="Donegal">Donegal</option>
 		<option value="Down">Down</option>
-		<option value="Dublin">Dublin</option>
 		<option value="Fermanagh">Fermanagh</option>
 		<option value="Galway">Galway</option>
 		<option value="Kerry">Kerry</option>
@@ -778,10 +783,11 @@ Register here with your details:
 
 <label for="password" class="ui-hidden-accessible">Password:</label>
 <input type="text" name="password" id="password" value="" placeholder="Password: (min. 6 characters)" data-mini="true" />
+<input type="submit" value="Register">
 
 </form>
 
-<div style="text-align: center;"><a href="#addalisting" data-role="button" id="registerButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Register</a></div>
+
 
 
 <!--
@@ -1081,7 +1087,7 @@ Next screen preview advert
 	<button id="addAListingGetImage">Select Library Animal Photo</button> 
 	
 
-	<img style="display:none;width:290px;" id="addAListingAnimalImage" src="" />
+	<img style="display:none;width:450px;" id="addAListingAnimalImage" src="" />
 
 
 	<div id="addAListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
@@ -1131,7 +1137,7 @@ The added listing will be shown here.<br/>It will be replaced with a response fr
 
 </div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
 
-	<img style="display:none;width:290px;" id="previewAddedListingAnimalImage" src="" />
+	<img style="display:none;width:450px;" id="previewAddedListingAnimalImage" src="" />
 
 <div style="text-align: center;"><a href="javascript:uploadlisting()" data-role="button" id="uploadAddedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Save</a></div>
 
@@ -1171,7 +1177,7 @@ There will be a response from the server database corresponding to the user's pr
 
 
 <div style="text-align: center;" id="myListingsPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="myListingsPhotoFromServer" src="" />
+	<img style="width:450px;" id="myListingsPhotoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from the server with the id of the listing for editing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
@@ -1215,7 +1221,7 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 
 	<div id="chosenPetListingDiv"></div>
 
-<img style="width:290px;" id="chosenPetListingPhotoFromServer" src="" />
+<img style="width:450px;" id="chosenPetListingPhotoFromServer" src="" />
 
 <!--The Delete Listing button will need the id of the chosen pet listing -->
 
@@ -1344,7 +1350,7 @@ Date Lost/Found:
 
 </form>
 
-<img style="width:290px;" id="editUpdateListingPhotoFromServer" src="" />
+<img style="width:450px;" id="editUpdateListingPhotoFromServer" src="" />
 
 
 	<button id="editUpdateListingCapture">Take New Photo</button>
@@ -1357,7 +1363,7 @@ Date Lost/Found:
 	<button id="editUpdateListingGetImage">Get new library animal photo</button> 
 	
 
-	<img style="display:none;width:290px;" id="editUpdateListingAnimalImage" src="" />
+	<img style="display:none;width:450px;" id="editUpdateListingAnimalImage" src="" />
 <!--The line above is to check image on screen before upload and belongs to the next screen-->
 
 	<div id="editUpdateListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
@@ -1398,7 +1404,7 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
 </div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
 
-	<img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src="" />
+	<img style="display:none;width:450px;" id="previewEditedListingAnimalImage" src="" />
 
 <!--The Upload button will need the id of the chosen pet listing -->
 

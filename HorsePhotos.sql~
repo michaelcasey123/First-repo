@@ -1,0 +1,7 @@
+UPDATE ad_photos SET file_name ='	Pony1	.jpg' WHERE photo_id ='	5737	';
+UPDATE ad_photos SET file_name ='	Pony2	.jpg' WHERE photo_id ='	5738	';
+UPDATE ad_photos SET file_name ='	Pony3	.jpg' WHERE photo_id ='	6008	';
+UPDATE ad_photos SET file_name ='	Horse1	.jpg' WHERE photo_id ='	6206	';
+UPDATE ad_photos SET file_name ='	Horse2	.jpg' WHERE photo_id ='	6207	';
+UPDATE ad_photos SET file_name ='	Horse3	.jpg' WHERE photo_id ='	6208	';
+UPDATE ad_photos SET file_name ='	Horse4	.jpg' WHERE photo_id ='	6209	';

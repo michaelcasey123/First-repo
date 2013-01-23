@@ -12,9 +12,11 @@ if (!$link_id)
   die('Could not connect: ' . mysql_error());
   }
 //		 DB_DATABASE
-mysql_select_db("mtcdb1", $link_id);
+mysql_select_db("db1020773_pets", $link_id);
 
-$sqlQuery = "SELECT petID, petType, petAddress1, petCounty, petPhoneNo, petEmail FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Found'";
+$sqlQuery = "SELECT a.id, p.name_plural, c.name, u.phone, a.contact_by_phone, u.email, a.contact_by_email, ap.photo_id
+FROM ads AS a INNER JOIN users AS u ON a.user_id = u.id INNER JOIN pet_type AS p ON a.pet_type_id = p.old_pet_type_id INNER JOIN location_counties AS c ON a.location_county_id = c.old_county_id INNER JOIN ad_type AS t ON a.ad_type_id = t.id LEFT JOIN ad_photos AS ap ON a.id = ap.ad_id
+WHERE a.date_created > '2012-06' AND a.status = 'active' AND p.name = '".$pettype."' AND c.name = '".$theCounty."' AND t.name = 'Lost & Found' AND (a.title LIKE '%found%' OR a.description LIKE '%found%');";
 
 $result = mysql_query($sqlQuery);
 
@@ -25,16 +27,18 @@ if ($result) {
 	while($pet = mysql_fetch_assoc($result))
 	{
 		$htmlString .=  "<li><a href='javascript:showFoundPetPhoto(" ; // start list item 
-		$htmlString .=  $pet["petID"] ; //add photoID
+		$htmlString .=  ($pet["photo_id"]==NULL)?"1":$pet["photo_id"] ; //add photoID, the first argument. If there is no photo set photoID to 1
+		$htmlString .=  ", "; // separate the two arguments to showRehomePetPhoto
+		$htmlString .=  $pet["id"];// add adID the second argument
 		$htmlString .=  ")'>";//close the function call and tag				
-		$htmlString .=  $pet["petID"];// start writing the list element
+		$htmlString .=  $pet["id"];// start writing the list element
 		$htmlString .=  ", "; // comma and space
-		$htmlString .=  $pet["petType"];
+		$htmlString .=  $pet["name_plural"];
 		$htmlString .=  ", ";
-		$htmlString .=  $pet["petAddress1"];
+		$htmlString .=  $pet["name"];
 		$htmlString .=  ", ";
-		$htmlString .=  $pet["petCounty"];
-		$htmlString .=  ", ";
+		$htmlString .=  $pet["phone"];
+		$htmlString .=  ($pet["contact_by_email"]=="1")?", ".$pet["email"]:"";//Ternary operator
 		$htmlString .=  $pet["petPhoneNo"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
