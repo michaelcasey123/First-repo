@@ -28,15 +28,17 @@
 
 .logospan{position:absolute; left:0px; top:0px;}
 
-.topleftspan{position:absolute; left:0px; top:182px;}
+.topleftspan{position:absolute; left:0px; top:378px;}
 
-.toprightspan{position:absolute; left:160px; top:182px;}
+.topmiddlespan{position:absolute; left:168px; top:378px;}
 
-.bottomleftspan{position:absolute; left:0px; top:340px;}
+.toprightspan{position:absolute; left:312px; top:378px;}
 
-.bottomrightspan{position:absolute; left:160px; top:339px;}
+.bottomleftspan{position:absolute; left:0px; top:550px;}
 
-.basespan{position:absolute; left:160px; top:481px;}
+.bottomrightspan{position:absolute; left:240px; top:550px;}
+
+.infospan{position:absolute; left:402px; top:550px;}
 
 .footerbar{position:absolute; top:465px;}
 

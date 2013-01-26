@@ -136,7 +136,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://webelevate11.com/app/petsie/lostMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET","http://localhost/petsie/lostMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -195,7 +195,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://webelevate11.com/app/petsie/foundMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET","http://localhost/petsie/foundMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -348,7 +348,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://localhost/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -380,7 +380,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -429,7 +429,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListingOnline.php?theID="+$adID,true);
+xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenRehomePetPhoto($photoID, $adID);
@@ -459,7 +459,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -505,7 +505,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/lostSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://localhost/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -536,7 +536,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -577,7 +577,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListingOnline.php?theID="+$adID,true);
+xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenLostPetPhoto($photoID, $adID);
@@ -607,7 +607,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -654,7 +654,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/foundSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://localhost/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -685,7 +685,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -725,7 +725,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListingOnline.php?theID="+$adID,true);
+xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenFoundPetPhoto($photoID, $adID);
@@ -755,7 +755,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 

@@ -1,18 +1,16 @@
 <?php
 $theID = $_GET["theID"];// this is the ID from the table link for the photo required
 
-$x="http://localhost";// development host
-//$x="http://michaelcasey123.zxq.net"; // live host
-//$x="http://192.168.1.102"; // Mobile development host
+$x="http://michaelcasey123.zxq.net"; // live host
 
 //		          DB_HOST,   DB_USER,  DB_PASSWORD, 
-$link_id = mysql_connect('localhost', 'root', 'friend88**');
+$link_id = mysql_connect('localhost', '778331_root', 'friend88**');
 if (!$link_id)
   {
   die('Could not connect: ' . mysql_error());
   }
 //		DB_DATABASE
-mysql_select_db("mtcdb1", $link_id);
+mysql_select_db("michaelcasey123_zxq_mtcdb1", $link_id);
 
 $sqlQuery = "SELECT petImageSource FROM pet WHERE petID = '".$theID."'";
 $result = mysql_query($sqlQuery);

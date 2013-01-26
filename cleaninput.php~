@@ -1,0 +1,7 @@
+<?php
+//	$s_username = htmlspecialchars($_POST['username']);
+	$email = htmlspecialchars($_POST['storedEmailAddress']);
+	echo strip_tags($email)."<br/>";
+//	$password = $_POST['storedPassword'];
+//	echo htmlspecialchars($password);
+?>

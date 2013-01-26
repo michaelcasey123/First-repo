@@ -1,16 +1,16 @@
 <?php
 $theID = $_GET["theID"];// this is the ID from the chosen animal
 
-//echo "getChosenListing.php acknowledges. The petID is ".$theID;// debug code
+//echo "getChosenListingOnline.php acknowledges. The petID is ".$theID;// debug code
 
 //		          DB_HOST,   DB_USER,  DB_PASSWORD, 
-$link_id = mysql_connect('localhost', 'root', 'friend88**');
+$link_id = mysql_connect('localhost', '778331_root', 'friend88**');
 if (!$link_id)
   {
   die('Could not connect: ' . mysql_error());
   }
 //		DB_DATABASE
-mysql_select_db("mtcdb1", $link_id);
+mysql_select_db("michaelcasey123_zxq_mtcdb1", $link_id);
 
 $sqlQuery = "SELECT petType, petAddress1, petAddress2, petCounty, petPhoneNo, petEmail FROM pet WHERE petID = '".$theID."'";
 $result = mysql_query($sqlQuery);

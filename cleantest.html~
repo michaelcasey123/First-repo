@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Test of input cleansing</title>
+</head>
+<body>
+
+<form action="http://localhost/petsie/login.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+<label for="storedEmailAddress" class="ui-hidden-accessible">Email Address:</label>
+<input type="text" name="storedEmailAddress" id="storedEmailAddress" value="" placeholder="Email Address:" data-mini="true" />
+
+<label for="storedPassword" class="ui-hidden-accessible">Password:</label>
+<input type="password" name="storedPassword" id="storedPassword" value="" placeholder="Password:" data-mini="true" />
+<input type="submit" value="Login">
+</form>
+
+</body>
+</html>

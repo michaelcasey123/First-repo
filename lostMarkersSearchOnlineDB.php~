@@ -4,13 +4,13 @@ $pettype = $_GET["pettype"];
 $theCounty = $_GET["theCounty"];
 
 //		           DB_HOST,  DB_USER,  DB_PASSWORD, 
-$link_id = mysql_connect('localhost', 'root', 'friend88**');
+$link_id = mysql_connect('localhost', '778331_root', 'friend88**');
 if (!$link_id)
   {
   die('Could not connect: ' . mysql_error());
   }
 //		 DB_DATABASE
-mysql_select_db("mtcdb1", $link_id);
+mysql_select_db("michaelcasey123_zxq_mtcdb1", $link_id);
 
 $sqlQuery = "SELECT petLatitude, petLongitude FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Lost'";
 

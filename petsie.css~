@@ -22,7 +22,7 @@
 
 .ui-li .ui-btn-text a.ui-link-inherit {white-space: normal;}
 
-.ui-bar {width:320px} 
+.ui-bar {width:480px} 
 
 /*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
 

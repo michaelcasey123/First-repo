@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+//preload images first
+img1=new Image()
+img1.src="tiles/MyAdsScaled.png"
+img2=new Image()
+img2.src="tiles/MyAdsDepressedScaled.png"
+
+function downImg(x)
+{
+x.src=img2.src;
+}
+
+function upImg(x)
+{
+x.src=img1.src;
+}
+
+</script>
+</head>
+
+<body>
+
+<a href="http://localhost/petsie/imageChange.html" onMousedown="document.images['example'].src=img2.src" onMouseup="document.images['example'].src=img1.src">
+<img src="tiles/MyAdsScaled.png" name="example"></a>
+
+<img onMousedown="downImg(this)" onMouseup="upImg(this)" src="tiles/MyAdsScaled.png">
+
+</body>
+</html>
+

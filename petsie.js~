@@ -10,6 +10,10 @@ var $keyword;
 var $lat;
 var $lng;
 var $zoom;
+// Login Variables
+var $email;
+var $password;
+
 
 /* Login variables from Facebook
 var $id;
@@ -132,7 +136,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://localhost/petsie/lostMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET","http://webelevate11.com/app/petsie/lostMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -191,7 +195,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://localhost/petsie/foundMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET","http://webelevate11.com/app/petsie/foundMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -344,7 +348,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://localhost/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -376,7 +380,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -425,7 +429,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenRehomePetPhoto($photoID, $adID);
@@ -455,7 +459,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -501,7 +505,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://localhost/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -532,7 +536,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -573,7 +577,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenLostPetPhoto($photoID, $adID);
@@ -603,7 +607,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -650,7 +654,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://localhost/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -658,7 +662,7 @@ xmlhttp.send();
 
 
 // the function below uses AJAX to contact the localhost server with an ID from the search results data for a database search to get the photo link of the animal required. $photoID is taken from the dblist item pressed.
-function showFoundPetPhoto($photoID)
+function showFoundPetPhoto($photoID, $adID)
 {
 var xmlhttp;
 
@@ -677,30 +681,30 @@ xmlhttp.onreadystatechange=function()
     // write the response from the server into the img src:
     document.getElementById("foundPetsPhotoFromServer").src=xmlhttp.responseText;
     // call a function to generate a button below the photo:
-    getFoundPetListingButton($photoID);
+    getFoundPetListingButton($photoID, $adID);
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
 
 
 
-function getFoundPetListingButton($photoID)
+function getFoundPetListingButton($photoID, $adID)
 {
 document.getElementById("FoundListingButtonDiv").innerHTML="<a href='#found3'><button id='selectedFoundButton'>Select This Listing</button></a>";
 
 $('#selectedFoundButton').button(); // initialise button before refreshing it.
 $('#selectedFoundButton').button('refresh');
-getChosenFoundPetListing($photoID);// Get detailed listing from server
+getChosenFoundPetListing($photoID, $adID);// Get detailed listing from server
 }
 
 
 
 
-function getChosenFoundPetListing($photoID)
+function getChosenFoundPetListing($photoID, $adID)
 {
 var xmlhttp;
 
@@ -721,16 +725,16 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
-showChosenFoundPetPhoto($photoID);
+showChosenFoundPetPhoto($photoID, $adID);
 }
 
 
 
 
-function showChosenFoundPetPhoto($photoID)
+function showChosenFoundPetPhoto($photoID, $adID)
 {
 var xmlhttp;
 
@@ -751,7 +755,7 @@ xmlhttp.onreadystatechange=function()
     }
   };
 //xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -799,32 +803,79 @@ $('.page-map').live("pagecreate", function() {
 ////////////////////////////////////// Insert Page functions ///////////////////////////////////
 
 
+// Bind the variable $email to the contents of the storedEmailAddress text input field of login on the click of the Login button and autocomplete the contactEmail text input field of Register
+
+// Bind the variable $password to the contents of the storedPassword text input field of login on the click of the Login button and autocomplete the password text input field of Register
+
+// Bind the variable $email to the contents of the contactEmail text input field of Register on the change of the listingType drop down menu.
+
+// Bind the variable $password to the contents of the password text input field of Register on the change of the listingType drop down menu.
+
+// Bind the variable $phoneNumber to the contents of the contactPhoneNumber text input field of Register to the change of the listingType drop down menu.
+
+// Put the variables $email and $password (and $phonenumber) into the form for add a listing to get the user id from the database user table for insertion into the ads table. 
+
+$(document).ready(function(){
+$('#loginButton').bind("click", function(){
+	$email = $('#storedEmailAddress').val();//store storedEmailAddress text input field contents in email variable
+	$password = $('#storedPassword').val();//store storedPassword text input field contents in password variable
+	$('#contactEmail').val($email); // set the Register email Field
+	$('#password').val($password); // set the Register password Field
+	autocomplete($email,$password);
+});//close bind function
+});//close document ready function
+
+
+
+
+function autocomplete($email,$password)
+{
+	$('#addalistingDdmenuResults').html('autocomplete running...');
+	$('#addAListingContactEmail').val($email);
+	$('#addAListingPassword').val($password);
+}
+
+
+
 // the following function binds the value chosen in the listingType list to the variable $listingType when the item is changed.
 
 $(document).ready(function(){
 $('#listingType').bind("change", function(){// use change rather than click here
 	$listingType=$('#listingType').val();//store listingType menu item in listingType variable
+	priceReplace();
+	calendarReplace();
+/*
+	$phoneNumber = $('contactPhoneNumber').val();	
+	$email = $('contactEmail').val();
+	$password = $('password').val();
 	
+	$('#addAListingContactPhoneNumber').val($phoneNumber);
+	$('#addAListingContactEmail').val($email);
+	$('#addAListingPassword').val($password);
+*/
+//	autocomplete();
 });//close bind function
 });//close document ready function
 
 
-// The function below removes the form item price where not required on page addalisting2
+
+
+// The function below removes the form item price where not required on page addalisting
 
 function priceReplace()
 {
-if ($listingType=="petLost" || $listingType=="petFound")
+if ($listingType=="2")
 	{
 	$('#priceDiv').html("");
 	}
 }
 
 
-// The function below removes the form item calendar where not required on page addalisting2
+// The function below removes the form item calendar where not required on page addalisting
 
 function calendarReplace()
 {
-if ($listingType=="petForRehome")
+if ($listingType=="1")
 	{
 	$('#addAListingCalendarDiv').html("");
 	}
@@ -849,12 +900,16 @@ $('#addAnimal').bind("change", function(){// use change rather than click here
 $(document).ready(function(){
 $('#addCounty').bind("change", function(){// use change rather than click here
 	$county=$('#addCounty').val();//store county menu item in county variable
-	$('#addalistingDdmenuResults').html("You chose: "+ $listingType+" and " + $animal + " in " + $county);
-	priceReplace();
-	calendarReplace();
+//	$('#addalistingDdmenuResults').html("You chose: "+ $listingType+" and " + $animal + " in " + $county); // not required
+$('#addalistingDdmenuResults').html("email: "+ $email+" password: " + $password);
 	mapCounty();
 });//close bind function
 });//close document ready function
+
+
+
+
+
 
 
 

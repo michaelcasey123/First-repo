@@ -3,16 +3,18 @@
 $pettype = $_GET["pettype"];
 $theCounty = $_GET["theCounty"];
 
-//		           DB_HOST,  DB_USER,  DB_PASSWORD, 
-$link_id = mysql_connect('localhost', '778331_root', 'friend88**');
+//		           			DB_HOST,  	DB_USER,  			DB_PASSWORD, 
+$link_id = mysql_connect('localhost', 'webelevate11_app', '4pp@W3b3LvL11');
 if (!$link_id)
   {
   die('Could not connect: ' . mysql_error());
   }
 //		 DB_DATABASE
-mysql_select_db("michaelcasey123_zxq_mtcdb1", $link_id);
+mysql_select_db("webelevate11_app", $link_id);
 
-$sqlQuery = "SELECT petLatitude, petLongitude FROM pet WHERE petType = '".$pettype."' AND petCounty = '".$theCounty."' AND petListingType = 'Found'";
+$sqlQuery = "SELECT a.longitude, a.latitude
+FROM ads AS a INNER JOIN pet_type AS p ON a.pet_type_id = p.old_pet_type_id INNER JOIN location_counties AS c ON a.location_county_id = c.old_county_id INNER JOIN ad_type AS t ON a.ad_type_id = t.id
+WHERE a.date_created > '2012-06' AND a.status = 'active' AND p.name = '".$pettype."' AND c.name = '".$theCounty."' AND t.name = 'Lost & Found' AND (a.title LIKE '%found%' OR a.description LIKE '%found%');";
 
 $result = mysql_query($sqlQuery);
 
@@ -23,9 +25,9 @@ if ($result) {
 	while($pet = mysql_fetch_assoc($result))
 	{
 		$jsonString .=  '{"lat":';//start contents of array
-		$jsonString .=  $pet['petLatitude'] ; //add Latitude figure
+		$jsonString .=  $pet['latitude'] ; //add Latitude figure
 		$jsonString .=  ',"lng":';// introduce lng			
-		$jsonString .=  $pet['petLongitude'];// add Longitude figure
+		$jsonString .=  $pet['longitude'];// add Longitude figure
 		$jsonString .=  '},'; // close the inner object
 	}
 
