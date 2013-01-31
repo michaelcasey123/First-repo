@@ -2,7 +2,7 @@
 
 $response="";
 
-$emailraw = htmlspecialchars($_POST['storedEmailAddress']);
+$emailraw = htmlspecialchars($_GET['email']);
 
 $email = strip_tags($emailraw);
 
@@ -12,10 +12,11 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 	$response .= "That email address is not valid.<br/>";
 	}
 
-$passwordraw = htmlspecialchars($_POST['storedPassword']);
+$passwordraw = htmlspecialchars($_GET['password']);
 
 $password = strip_tags($passwordraw);
 
+$response .= "email is ".$email." password is ".$password."... ";
 
 if (strlen($password)<6)
 	{
@@ -44,9 +45,7 @@ list($id) = mysql_fetch_row($result);
 
 
 if ($result) {
-//	echo "Login successful. id no.: ".$id."<br/>";
-//	echo "<script>";
-	header("Location: index.html#addalisting");
+	echo $id;
 }else{
 echo "Login failed. Please amend details and try again.";
 die("Failure: " . mysql_error($link_id));

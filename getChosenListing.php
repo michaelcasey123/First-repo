@@ -32,7 +32,7 @@ while($pet = mysql_fetch_assoc($result))
 	$htmlString .= "<br/>"; 
 	$htmlString .= $pet["description"]; 
 	$htmlString .= "<br/>";
-	$htmlString .= ($pet["sale_price"]!=NULL)?"€".$pet["sale_price"]:"Price not relevant.";//Ternary op
+	$htmlString .= ($pet["sale_price"]!=NULL && $pet["sale_price"]!="0")?"€".$pet["sale_price"]:"Price not relevant.";//Ternary op
 	$htmlString .= "<br/>"; 
 	$htmlString .= $pet["name"]; 
 	$htmlString .= "<br/>"; 

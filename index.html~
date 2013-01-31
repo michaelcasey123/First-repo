@@ -17,34 +17,34 @@
 <script type="text/javascript" charset="utf-8">
 // preload images for home screen:
 img1=new Image();
-img1.src="tiles/LostScaled.png";
+img1.src="LostScaled.png";
 img1d=new Image();
-img1d.src="tiles/LostDepressedScaled.png";
+img1d.src="LostDepressedScaled.png";
 
 img2=new Image();
-img2.src="tiles/FoundScaled.png";
+img2.src="FoundScaled.png";
 img2d=new Image();
-img2d.src="tiles/FoundDepressedScaled.png";
+img2d.src="FoundDepressedScaled.png";
 
 img3=new Image();
-img3.src="tiles/GetANewPetScaled.png";
+img3.src="GetANewPetScaled.png";
 img3d=new Image();
-img3d.src="tiles/GetANewPetDepressedScaled.png";
+img3d.src="GetANewPetDepressedScaled.png";
 
 img4=new Image();
-img4.src="tiles/PlaceAnAdScaled.png";
+img4.src="PlaceAnAdScaled.png";
 img4d=new Image();
-img4d.src="tiles/PlaceAnAdDepressedScaled.png";
+img4d.src="PlaceAnAdDepressedScaled.png";
 
 img5=new Image();
-img5.src="tiles/MyAdsScaled.png";
+img5.src="MyAdsScaled.png";
 img5d=new Image();
-img5d.src="tiles/MyAdsDepressedScaled.png";
+img5d.src="MyAdsDepressedScaled.png";
 
 img6=new Image();
-img6.src="tiles/InfoScaled.png";
+img6.src="InfoScaled.png";
 img6d=new Image();
-img6d.src="tiles/InfoDepressedScaled.png";
+img6d.src="InfoDepressedScaled.png";
 
 function downImg1(x) {x.src=img1d.src;}
 function upImg1(x) {x.src=img1.src;}
@@ -63,6 +63,14 @@ function upImg5(x) {x.src=img5.src;}
 
 function downImg6(x) {x.src=img6d.src;}
 function upImg6(x) {x.src=img6.src;}
+
+// if this doesn't work try "click"
+$(document).ready(function(){
+$('#lostTile').bind("tap", function(){
+	$('#lostTile').src(img1d.src);
+});
+});
+
 
 </script> 
 </head> 
@@ -93,39 +101,35 @@ var $password;
 <!-- Start of Home page -->
 <div data-role="page" id="home">
 
-<!--	<div data-role="header">
-		<h1>Home</h1>
- 	<a href="#about" data-role="button" class="ui-btn-right" data-transition="pop">About</a> 
-	</div><!-- /header -->
 
 	<div id="content" data-role="content">	
 
 <span class="logospan">
-<a href="#about" data-transition="pop"><img src="tiles/LogoHalfScaled.png"/></a>
+<a href="#about" data-transition="pop"><img src="LogoHalfScaled.png"/></a>
 </span>
 
 <span class="topleftspan">
-<a href="#lost"><img onMousedown="downImg1(this)" onMouseup="upImg1(this)" src="tiles/LostScaled.png"/></a>
+<a href="#lost"><img id="lostTile" onMousedown="downImg1(this)" onMouseup="upImg1(this)" src="LostScaled.png"/></a>
 </span>
 
 <span class="topmiddlespan">
-<a href="#found"><img onMousedown="downImg2(this)" onMouseup="upImg2(this)" src="tiles/FoundScaled.png"/></a>
+<a href="#found"><img onMousedown="downImg2(this)" onMouseup="upImg2(this)" src="FoundScaled.png"/></a>
 </span>
 
 <span class="toprightspan">
-<a href="#rehome"><img onMousedown="downImg3(this)" onMouseup="upImg3(this)" src="tiles/GetANewPetScaled.png"/></a>
+<a href="#rehome"><img onMousedown="downImg3(this)" onMouseup="upImg3(this)" src="GetANewPetScaled.png"/></a>
 </span>
 
 <span class="bottomleftspan">
-<a href="#login"><img onMousedown="downImg4(this)" onMouseup="upImg4(this)" src="tiles/PlaceAnAdScaled.png"/></a>
+<a href="#login"><img onMousedown="downImg4(this)" onMouseup="upImg4(this)" src="PlaceAnAdScaled.png"/></a>
 </span>
 
 <span class="bottomrightspan">
-<a href="#login2"><img onMousedown="downImg5(this)" onMouseup="upImg5(this)" src="tiles/MyAdsScaled.png"/></a>
+<a href="#login2"><img onMousedown="downImg5(this)" onMouseup="upImg5(this)" src="MyAdsScaled.png"/></a>
 </span>
 
 <span class="infospan">
-<a href="#about" data-transition="pop"><img onMousedown="downImg6(this)" onMouseup="upImg6(this)" src="tiles/InfoScaled.png"/></a>
+<a href="#about" data-transition="pop"><img onMousedown="downImg6(this)" onMouseup="upImg6(this)" src="InfoScaled.png"/></a>
 </span>
 
 
@@ -150,14 +154,14 @@ var $password;
     </div><!-- /header -->
 
 	<div data-role="content">
-	<h2 style="text-align: center;">Press 'Lost Pets' to see pets reported lost.</h2>
-	<h2 style="text-align: center;">Press 'Found Pets' to see pets reported found.</h2>
-	<h2 style="text-align: center;">Press 'Get a New Pet' for available pets.</h2>
-	<h2 style="text-align: center;">Press 'Place an Ad' to advertise pets or report a lost or found pet.</h2>
-	<h2 style="text-align: center;">Press 'My Ads' to review your current ads.</h2>
+	<p style="text-align: center;"><strong>Press 'Lost Pets' to see pets reported lost.</strong></p>
+	<p style="text-align: center;"><strong>Press 'Found Pets' to see pets reported found.</strong></p>
+	<p style="text-align: center;"><strong>Press 'Get a New Pet' for available pets.</strong></p>
+	<p style="text-align: center;"><strong>Press 'Place an Ad' to advertise pets or report a lost or found pet.</strong></p>
+	<p style="text-align: center;"><strong>Press 'My Ads' to review your current ads.</strong></p>
+
 	<p style="text-align: center;"><a href="#home" data-role="button" data-theme="b" data-inline="true" data-icon="home" data-rel="back">OK</a></p>
-		<br/>
-		<br/>
+
 		<!-- data-iconpos="notext" - use this above without OK to just get a home icon -->
 	</div><!-- /content -->
 
@@ -292,7 +296,7 @@ var $password;
 </ul>
 
 
-	<img style="width:450px;" id="rehomePhotoFromServer" src="" />
+	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
 
 <div style="text-align: center;" id="rehomePhotoFromServerText"></div><!--Temporary test div-->
 
@@ -332,7 +336,7 @@ var $password;
 
 
 <div style="text-align: center;" id="rehomeChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:450px;" id="rehomeChosenPhotoFromServer" src="" />
+	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
@@ -466,7 +470,7 @@ var $password;
 
 
 <div style="text-align: center;" id="lost2photoText"><br/></div><!--space for error message-->
-	<img style="width:450px;" id="lost2photoFromServer" src="" />
+	<img style="width:290px;" id="lost2photoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
@@ -502,7 +506,7 @@ var $password;
 <div id="lostChosenListing"></div>
 
 <div style="text-align: center;" id="lostChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:450px;" id="lostChosenPhotoFromServer" src="" />
+	<img style="width:290px;" id="lostChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
@@ -526,7 +530,7 @@ var $password;
 
 	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-	<div id="map_canvasLost" style="width:480px; height:705px;"></div>
+	<div id="map_canvasLost" style="width:320px; height:470px;"></div>
     </div><!-- /content -->
 
 </div><!-- End of Lost Map1 page -->
@@ -648,7 +652,7 @@ var $password;
 
 
 <div style="text-align: center;" id="foundPetsPhotoText"><br/></div><!--space for error message-->
-	<img style="width:450px;" id="foundPetsPhotoFromServer" src="" />
+	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
@@ -685,7 +689,7 @@ var $password;
 <div id="foundChosenListing"></div>
 
 <div style="text-align: center;" id="foundChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:450px;" id="foundChosenPhotoFromServer" src="" />
+	<img style="width:290px;" id="foundChosenPhotoFromServer" src="" />
 
 
     </div><!-- /content -->
@@ -711,7 +715,7 @@ var $password;
 
 	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
 
-	<div id="map_canvasFound" style="width:480px; height:705px;"></div>
+	<div id="map_canvasFound" style="width:320px; height:470px;"></div>
 
     </div><!-- /content -->
 
@@ -747,18 +751,22 @@ Please sign in or register
 
 <label for="storedPassword" class="ui-hidden-accessible">Password:</label>
 <input type="password" name="storedPassword" id="storedPassword" value="" placeholder="Password:" data-mini="true" />
-<input type="submit" id="loginButton" value="Login">
+
+<!--  <input type="submit" id="loginButton" value="Login"> -->
+
 </form>
 
-<!--					
-<div style="text-align: center;"><a data-role="button" id="storeButton" data-inline="true" data-theme="b" data-mini="true">Store</a></div>
--->
+<div style="text-align: center;"><a data-role="button" id="loginButton" data-inline="true" data-theme="b" data-mini="true">Login</a></div>
+
+
+
 <!--Use Phonegap to get values for email address and password stored in the phone to login. If this fails, server-side code should present the user with text input boxes for email address and password or invite the user to login via Facebook, Twitter or Google+ -->
 
+<div id="loginButtonfeedback"></div>
 
 First time? Then please Register:
 
-<div id="loginButtonfeedback"></div>
+
 
 <form action="http://localhost/petsie/registration.php" enctype="multipart/form-data" data-ajax="false" method="POST">
 
@@ -819,17 +827,19 @@ First time? Then please Register:
 
 <label for="password" class="ui-hidden-accessible">Password:</label>
 <input type="password" name="password" id="password" value="" placeholder="Password: (min. 6 characters)" data-mini="true" />
-<input type="submit" id="registerButton" value="Register">
+<!-- <input type="submit" id="registerButton" value="Register"> -->
 
 </form>
 
+<div style="text-align: center;"><a data-role="button" id="registerButton" data-inline="true" data-theme="b" data-mini="true">Register</a></div>
 
+<div id="registerButtonfeedback"></div>
 
 
 <!--
 <div>Login via:</div>
 
-<a href="#FBRegister"><img src="tiles/facebookicon.jpg" height="42" width="42"/></a>
+<a href="#FBRegister"><img src="facebookicon.jpg" height="42" width="42"/></a>
 -->
 
     </div><!-- /content -->
@@ -858,21 +868,25 @@ First time? Then please Register:
 
 Please sign in
 
-<form action="http://localhost/petsie/login2.php" enctype="multipart/form-data" data-ajax="false" method="POST">
+<form action="http://localhost/petsie/login.php" enctype="multipart/form-data" data-ajax="false" method="POST">
 <label for="storedEmailAddress2" class="ui-hidden-accessible">Email Address:</label>
 <input type="text" name="storedEmailAddress2" id="storedEmailAddress2" value="" placeholder="Email Address:" data-mini="true" />
 
 <label for="storedPassword2" class="ui-hidden-accessible">Password:</label>
 <input type="password" name="storedPassword2" id="storedPassword2" value="" placeholder="Password:" data-mini="true" />
-<input type="submit" id="login2Button" value="Login">
 
+<!-- <input type="submit" id="login2Button" value="Login"> -->
 
 </form>
+
+<div style="text-align: center;"><a data-role="button" id="login2Button" data-inline="true" data-theme="b" data-mini="true">Login</a></div>
+
+<div id="login2Buttonfeedback"></div>
 
 <!--
 <div>Login via:</div>
 
-<a href="#FBRegister"><img src="tiles/facebookicon.jpg" height="42" width="42"/></a>
+<a href="#FBRegister"><img src="facebookicon.jpg" height="42" width="42"/></a>
 -->
 
     </div><!-- /content -->
@@ -898,9 +912,10 @@ Please sign in
 
 	
     <div data-role="content">	
-
+<!--
 <form action="http://localhost/petsie/addalisting.php" enctype="multipart/form-data" data-ajax="false" method="POST">
-
+-->
+<form>
 	<label for="listingType" class="select">Listing Type:</label>
 	<select name="listingType" id="listingType" data-mini="true">
 		<option value="">Choose Listing Type:</option>
@@ -913,14 +928,14 @@ Please sign in
 
 	<label for="addAnimal" class="select">Pet Type:</label>
 	<select name="addAnimal" id="addAnimal" data-mini="true">
-		<option value="">Choose Animal</option>
-		<option value="2">Dogs</option>
-		<option value="1">Cats</option>
-		<option value="4">Equine</option>
-		<option value="3">Birds</option>
-		<option value="5">Exotic</option>
-		<option value="7">Small Furries</option>
-		<option value="6">Aquatic</option>
+		<option value="">Choose Animal</option> <!--old_pet_type_id's-->
+		<option value="67">Dogs</option>
+		<option value="68">Cats</option>
+		<option value="71">Equine</option>
+		<option value="69">Birds</option>
+		<option value="73">Exotic</option>
+		<option value="75">Small Furries</option>
+		<option value="74">Aquatic</option>
 	</select>
 	
 	
@@ -972,8 +987,8 @@ Please sign in
 
 <div id="priceDiv">
 
-<label for="price" class="ui-hidden-accessible">Price:</label>
-<input type="text" name="price" id="price" value="" placeholder="Price: EUR (default free of charge)" data-mini="true" />
+<label for="price" class="ui-hidden-accessible">Price: EUR</label>
+<input type="number" name="price" id="price" value="" placeholder="Price: EUR(default free of charge)" data-mini="true" />
 
 </div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
 
@@ -1020,53 +1035,91 @@ Date Lost/Found:
     <label for="addAListingSelectMonth">Month</label>
     <select name="addAListingSelectMonth" id="addAListingSelectMonth">
     <option>Month</option>
-    <option value="01">Jan</option>
-    <option value="02">Feb</option>
-    <option value="03">March</option>
-    <option value="04">April</option>
-    <option value="05">May</option>
-    <option value="06">June</option>
-    <option value="07">July</option>
-    <option value="08">August</option>
-    <option value="09">Sept</option>
-    <option value="10">Oct</option>
-    <option value="11">Nov</option>
-    <option value="12">Dec</option>
+    <option value="-01-">Jan</option>
+    <option value="-02-">Feb</option>
+    <option value="-03-">March</option>
+    <option value="-04-">April</option>
+    <option value="-05-">May</option>
+    <option value="-06-">June</option>
+    <option value="-07-">July</option>
+    <option value="-08-">August</option>
+    <option value="-09-">Sept</option>
+    <option value="-10-">Oct</option>
+    <option value="-11-">Nov</option>
+    <option value="-12-">Dec</option>
     </select>
     <label for="addAListingSelectYear">Year</label>
     <select name="addAListingSelectYear" id="addAListingSelectYear">
     <option>Year</option>
     <option value="2012">2012</option>
-    <option value="2012">2013</option>
-    <option value="2012">2014</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+
     </select>
   </fieldset>
 </div> <!--end div fieldcontain-->
 </div> <!--end div calendarDiv-->
 
+<!--
 <label for="addAListingContactPhoneNumber" class="ui-hidden-accessible">Phone Number:</label>
 <input type="text" name="addAListingContactPhoneNumber" id="addAListingContactPhoneNumber" value="" placeholder="Phone Number:" data-mini="true" />
-<!-- Set placeholder equal to phone number variable from register. Allow this to be replaced by one input by user by leaving value as "" . -->
 
 <label for="addAListingContactEmail" class="ui-hidden-accessible">Email Address:</label>
 <input type="text" name="addAListingContactEmail" id="addAListingContactEmail" value="" placeholder="Email Address:" data-mini="true" />
-<!-- Set placeholder equal to email variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
 
 <label for="addAListingPassword" class="ui-hidden-accessible">Password:</label>
 <input type="password" name="addAListingPassword" id="addAListingPassword" value="" placeholder="Password:" data-mini="true" />
+-->
+<!--
+<fieldset data-role="controlgroup" data-mini="true">
+	<legend></legend>
+     	<input type="radio" name="addAListingEmailAgree" id="addAListingEmailAgree-1" value="true" checked="checked" />
+     	<label for="addAListingEmailAgree-1">Allow contact by email</label>
 
-<input type="checkbox" name="addAListingEmailAgree" id="addAListingEmailAgree" data-mini="true"/>
+     	<input type="radio" name="addAListingEmailAgree" id="addAListingEmailAgree-2" value="false"  />
+     	<label for="addAListingEmailAgree-2">Do not allow contact by email</label>
+</fieldset>
+
+<fieldset data-role="controlgroup" data-mini="true">
+	<legend></legend>
+     	<input type="radio" name="addAListingTandCsAgree" id="addAListingTandCsAgree-1" value="true" checked="checked" />
+     	<label for="addAListingTandCsAgree-1">Agree to Terms & Conditions</label>
+
+     	<input type="radio" name="addAListingTandCsAgree" id="addAListingTandCsAgree-2" value="false"  />
+     	<label for="addAListingTandCsAgree-2">Do not Agree</label>
+</fieldset>
+-->
+
+<!--
+
 <label for="addAListingEmailAgree">Allow contact by email?</label>
+<input type="checkbox" name="addAListingEmailAgree" id="addAListingEmailAgree" value="true" data-mini="true"/>
 
-<input type="checkbox" name="addAListingTandCsAgree" id="addAListingTandCsAgree" data-mini="true"/>
 <label for="addAListingTandCsAgree">Agree to Advert Terms & Conditions</label>
+<input type="checkbox" name="addAListingTandCsAgree" id="addAListingTandCsAgree" value="true" data-mini="true"/>
+
+-->
+
+<!-- <input type="submit" id="addAListingButton" value="Next"> -->
+
+	<label for="addAListingEmailAgree" class="select"></label>
+	<select name="addAListingEmailAgree" id="addAListingEmailAgree" data-mini="true">
+		<option value="1" selected>I Allow contact by email</option>
+		<option value="0">I Do not allow contact by email</option>
+	</select>
+
+
+	<label for="addAListingTandCsAgree" class="select"></label>
+	<select name="addAListingTandCsAgree" id="addAListingTandCsAgree" data-mini="true">
+		<option value="1" selected>I Agree to Advert Terms & Conditions</option>
+		<option value="0">I Do not agree to Advert Terms & Conditions</option>
+	</select>
 
 </form>
 
-
-
-
 	<div style="text-align: center;"><a href="#termsandconditions" data-role="button" id="t&csbutton" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Terms & Conditions</a></div>  <!-- end of terms and conditions button -->
+
 
 	<div style="text-align: center;"><a href="#addalisting2" data-role="button" id="addListing2Button" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-mini="true" data-theme="b">Next</a></div>
 
@@ -1093,6 +1146,8 @@ Date Lost/Found:
 	
     <div data-role="content">	
 
+	<div id="addAListingFeedback"></div>
+
 	<button id="addAListingCapture">Take Photo</button>
 
 
@@ -1103,12 +1158,12 @@ Date Lost/Found:
 	<button id="addAListingGetImage">Select Library Animal Photo</button> 
 	
 
-	<img style="display:none;width:450px;" id="addAListingAnimalImage" src="" />
+	<img style="display:none;width:290px;" id="addAListingAnimalImage" src="" />
 
 
 	<div id="addAListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
 
-
+<!--
 	<div style="text-align: center;"><a data-role="button" id="addAListingUploadButton" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Upload</a></div>  <!-- end button -->	
 
 <!--The line below probably won't be used -->	
@@ -1120,6 +1175,7 @@ Date Lost/Found:
 
 	<div style="text-align: center;"><a href="#previewAddedListing" data-role="button" id="reviewAdButton" data-iconpos="right" data-icon="arrow-r" data-theme="b" data-inline="true" data-mini="true">Review advert now</a></div>  <!-- end button -->	
 
+<div id ="TempReview"></div>
 
 
    </div><!-- /content -->
@@ -1143,20 +1199,21 @@ Date Lost/Found:
 
     <div data-role="content">	
 
-<!--Temporary Text:-->
+<!--Temporary Text:
 The added listing will be shown here.<br/>It will be replaced with a response from the server.
 
-<!--The added listing will be displayed here.-->
+The added listing will be displayed here.-->
 
 
 <div id="addedListing">
 
 </div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
 
-	<img style="display:none;width:450px;" id="previewAddedListingAnimalImage" src="" />
+	<img style="display:none;width:290px;" id="previewAddedListingAnimalImage" src="" />
 
 <div style="text-align: center;"><a href="javascript:uploadlisting()" data-role="button" id="uploadAddedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Save</a></div>
 
+<div id="UploadFeedback">
 
    </div><!-- /content -->
 
@@ -1193,7 +1250,7 @@ There will be a response from the server database corresponding to the user's pr
 
 
 <div style="text-align: center;" id="myListingsPhotoText"><br/></div><!--space for error message-->
-	<img style="width:450px;" id="myListingsPhotoFromServer" src="" />
+	<img style="width:290px;" id="myListingsPhotoFromServer" src="" />
 
 
 <!--There will be a button here, (below the photo) written from the server with the id of the listing for editing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
@@ -1237,7 +1294,7 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 
 	<div id="chosenPetListingDiv"></div>
 
-<img style="width:450px;" id="chosenPetListingPhotoFromServer" src="" />
+<img style="width:290px;" id="chosenPetListingPhotoFromServer" src="" />
 
 <!--The Delete Listing button will need the id of the chosen pet listing -->
 
@@ -1366,7 +1423,7 @@ Date Lost/Found:
 
 </form>
 
-<img style="width:450px;" id="editUpdateListingPhotoFromServer" src="" />
+<img style="width:290px;" id="editUpdateListingPhotoFromServer" src="" />
 
 
 	<button id="editUpdateListingCapture">Take New Photo</button>
@@ -1379,7 +1436,7 @@ Date Lost/Found:
 	<button id="editUpdateListingGetImage">Get new library animal photo</button> 
 	
 
-	<img style="display:none;width:450px;" id="editUpdateListingAnimalImage" src="" />
+	<img style="display:none;width:290px;" id="editUpdateListingAnimalImage" src="" />
 <!--The line above is to check image on screen before upload and belongs to the next screen-->
 
 	<div id="editUpdateListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
@@ -1420,7 +1477,7 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
 </div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
 
-	<img style="display:none;width:450px;" id="previewEditedListingAnimalImage" src="" />
+	<img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src="" />
 
 <!--The Upload button will need the id of the chosen pet listing -->
 

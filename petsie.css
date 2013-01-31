@@ -22,23 +22,23 @@
 
 .ui-li .ui-btn-text a.ui-link-inherit {white-space: normal;}
 
-.ui-bar {width:480px} 
+.ui-bar {width:320px} 
 
 /*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
 
 .logospan{position:absolute; left:0px; top:0px;}
 
-.topleftspan{position:absolute; left:0px; top:378px;}
+.topleftspan{position:absolute; left:0px; top:252px;}
 
-.topmiddlespan{position:absolute; left:168px; top:378px;}
+.topmiddlespan{position:absolute; left:112px; top:252px;}
 
-.toprightspan{position:absolute; left:312px; top:378px;}
+.toprightspan{position:absolute; left:208px; top:252px;}
 
-.bottomleftspan{position:absolute; left:0px; top:550px;}
+.bottomleftspan{position:absolute; left:0px; top:366px;}
 
-.bottomrightspan{position:absolute; left:240px; top:550px;}
+.bottomrightspan{position:absolute; left:160px; top:366px;}
 
-.infospan{position:absolute; left:402px; top:550px;}
+.infospan{position:absolute; left:268px; top:366px;}
 
 .footerbar{position:absolute; top:465px;}
 

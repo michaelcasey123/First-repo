@@ -1,0 +1,6 @@
+<?php
+
+$timedatum = date();
+
+echo $timedatum;
+

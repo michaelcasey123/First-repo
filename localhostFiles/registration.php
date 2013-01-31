@@ -4,9 +4,9 @@ $response="";
 
 $ipaddress = $_SERVER["REMOTE_ADDR"];
 
-$name_title = $_POST['nameTitle']; // this defaults to ms
+$name_title = $_GET['nameTitle']; // this defaults to ms
 
-$firstNameRaw = htmlspecialchars($_POST['firstName']);
+$firstNameRaw = htmlspecialchars($_GET['firstName']);
 
 $firstName = strip_tags($firstNameRaw);
 
@@ -15,7 +15,7 @@ if ($firstName == "")
 	$response .= "Please include your first name.<br/>";
 	}
 
-$secondNameRaw = htmlspecialchars($_POST['secondName']);
+$secondNameRaw = htmlspecialchars($_GET['secondName']);
 
 $secondName = strip_tags($secondNameRaw);
 
@@ -24,9 +24,9 @@ if ($secondName == "")
 	$response .= "Please include your surname.<br/>";
 	}
 
-$registerCounty = $_POST['registerCounty']; // this defaults to Dublin
+$registerCounty = $_GET['registerCounty']; // this defaults to Dublin
 
-$contactPhoneNumberRaw = htmlspecialchars($_POST['contactPhoneNumber']);
+$contactPhoneNumberRaw = htmlspecialchars($_GET['contactPhoneNumber']);
 
 $contactPhoneNumber = strip_tags($contactPhoneNumberRaw);
 
@@ -35,7 +35,7 @@ if (strlen($contactPhoneNumber)<7)
 	$response .= "Please include your correct full contact phone number.<br/>";
 	}
 
-$contactEmailRaw = htmlspecialchars($_POST['contactEmail']);
+$contactEmailRaw = htmlspecialchars($_GET['email']);
 
 $contactEmail = strip_tags($contactEmailRaw);
 
@@ -44,7 +44,7 @@ if (!filter_var($contactEmail, FILTER_VALIDATE_EMAIL))
 	$response .= "Please include your correct email. It need not be made public.<br/>";
 	}
 
-$passwordRaw = htmlspecialchars($_POST['password']);
+$passwordRaw = htmlspecialchars($_GET['password']);
 
 $password = strip_tags($passwordRaw);
 
@@ -70,8 +70,19 @@ $sqlQuery = "INSERT INTO `users` (`name_title`, `name`, `user_category`, `locati
 $result = mysql_query($sqlQuery);
 
 if ($result) {
-//	echo "Registration successful. Now press Login.";
-	header("Location: index.html#addalisting");
+
+// if insert is successful then id is brought out of the database and stored in $id.
+	$sqlQuery = "SELECT id FROM users WHERE email = '".$contactEmail."' AND password = '".$password."';";
+
+	$result = mysql_query($sqlQuery);
+	
+	if ($result)
+		{
+		list($id) = mysql_fetch_row($result);
+		echo $id;
+		}
+	else {echo "Cannot find id..";}
+
 }else{
 echo "Registration failed. Please amend details and try again.";
 die("Failure: " . mysql_error($link_id));

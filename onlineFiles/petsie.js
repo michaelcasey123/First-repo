@@ -10,10 +10,24 @@ var $keyword;
 var $lat;
 var $lng;
 var $zoom;
-// Login Variables
+// Global Login Variables
 var $email;
 var $password;
+var $id; // 'users' id retrieved by register() and registration.php
 
+// upload variables:
+
+var $listingType;
+var $advertTitle;
+var $description;
+var $price;
+var $day;
+var $month;
+var $year;
+var $contact_by_email;
+var $agree_to_terms;
+
+var $ads_id; // 'ads' id retrieved by uploadlisting() and addalisting.php
 
 /* Login variables from Facebook
 var $id;
@@ -130,7 +144,7 @@ for (var i = 0; i < json.data.length; i++) {
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    icon: 'tiles/Paw2.png'
+    icon: 'Paw2.png'
     });
   }
 
@@ -189,7 +203,7 @@ for (var i = 0; i < json.data.length; i++) {
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    icon: 'tiles/Paw2.png'
+    icon: 'Paw2.png'
     });
   }
 
@@ -347,8 +361,7 @@ xmlhttp.onreadystatechange=function()
     $('#rehomedblist').listview('refresh');
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/rehomeSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -379,7 +392,6 @@ xmlhttp.onreadystatechange=function()
     getRehomePetListingButton($photoID, $adID);
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
@@ -428,8 +440,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("rehomeChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListingOnline.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenRehomePetPhoto($photoID, $adID);
@@ -458,7 +469,6 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("rehomeChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
@@ -504,7 +514,6 @@ xmlhttp.onreadystatechange=function()
     $('#lost2dblist').listview('refresh');
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/lostSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
@@ -535,7 +544,6 @@ xmlhttp.onreadystatechange=function()
     getLostPetListingButton($photoID, $adID);
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
@@ -576,8 +584,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("lostChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListingOnline.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenLostPetPhoto($photoID, $adID);
@@ -606,7 +613,6 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("lostChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
@@ -653,7 +659,6 @@ xmlhttp.onreadystatechange=function()
     $('#foundPetsdblist').listview('refresh');
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/foundSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
@@ -684,7 +689,6 @@ xmlhttp.onreadystatechange=function()
     getFoundPetListingButton($photoID, $adID);
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
@@ -724,8 +728,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("foundChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListingOnline.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenFoundPetPhoto($photoID, $adID);
@@ -754,7 +757,6 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("foundChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
 xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
@@ -803,37 +805,153 @@ $('.page-map').live("pagecreate", function() {
 ////////////////////////////////////// Insert Page functions ///////////////////////////////////
 
 
-// Bind the variable $email to the contents of the storedEmailAddress text input field of login on the click of the Login button and autocomplete the contactEmail text input field of Register
-
-// Bind the variable $password to the contents of the storedPassword text input field of login on the click of the Login button and autocomplete the password text input field of Register
-
-// Bind the variable $email to the contents of the contactEmail text input field of Register on the change of the listingType drop down menu.
-
-// Bind the variable $password to the contents of the password text input field of Register on the change of the listingType drop down menu.
-
-// Bind the variable $phoneNumber to the contents of the contactPhoneNumber text input field of Register to the change of the listingType drop down menu.
-
-// Put the variables $email and $password (and $phonenumber) into the form for add a listing to get the user id from the database user table for insertion into the ads table. 
+// The function below collects data and fires the login function when the login button from "Place an Ad" is pressed. 
 
 $(document).ready(function(){
 $('#loginButton').bind("click", function(){
-	$email = $('#storedEmailAddress').val();//store storedEmailAddress text input field contents in email variable
-	$password = $('#storedPassword').val();//store storedPassword text input field contents in password variable
-	$('#contactEmail').val($email); // set the Register email Field
-	$('#password').val($password); // set the Register password Field
-	autocomplete($email,$password);
+	$email=$('#storedEmailAddress').val();
+	$password=$('#storedPassword').val();
+//	$('#loginButtonfeedback').html("email "+$email+" password "+$password); // debug code
+	login($email,$password);
 });//close bind function
 });//close document ready function
 
 
 
 
-function autocomplete($email,$password)
+// The function below  collects data and fires the login2 function when the login button from "My Ads" is pressed. 
+
+$(document).ready(function(){
+$('#login2Button').bind("click", function(){
+	$email=$('#storedEmailAddress2').val();
+	$password=$('#storedPassword2').val();
+	login2($email,$password);
+});//close bind function
+});//close document ready function
+
+
+
+// The function below passes email and password to the server and if successful returns user id (field id from the 'users' table) to the function and location's to the addalisting Page.
+
+function login($email,$password)
 {
-	$('#addalistingDdmenuResults').html('autocomplete running...');
-	$('#addAListingContactEmail').val($email);
-	$('#addAListingPassword').val($password);
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // store the response from the server into the id variable:
+    $id = xmlhttp.responseText;
+//	$('#loginButtonfeedback').html($id); // test code
+	$('#addalistingDdmenuResults').html($id); // test code
+		if (parseInt($id) > 1 && parseInt($id) < 5000000)
+		{
+//		$('#loginButtonfeedback').html($id+" Correct!"); // debug code
+		window.location = 'index.html#addalisting';
+		}
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/login.php?email="+$email+"&password="+$password,true);
+xmlhttp.send();
 }
+
+
+// The function below passes email and password to the server and if successful returns user id (field id from the 'users' table) to the function and location's to the myListings Page.
+
+function login2($email,$password)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // store the response from the server into the id variable:
+    $id = xmlhttp.responseText;
+//	$('#login2Buttonfeedback').html($id); // test code
+	$('#myListingsSearchText').html($id); // test code
+		if (parseInt($id) > 1 && parseInt($id) < 5000000)
+		{
+//		$('#loginButton2feedback').html($id+" Correct!"); // debug code
+		window.location = 'index.html#myListings';
+		}
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/login.php?email="+$email+"&password="+$password,true);
+xmlhttp.send();
+}
+
+
+
+
+
+// The function below  collects data and fires the login2 function when the Register button from "Place an Ad" is pressed. 
+
+$(document).ready(function(){
+$('#registerButton').bind("click", function(){
+	$nameTitle = $('#nameTitle').val();
+	$firstName = $('#firstName').val();
+	$secondName = $('#secondName').val();
+	$registerCounty = $('#registerCounty').val();
+	$contactPhoneNumber = $('contactPhoneNumber').val();
+	$email = $('#contactEmail').val();//store contactEmail text input field contents in email variable
+	$password = $('#password').val();//store password text input field contents in password variable
+	register($nameTitle,$firstName,$secondName,$registerCounty,$contactPhoneNumber,$email,$password);
+});//close bind function
+});//close document ready function
+
+
+
+
+function register($nameTitle,$firstName,$secondName,$registerCounty,$contactPhoneNumber,$email,$password)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // store the response from the server into the id variable:
+    $id = xmlhttp.responseText;
+//	$('#registerButtonfeedback').html($id); // test code
+	$('#addalistingDdmenuResults').html($id); // test code
+
+		if (parseInt($id) > 1 && parseInt($id) < 5000000)
+		{
+		window.location = 'index.html#addalisting';
+		}
+
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/registration.php?nameTitle="+$nameTitle+"&firstName="+$firstName+"&secondName="+$secondName+"&registerCounty="+$registerCounty+"&contactPhoneNumber="+$contactPhoneNumber+"&email="+$email+"&password="+$password,true);
+xmlhttp.send();
+}
+
 
 
 
@@ -844,16 +962,6 @@ $('#listingType').bind("change", function(){// use change rather than click here
 	$listingType=$('#listingType').val();//store listingType menu item in listingType variable
 	priceReplace();
 	calendarReplace();
-/*
-	$phoneNumber = $('contactPhoneNumber').val();	
-	$email = $('contactEmail').val();
-	$password = $('password').val();
-	
-	$('#addAListingContactPhoneNumber').val($phoneNumber);
-	$('#addAListingContactEmail').val($email);
-	$('#addAListingPassword').val($password);
-*/
-//	autocomplete();
 });//close bind function
 });//close document ready function
 
@@ -881,7 +989,7 @@ if ($listingType=="1")
 	}
 }
 
-// If petWanted then no upload of photo, instead go straight to review advert
+
 
 
 // the following function binds the value chosen in the add-animal list to the variable animal when the item is changed.
@@ -900,45 +1008,102 @@ $('#addAnimal').bind("change", function(){// use change rather than click here
 $(document).ready(function(){
 $('#addCounty').bind("change", function(){// use change rather than click here
 	$county=$('#addCounty').val();//store county menu item in county variable
-//	$('#addalistingDdmenuResults').html("You chose: "+ $listingType+" and " + $animal + " in " + $county); // not required
-$('#addalistingDdmenuResults').html("email: "+ $email+" password: " + $password);
-	mapCounty();
+//	$('#addalistingDdmenuResults').html("You chose: "+ $listingType+" and " + $animal + " in " + $county); // debug code
+//	mapCounty(); // Don't think we need this here
 });//close bind function
 });//close document ready function
 
 
 
 
+// $listingType, $animal, $id and $county are global and are not gathered in the next function which collects data from the addalisting page
 
-
-
-
-
-// Upload Button function here. This function may have been superseded by the HTML form.
-// Can I delete this and fire insertCustomer() from within function onAnimalPhotoURISuccess() in file camera.js / move those functions to this file
 $(document).ready(function(){
-  $("#uploadButton").bind("click", function(){//function fires when button id "uploadButton" is pressed
-	insertCustomer();// function which communicates the animal and county (and photo?) to the server using XMLHttpRequest.send()
+$('#addListing2Button').bind("click", function(){
+	$advertTitle = $('#advertTitle').val();
+	$description = $('#description').val();
+	$price = $('#price').val();
+	$day = $('#addAListingSelectDay').val();
+	$month = $('#addAListingSelectMonth').val();
+	$year = $('#addAListingSelectYear').val();
+	$contact_by_email = $('#addAListingEmailAgree').val();
+	$agree_to_terms = $('#addAListingTandCsAgree').val();
+	addAListingPreview($id,$listingType,$animal,$county,$advertTitle,$description,$price,$day,$month,$year,$contact_by_email,$agree_to_terms);
+});//close bind function
+});//close document ready function
 
-});// end click function
-});// end document ready function
+// reviewAdButton
 
+// the function below takes the user input, queries the database (via addAListingPreview.php )for the user's phone number and email address and displays a preview of the advert. The photo preview will also be dealt with here
 
-
-
-// the function below uses AJAX to contact the localhost server with data for a database insert. A seperate function (uploadPhoto) in camera.js uploads the photo at the same time from the same button.
-
-
-function insertCustomer()
+function addAListingPreview($id,$listingType,$animal,$county,$advertTitle,$description,$price,$day,$month,$year,$contact_by_email,$agree_to_terms)
 {
+// deal with the case where T&Cs are not agreed to:
+if ($agree_to_terms=="0")
+	{
+	$('#addAListingFeedback').html("You must agree to the Terms & Conditions in order to place an advertisement.");
+	}
+else
+	{
+// query the database for user's phone number and email address (if agreed)	
+	if ($price==undefined)
+	{
+	$price = "Price not relevant";
+	}
+	else
+	{
+	$price = "EUR"+$price;
+	}
+// $('#TempReview').html($price); // test code
+
+	var xmlhttp;
+
+	if (window.XMLHttpRequest)
+	  {
+	   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+	  }
+	else
+	  {
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+	  };
+	xmlhttp.onreadystatechange=function()
+	  {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+
+//		$phoneAndEmail = xmlhttp.responseText;
+
+//		$previewText = $animal+"<br/>"+$advertTitle+"<br/>"+$description+"<br/>"+$price+"<br/>"+$county+"<br/>"+$phoneAndEmail+"<br/>";
+
+		$previewText = xmlhttp.responseText;
+
+		$('#addedListing').html($previewText); // test code
+
+		}
+	  };
+// addAListingPreview.php receives the raw information and adds information from the database tables users, pet_type, location_counties and sends it back in order.
+	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
+	xmlhttp.send();
+
+	}
+}
+
+
+
+// the function below uploads the advert to the server database and the photo to AWS
+
+function uploadlisting()
+{
+// temporary debug code:
+//$feedbackmessage = "user_id is "+$id+", listingType is "+$listingType+", animal is "+$animal+", county is "+$county+", advertTitle is "+$advertTitle+", description is "+$description+", price is "+$price+", date is "+$year+$month+$day+", contact_by_email is "+$contact_by_email+", agree_to_terms is "+$agree_to_terms; // test code
+
+//$('#UploadFeedback').html($feedbackmessage); // test code
+
+$longitude = -6.3087624; // temporary setting, this will be taken from phone's geolocation
+$latitude = 52.6753644; // temporary setting, this will be taken from phone's geolocation
+
 var xmlhttp;
-if (($animal == "") || ($county == "")) // if nothing has been chosen
-  {
-  document.getElementById("dbInsertResults").innerHTML="Animal or county missing?"; // output nothing
-  return; // and leave the function
-  }
-//else
-  document.getElementById("dbInsertResults").innerHTML="Waiting for image to be uploaded..."; // debug code
+
 if (window.XMLHttpRequest)
   {
    xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -949,16 +1114,26 @@ else
   };
 xmlhttp.onreadystatechange=function()
   {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    document.getElementById("dbInsertResults").innerHTML=xmlhttp.responseText; // write the response from the server into the div
-    }
+	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	{
+
+	$ads_id = xmlhttp.responseText; // test code
+		if (parseInt($ads_id) > 4491)
+			{
+			$('#UploadFeedback').html("Upload successful "+$ads_id); // remove $ads_id
+			}
+		else
+			{
+			$('#UploadFeedback').html($ads_id); // test code		
+			}
+	}
   };
-xmlhttp.open("GET","http://192.168.1.102/petsie/jqueryInput4l.php?firstname="+$animal+"&theCounty="+$county,true);// uploads the animal and county on click of the upload button
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$longitude+"&latitude="+$latitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
 xmlhttp.send();
 }
 
 
 
-
+// Upload Button function here. This function may have been superseded by the HTML form.
+// Can I delete this and fire insertCustomer() from within function onAnimalPhotoURISuccess() in file camera.js / move those functions to this file
 
