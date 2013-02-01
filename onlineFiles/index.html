@@ -9,7 +9,7 @@
 	<script src="jquery.mobile-1.1.1.min.js"></script>
 	<script src="petsie.js"></script>
 	<script src="cordova-2.0.0.js"></script>
-	<script src="cameral.js"></script>
+<!--	<script src="cameral.js"></script> -->
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
 
 <!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /><!--Associated with map-->
@@ -90,6 +90,8 @@ var $lng;
 var $zoom;
 var $email;
 var $password;
+var $geolongitude;
+var $geolatitude;
 
 </script>
 
@@ -1116,6 +1118,7 @@ Date Lost/Found:
 
 	<div style="text-align: center;"><a href="#termsandconditions" data-role="button" id="t&csbutton" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Terms & Conditions</a></div>  <!-- end of terms and conditions button -->
 
+	<div style="text-align: center;"><a data-role="button" id="geolocationButton" data-inline="true" data-mini="true" data-theme="b">Use my location</a></div>
 
 	<div style="text-align: center;"><a href="#addalisting2" data-role="button" id="addListing2Button" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-mini="true" data-theme="b">Next</a></div>
 

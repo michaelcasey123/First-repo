@@ -1,13 +1,14 @@
 <?php
 
-$userid = ($_GET['userid']);
-$allowEmail = ($_GET['allowEmail']);
-$animal = ($_GET['animal']);
-$county = ($_GET['county']);
-$advertTitle = ($_GET['advertTitle']);
-$description = ($_GET['description']);
-$price = ($_GET['price']);
-
+$userid = $_GET['userid'];
+$allowEmail = $_GET['allowEmail'];
+$animal = $_GET['animal'];
+$county = $_GET['county'];
+$advertTitle = $_GET['advertTitle'];
+$description = $_GET['description'];
+$price = $_GET['price'];
+$latitude = $_GET['latitude'];
+$longitude = $_GET['longitude'];
 
 //	        	           DB_HOST,  	DB_USER, 			 DB_PASSWORD, 
 $link_id = mysql_connect('localhost', 'webelevate11_app', '4pp@W3b3LvL11');
@@ -51,7 +52,7 @@ while($pet = mysql_fetch_assoc($result))
 }else
 {die("Failure: " . mysql_error($link_id));}
 
-echo $animal."<br/>".$advertTitle."<br/>".$description."<br/>".$price."<br/>".$county."<br/>".$phone."<br/>".$email; 
+echo $animal."<br/>".$advertTitle."<br/>".$description."<br/>".$price."<br/>".$county."<br/>".$phone."<br/>".$email."<br/>".$latitude."<br/>".$longitude; // latitude & longitude added for debug purposes.
 		
 
 die();// get out of database

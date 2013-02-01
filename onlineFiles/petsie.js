@@ -26,6 +26,11 @@ var $month;
 var $year;
 var $contact_by_email;
 var $agree_to_terms;
+var $geolongitude; //This is taken from phone's geolocation
+var $geolatitude; //This is taken from phone's geolocation
+
+//$geolongitude = -6.3087624; // temporary setting, this will be taken from phone's geolocation
+//$geolatitude = 52.6753644; // temporary setting, this will be taken from phone's geolocation
 
 var $ads_id; // 'ads' id retrieved by uploadlisting() and addalisting.php
 
@@ -92,6 +97,38 @@ var $email;
 
 */
 
+// PhoneGap Geolocation functions below:
+
+    // Wait for Cordova to load
+    //
+//    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+
+
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	}
+
+    // onSuccess Geolocation
+    //
+   function onSuccess(position) {
+	$geolatitude = position.coords.latitude; 
+	$geolongitude = position.coords.longitude;
+	}
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+	$geolatitude = "failed"; 
+	$geolongitude = "failed";
+    }
+
+
+
+
+// Map functions for lost and found animals below:
 
 
 // When map page opens display map
@@ -1015,8 +1052,16 @@ $('#addCounty').bind("change", function(){// use change rather than click here
 
 
 
+// the function below gets the user location (if button pressed) and sets the $geolatitude and $geolongitude global variables.
 
-// $listingType, $animal, $id and $county are global and are not gathered in the next function which collects data from the addalisting page
+$(document).ready(function(){
+$('#geolocationButton').bind("click", function(){
+document.addEventListener("deviceready", onDeviceReady, false);
+});//close bind function
+});//close document ready function
+
+
+// $listingType, $animal, $id, $county, $geolatitude and $geolongitude are global and are not gathered in the next function which collects data from the addalisting page
 
 $(document).ready(function(){
 $('#addListing2Button').bind("click", function(){
@@ -1032,7 +1077,9 @@ $('#addListing2Button').bind("click", function(){
 });//close bind function
 });//close document ready function
 
-// reviewAdButton
+
+
+
 
 // the function below takes the user input, queries the database (via addAListingPreview.php )for the user's phone number and email address and displays a preview of the advert. The photo preview will also be dealt with here
 
@@ -1045,16 +1092,11 @@ if ($agree_to_terms=="0")
 	}
 else
 	{
-// query the database for user's phone number and email address (if agreed)	
-	if ($price==undefined)
-	{
-	$price = "Price not relevant";
-	}
-	else
-	{
-	$price = "EUR"+$price;
-	}
-// $('#TempReview').html($price); // test code
+	$('#addAListingFeedback').html(""); // clear the message above.
+
+// feedback on geolocation:
+
+	$('#addAListingFeedback').html("Geolocation: "+$geolatitude+" & "+$geolongitude); // debug code
 
 	var xmlhttp;
 
@@ -1071,10 +1113,6 @@ else
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 
-//		$phoneAndEmail = xmlhttp.responseText;
-
-//		$previewText = $animal+"<br/>"+$advertTitle+"<br/>"+$description+"<br/>"+$price+"<br/>"+$county+"<br/>"+$phoneAndEmail+"<br/>";
-
 		$previewText = xmlhttp.responseText;
 
 		$('#addedListing').html($previewText); // test code
@@ -1082,7 +1120,7 @@ else
 		}
 	  };
 // addAListingPreview.php receives the raw information and adds information from the database tables users, pet_type, location_counties and sends it back in order.
-	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
+	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price+"&latitude="+$geolatitude+"&longitude="+$geolongitude,true);
 	xmlhttp.send();
 
 	}
@@ -1098,9 +1136,6 @@ function uploadlisting()
 //$feedbackmessage = "user_id is "+$id+", listingType is "+$listingType+", animal is "+$animal+", county is "+$county+", advertTitle is "+$advertTitle+", description is "+$description+", price is "+$price+", date is "+$year+$month+$day+", contact_by_email is "+$contact_by_email+", agree_to_terms is "+$agree_to_terms; // test code
 
 //$('#UploadFeedback').html($feedbackmessage); // test code
-
-$longitude = -6.3087624; // temporary setting, this will be taken from phone's geolocation
-$latitude = 52.6753644; // temporary setting, this will be taken from phone's geolocation
 
 var xmlhttp;
 
@@ -1128,7 +1163,7 @@ xmlhttp.onreadystatechange=function()
 			}
 	}
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$longitude+"&latitude="+$latitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$geolongitude+"&latitude="+$geolatitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
 xmlhttp.send();
 }
 

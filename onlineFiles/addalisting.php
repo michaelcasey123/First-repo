@@ -37,13 +37,12 @@ if (!$link_id)
 //				 DB_DATABASE
 mysql_select_db("webelevate11_app", $link_id);
 
-$sqlQuery = "SELECT phone, email FROM users WHERE id = '".$userid."';";
+$sqlQuery = "SELECT phone FROM users WHERE id = '".$userid."';";
 $result = mysql_query($sqlQuery);
 if ($result) {
 	while($pet = mysql_fetch_assoc($result))
 		{
 		$phone = $pet["phone"];
-		$email = $pet["email"];
 		}
 }else
 {die("Failure: " . mysql_error($link_id));}
@@ -69,7 +68,6 @@ $response .= "county id = ".$location_county."<br/>";
 $response .= "phone = ".$phone."<br/>";
 $response .= "contact_by_phone = ".$contact_by_phone."<br/>";
 $response .= "contact_by_email = ".$contact_by_email."<br/>";
-$response .= "email = ".$email."<br/>";
 $response .= "longitude = ".$longitude."<br/>";
 $response .= "latitude = ".$latitude."<br/>";
 $response .= "date_lost_found = ".$date_lost_found."<br/>";
@@ -130,8 +128,8 @@ if (intval($userid)>=1 && strlen($title)>=2 && strlen($description)>=2 && $locat
 
 	$timedatum = date('Y-m-d H:i:s');
 
-	$sqlQuery = "INSERT INTO `ads`(`user_id`, `status`, `title`, `description`, `location_country_id`, `location_county_id`, `phone`, `contact_by_phone`, `contact_by_email`, `email`, `longitude`, `latitude`, `date_lost_found`, `sale_price`, `date_created`, `date_updated`, `ad_type_id`, `pet_type_id`, `price_type_id`) 
-	VALUES ('".$userid."','".$status."','".$title."','".$description."','".$location_country_id."','".$location_county."','".$phone."','".$contact_by_phone."','".$contact_by_email."','".$email."','".$longitude."','".$latitude."','".$date_lost_found."','".$sale_price."',NOW(),NOW(),'".$ad_type_id."','".$pet_type_id."','".$price_type_id."');";
+	$sqlQuery = "INSERT INTO `ads`(`user_id`, `status`, `title`, `description`, `location_country_id`, `location_county_id`, `phone`, `contact_by_phone`, `contact_by_email`,  `longitude`, `latitude`, `date_lost_found`, `sale_price`, `date_created`, `date_updated`, `ad_type_id`, `pet_type_id`, `price_type_id`) 
+	VALUES ('".$userid."','".$status."','".$title."','".$description."','".$location_country_id."','".$location_county."','".$phone."','".$contact_by_phone."','".$contact_by_email."','".$longitude."','".$latitude."','".$date_lost_found."','".$sale_price."',NOW(),NOW(),'".$ad_type_id."','".$pet_type_id."','".$price_type_id."');";
 
 	$result = mysql_query($sqlQuery);
 
