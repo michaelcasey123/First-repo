@@ -9,7 +9,7 @@
 	<script src="jquery.mobile-1.1.1.min.js"></script>
 	<script src="petsie.js"></script>
 	<script src="cordova-2.0.0.js"></script>
-<!--	<script src="cameral.js"></script> -->
+<	<script src="cameraPets.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
 
 <!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /><!--Associated with map-->
@@ -875,8 +875,6 @@ Please sign in
 <label for="storedPassword2" class="ui-hidden-accessible">Password:</label>
 <input type="password" name="storedPassword2" id="storedPassword2" value="" placeholder="Password:" data-mini="true" />
 
-<!-- <input type="submit" id="login2Button" value="Login"> -->
-
 </form>
 
 <div style="text-align: center;"><a data-role="button" id="login2Button" data-inline="true" data-theme="b" data-mini="true">Login</a></div>
@@ -1138,7 +1136,7 @@ Date Lost/Found:
 
 	<div data-role="header">
 	<a href="#addalisting" data-role="button" data-icon="back">Back</a>
-		<h1>Upload Photo</h1>
+		<h1>Add Photo</h1>
 	<a href="#home" data-role="button" data-icon="home">Home</a>
     </div><!-- /header -->
 
@@ -1159,8 +1157,6 @@ Date Lost/Found:
 
 	<img style="display:none;width:290px;" id="addAListingAnimalImage" src="" />
 
-
-	<div id="addAListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
 
 <!--
 	<div style="text-align: center;"><a data-role="button" id="addAListingUploadButton" data-icon="pets" data-theme="b" data-inline="true" data-mini="true">Upload</a></div>  <!-- end button -->	
@@ -1212,7 +1208,13 @@ The added listing will be displayed here.-->
 
 <div style="text-align: center;"><a href="javascript:uploadlisting()" data-role="button" id="uploadAddedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Save</a></div>
 
-<div id="UploadFeedback">
+<div id="uploadFeedback"></div>
+
+<div id="photoUploadFeedback"></div>
+
+<div id="loopText"></div>
+
+<div id="loopButton"></div>
 
    </div><!-- /content -->
 
@@ -1242,28 +1244,19 @@ The added listing will be displayed here.-->
 <br/>	
 	<li>Server Response Below:</li> 
 </ul>
-<!--Temporary Text:-->
-<br/><br/><br/>
-There will be a response from the server database corresponding to the user's previously uploaded adverts here. This will be a series of list items, each of which can be clicked to fetch the associated photo. The button below the photo 'Select This Listing' will bring this listing to the edit page.
 
+
+
+<!--There should be a list from myListings.php file amended to this list from users id and ads. That'll do for now.-->
 
 
 <div style="text-align: center;" id="myListingsPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="myListingsPhotoFromServer" src="" />
 
 
-<!--There will be a button here, (below the photo) written from the server with the id of the listing for editing on the next page. The id will correspond to the chosen listing/photo. See jqueryInput2z.php for hint -->
 
+<div id="myListingsButtonDiv"></div>
 
-<span class="selectedListingButtonSpan"> <!--This is temporary. Scrolling will be necessary for this page.-->
-<div id="myListingsButtonFromServer">
-
-<!--Temporary button below. This button is written from the server-->
-
-<div style="text-align: center;"><a href="#chosenPetListing" data-role="button" id="selectedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="b" data-mini="true">Select This Listing</a></div>
-
-</div>
-</span><!--This is temporary. Scrolling will be necessary for this page.-->
 
   </div><!-- /content -->
 
@@ -1286,11 +1279,6 @@ There will be a response from the server database corresponding to the user's pr
 
     <div data-role="content">	
 
-
-<!--Temporary Text:-->
-
-The Chosen Pet Listing will be displayed here. This will be a full download from the database under the headings 'Listing Type', 'Animal', 'County',  'Advert Title', 'Description', 'Price'/'Date Lost/Found' as appropriate, 'Phone no.', 'email address', 'Allow contact by email?' complete with the photo. This will be as on the Preview Pet Listing Page.
-
 	<div id="chosenPetListingDiv"></div>
 
 <img style="width:290px;" id="chosenPetListingPhotoFromServer" src="" />
@@ -1303,11 +1291,11 @@ The Chosen Pet Listing will be displayed here. This will be a full download from
 
   </div><!-- /content -->
 
-<span class="footerbar">
+
 	<div data-role="footer" class="ui-bar">
 	<a href="#home" data-role="button" data-icon="home">Home</a>
 	</div><!-- /footer -->
-</span>
+
 
 </div><!-- End of Chosen Pet Listing page -->
 

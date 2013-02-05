@@ -1,0 +1,3 @@
+<?php
+unlink('../uploads/Clock1359975811.jpg');
+?>

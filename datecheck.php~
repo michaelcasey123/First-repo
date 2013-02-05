@@ -1,6 +1,9 @@
 <?php
 
-$timedatum = date();
+$timedatum = date('Y-m-d H:i:s');
+
+$src = date('/Y/m/');
 
 echo $timedatum;
 
+echo $src;

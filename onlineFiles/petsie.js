@@ -862,6 +862,7 @@ $(document).ready(function(){
 $('#login2Button').bind("click", function(){
 	$email=$('#storedEmailAddress2').val();
 	$password=$('#storedPassword2').val();
+//	$('#login2Buttonfeedback').html("email is "+$email+". password is "+$password); // test code
 	login2($email,$password);
 });//close bind function
 });//close document ready function
@@ -906,6 +907,7 @@ xmlhttp.send();
 
 function login2($email,$password)
 {
+//$('#login2Buttonfeedback').html("email is "+$email+". password is "+$password+". function login2 entered..."); // test code
 var xmlhttp;
 
 if (window.XMLHttpRequest)
@@ -928,6 +930,7 @@ xmlhttp.onreadystatechange=function()
 		{
 //		$('#loginButton2feedback').html($id+" Correct!"); // debug code
 		window.location = 'index.html#myListings';
+		getMyListings($id);
 		}
     }
   };
@@ -939,7 +942,7 @@ xmlhttp.send();
 
 
 
-// The function below  collects data and fires the login2 function when the Register button from "Place an Ad" is pressed. 
+// The function below  collects data and fires the register function when the Register button from "Place an Ad" is pressed. 
 
 $(document).ready(function(){
 $('#registerButton').bind("click", function(){
@@ -1098,6 +1101,15 @@ else
 
 	$('#addAListingFeedback').html("Geolocation: "+$geolatitude+" & "+$geolongitude); // debug code
 
+	if ($price==undefined)
+	{
+	$price = "Price not relevant";
+	}
+	else
+	{
+	$price = "EUR"+$price;
+	}
+
 	var xmlhttp;
 
 	if (window.XMLHttpRequest)
@@ -1120,7 +1132,7 @@ else
 		}
 	  };
 // addAListingPreview.php receives the raw information and adds information from the database tables users, pet_type, location_counties and sends it back in order.
-	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price+"&latitude="+$geolatitude+"&longitude="+$geolongitude,true);
+	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
 	xmlhttp.send();
 
 	}
@@ -1128,15 +1140,10 @@ else
 
 
 
-// the function below uploads the advert to the server database and the photo to AWS
+// the function below uploads the advert using global variables to the server database and the photo to AWS
 
 function uploadlisting()
 {
-// temporary debug code:
-//$feedbackmessage = "user_id is "+$id+", listingType is "+$listingType+", animal is "+$animal+", county is "+$county+", advertTitle is "+$advertTitle+", description is "+$description+", price is "+$price+", date is "+$year+$month+$day+", contact_by_email is "+$contact_by_email+", agree_to_terms is "+$agree_to_terms; // test code
-
-//$('#UploadFeedback').html($feedbackmessage); // test code
-
 var xmlhttp;
 
 if (window.XMLHttpRequest)
@@ -1155,11 +1162,14 @@ xmlhttp.onreadystatechange=function()
 	$ads_id = xmlhttp.responseText; // test code
 		if (parseInt($ads_id) > 4491)
 			{
-			$('#UploadFeedback').html("Upload successful "+$ads_id); // remove $ads_id
+			$('#uploadFeedback').html("Ad upload successful "+$ads_id); // remove $ads_id later
+
+			photoUploads($ads_id,$animal);
+
 			}
 		else
 			{
-			$('#UploadFeedback').html($ads_id); // test code		
+			$('#uploadFeedback').html($ads_id); // test code		
 			}
 	}
   };
@@ -1169,6 +1179,161 @@ xmlhttp.send();
 
 
 
-// Upload Button function here. This function may have been superseded by the HTML form.
-// Can I delete this and fire insertCustomer() from within function onAnimalPhotoURISuccess() in file camera.js / move those functions to this file
+
+function photoUploads($ads_id,$animal)
+{
+
+// start loop here
+
+uploadPhoto(filePath); // these are in cameraPets.js
+
+var xmlhttp;
+
+xmlhttp=new XMLHttpRequest(); // not using old IE browsers
+
+xmlhttp.onreadystatechange=function()
+  {
+	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	{
+	$photo_id = xmlhttp.responseText; // test code
+		if (parseInt($photo_id) > 6795)
+			{
+			$('#photoUploadFeedback').html("Photo upload successful "+$photo_id+"<br/>"); // remove $photo_id later
+			}
+		else
+			{
+			$('#photoUploadFeedback').html($photo_id); // test code		
+			}
+	}
+  };
+// ad_photos.php receives the ads_id and animal and manages the uploaded photos and database inserts.
+	xmlhttp.open("GET","http://webelevate11.com/app/petsie/ad_photos.php?ads_id="+$ads_id+"&animal="+$animal,true);
+	xmlhttp.send();
+
+// loop end condition here
+}
+
+
+
+
+function getMyListings($id)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    $('#myListingsdblist').append(xmlhttp.responseText);// append the list from myListings.php to myListingsdblistdblist
+    $('#myListingsdblist').listview('refresh');
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/myListings.php?id="+$id,true);
+xmlhttp.send();
+}
+
+
+
+
+function showMyPetPhoto($photoID, $adID)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // write the response from the server into the img src
+    document.getElementById("myListingsPhotoFromServer").src=xmlhttp.responseText; 
+    // call a function to generate a button below the photo:
+    getMyPetListingButton($photoID, $adID);
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.send();
+}
+
+
+
+
+function getMyPetListingButton($photoID, $adID)
+{
+document.getElementById("myListingsButtonDiv").innerHTML="<a href='#chosenPetListing'><button id='selectedMyListingButton'>Select This Listing</button></a>";
+
+$('#selectedMyListingButton').button(); // initialise button before refreshing it.
+$('#selectedMyListingButton').button('refresh');
+getChosenMyPetListing($photoID, $adID);// Get detailed listing from server
+}
+
+
+
+
+function getChosenMyPetListing($photoID, $adID)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // write the response from the server into the listing div:
+    document.getElementById("chosenPetListingDiv").innerHTML=xmlhttp.responseText; 
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.send();
+// call a function to fetch the photo:
+showChosenMyPetPhoto($photoID, $adID);
+}
+
+
+
+
+function showChosenMyPetPhoto($photoID, $adID)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // write the response from the server into the img src:
+    document.getElementById("chosenPetListingPhotoFromServer").src=xmlhttp.responseText; 
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.send();
+}
 
