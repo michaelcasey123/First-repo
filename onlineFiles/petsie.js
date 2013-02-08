@@ -295,16 +295,61 @@ else if ($county=="Wicklow") {$lat=53.5; $lng=-6.9; $zoom=9;}
 
 // the following function binds the value chosen in the select-animal list to the variable animal when the item is clicked
 
+// Get a New Pet pages:
+
 $(document).ready(function(){
-$('#rehomeAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#rehomeAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
+$('#getNewBirdTile').bind("click", function(){
+	$animal = "Bird";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeBirdsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewExoticTile').bind("click", function(){
+	$animal = "Exotic";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeExoticScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewEquineTile').bind("click", function(){
+	$animal = "Equine";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeEquineScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewDogTile').bind("click", function(){
+	$animal = "Dog";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeDogsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewCatTile').bind("click", function(){
+	$animal = "Cat";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeCatsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewSmallfurriesTile').bind("click", function(){
+	$animal = "SmallFurries";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewAquaticTile').bind("click", function(){
+	$animal = "Aquatic";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeAquaticScaled.png';
+});
+});
 
 
 
 
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// the following function binds the value chosen in the select-county list to the variable county when the item is clicked. The menu item needs to be refreshed on entering the page forwards or backwards.
 
 $(document).ready(function(){
 $('#rehomeCounty').bind("change", function(){// use change rather than click here
@@ -314,18 +359,61 @@ $('#rehomeCounty').bind("change", function(){// use change rather than click her
 });//close document ready function
 
 
-
+// Lost Pets pages:
 
 $(document).ready(function(){
-$('#lostAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#lostAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
+$('#lostBirdTile').bind("click", function(){
+	$animal = "Bird";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeBirdsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostExoticTile').bind("click", function(){
+	$animal = "Exotic";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeExoticScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostEquineTile').bind("click", function(){
+	$animal = "Equine";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeEquineScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostDogTile').bind("click", function(){
+	$animal = "Dog";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeDogsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostCatTile').bind("click", function(){
+	$animal = "Cat";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeCatsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostSmallfurriesTile').bind("click", function(){
+	$animal = "SmallFurries";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostAquaticTile').bind("click", function(){
+	$animal = "Aquatic";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeAquaticScaled.png';
+});
+});
 
 
 
 
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// the following function binds the value chosen in the select-county list to the variable county when the item is clicked. The menu item needs to be refreshed on entering the page forwards or backwards.
 
 $(document).ready(function(){
 $('#lostCounty').bind("change", function(){// use change rather than click here
@@ -336,18 +424,61 @@ $('#lostCounty').bind("change", function(){// use change rather than click here
 });//close document ready function
 
 
-
+// Found Pets pages:
 
 $(document).ready(function(){
-$('#foundAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#foundAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
+$('#foundBirdTile').bind("click", function(){
+	$animal = "Bird";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeBirdsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundExoticTile').bind("click", function(){
+	$animal = "Exotic";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeExoticScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundEquineTile').bind("click", function(){
+	$animal = "Equine";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeEquineScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundDogTile').bind("click", function(){
+	$animal = "Dog";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeDogsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundCatTile').bind("click", function(){
+	$animal = "Cat";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeCatsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundSmallfurriesTile').bind("click", function(){
+	$animal = "SmallFurries";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundAquaticTile').bind("click", function(){
+	$animal = "Aquatic";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeAquaticScaled.png';
+});
+});
 
 
 
 
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// the following function binds the value chosen in the select-county list to the variable county when the item is clicked. The menu item needs to be refreshed on entering the page forwards or backwards.
 
 $(document).ready(function(){
 $('#foundCounty').bind("change", function(){// use change rather than click here

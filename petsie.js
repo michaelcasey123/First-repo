@@ -26,6 +26,11 @@ var $month;
 var $year;
 var $contact_by_email;
 var $agree_to_terms;
+var $geolongitude; //This is taken from phone's geolocation
+var $geolatitude; //This is taken from phone's geolocation
+
+//$geolongitude = -6.3087624; // temporary setting, this will be taken from phone's geolocation
+//$geolatitude = 52.6753644; // temporary setting, this will be taken from phone's geolocation
 
 var $ads_id; // 'ads' id retrieved by uploadlisting() and addalisting.php
 
@@ -92,6 +97,38 @@ var $email;
 
 */
 
+// PhoneGap Geolocation functions below:
+
+    // Wait for Cordova to load
+    //
+//    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+
+
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	}
+
+    // onSuccess Geolocation
+    //
+   function onSuccess(position) {
+	$geolatitude = position.coords.latitude; 
+	$geolongitude = position.coords.longitude;
+	}
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+	$geolatitude = "failed"; 
+	$geolongitude = "failed";
+    }
+
+
+
+
+// Map functions for lost and found animals below:
 
 
 // When map page opens display map
@@ -150,7 +187,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://localhost/petsie/lostMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET","http://webelevate11.com/app/petsie/lostMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -209,7 +246,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://localhost/petsie/foundMarkersSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET","http://webelevate11.com/app/petsie/foundMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -258,16 +295,61 @@ else if ($county=="Wicklow") {$lat=53.5; $lng=-6.9; $zoom=9;}
 
 // the following function binds the value chosen in the select-animal list to the variable animal when the item is clicked
 
+// Get a New Pet pages:
+
 $(document).ready(function(){
-$('#rehomeAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#rehomeAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
+$('#getNewBirdTile').bind("click", function(){
+	$animal = "Bird";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeBirdsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewExoticTile').bind("click", function(){
+	$animal = "Exotic";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeExoticScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewEquineTile').bind("click", function(){
+	$animal = "Equine";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeEquineScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewDogTile').bind("click", function(){
+	$animal = "Dog";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeDogsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewCatTile').bind("click", function(){
+	$animal = "Cat";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeCatsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewSmallfurriesTile').bind("click", function(){
+	$animal = "SmallFurries";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#getNewAquaticTile').bind("click", function(){
+	$animal = "Aquatic";
+	document.getElementById("SearchForNewPetsBy").src='choosePetTypeAquaticScaled.png';
+});
+});
 
 
 
 
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// the following function binds the value chosen in the select-county list to the variable county when the item is clicked. The menu item needs to be refreshed on entering the page forwards or backwards.
 
 $(document).ready(function(){
 $('#rehomeCounty').bind("change", function(){// use change rather than click here
@@ -277,18 +359,61 @@ $('#rehomeCounty').bind("change", function(){// use change rather than click her
 });//close document ready function
 
 
-
+// Lost Pets pages:
 
 $(document).ready(function(){
-$('#lostAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#lostAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
+$('#lostBirdTile').bind("click", function(){
+	$animal = "Bird";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeBirdsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostExoticTile').bind("click", function(){
+	$animal = "Exotic";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeExoticScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostEquineTile').bind("click", function(){
+	$animal = "Equine";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeEquineScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostDogTile').bind("click", function(){
+	$animal = "Dog";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeDogsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostCatTile').bind("click", function(){
+	$animal = "Cat";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeCatsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostSmallfurriesTile').bind("click", function(){
+	$animal = "SmallFurries";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#lostAquaticTile').bind("click", function(){
+	$animal = "Aquatic";
+	document.getElementById("SearchForLostPetsBy").src='choosePetTypeAquaticScaled.png';
+});
+});
 
 
 
 
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// the following function binds the value chosen in the select-county list to the variable county when the item is clicked. The menu item needs to be refreshed on entering the page forwards or backwards.
 
 $(document).ready(function(){
 $('#lostCounty').bind("change", function(){// use change rather than click here
@@ -299,18 +424,61 @@ $('#lostCounty').bind("change", function(){// use change rather than click here
 });//close document ready function
 
 
-
+// Found Pets pages:
 
 $(document).ready(function(){
-$('#foundAnimal').bind("change", function(){// use change rather than click here
-	$animal=$('#foundAnimal').val();//store animal menu item in animal variable
-});//close bind function
-});//close document ready function
+$('#foundBirdTile').bind("click", function(){
+	$animal = "Bird";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeBirdsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundExoticTile').bind("click", function(){
+	$animal = "Exotic";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeExoticScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundEquineTile').bind("click", function(){
+	$animal = "Equine";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeEquineScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundDogTile').bind("click", function(){
+	$animal = "Dog";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeDogsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundCatTile').bind("click", function(){
+	$animal = "Cat";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeCatsScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundSmallfurriesTile').bind("click", function(){
+	$animal = "SmallFurries";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+});
+});
+
+$(document).ready(function(){
+$('#foundAquaticTile').bind("click", function(){
+	$animal = "Aquatic";
+	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeAquaticScaled.png';
+});
+});
 
 
 
 
-// the following function binds the value chosen in the select-county list to the variable county when the item is clicked
+// the following function binds the value chosen in the select-county list to the variable county when the item is clicked. The menu item needs to be refreshed on entering the page forwards or backwards.
 
 $(document).ready(function(){
 $('#foundCounty').bind("change", function(){// use change rather than click here
@@ -361,8 +529,7 @@ xmlhttp.onreadystatechange=function()
     $('#rehomedblist').listview('refresh');
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://localhost/petsie/rehomeSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/rehomeSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -393,8 +560,7 @@ xmlhttp.onreadystatechange=function()
     getRehomePetListingButton($photoID, $adID);
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -442,8 +608,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("rehomeChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenRehomePetPhoto($photoID, $adID);
@@ -472,8 +637,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("rehomeChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -518,8 +682,7 @@ xmlhttp.onreadystatechange=function()
     $('#lost2dblist').listview('refresh');
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://localhost/petsie/lostSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/lostSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -549,8 +712,7 @@ xmlhttp.onreadystatechange=function()
     getLostPetListingButton($photoID, $adID);
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -590,8 +752,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("lostChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenLostPetPhoto($photoID, $adID);
@@ -620,8 +781,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("lostChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -667,8 +827,7 @@ xmlhttp.onreadystatechange=function()
     $('#foundPetsdblist').listview('refresh');
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
-xmlhttp.open("GET","http://localhost/petsie/foundSearchLocalDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/foundSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -698,8 +857,7 @@ xmlhttp.onreadystatechange=function()
     getFoundPetListingButton($photoID, $adID);
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -738,8 +896,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("foundChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getChosenListing.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenFoundPetPhoto($photoID, $adID);
@@ -768,8 +925,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("foundChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-//xmlhttp.open("GET","http://192.168.1.102/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
-xmlhttp.open("GET","http://localhost/petsie/getLocalPetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -837,6 +993,7 @@ $(document).ready(function(){
 $('#login2Button').bind("click", function(){
 	$email=$('#storedEmailAddress2').val();
 	$password=$('#storedPassword2').val();
+//	$('#login2Buttonfeedback').html("email is "+$email+". password is "+$password); // test code
 	login2($email,$password);
 });//close bind function
 });//close document ready function
@@ -872,7 +1029,7 @@ xmlhttp.onreadystatechange=function()
 		}
     }
   };
-xmlhttp.open("GET","http://localhost/petsie/login.php?email="+$email+"&password="+$password,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/login.php?email="+$email+"&password="+$password,true);
 xmlhttp.send();
 }
 
@@ -881,6 +1038,7 @@ xmlhttp.send();
 
 function login2($email,$password)
 {
+//$('#login2Buttonfeedback').html("email is "+$email+". password is "+$password+". function login2 entered..."); // test code
 var xmlhttp;
 
 if (window.XMLHttpRequest)
@@ -903,10 +1061,11 @@ xmlhttp.onreadystatechange=function()
 		{
 //		$('#loginButton2feedback').html($id+" Correct!"); // debug code
 		window.location = 'index.html#myListings';
+		getMyListings($id);
 		}
     }
   };
-xmlhttp.open("GET","http://localhost/petsie/login.php?email="+$email+"&password="+$password,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/login.php?email="+$email+"&password="+$password,true);
 xmlhttp.send();
 }
 
@@ -914,7 +1073,7 @@ xmlhttp.send();
 
 
 
-// The function below  collects data and fires the login2 function when the Register button from "Place an Ad" is pressed. 
+// The function below  collects data and fires the register function when the Register button from "Place an Ad" is pressed. 
 
 $(document).ready(function(){
 $('#registerButton').bind("click", function(){
@@ -960,7 +1119,7 @@ xmlhttp.onreadystatechange=function()
 
     }
   };
-xmlhttp.open("GET","http://localhost/petsie/registration.php?nameTitle="+$nameTitle+"&firstName="+$firstName+"&secondName="+$secondName+"&registerCounty="+$registerCounty+"&contactPhoneNumber="+$contactPhoneNumber+"&email="+$email+"&password="+$password,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/registration.php?nameTitle="+$nameTitle+"&firstName="+$firstName+"&secondName="+$secondName+"&registerCounty="+$registerCounty+"&contactPhoneNumber="+$contactPhoneNumber+"&email="+$email+"&password="+$password,true);
 xmlhttp.send();
 }
 
@@ -1027,8 +1186,16 @@ $('#addCounty').bind("change", function(){// use change rather than click here
 
 
 
+// the function below gets the user location (if button pressed) and sets the $geolatitude and $geolongitude global variables.
 
-// $listingType, $animal, $id and $county are global and are not gathered in the next function which collects data from the addalisting page
+$(document).ready(function(){
+$('#geolocationButton').bind("click", function(){
+document.addEventListener("deviceready", onDeviceReady, false);
+});//close bind function
+});//close document ready function
+
+
+// $listingType, $animal, $id, $county, $geolatitude and $geolongitude are global and are not gathered in the next function which collects data from the addalisting page
 
 $(document).ready(function(){
 $('#addListing2Button').bind("click", function(){
@@ -1044,7 +1211,9 @@ $('#addListing2Button').bind("click", function(){
 });//close bind function
 });//close document ready function
 
-// reviewAdButton
+
+
+
 
 // the function below takes the user input, queries the database (via addAListingPreview.php )for the user's phone number and email address and displays a preview of the advert. The photo preview will also be dealt with here
 
@@ -1057,7 +1226,12 @@ if ($agree_to_terms=="0")
 	}
 else
 	{
-// query the database for user's phone number and email address (if agreed)	
+	$('#addAListingFeedback').html(""); // clear the message above.
+
+// feedback on geolocation:
+
+	$('#addAListingFeedback').html("Geolocation: "+$geolatitude+" & "+$geolongitude); // debug code
+
 	if ($price==undefined)
 	{
 	$price = "Price not relevant";
@@ -1066,7 +1240,6 @@ else
 	{
 	$price = "EUR"+$price;
 	}
-// $('#TempReview').html($price); // test code
 
 	var xmlhttp;
 
@@ -1083,10 +1256,6 @@ else
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
 
-//		$phoneAndEmail = xmlhttp.responseText;
-
-//		$previewText = $animal+"<br/>"+$advertTitle+"<br/>"+$description+"<br/>"+$price+"<br/>"+$county+"<br/>"+$phoneAndEmail+"<br/>";
-
 		$previewText = xmlhttp.responseText;
 
 		$('#addedListing').html($previewText); // test code
@@ -1094,7 +1263,7 @@ else
 		}
 	  };
 // addAListingPreview.php receives the raw information and adds information from the database tables users, pet_type, location_counties and sends it back in order.
-	xmlhttp.open("GET","http://localhost/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
+	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
 	xmlhttp.send();
 
 	}
@@ -1102,18 +1271,10 @@ else
 
 
 
-// the function below uploads the advert to the server database and the photo to AWS
+// the function below uploads the advert using global variables to the server database and the photo to AWS
 
 function uploadlisting()
 {
-// temporary debug code:
-//$feedbackmessage = "user_id is "+$id+", listingType is "+$listingType+", animal is "+$animal+", county is "+$county+", advertTitle is "+$advertTitle+", description is "+$description+", price is "+$price+", date is "+$year+$month+$day+", contact_by_email is "+$contact_by_email+", agree_to_terms is "+$agree_to_terms; // test code
-
-//$('#UploadFeedback').html($feedbackmessage); // test code
-
-$longitude = -6.3087624; // temporary setting, this will be taken from phone's geolocation
-$latitude = 52.6753644; // temporary setting, this will be taken from phone's geolocation
-
 var xmlhttp;
 
 if (window.XMLHttpRequest)
@@ -1132,20 +1293,178 @@ xmlhttp.onreadystatechange=function()
 	$ads_id = xmlhttp.responseText; // test code
 		if (parseInt($ads_id) > 4491)
 			{
-			$('#UploadFeedback').html("Upload successful "+$ads_id); // remove $ads_id
+			$('#uploadFeedback').html("Ad upload successful "+$ads_id); // remove $ads_id later
+
+			photoUploads($ads_id,$animal);
+
 			}
 		else
 			{
-			$('#UploadFeedback').html($ads_id); // test code		
+			$('#uploadFeedback').html($ads_id); // test code		
 			}
 	}
   };
-xmlhttp.open("GET","http://localhost/petsie/addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$longitude+"&latitude="+$latitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$geolongitude+"&latitude="+$geolatitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
 xmlhttp.send();
 }
 
 
 
-// Upload Button function here. This function may have been superseded by the HTML form.
-// Can I delete this and fire insertCustomer() from within function onAnimalPhotoURISuccess() in file camera.js / move those functions to this file
+
+function photoUploads($ads_id,$animal)
+{
+
+// start loop here
+
+uploadPhoto(filePath); // these are in cameraPets.js
+
+var xmlhttp;
+
+xmlhttp=new XMLHttpRequest(); // not using old IE browsers
+
+xmlhttp.onreadystatechange=function()
+  {
+	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	{
+	$photo_id = xmlhttp.responseText; // test code
+		if (parseInt($photo_id) > 6795)
+			{
+			$('#photoUploadFeedback').html("Photo upload successful "+$photo_id+"<br/>"); // remove $photo_id later
+			}
+		else
+			{
+			$('#photoUploadFeedback').html($photo_id); // test code		
+			}
+	}
+  };
+// ad_photos.php receives the ads_id and animal and manages the uploaded photos and database inserts.
+	xmlhttp.open("GET","http://webelevate11.com/app/petsie/ad_photos.php?ads_id="+$ads_id+"&animal="+$animal,true);
+	xmlhttp.send();
+
+// loop end condition here
+}
+
+
+
+
+function getMyListings($id)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    $('#myListingsdblist').append(xmlhttp.responseText);// append the list from myListings.php to myListingsdblistdblist
+    $('#myListingsdblist').listview('refresh');
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/myListings.php?id="+$id,true);
+xmlhttp.send();
+}
+
+
+
+
+function showMyPetPhoto($photoID, $adID)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // write the response from the server into the img src
+    document.getElementById("myListingsPhotoFromServer").src=xmlhttp.responseText; 
+    // call a function to generate a button below the photo:
+    getMyPetListingButton($photoID, $adID);
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.send();
+}
+
+
+
+
+function getMyPetListingButton($photoID, $adID)
+{
+document.getElementById("myListingsButtonDiv").innerHTML="<a href='#chosenPetListing'><button id='selectedMyListingButton'>Select This Listing</button></a>";
+
+$('#selectedMyListingButton').button(); // initialise button before refreshing it.
+$('#selectedMyListingButton').button('refresh');
+getChosenMyPetListing($photoID, $adID);// Get detailed listing from server
+}
+
+
+
+
+function getChosenMyPetListing($photoID, $adID)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // write the response from the server into the listing div:
+    document.getElementById("chosenPetListingDiv").innerHTML=xmlhttp.responseText; 
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.send();
+// call a function to fetch the photo:
+showChosenMyPetPhoto($photoID, $adID);
+}
+
+
+
+
+function showChosenMyPetPhoto($photoID, $adID)
+{
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+  {
+   xmlhttp=new XMLHttpRequest();// code for IE7+, Firefox, Chrome, Opera, Safari
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
+  };
+xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    // write the response from the server into the img src:
+    document.getElementById("chosenPetListingPhotoFromServer").src=xmlhttp.responseText; 
+    }
+  };
+xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.send();
+}
 

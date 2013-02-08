@@ -1,23 +1,15 @@
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	.ui-icon-shell {
-		background-image: url("app-icon-shell-highres.png");
-		background-size: 18px 18px;
-	}
-	...more HD icon rules go here...
-}
 
 .ui-icon-pets {
-	background-image: url("app-icon-pets.png");
+	background-image: url("petsLogoScaled.png");
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	.ui-icon-shell {
+		.ui-icon-pets {
 		background-image: url("app-icon-pets-highres.png");
 		background-size: 18px 18px;
 	}
 	...more HD icon rules go here...
 }
-
 
 
 .ui-li .ui-btn-text a.ui-link-inherit {white-space: normal;}
@@ -26,6 +18,7 @@
 
 /*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
 
+/*Home page:*/
 .logospan{position:absolute; left:0px; top:0px;}
 
 .topleftspan{position:absolute; left:0px; top:252px;}
@@ -40,22 +33,27 @@
 
 .infospan{position:absolute; left:268px; top:366px;}
 
-.footerbar{position:absolute; top:465px;}
 
-.searchbutton {padding-left:9%; padding-right:9%;} /* home page search button */
+/*Get a New/Lost/Found Pet:*/
+.backspan{position:absolute; left:0px; top:0px;}
 
-.screen1homebutton {padding-right:20%;}
+.headerspan{position:absolute; left:54px; top:0px;}
 
-.screen1searchbutton {padding-left:20%;}
+.homespan{position:absolute; left:266px; top:0px;}
 
-.screen3homebutton {padding-left:8%; padding-right:8%;}
+.choosepettypespan{position:absolute; left:0px; top:54px;}
 
-.selectedListingButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.birdspan{position:absolute; left:0px; top:108px;}
 
-/*.selectedRehomeButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.exoticspan{position:absolute; left:160px; top:108px;}
 
-/*.selectedLostButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.equinespan{position:absolute; left:0px; top:243px;}
 
-/*.selectedFoundButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.dogspan{position:absolute; left:112px; top:243px;}
 
+.catspan{position:absolute; left:208px; top:243px;}
+
+.smallfurriespan{position:absolute; left:0px; top:371px;}
+
+.aquaticspan{position:absolute; left:160px; top:371px;}
 
