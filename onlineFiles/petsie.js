@@ -29,9 +29,6 @@ var $agree_to_terms;
 var $geolongitude; //This is taken from phone's geolocation
 var $geolatitude; //This is taken from phone's geolocation
 
-//$geolongitude = -6.3087624; // temporary setting, this will be taken from phone's geolocation
-//$geolatitude = 52.6753644; // temporary setting, this will be taken from phone's geolocation
-
 var $ads_id; // 'ads' id retrieved by uploadlisting() and addalisting.php
 
 /* Login variables from Facebook
@@ -300,49 +297,49 @@ else if ($county=="Wicklow") {$lat=53.5; $lng=-6.9; $zoom=9;}
 $(document).ready(function(){
 $('#getNewBirdTile').bind("click", function(){
 	$animal = "Bird";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeBirdsScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeBirdsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#getNewExoticTile').bind("click", function(){
 	$animal = "Exotic";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeExoticScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeExoticScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#getNewEquineTile').bind("click", function(){
 	$animal = "Equine";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeEquineScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeEquineScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#getNewDogTile').bind("click", function(){
 	$animal = "Dog";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeDogsScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeDogsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#getNewCatTile').bind("click", function(){
 	$animal = "Cat";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeCatsScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeCatsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#getNewSmallfurriesTile').bind("click", function(){
 	$animal = "SmallFurries";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeSmallfurriesScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#getNewAquaticTile').bind("click", function(){
 	$animal = "Aquatic";
-	document.getElementById("SearchForNewPetsBy").src='choosePetTypeAquaticScaled.png';
+	$('#SearchForNewPetsBy').attr('src','choosePetTypeAquaticScaled.png');
 });
 });
 
@@ -364,49 +361,49 @@ $('#rehomeCounty').bind("change", function(){// use change rather than click her
 $(document).ready(function(){
 $('#lostBirdTile').bind("click", function(){
 	$animal = "Bird";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeBirdsScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeBirdsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#lostExoticTile').bind("click", function(){
 	$animal = "Exotic";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeExoticScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeExoticScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#lostEquineTile').bind("click", function(){
 	$animal = "Equine";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeEquineScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeEquineScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#lostDogTile').bind("click", function(){
 	$animal = "Dog";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeDogsScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeDogsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#lostCatTile').bind("click", function(){
 	$animal = "Cat";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeCatsScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeCatsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#lostSmallfurriesTile').bind("click", function(){
 	$animal = "SmallFurries";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeSmallfurriesScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#lostAquaticTile').bind("click", function(){
 	$animal = "Aquatic";
-	document.getElementById("SearchForLostPetsBy").src='choosePetTypeAquaticScaled.png';
+	$('#SearchForLostPetsBy').attr('src','choosePetTypeAquaticScaled.png');
 });
 });
 
@@ -429,49 +426,49 @@ $('#lostCounty').bind("change", function(){// use change rather than click here
 $(document).ready(function(){
 $('#foundBirdTile').bind("click", function(){
 	$animal = "Bird";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeBirdsScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeBirdsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#foundExoticTile').bind("click", function(){
 	$animal = "Exotic";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeExoticScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeExoticScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#foundEquineTile').bind("click", function(){
 	$animal = "Equine";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeEquineScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeEquineScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#foundDogTile').bind("click", function(){
 	$animal = "Dog";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeDogsScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeDogsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#foundCatTile').bind("click", function(){
 	$animal = "Cat";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeCatsScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeCatsScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#foundSmallfurriesTile').bind("click", function(){
 	$animal = "SmallFurries";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeSmallfurriesScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeSmallfurriesScaled.png');
 });
 });
 
 $(document).ready(function(){
 $('#foundAquaticTile').bind("click", function(){
 	$animal = "Aquatic";
-	document.getElementById("SearchForFoundPetsBy").src='choosePetTypeAquaticScaled.png';
+	$('#SearchForFoundPetsBy').attr('src','choosePetTypeAquaticScaled.png');
 });
 });
 

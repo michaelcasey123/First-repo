@@ -8,6 +8,7 @@
 	<script src="jquery-1.8.0.js"></script>
 	<script src="jquery.mobile-1.1.1.min.js"></script>
 	<script src="petsie.js"></script>
+	<script src="depress.js"></script>
 	<script src="cordova-2.0.0.js"></script>
 <	<script src="cameraPets.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
@@ -141,15 +142,6 @@ function upImg14(x) {x.src=img14.src;}
 function downImg15(x) {x.src=img15d.src;}
 function upImg15(x) {x.src=img15.src;}
 
-
-// if this doesn't work try "click" ("tap" doesn't work)
-$(document).ready(function(){
-$('#lostTile').bind("click", function(){
-	$('#lostTile').src(img1d.src);
-});
-});
-
-
 </script> 
 </head> 
 
@@ -193,23 +185,23 @@ var $geolatitude;
 </span>
 
 <span class="topmiddlespan">
-<a href="#foundGraphics"><img onMousedown="downImg2(this)" onMouseup="upImg2(this)" src="FoundScaled.png"/></a>
+<a href="#foundGraphics"><img id="foundTile" onMousedown="downImg2(this)" onMouseup="upImg2(this)" src="FoundScaled.png"/></a>
 </span>
 
 <span class="toprightspan">
-<a href="#rehomeGraphics"><img onMousedown="downImg3(this)" onMouseup="upImg3(this)" src="GetANewPetScaled.png"/></a>
+<a href="#rehomeGraphics"><img id="newTile" onMousedown="downImg3(this)" onMouseup="upImg3(this)" src="GetANewPetScaled.png"/></a>
 </span>
 
 <span class="bottomleftspan">
-<a href="#login"><img onMousedown="downImg4(this)" onMouseup="upImg4(this)" src="PlaceAnAdScaled.png"/></a>
+<a href="#login"><img id="placeTile" onMousedown="downImg4(this)" onMouseup="upImg4(this)" src="PlaceAnAdScaled.png"/></a>
 </span>
 
 <span class="bottomrightspan">
-<a href="#login2"><img onMousedown="downImg5(this)" onMouseup="upImg5(this)" src="MyAdsScaled.png"/></a>
+<a href="#login2"><img id="myTile" onMousedown="downImg5(this)" onMouseup="upImg5(this)" src="MyAdsScaled.png"/></a>
 </span>
 
 <span class="infospan">
-<a href="#about" data-transition="pop"><img onMousedown="downImg6(this)" onMouseup="upImg6(this)" src="InfoScaled.png"/></a>
+<a href="#about" data-transition="pop"><img id="infoTile" onMousedown="downImg6(this)" onMouseup="upImg6(this)" src="InfoScaled.png"/></a>
 </span>
 
 
@@ -224,11 +216,11 @@ var $geolatitude;
 
 
 
-<!-- Start of About Dialog box -->
+<!-- Start of Information Dialog box -->
 <div data-role="dialog" id="about" data-close-btn-text="Close">
 
 	<div data-role="header">
-		<h1>About Dialog</h1>
+		<h1>Information</h1>
         <!--<a href="#home" data-rel="back">Back</a>
         <a href="#contact">Contact Us</a>-->
     </div><!-- /header -->
@@ -246,7 +238,7 @@ var $geolatitude;
 	</div><!-- /content -->
 
 	<div data-role="footer">
-		<h4>About</h4>
+		<h4>Information</h4>
 	</div><!-- /footer -->
 </div><!-- End of About page -->
 
@@ -266,7 +258,7 @@ var $geolatitude;
 
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="backTile" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -274,7 +266,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="homeTile" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -337,7 +329,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#rehomeGraphics"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#rehomeGraphics"><img id="rehomeBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -345,7 +337,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="rehomeHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -446,7 +438,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#rehome"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#rehome"><img id="rehome2back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -454,7 +446,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="rehome2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <br/><br/><br/>
@@ -506,7 +498,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#rehome2"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#rehome2"><img id="rehome3back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -514,7 +506,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="rehome3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 
@@ -551,7 +543,7 @@ var $geolatitude;
 
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="lostGraphicsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -559,7 +551,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="lostGraphicsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -619,7 +611,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#lostGraphics"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#lostGraphics"><img id="lostBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -627,7 +619,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="lostHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -711,7 +703,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#lost"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#lost"><img id="lost2Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -719,7 +711,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="lost2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <br/><br/><br/>
@@ -772,7 +764,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#lost2"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#lost2"><img id="lost3Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -780,7 +772,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="lost3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <br/><br/><br/>
@@ -833,7 +825,7 @@ var $geolatitude;
 
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="foundGraphicsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -841,7 +833,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="foundGraphicsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -903,7 +895,7 @@ var $geolatitude;
 <!-- <div id="foundPetTitle"></div> <!--e.g. Search for Dogs by:-->
 
 <span class="backspan">
-<a href="#foundGraphics"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#foundGraphics"><img id="foundBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -911,7 +903,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="foundHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -995,7 +987,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#found"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#found"><img id="found2Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1003,7 +995,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="found2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <br/><br/><br/>
@@ -1054,7 +1046,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#found2"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#found2"><img id="found3Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1062,7 +1054,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="found3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 
@@ -1126,7 +1118,7 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="loginBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1134,7 +1126,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="loginHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <br/><br/><br/>
@@ -1264,7 +1256,7 @@ First time? Then please Register:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="login2Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1272,7 +1264,7 @@ First time? Then please Register:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="login2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <br/><br/><br/>
@@ -1326,7 +1318,7 @@ Please sign in
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="addalistingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1334,7 +1326,7 @@ Please sign in
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="addalistingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1577,7 +1569,7 @@ Date Lost/Found:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#addalisting"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#addalisting"><img id="addalisting2Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1585,7 +1577,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="addalisting2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1649,7 +1641,7 @@ Date Lost/Found:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#addalisting2"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#addalisting2"><img id="previewAddedListingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1657,7 +1649,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="previewAddedListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1706,7 +1698,7 @@ Date Lost/Found:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#home"><img id="myListingsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1714,7 +1706,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="myListingsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1767,7 +1759,7 @@ Date Lost/Found:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#myListings"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#myListings"><img id="chosenPetListingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1775,7 +1767,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="chosenPetListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1819,7 +1811,7 @@ Date Lost/Found:
     <div data-role="content">
 
 <span class="backspan">
-<a href="#chosenPetListing"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#chosenPetListing"><img id="editUpdateListingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1827,7 +1819,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="editUpdateListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1974,7 +1966,7 @@ Date Lost/Found:
     <div data-role="content">
 
 <span class="backspan">
-<a href="#editUpdateListing"><img onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="#editUpdateListing"><img id="previewEditedListingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1982,7 +1974,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="#home"><img id="previewEditedListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
