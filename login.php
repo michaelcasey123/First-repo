@@ -26,16 +26,7 @@ if (strlen($password)<6)
 if (filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($password)>=6)
 {
 
-
-//	        	           DB_HOST,  DB_USER,  DB_PASSWORD, 
-$link_id = mysql_connect('localhost', 'root', 'friend88**');
-if (!$link_id)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-
-//				 DB_DATABASE
-mysql_select_db("db1020773_pets", $link_id);
+include "dbconfig.php";
 
 $sqlQuery = "SELECT id FROM users WHERE email = '".$email."' AND password = '".$password."';";
 

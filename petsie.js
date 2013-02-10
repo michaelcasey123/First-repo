@@ -1,6 +1,9 @@
 <!--
 // These are only global to index.html. No other files can access these.
 // Pet database search variables
+
+// useurl is in ajaxconfig.js
+
 var $animal;
 var $county;
 var $photoID;
@@ -31,68 +34,6 @@ var $geolatitude; //This is taken from phone's geolocation
 
 var $ads_id; // 'ads' id retrieved by uploadlisting() and addalisting.php
 
-/* Login variables from Facebook
-var $id;
-var $name;
-var $firstName;
-var $lastName;
-var $userName;
-var $gender;
-var $locale;
-var $email;
-*/
-// The following functions get the phone's file system and read the file written by Android in petsie.java
-
-    // Wait for Cordova to load
-/*    
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-
-    // Cordova is ready
-    // This needs to be done immediately after Facebook Login or from existing file from previous login
-    function onDeviceReady() {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    }
-
-    function gotFS(fileSystem) {
-        fileSystem.root.getFile("facebookUserInfo", null, gotFileEntry, fail);
-    }
-
-    function gotFileEntry(fileEntry) {
-        fileEntry.file(gotFile, fail);
-    }
-
-    function gotFile(file){
-        readDataUrl(file);
-        readAsText(file);
-    }
-
-    // I don't think I need this function. Check when file written, whether it's data or text. Also locate it on the phone if possible.
-
-     function readDataUrl(file) {
-        var reader = new FileReader();
-        reader.onloadend = function(evt) {
-            console.log("Read as data URL");
-            console.log(evt.target.result);
-        };
-        reader.readAsDataURL(file);
-    }
-
-    function readAsText(file) {
-        var reader = new FileReader();
-        reader.onloadend = function(evt) {
-            console.log("Read as text");
-            console.log(evt.target.result); // presumably the file's contents are written to the browser debug console. How do I see this from the phone? Are they shown on the Eclipse LogCat? They need to be assigned to variables.
-        };
-        reader.readAsText(file);
-    }
-
-    function fail(error) {
-        console.log(error.code);
-    }
-
-*/
 
 // PhoneGap Geolocation functions below:
 
@@ -184,7 +125,7 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://webelevate11.com/app/petsie/lostMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET",useurl+"lostMarkersSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
 
 
@@ -243,10 +184,8 @@ for (var i = 0; i < json.data.length; i++) {
 
 
 };
-http_request.open("GET","http://webelevate11.com/app/petsie/foundMarkersSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+http_request.open("GET",useurl+"foundMarkersSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
 http_request.send();
-
-
 }
 
 
@@ -526,7 +465,7 @@ xmlhttp.onreadystatechange=function()
     $('#rehomedblist').listview('refresh');
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/rehomeSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET",useurl+"rehomeSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -557,7 +496,7 @@ xmlhttp.onreadystatechange=function()
     getRehomePetListingButton($photoID, $adID);
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -605,7 +544,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("rehomeChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenRehomePetPhoto($photoID, $adID);
@@ -634,7 +573,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("rehomeChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -679,7 +618,7 @@ xmlhttp.onreadystatechange=function()
     $('#lost2dblist').listview('refresh');
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/lostSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET",useurl+"lostSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -709,7 +648,7 @@ xmlhttp.onreadystatechange=function()
     getLostPetListingButton($photoID, $adID);
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -749,7 +688,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("lostChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenLostPetPhoto($photoID, $adID);
@@ -778,7 +717,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("lostChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -824,7 +763,7 @@ xmlhttp.onreadystatechange=function()
     $('#foundPetsdblist').listview('refresh');
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/foundSearchOnlineDB.php?pettype="+$animal+"&theCounty="+$county,true);
+xmlhttp.open("GET",useurl+"foundSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
 xmlhttp.send();
 }
 
@@ -854,7 +793,7 @@ xmlhttp.onreadystatechange=function()
     getFoundPetListingButton($photoID, $adID);
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -893,7 +832,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("foundChosenListing").innerHTML=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenFoundPetPhoto($photoID, $adID);
@@ -922,7 +861,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("foundChosenPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -1026,7 +965,7 @@ xmlhttp.onreadystatechange=function()
 		}
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/login.php?email="+$email+"&password="+$password,true);
+xmlhttp.open("GET",useurl+"login.php?email="+$email+"&password="+$password,true);
 xmlhttp.send();
 }
 
@@ -1062,7 +1001,7 @@ xmlhttp.onreadystatechange=function()
 		}
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/login.php?email="+$email+"&password="+$password,true);
+xmlhttp.open("GET",useurl+"login.php?email="+$email+"&password="+$password,true);
 xmlhttp.send();
 }
 
@@ -1116,7 +1055,7 @@ xmlhttp.onreadystatechange=function()
 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/registration.php?nameTitle="+$nameTitle+"&firstName="+$firstName+"&secondName="+$secondName+"&registerCounty="+$registerCounty+"&contactPhoneNumber="+$contactPhoneNumber+"&email="+$email+"&password="+$password,true);
+xmlhttp.open("GET",useurl+"registration.php?nameTitle="+$nameTitle+"&firstName="+$firstName+"&secondName="+$secondName+"&registerCounty="+$registerCounty+"&contactPhoneNumber="+$contactPhoneNumber+"&email="+$email+"&password="+$password,true);
 xmlhttp.send();
 }
 
@@ -1260,7 +1199,7 @@ else
 		}
 	  };
 // addAListingPreview.php receives the raw information and adds information from the database tables users, pet_type, location_counties and sends it back in order.
-	xmlhttp.open("GET","http://webelevate11.com/app/petsie/addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
+	xmlhttp.open("GET",useurl+"addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
 	xmlhttp.send();
 
 	}
@@ -1301,7 +1240,7 @@ xmlhttp.onreadystatechange=function()
 			}
 	}
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$geolongitude+"&latitude="+$geolatitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
+xmlhttp.open("GET",useurl+"addalisting.php?userid="+$id+"&advertTitle="+$advertTitle+"&description="+$description+"&county="+$county+"&allowEmail="+$contact_by_email+"&longitude="+$geolongitude+"&latitude="+$geolatitude+"&date_lost_found="+$year+$month+$day+"&sale_price="+$price+"&ad_type_id="+$listingType+"&pet_type_id="+$animal,true);
 xmlhttp.send();
 }
 
@@ -1335,7 +1274,7 @@ xmlhttp.onreadystatechange=function()
 	}
   };
 // ad_photos.php receives the ads_id and animal and manages the uploaded photos and database inserts.
-	xmlhttp.open("GET","http://webelevate11.com/app/petsie/ad_photos.php?ads_id="+$ads_id+"&animal="+$animal,true);
+	xmlhttp.open("GET",useurl+"ad_photos.php?ads_id="+$ads_id+"&animal="+$animal,true);
 	xmlhttp.send();
 
 // loop end condition here
@@ -1364,7 +1303,7 @@ xmlhttp.onreadystatechange=function()
     $('#myListingsdblist').listview('refresh');
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/myListings.php?id="+$id,true);
+xmlhttp.open("GET",useurl+"myListings.php?id="+$id,true);
 xmlhttp.send();
 }
 
@@ -1393,7 +1332,7 @@ xmlhttp.onreadystatechange=function()
     getMyPetListingButton($photoID, $adID);
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
@@ -1432,7 +1371,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("chosenPetListingDiv").innerHTML=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getChosenListing.php?theID="+$adID,true);
+xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$adID,true);
 xmlhttp.send();
 // call a function to fetch the photo:
 showChosenMyPetPhoto($photoID, $adID);
@@ -1461,7 +1400,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("chosenPetListingPhotoFromServer").src=xmlhttp.responseText; 
     }
   };
-xmlhttp.open("GET","http://webelevate11.com/app/petsie/getOnlinePetPhoto.php?theID="+$photoID,true);
+xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
 }
 
