@@ -9,9 +9,10 @@
 	<script src="jquery.mobile-1.1.1.min.js"></script>
 	<script src="petsie.js"></script>
 	<script src="depress.js"></script>
-	<script src="undepress.js"></script>	
+	<script src="undepress.js"></script>
+	<script src="ajaxconfig.js"></script>
 	<script src="cordova-2.0.0.js"></script>
-<	<script src="cameraPets.js"></script>
+	<script src="cameraPets.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkcomuVG18AIFSY-OX6RWEaggR5dV0Cvc&sensor=false"></script>
 
 <!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /><!--Associated with map-->
@@ -222,8 +223,6 @@ var $geolatitude;
 
 	<div data-role="header">
 		<h1>Information</h1>
-        <!--<a href="#home" data-rel="back">Back</a>
-        <a href="#contact">Contact Us</a>-->
     </div><!-- /header -->
 
 	<div data-role="content">
@@ -319,13 +318,6 @@ var $geolatitude;
     
 <!-- Start of Rehome Pets page -->
 <div data-role="page" id="rehome">
-<!--
-	<div data-role="header">
-	<a href="#rehomeGraphics" data-role="button" data-icon="back">Back</a>
-		<h1>Available Pets</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
-    </div><!-- /header -->
-
 	
     <div data-role="content">	
 
@@ -427,14 +419,6 @@ var $geolatitude;
 
 <!-- Start of Rehome Pets View of Results page -->
 <div data-role="page" id="rehome2">
-<!--
-    <div data-role="header">
-	<a href="#rehome" data-role="button" id="rehome2backbutton" data-icon="back">Back</a>
-		<h1>Available Pets</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
-
-    </div><!-- /header -->
-
 	
     <div data-role="content">	
 
@@ -461,16 +445,6 @@ var $geolatitude;
 </ul>
 
 
-	<img style="width:290px;" id="rehomePhotoFromServer" src="" />
-
-<div style="text-align: center;" id="rehomePhotoFromServerText"></div><!--Temporary test div-->
-
-<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
-
-
-<div style="text-align: center;" id="RehomeListingButtonDiv"></div>
-
-
     </div><!-- /content -->
 
 
@@ -488,14 +462,6 @@ var $geolatitude;
 <!-- Start of Rehome Chosen Pet Listing page -->
 <div data-role="page" id="rehome3">
 
-<!--
-	<div data-role="header">
-	<a href="#rehome2" data-role="button" data-icon="back">Back</a>
-		<h1>Chosen Pet</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
-    </div><!-- /header -->
-
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -601,13 +567,6 @@ var $geolatitude;
 
 <!-- Start of Lost Pets page -->
 <div data-role="page" id="lost">
-<!--
-	<div data-role="header">
-	<a href="#lostGraphics" data-role="button" data-icon="back">Back</a>
-		<h1>Lost Pets</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
-    </div><!-- /header -->
-
 	
     <div data-role="content">	
 
@@ -695,12 +654,6 @@ var $geolatitude;
 <!-- Start of Lost Pets Detailed Search page -->
 <div data-role="page" id="lost2">
 
-<!--	<div data-role="header">
-	<a href="#lost" data-role="button" data-icon="back">Back</a>
-		<h1>Lost Pets</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
-
     <div data-role="content">	
 
 <span class="backspan">
@@ -729,16 +682,6 @@ var $geolatitude;
 </ul>
 
 
-<div style="text-align: center;" id="lost2photoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="lost2photoFromServer" src="" />
-
-
-<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
-
-
-<div id="LostListingButtonDiv"></div>
-
-
     </div><!-- /content -->
 
 
@@ -754,14 +697,6 @@ var $geolatitude;
 <!-- Start of Lost Chosen Pet Listing page -->
 <div data-role="page" id="lost3">
 
-<!--
-	<div data-role="header">
-	<a href="#lost2" data-role="button" data-icon="back">Back</a>
-		<h1>Chosen Pet</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
-
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -883,17 +818,8 @@ var $geolatitude;
 
 <!-- Start of Found Pets page -->
 <div data-role="page" id="found">
-<!--
-	<div data-role="header">
-	<a href="#foundGraphics" data-role="button" data-icon="back">Back</a>
-		<h1>Found Pets</h1>
-	<a href="#home" data-role="button" data-icon="home" >Home</a>
-    </div><!-- /header -->
-
 	
     <div data-role="content">	
-
-<!-- <div id="foundPetTitle"></div> <!--e.g. Search for Dogs by:-->
 
 <span class="backspan">
 <a href="#foundGraphics"><img id="foundBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
@@ -978,13 +904,6 @@ var $geolatitude;
 <!-- Start of Found Pets Detailed Search page -->
 <div data-role="page" id="found2">
 
-<!--
-	<div data-role="header">
-	<a href="#found" data-role="button" data-icon="back">Back</a>
-		<h1>Found Pets</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
-
     <div data-role="content">	
 
 <span class="backspan">
@@ -1009,16 +928,6 @@ var $geolatitude;
 	<li>Server Response Below:</li> 
 </ul>
 
-
-<div style="text-align: center;" id="foundPetsPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="foundPetsPhotoFromServer" src="" />
-
-
-<!--There will be a button here, (below the photo) written from JavaScript to view the listing on the next page. -->
-
-
-<div id="FoundListingButtonDiv"></div>
-
     </div><!-- /content -->
 
 
@@ -1036,14 +945,6 @@ var $geolatitude;
 <!-- Start of Found Chosen Pet Listing page -->
 <div data-role="page" id="found3">
 
-<!--
-	<div data-role="header">
-	<a href="#found2" data-role="button" data-icon="back">Back</a>
-		<h1>Chosen Pet</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
-
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -1107,15 +1008,8 @@ var $geolatitude;
 
 <!-- Start of Login Page - leads to Add A Listing page below -->
 
-<!-- Start of Login page -->
 <div data-role="page" id="login">
 
-<!--
-	<div data-role="header">
-		<h1>Login to Pets.ie</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
-    </div><!-- /header -->
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -1148,9 +1042,6 @@ Please sign in or register
 
 <div style="text-align: center;"><a data-role="button" id="loginButton" data-inline="true" data-theme="a" data-mini="true">Login</a></div>
 
-
-
-<!--Use Phonegap to get values for email address and password stored in the phone to login. If this fails, server-side code should present the user with text input boxes for email address and password or invite the user to login via Facebook, Twitter or Google+ -->
 
 <div id="loginButtonfeedback"></div>
 
@@ -1225,12 +1116,6 @@ First time? Then please Register:
 <div id="registerButtonfeedback"></div>
 
 
-<!--
-<div>Login via:</div>
-
-<a href="#FBRegister"><img src="facebookicon.jpg" height="42" width="42"/></a>
--->
-
     </div><!-- /content -->
 
 
@@ -1245,15 +1130,8 @@ First time? Then please Register:
 
 <!-- Start of Login2 Page - leads to My Listings page below -->
 
-<!-- Start of Login2 page -->
 <div data-role="page" id="login2">
 
-<!--
-	<div data-role="header">
-		<h1>Login to Pets.ie</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
-    </div><!-- /header -->
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -1287,11 +1165,6 @@ Please sign in
 
 <div id="login2Buttonfeedback"></div>
 
-<!--
-<div>Login via:</div>
-
-<a href="#FBRegister"><img src="facebookicon.jpg" height="42" width="42"/></a>
--->
 
     </div><!-- /content -->
 
@@ -1309,13 +1182,6 @@ Please sign in
 <!-- Start of Add A Listing page -->
 <div data-role="page" id="addalisting">
 
-<!--
-	<div data-role="header">
-		<h1>Add A Listing</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
-    </div><!-- /header -->
-
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -1404,7 +1270,7 @@ Please sign in
 <input type="text" name="advertTitle" id="advertTitle" value="" placeholder="Advert Title:" data-mini="true"/>
 
 <label for="description" class="ui-hidden-accessible">Description:</label>
-<input type="text" name="description" id="description" value="" placeholder="Description:" data-mini="true"/>
+<textarea name="description" id="description" data-mini="true"/>Description:</textarea>
 
 <div id="priceDiv">
 
@@ -1482,47 +1348,6 @@ Date Lost/Found:
 </div> <!--end div fieldcontain-->
 </div> <!--end div calendarDiv-->
 
-<!--
-<label for="addAListingContactPhoneNumber" class="ui-hidden-accessible">Phone Number:</label>
-<input type="text" name="addAListingContactPhoneNumber" id="addAListingContactPhoneNumber" value="" placeholder="Phone Number:" data-mini="true" />
-
-<label for="addAListingContactEmail" class="ui-hidden-accessible">Email Address:</label>
-<input type="text" name="addAListingContactEmail" id="addAListingContactEmail" value="" placeholder="Email Address:" data-mini="true" />
-
-<label for="addAListingPassword" class="ui-hidden-accessible">Password:</label>
-<input type="password" name="addAListingPassword" id="addAListingPassword" value="" placeholder="Password:" data-mini="true" />
--->
-<!--
-<fieldset data-role="controlgroup" data-mini="true">
-	<legend></legend>
-     	<input type="radio" name="addAListingEmailAgree" id="addAListingEmailAgree-1" value="true" checked="checked" />
-     	<label for="addAListingEmailAgree-1">Allow contact by email</label>
-
-     	<input type="radio" name="addAListingEmailAgree" id="addAListingEmailAgree-2" value="false"  />
-     	<label for="addAListingEmailAgree-2">Do not allow contact by email</label>
-</fieldset>
-
-<fieldset data-role="controlgroup" data-mini="true">
-	<legend></legend>
-     	<input type="radio" name="addAListingTandCsAgree" id="addAListingTandCsAgree-1" value="true" checked="checked" />
-     	<label for="addAListingTandCsAgree-1">Agree to Terms & Conditions</label>
-
-     	<input type="radio" name="addAListingTandCsAgree" id="addAListingTandCsAgree-2" value="false"  />
-     	<label for="addAListingTandCsAgree-2">Do not Agree</label>
-</fieldset>
--->
-
-<!--
-
-<label for="addAListingEmailAgree">Allow contact by email?</label>
-<input type="checkbox" name="addAListingEmailAgree" id="addAListingEmailAgree" value="true" data-mini="true"/>
-
-<label for="addAListingTandCsAgree">Agree to Advert Terms & Conditions</label>
-<input type="checkbox" name="addAListingTandCsAgree" id="addAListingTandCsAgree" value="true" data-mini="true"/>
-
--->
-
-<!-- <input type="submit" id="addAListingButton" value="Next"> -->
 
 	<label for="addAListingEmailAgree" class="select"></label>
 	<select name="addAListingEmailAgree" id="addAListingEmailAgree" data-mini="true">
@@ -1559,14 +1384,6 @@ Date Lost/Found:
 <!-- Start of Add A Listing2 page -->
 <div data-role="page" id="addalisting2">
 
-<!--
-	<div data-role="header">
-	<a href="#addalisting" data-role="button" data-icon="back">Back</a>
-		<h1>Add Photo</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
-
-	
     <div data-role="content">	
 
 <span class="backspan">
@@ -1604,13 +1421,6 @@ Date Lost/Found:
 	<img style="display:none;width:290px;" id="addAListingAnimalImage" src="" />
 
 
-<!--
-	<div style="text-align: center;"><a data-role="button" id="addAListingUploadButton" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Upload</a></div>  <!-- end button -->	
-
-<!--The line below probably won't be used -->	
-<!--	<div style="text-align: center;" id="dbInsertResults"></div> -->
-
-	
 	<div style="text-align: center;" id="addAListingUploadText"><br/></div>
 	
 
@@ -1631,13 +1441,6 @@ Date Lost/Found:
 
 <!-- Start of Preview Added Pet Listing page -->
 <div data-role="page" id="previewAddedListing">
-
-<!--
-	<div data-role="header">
-	<a href="#addalisting2" data-role="button" data-icon="back">Back</a>
-		<h1>Preview Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
 
     <div data-role="content">	
 
@@ -1690,12 +1493,6 @@ Date Lost/Found:
 <!-- Start of My Listings page -->
 <div data-role="page" id="myListings">
 
-<!--
-	<div data-role="header">
-		<h1>My Ads</h1>
-	<a href="#home" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
-    </div><!-- /header -->
-
     <div data-role="content">	
 
 <span class="backspan">
@@ -1725,10 +1522,6 @@ Date Lost/Found:
 </ul>
 
 
-
-<!--There should be a list from myListings.php file amended to this list from users id and ads. That'll do for now.-->
-
-
 <div style="text-align: center;" id="myListingsPhotoText"><br/></div><!--space for error message-->
 	<img style="width:290px;" id="myListingsPhotoFromServer" src="" />
 
@@ -1749,13 +1542,6 @@ Date Lost/Found:
 
 <!-- Start of Chosen Pet Listing page -->
 <div data-role="page" id="chosenPetListing">
-
-<!--
-	<div data-role="header">
-	<a href="#myListings" data-role="button" data-icon="back">Back</a>
-		<h1>Chosen Listing</h1>
-	<a href="#editUpdateListing" data-iconpos="right" data-icon="arrow-r">Edit</a>
-    </div><!-- /header -->
 
     <div data-role="content">	
 
@@ -1783,10 +1569,12 @@ Date Lost/Found:
 
 <img style="width:290px;" id="chosenPetListingPhotoFromServer" src="" />
 
-<!--The Delete Listing button will need the id of the chosen pet listing -->
 
-<div style="text-align: center;"><a href="javascript:deleteListing('$photoID')" data-role="button" id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" data-mini="true">Delete Listing</a></div>
+<div style="text-align: center;"><a data-role="button"
+id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" data-mini="true">Delete Listing</a></div>
 <br/>
+<div id="deleteListingFeedback"></div>
+
 <div style="text-align: center;"><a href="#editUpdateListing" data-role="button"  id="editMyListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Edit Listing</a></div>
 
   </div><!-- /content -->
@@ -1801,13 +1589,6 @@ Date Lost/Found:
 
 <!-- Start of Chosen Edit/Update Pet Listing page -->
 <div data-role="page" id="editUpdateListing">
-
-<!--
-	<div data-role="header">
-	<a href="#chosenPetListing" data-role="button" data-icon="back">Back</a>
-		<h1>Edit Listing</h1>
-	<a href="#previewEditedListing" data-iconpos="right" data-icon="arrow-r">Save</a>
-    </div><!-- /header -->
 
     <div data-role="content">
 
@@ -1829,99 +1610,43 @@ Date Lost/Found:
 
 <br/><br/><br/><br/><br/>
 
-
-
-<!--There will be a form here with values from the server:-->
+<div id="editListingFeedback"></div>
+<div id="editListingFeedbackAnimalDiv"></div>
+<div id="editListingFeedbackCountyDiv"></div>
+<!--Form with values from the server:-->
 <form>
 
 <label for="editUpdateListingAdvertTitle">Advert Title:</label>
-<input type="text" name="editUpdateListingAdvertTitle" id="editUpdateListingAdvertTitle" value="" placeholder="Data from server" data-mini="true"/>
+<input type="text" name="editUpdateListingAdvertTitle" id="editUpdateListingAdvertTitle" value="" data-mini="true"/>
 
 <label for="editUpdateListingDescription">Description:</label>
-<input type="text" name="editUpdateListingDescription" id="editUpdateListingDescription" value="" placeholder="Data from server" data-mini="true"/>
+<textarea name="editUpdateListingDescription" id="editUpdateListingDescription"/></textarea>
 
 <div id="editUpdateListingPriceDiv">
 <label for="editUpdateListingPrice">Price:</label>
-<input type="text" name="editUpdateListingPrice" id="editUpdateListingPrice" value="" placeholder="Data from server" data-mini="true" />
+<input type="text" name="editUpdateListingPrice" id="editUpdateListingPrice" value="" data-mini="true" />
 </div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
 
 <div id="editUpdateListingCalendarDiv">
-Date Lost/Found:
-<div data-role="fieldcontain">
-  <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-<!--    <legend></legend> -->
-    <label for="editUpdateListingSelectDay">Day</label>
-    <select name="editUpdateListingSelectDay" id="editUpdateListingSelectDay">
-    <option>Day</option>
-    <option value="01">1</option>
-    <option value="02">2</option>
-    <option value="03">3</option>
-    <option value="04">4</option>
-    <option value="05">5</option>
-    <option value="06">6</option>
-    <option value="07">7</option>
-    <option value="08">8</option>
-    <option value="09">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-    <option value="21">21</option>
-    <option value="22">22</option>
-    <option value="23">23</option>
-    <option value="24">24</option>
-    <option value="25">25</option>
-    <option value="26">26</option>
-    <option value="27">27</option>
-    <option value="28">28</option>
-    <option value="29">29</option>
-    <option value="30">30</option>
-    <option value="31">31</option>
-    </select>
-    <label for="editUpdateListingSelectMonth">Month</label>
-    <select name="editUpdateListingSelectMonth" id="editUpdateListingSelectMonth">
-    <option>Month</option>
-    <option value="01">Jan</option>
-    <option value="02">Feb</option>
-    <option value="03">March</option>
-    <option value="04">April</option>
-    <option value="05">May</option>
-    <option value="06">June</option>
-    <option value="07">July</option>
-    <option value="08">August</option>
-    <option value="09">Sept</option>
-    <option value="10">Oct</option>
-    <option value="11">Nov</option>
-    <option value="12">Dec</option>
-    </select>
-    <label for="editUpdateListingSelectYear">Year</label>
-    <select name="editUpdateListingSelectYear" id="editUpdateListingSelectYear">
-    <option>Year</option>
-    <option value="2012">2012</option>
-    <option value="2012">2013</option>
-    <option value="2012">2014</option>
-    </select>
-  </fieldset>
-</div> <!--end div fieldcontain-->
-</div> <!--end div calendarDiv-->
+
+<label for="editUpdateListingDate">Date Lost/Found: (yyyy-mm-dd)</label>
+<input type="text" name="editUpdateListingDate" id="editUpdateListingDate" value="" data-mini="true" />
+
+</div> <!--end div editUpdateListingCalendarDiv-->
 
 <label for="editUpdateListingContactPhoneNumber">Phone Number:</label>
-<input type="text" name="editUpdateListingContactPhoneNumber" id="editUpdateListingContactPhoneNumber" value="" placeholder="Data from server" data-mini="true" />
-<!-- Set placeholder equal to phone number variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
+<input type="text" name="editUpdateListingContactPhoneNumber" id="editUpdateListingContactPhoneNumber" value="" data-mini="true" />
+
 
 <label for="editUpdateListingContactEmail">Email Address:</label>
-<input type="text" name="editUpdateListingContactEmail" id="editUpdateListingContactEmail" value="" placeholder="Data from server" data-mini="true" />
-<!-- Set placeholder equal to phone number variable from login or register. Allow this to be replaced by one input by user by leaving value as "" . -->
+<input type="text" name="editUpdateListingContactEmail" id="editUpdateListingContactEmail" value="" data-mini="true" />
 
-<input type="checkbox" name="editUpdateListingEmailAgree" id="editUpdateListingEmailAgree" data-mini="true"/>
-<label for="editUpdateListingEmailAgree">Allow contact by email?</label>
+
+<label for="editUpdateListingEmailAgree" class="select"></label>
+	<select name="editUpdateListingEmailAgree" id="editUpdateListingEmailAgree" data-mini="true">
+		<option value="1" selected>I Allow contact by email</option>
+		<option value="0">I Do not allow contact by email</option>
+	</select>
 
 </form>
 
@@ -1933,17 +1658,15 @@ Date Lost/Found:
 
 
 <!-- These are button/s to fetch a photo from the phone's album/library
-     They fire functions in camera.js -->
+     They fire functions in cameraPets.js -->
 
 	<button id="editUpdateListingGetImage">Get new library animal photo</button> 
 	
 
 	<img style="display:none;width:290px;" id="editUpdateListingAnimalImage" src="" />
-<!--The line above is to check image on screen before upload and belongs to the next screen-->
 
-	<div id="editUpdateListingFilename"></div>   <!-- Debug code. Reveals a URI not a filename. -->
 
-<div style="text-align: center;"><a href="#previewEditedListing" data-role="button"  id="editMyListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Save Listing</a></div>
+<div style="text-align: center;"><a href="#previewEditedListing" data-role="button"  id="editMyListingPreviewButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Preview Listing</a></div>
 
   </div><!-- /content -->
 
@@ -1956,13 +1679,6 @@ Date Lost/Found:
 
 <!-- Start of Preview Edited Pet Listing page -->
 <div data-role="page" id="previewEditedListing">
-
-<!--
-	<div data-role="header">
-	<a href="#editUpdateListing" data-role="button" data-icon="back">Back</a>
-		<h1>Preview Listing</h1>
-	<a href="#home" data-role="button" data-icon="home">Home</a>
-    </div><!-- /header -->
 
     <div data-role="content">
 
@@ -1984,28 +1700,24 @@ Date Lost/Found:
 
 <br/><br/><br/><br/><br/>
 
-
-
-
-
 <!--The Edited listing will be displayed here.-->
 
+<div id="previewEditedListingDiv"></div>
 
-<!--Temporary Text:-->
-The updated listing will be shown here.<br/>It will be replaced with a response from the server.
+<!-- If there is a new image, this tag configuration is written into the div below by cameraPets.js <img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src=""/> -->
 
+<div id="previewEditedListingAnimalImageDiv">
+<img style="width:290px;" id="previewEditedListingAnimalImage" src="" />
+</div>
 
-<div id="previewEditedListingDiv">
-
-</div><!--The response from the server "Thank You! Your Listing Will Be Uploaded As Soon As Possible" will overwrite the listing preview and possibly the button below. (Move this closing tag to below the button)-->
-
-	<img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src="" />
 
 <!--The Upload button will need the id of the chosen pet listing -->
 
-<div style="text-align: center;"><a href="javascript:updatelisting('$photoID')" data-role="button" id="uploadEditedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Upload Listing</a></div>
+<div style="text-align: center;"><a data-role="button" id="uploadEditedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Upload Listing</a></div>
 
+<div id="updateFeedback"></div>
 
+<div id="photoUpdateFeedback"></div>
 
    </div><!-- /content -->
 
@@ -2021,7 +1733,6 @@ The updated listing will be shown here.<br/>It will be replaced with a response 
 
 	<div data-role="header">
 		<h1>T & Cs</h1>
-        <!--<a href="#home" data-rel="back">Back</a> -->
 
     </div><!-- /header -->
 

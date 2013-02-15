@@ -1,0 +1,75 @@
+<?php
+// echo "deleteListing.php acknowledges.<br/>";// debug code
+
+$photoID = $_GET["photoID"];
+$ads_id = $_GET["adID"];
+$htmlString = "";
+
+include "dbconfig.php";
+
+$htmlString .= "Listing ".$ads_id." will be deleted.<br/>";
+
+$sqlQuery = "DELETE FROM `ads` WHERE id = '".$ads_id."'";
+$result = mysql_query($sqlQuery);
+
+if ($result) 
+	{
+	$htmlString .= "Listing deleted<br/>";
+
+	if ($photoID > '1')
+		{	
+		$htmlString .= "photo ID is $photoID"."<br/>"; // test code
+		$sqlQuery = "SELECT src, file_name FROM `ad_photos` WHERE photo_id = '".$photoID."'";
+		$result = mysql_query($sqlQuery);
+		if ($result) 
+			{
+			while($pet = mysql_fetch_assoc($result))
+				{
+				$src = $pet["src"];
+				$file_name = $pet["file_name"];
+				}
+			$htmlString .= "src is ".$src." file name is ".$file_name."<br/>"; // test code
+			$htmlString .= "Will delete Listing $photoID"."<br/>"; // test code
+
+			$sqlQuery = "DELETE FROM `ad_photos` WHERE photo_id = '".$photoID."'";
+			$result = mysql_query($sqlQuery);
+			if ($result)
+				{
+				$htmlString .= "Photo deleted<br/>";
+				}
+
+			if ($photoID > '6796')
+				{
+				$htmlString .= "photo id is greater than 6796 at $photoID"." will delete photo from bucket.<br/>"; // test code
+				// Amazon Web Service (s3) set up:
+				header("Content-type: text/plain; charset=utf-8");
+				// Include the SDK
+				require_once '../AWSSDKforPHP/sdk.class.php';
+				// Instantiate the AmazonS3 class
+				$s3 = new AmazonS3();
+				$bucket = 'test.pets.ie';
+				$s3->delete_object($bucket, $file_name);
+
+				}
+			else {$htmlString .= "photo id is less than 6796 at $photoID"." will not delete photo from 						bucket.<br/>";}// test code
+			}
+		}
+	else
+		{
+		$htmlString .= "No Photo with this listing.<br/>";
+		}
+
+	echo $htmlString; // send message back to the calling function
+
+	}
+
+else
+	{
+	die("Failure: " . mysql_error($link_id));
+	}
+
+die();// get out of database?
+
+mysql_close($link_id); // close the connection
+
+?>

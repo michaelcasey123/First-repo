@@ -1,5 +1,5 @@
 var filePath;
-var replacePicture = 0;
+
 
 // Wait for PhoneGap to load
 
@@ -55,7 +55,7 @@ function getAnimalPhoto() {
 
 
 function editGetAnimalPhoto() { 
-	replacePicture = 1;
+
 	navigator.camera.getPicture(onEditPhotoURISuccess,
 	onFail,
 	{ quality:50,
@@ -86,7 +86,6 @@ function getCameraPhoto() {
 
 
 function editGetCameraPhoto() {
-	replacePicture = 1;
 	navigator.camera.getPicture(onEditPhotoURISuccess,
 	onFail,
 	{ quality : 50 ,

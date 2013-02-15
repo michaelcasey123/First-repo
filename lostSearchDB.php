@@ -18,7 +18,7 @@ if ($result) {
 	
 	while($pet = mysql_fetch_assoc($result))
 	{
-		$htmlString .=  "<li><a href='javascript:showLostPetPhoto(" ; // start list item 
+		$htmlString .=  "<li><a href='javascript:getChosenLostPetListing(" ; // start list item 
 		$htmlString .=  ($pet["photo_id"]==NULL)?"1":$pet["photo_id"] ; //add photoID, the first argument. If there is no photo set photoID to 1
 		$htmlString .=  ", "; // separate the two arguments to showRehomePetPhoto
 		$htmlString .=  $pet["id"];// add adID the second argument
@@ -31,7 +31,6 @@ if ($result) {
 		$htmlString .=  ", ";
 		$htmlString .=  $pet["phone"];
 		$htmlString .=  ($pet["contact_by_email"]=="1")?", ".$pet["email"]:"";//Ternary operator
-		$htmlString .=  $pet["petPhoneNo"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
 		

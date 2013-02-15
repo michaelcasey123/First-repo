@@ -1,0 +1,27 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$items = array();
+for($i=0; $i < 15; $i++) {
+    
+    $items[$i]="This is message $i";
+    
+}
+
+header("Content-Type: application/json");
+
+$output = json_encode($items);
+echo "<br/>";
+echo "This is output:<br/>";
+echo $output;
+echo "<br/>This is the object items after json_encode:<br/>";
+echo'<pre>';
+print_r($items);
+echo '</pre>';
+
+
+?>

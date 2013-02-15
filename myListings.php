@@ -17,7 +17,7 @@ if ($result) {
 	
 	while($pet = mysql_fetch_assoc($result))
 	{
-		$htmlString .=  "<li><a href='javascript:showMyPetPhoto(" ; // start list item 
+		$htmlString .=  "<li><a href='javascript:getChosenMyPetListing(" ; // start list item 
 		$htmlString .=  ($pet["photo_id"]==NULL)?"1":$pet["photo_id"] ; //add photoID, the first argument. If there is no photo set photoID to 1
 		$htmlString .=  ", "; // separate the two arguments to showRehomePetPhoto
 		$htmlString .=  $pet["id"];// add adID the second argument

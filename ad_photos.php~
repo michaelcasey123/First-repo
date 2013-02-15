@@ -33,9 +33,15 @@ unlink('../uploads/'.$newfilename);
 
 	if ($animal != null) 
 		{
+		//		           DB_HOST,    DB_USER,      DB_PASSWORD, 
+		$link_id = mysql_connect('localhost', 'webelevate11_app', '4pp@W3b3LvL11');
+		if (!$link_id)
+			{
+			die(' Could not connect: ' . mysql_error());
+			}
+		//		 DB_DATABASE
+		mysql_select_db("webelevate11_app", $link_id);
 
-		include "dbconfig.php";		
-		
 		$timedatum = date('Y-m-d H:i:s'); // for second query for photo_id
 
 		$src = date('/Y/m/'); // for insert to database;

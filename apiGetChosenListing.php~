@@ -1,0 +1,24 @@
+<?php
+
+// Set the HTTP AUTH username and password
+$rest_api_user = 'pet_control';
+$rest_api_password = '+­**890';
+// Set query data
+$data = array("ad_id" => "4491" );
+// Build request array
+$request_params = array("data" => $data);
+// Build http query string
+$http_query_string = http_build_query($request_params);
+$server_url = 'http://www.collie.ie/rest_api';
+$curl_handle = curl_init();
+curl_setopt($curl_handle, CURLOPT_URL, $server_url . '/ads/get?' . $http_query_string);
+curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl_handle, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+curl_setopt($curl_handle, CURLOPT_USERPWD, $rest_api_user . ':' . $rest_api_password);
+$buffer = curl_exec($curl_handle);
+curl_close($curl_handle);
+// Prepare result
+$result = json_decode($buffer);
+// Output result
+var_dump($result);
+
