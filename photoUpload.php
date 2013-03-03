@@ -1,4 +1,9 @@
 <?php
+
+
+// delete any existing image.jpg in the uploads folder (left there by an uncompleted process)
+unlink('../uploads/image.jpg');
+
 // filePath ("image.jpg") is sent from cameraPets.js function uploadPhoto() no other file types can be sent
 if ($_FILES["file"]["error"] > 0)
   {

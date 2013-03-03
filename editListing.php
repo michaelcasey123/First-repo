@@ -1,6 +1,7 @@
 <?php
 
 $ads_id = $_GET["adID"];
+$errors = "";
 
 include "dbconfig.php";
 
@@ -34,7 +35,7 @@ if ($result)
 			}
 		else
 			{
-			echo "Could not get email and phone number";
+			$errors .= "Could not get email and phone number. ";
 			}	
 		}
 		$sqlQuery = "SELECT name FROM `pet_type` WHERE old_pet_type_id = '".$animal_id."';";
@@ -49,7 +50,7 @@ if ($result)
 			}
 		else
 			{
-			echo "Could not get animal type.";
+			$errors .= "Could not get animal type. ";
 			}
 
 		$sqlQuery = "SELECT name FROM location_counties WHERE `old_county_id` = '".$county_id."';";
@@ -64,7 +65,7 @@ if ($result)
 			}
 		else
 			{
-			echo "Could not get county name.";
+			$errors .= "Could not get county name. ";
 			}
 	}
 else
@@ -72,7 +73,7 @@ else
 	die("Failure: " . mysql_error($link_id));
 	}
 
-$records = array ('animal' => $animal, 'title' => $title, 'description' => $description, 'sale_price' => $sale_price, 'date_lost_found' => $date_lost_found, 'county' => $county, 'listingType' => $listingType, 'phone' => $phone, 'email' => $email, 'contact_by_email' => $contact_by_email);
+$records = array ('errors' => $errors, 'animal' => $animal, 'title' => $title, 'description' => $description, 'sale_price' => $sale_price, 'date_lost_found' => $date_lost_found, 'county' => $county, 'listingType' => $listingType, 'phone' => $phone, 'email' => $email, 'contact_by_email' => $contact_by_email);
 
 $jsonOutput =  json_encode($records);
 

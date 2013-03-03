@@ -5,7 +5,7 @@ $id = $_GET["id"];
 
 include "dbconfig.php";
 
-$sqlQuery = "SELECT a.id, p.name_plural, c.name, u.phone, a.contact_by_phone, u.email, a.contact_by_email, ap.photo_id
+$sqlQuery = "SELECT a.id, p.name_plural, c.name, a.title, ap.photo_id
 FROM ads AS a INNER JOIN users AS u ON a.user_id = u.id INNER JOIN pet_type AS p ON a.pet_type_id = p.old_pet_type_id INNER JOIN location_counties AS c ON a.location_county_id = c.old_county_id LEFT JOIN ad_photos AS ap ON a.id = ap.ad_id
 WHERE u.id = '".$id."';";
 
@@ -17,7 +17,7 @@ if ($result) {
 	
 	while($pet = mysql_fetch_assoc($result))
 	{
-		$htmlString .=  "<li><a href='javascript:showMyPetPhoto(" ; // start list item 
+		$htmlString .=  "<li><a href='javascript:getChosenMyPetListing(" ; // start list item 
 		$htmlString .=  ($pet["photo_id"]==NULL)?"1":$pet["photo_id"] ; //add photoID, the first argument. If there is no photo set photoID to 1
 		$htmlString .=  ", "; // separate the two arguments to showRehomePetPhoto
 		$htmlString .=  $pet["id"];// add adID the second argument
@@ -28,15 +28,13 @@ if ($result) {
 		$htmlString .=  ", ";
 		$htmlString .=  $pet["name"];
 		$htmlString .=  ", ";
-		$htmlString .=  $pet["phone"];
-		$htmlString .=  ($pet["contact_by_email"]=="1")?", ".$pet["email"]:"";//Ternary operator
-//		$htmlString .=  $pet["petPhoneNo"];// what's this?
+		$htmlString .=  $pet["title"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
 		
 	}
 
-	if ($htmlString=="") {echo "<li>Sorry. <br/>No results were found for your search.<br/>Please try again</li>";}
+	if ($htmlString=="") {echo "Sorry";}
 	else {echo $htmlString ;} // send this back to the calling function
 
 }else{

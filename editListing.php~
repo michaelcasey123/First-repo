@@ -1,11 +1,10 @@
 <?php
 
 $ads_id = $_GET["adID"];
-//$htmlString = "";
 
 include "dbconfig.php";
 
-$sqlQuery = "SELECT user_id, title, description, location_county_id, sale_price, date_lost_found, pet_type_id, contact_by_email FROM `ads` WHERE id = '".$ads_id."';";
+$sqlQuery = "SELECT user_id, title, description, location_county_id, sale_price, date_lost_found, ad_type_id, pet_type_id, contact_by_email FROM `ads` WHERE id = '".$ads_id."';";
 $result = mysql_query($sqlQuery);
 
 if ($result) 
@@ -18,6 +17,7 @@ if ($result)
 		$county_id = $pet["location_county_id"];
 		$sale_price = $pet["sale_price"];
 		$date_lost_found = substr($pet["date_lost_found"],0,10);
+		$listingType = $pet["ad_type_id"];
 		$animal_id = $pet["pet_type_id"];
 		$contact_by_email = $pet["contact_by_email"];
 
@@ -72,19 +72,11 @@ else
 	die("Failure: " . mysql_error($link_id));
 	}
 
-// The values above will probably need to be sent by json. I also need the $animal and $county.
-
-$records = array ('animal' => $animal, 'title' => $title, 'description' => $description, 'sale_price' => $sale_price, 'date_lost_found' => $date_lost_found, 'county' => $county, 'phone' => $phone, 'email' => $email, 'contact_by_email' => $contact_by_email);
+$records = array ('animal' => $animal, 'title' => $title, 'description' => $description, 'sale_price' => $sale_price, 'date_lost_found' => $date_lost_found, 'county' => $county, 'listingType' => $listingType, 'phone' => $phone, 'email' => $email, 'contact_by_email' => $contact_by_email);
 
 $jsonOutput =  json_encode($records);
 
 echo $jsonOutput;
-
-
-
-//$htmlString .= $animal."<br/>".$title."<br/>".$description."<br/>".$sale_price."<br/>".$date_lost_found."<br/>".$county."<br/>".$phone."<br/>".$email."<br/>".$contact_by_email."<br/>";
-
-//echo $htmlString;
 
 die();// get out of database?
 

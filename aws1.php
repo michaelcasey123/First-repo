@@ -38,14 +38,16 @@
 //	$response = $s3->list_objects($bucket, array('prefix'=>'app'));
 
 //	$response = $s3->list_objects($bucket);
+
+
+// Detailed printout of objects:	
+//	$response = $s3->get_bucket_object_count($bucket);
 	
-	$response = $s3->get_bucket_object_count($bucket);
-	
-	var_dump($response);
+//	var_dump($response);
 
 //	$response = $s3->get_object_list($bucket, array('prefix'=>'2012/11/'));
 
-//	$s3->delete_object($bucket, 'plain.txt');
+	$s3->delete_object($bucket, 'plain.txt');
 
 //	$response = $s3->get_object_list($bucket);
 
@@ -92,5 +94,5 @@
 
 //	var_dump($response->isOK());
 
-	echo PHP_EOL . PHP_EOL . $time . PHP_EOL;
+//	echo PHP_EOL . PHP_EOL . $time . PHP_EOL;
 

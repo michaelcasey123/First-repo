@@ -1,16 +1,96 @@
 
-.ui-icon-pets {
-	background-image: url("petsLogoScaled.png");
+h1
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:25px;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-		.ui-icon-pets {
-		background-image: url("app-icon-pets-highres.png");
-		background-size: 18px 18px;
-	}
-	...more HD icon rules go here...
+h2
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:25px;
+}
+h3
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:23px;
 }
 
+/* The following are <p> variants to get rid of the bold associated with header tags */
+
+#rehomeTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#lostTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#foundTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#addalistingTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#myListingTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#editedListingTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+
+h5
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:20px;
+text-align:center;
+}
+
+p
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:16px;
+}
+
+a
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:16px;
+}
+
+label
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:16px;
+}
 
 .ui-li .ui-btn-text a.ui-link-inherit {white-space: normal;}
 
@@ -56,4 +136,46 @@
 .smallfurriespan{position:absolute; left:0px; top:371px;}
 
 .aquaticspan{position:absolute; left:160px; top:371px;}
+
+.buttonspan{position:absolute; width:280px; padding:0px; background-color:#f1f1f1;}
+
+.bannerspan{position:absolute; left:0px; top:54px;}
+
+.chosenListingTitleSpan{position:absolute; top:50px;}
+
+.mapbannerspan{position:absolute; left:0px; top:54px;}
+
+.watermarkspan{position:absolute; left:220px; top:220px;}
+
+.chosenListingPhone{position:absolute; left:238px;}
+
+.emailIcon{float:right;}
+
+.noResultSpan{position:absolute; left:113px; top:105px;}
+
+.imgspan{position:absolute; left:0px; top:108px;}
+
+.previewbuttonspan{position:absolute; left:20px; top:465px;}
+
+.previewAddedListingBannerspan{position:absolute; left:0px; top:108px;}
+
+.previewAddedListingTitleSpan{position:absolute; left:15px; top:104px;}
+
+.previewimgspan{position:absolute; left:0px; top:162px;}
+
+.mylistingbuttonspan{position:absolute; left:20px;}
+/*
+.editcamerabutton{position:absolute; left:40px;}
+
+.editlibrarybutton{position:absolute; left:185px;}
+*/
+.camerapicture{position:absolute; left:112px; top:135px;}
+
+.camerabutton{position:absolute; left:20px; width:280px; top:233px;}
+
+.librarypicture{position:absolute; left:112px; top:297px;}
+
+.librarybutton{position:absolute; left:20px; width:280px; top:396px;}
+
+.informationspan{position:absolute; left:0px; top:54px;}
 

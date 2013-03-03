@@ -6,9 +6,9 @@ $theCounty = $_GET["theCounty"];
 
 include "dbconfig.php";
 
-$sqlQuery = "SELECT a.id, p.name_plural, c.name, u.phone, a.contact_by_phone, u.email, a.contact_by_email, ap.photo_id
+$sqlQuery = "SELECT a.id, p.name_plural, c.name, a.title, ap.photo_id
 FROM ads AS a INNER JOIN users AS u ON a.user_id = u.id INNER JOIN pet_type AS p ON a.pet_type_id = p.old_pet_type_id INNER JOIN location_counties AS c ON a.location_county_id = c.old_county_id INNER JOIN ad_type AS t ON a.ad_type_id = t.id LEFT JOIN ad_photos AS ap ON a.id = ap.ad_id
-WHERE a.date_created > '2012-06' AND a.status = 'active' AND p.name = '".$pettype."' AND c.name = '".$theCounty."' AND t.name = 'Lost & Found' AND (a.title LIKE '%lost%' OR a.title LIKE '%miss%' OR a.description LIKE '%lost%' OR a.description LIKE '%miss%');";
+WHERE a.date_created > '2012-06' AND a.status = 'active' AND p.name = '".$pettype."' AND c.name = '".$theCounty."' AND t.name = 'Lost & Found' AND (a.title LIKE '%lost%' OR a.title LIKE '%miss%' OR a.description LIKE '%lost%' OR a.description LIKE '%miss%') ORDER BY a.date_created DESC;";
 
 $result = mysql_query($sqlQuery);
 
@@ -29,14 +29,13 @@ if ($result) {
 		$htmlString .=  ", ";
 		$htmlString .=  $pet["name"];
 		$htmlString .=  ", ";
-		$htmlString .=  $pet["phone"];
-		$htmlString .=  ($pet["contact_by_email"]=="1")?", ".$pet["email"]:"";//Ternary operator
+		$htmlString .=  $pet["title"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item
 		
 	}
 
-	if ($htmlString=="") {echo "<li>Sorry. <br/>No results were found for your search.<br/>Please try again</li>";}
+	if ($htmlString=="") {echo "Sorry";}
 	else {echo $htmlString ;} // send this back to the calling function
 
 }else{

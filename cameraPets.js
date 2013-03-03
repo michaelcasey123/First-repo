@@ -23,19 +23,10 @@ function onDeviceReadyPhoto() {
 	editlibraryphotobutton.addEventListener("click",editGetAnimalPhoto,false);
 }
 
-/*
-// testing button - ok
-function getAnimalPhoto()
-{
-alert("Library photo Button pressed");
-}
 
-// testing button - ok
-function getCameraPhoto()
-{
-alert("Camera photo Button pressed");
-}
-*/
+
+
+
 
 
 
@@ -52,7 +43,11 @@ function getAnimalPhoto() {
 }
 
 
-
+/*
+function editGetAnimalPhoto() { 
+alert('editUpdateListingGetImage button clicked!');
+}
+*/
 
 function editGetAnimalPhoto() { 
 	replacePicture = 1;
@@ -63,7 +58,6 @@ function editGetAnimalPhoto() {
 	  sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY
 	});
 }
-
 
 
 
@@ -82,8 +76,11 @@ function getCameraPhoto() {
 	});
 }
 
-
-
+/*
+function editGetCameraPhoto() {
+alert('editUpdateListingCapture button clicked!');
+}
+*/
 
 function editGetCameraPhoto() {
 	replacePicture = 1;
@@ -106,19 +103,14 @@ function editGetCameraPhoto() {
 
    function onPhotoURISuccess(imageURI) {
 // alert(imageURI+" passed to onAnimalPhotoURISuccess()"); // debug code
-      // Uncomment to view the image file URI 
-       console.log(imageURI);
 
 	  filePath = imageURI;
 
-      // Get image handle
-      $animalImage = document.getElementById('addAListingAnimalImage');
 
-      // Unhide image elements
-      $animalImage.style.display = 'block';
+// ensure the src of img id "previewAddedListingAnimalImage" is clear:
 
-      // Show the captured photo
-      $animalImage.src = imageURI;
+
+//	$('#previewAddedListingAnimalImage').attr('src',"");
 
 	// Put photo into advert preview
 	  $previewImage = document.getElementById("previewAddedListingAnimalImage");
@@ -127,14 +119,6 @@ function editGetCameraPhoto() {
 
 	  $previewImage.src=imageURI;
 
-/*
-$(document).ready(function(){
-  $("#uploadAddedListingButton").bind("click", function(){
-	uploadPhoto(imageURI);
-
-});// end click function
-});// end document ready function
-*/
 }
 
 
@@ -142,41 +126,21 @@ $(document).ready(function(){
 
    function onEditPhotoURISuccess(imageURI) {
 // alert(imageURI+" passed to onAnimalPhotoURISuccess()"); // debug code
-      // Uncomment to view the image file URI 
-       console.log(imageURI);
-
+      
 	  filePath = imageURI;
 
-      // Get image handle
-      $animalImage = document.getElementById('editUpdateListingAnimalImage');
-
-      // Unhide image elements
-      $animalImage.style.display = 'block';
-
-      // Show the captured photo
-      $animalImage.src = imageURI;
 
 	  // prepare the div (overwrite existing <img> tag)
 
-	$('#previewEditedListingAnimalImageDiv').html('<img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src=""/>');
+	$('#previewEditedListingAnimalImageDiv').html('<img style="display:none;width:320px;"  class="imgspan" id="previewEditedListingAnimalImage" src=""/>');
 
 	// Put photo into update preview
 	  $previewImage = document.getElementById("previewEditedListingAnimalImage");
-
-
 
       $previewImage.style.display = 'block';
 
 	  $previewImage.src=imageURI;
 
-/*
-$(document).ready(function(){
-  $("#uploadAddedListingButton").bind("click", function(){
-	uploadPhoto(imageURI);
-
-});// end click function
-});// end document ready function
-*/
 }
 
 
@@ -212,7 +176,6 @@ function win(r) {
 //	console.log("Code = " + r.responseCode);
 //	console.log("Response = " + r.response);
 //	console.log("Sent = " + r.bytesSent);
-return;
 }
 
 function fail(error) {

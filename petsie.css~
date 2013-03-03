@@ -1,59 +1,181 @@
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	.ui-icon-shell {
-		background-image: url("app-icon-shell-highres.png");
-		background-size: 18px 18px;
-	}
-	...more HD icon rules go here...
+
+h1
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:25px;
 }
 
-.ui-icon-pets {
-	background-image: url("app-icon-pets.png");
+h2
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:25px;
+}
+h3
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:23px;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	.ui-icon-shell {
-		background-image: url("app-icon-pets-highres.png");
-		background-size: 18px 18px;
-	}
-	...more HD icon rules go here...
+/* The following are <p> variants to get rid of the bold associated with header tags */
+
+#rehomeTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#lostTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#foundTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#addalistingTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#myListingTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
+}
+
+#editedListingTitle
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:18px;
+color:white;
+text-align:center;
 }
 
 
+h5
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:20px;
+text-align:center;
+}
+
+p
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:16px;
+}
+
+a
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:16px;
+}
+
+label
+{
+font-family: 'UnDinaru', sans-serif;
+font-size:16px;
+}
 
 .ui-li .ui-btn-text a.ui-link-inherit {white-space: normal;}
 
-.ui-bar {width:480px} 
+.ui-bar {width:320px} 
 
 /*.ui-btn {width: 30%} */   /* This could be useful if content area buttons are removed */
 
+/*Home page:*/
 .logospan{position:absolute; left:0px; top:0px;}
 
-.topleftspan{position:absolute; left:0px; top:182px;}
+.topleftspan{position:absolute; left:0px; top:252px;}
 
-.toprightspan{position:absolute; left:160px; top:182px;}
+.topmiddlespan{position:absolute; left:112px; top:252px;}
 
-.bottomleftspan{position:absolute; left:0px; top:340px;}
+.toprightspan{position:absolute; left:208px; top:252px;}
 
-.bottomrightspan{position:absolute; left:160px; top:339px;}
+.bottomleftspan{position:absolute; left:0px; top:366px;}
 
-.basespan{position:absolute; left:160px; top:481px;}
+.bottomrightspan{position:absolute; left:160px; top:366px;}
 
-.footerbar{position:absolute; top:465px;}
+.infospan{position:absolute; left:268px; top:366px;}
 
-.searchbutton {padding-left:9%; padding-right:9%;} /* home page search button */
 
-.screen1homebutton {padding-right:20%;}
+/*Get a New/Lost/Found Pet:*/
+.backspan{position:absolute; left:0px; top:0px;}
 
-.screen1searchbutton {padding-left:20%;}
+.headerspan{position:absolute; left:54px; top:0px;}
 
-.screen3homebutton {padding-left:8%; padding-right:8%;}
+.homespan{position:absolute; left:266px; top:0px;}
 
-.selectedListingButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.choosepettypespan{position:absolute; left:0px; top:54px;}
 
-/*.selectedRehomeButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.birdspan{position:absolute; left:0px; top:108px;}
 
-/*.selectedLostButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.exoticspan{position:absolute; left:160px; top:108px;}
 
-/*.selectedFoundButtonSpan{position:absolute; left:80px; top:400px;}/*This is temporary*/
+.equinespan{position:absolute; left:0px; top:243px;}
 
+.dogspan{position:absolute; left:112px; top:243px;}
+
+.catspan{position:absolute; left:208px; top:243px;}
+
+.smallfurriespan{position:absolute; left:0px; top:371px;}
+
+.aquaticspan{position:absolute; left:160px; top:371px;}
+
+.buttonspan{position:absolute; width:280px; padding:0px; background-color:#f1f1f1;}
+
+.bannerspan{position:absolute; left:0px; top:54px;}
+
+.chosenListingTitleSpan{position:absolute; top:50px;}
+
+.mapbannerspan{position:absolute; left:0px; top:54px;}
+
+.watermarkspan{position:absolute; left:220px; top:220px;}
+
+.chosenListingPhone{position:absolute; left:238px;}
+
+.emailIcon{float:right;}
+
+.noResultSpan{position:absolute; left:113px; top:105px;}
+
+.imgspan{position:absolute; left:0px; top:108px;}
+
+.previewbuttonspan{position:absolute; left:20px; top:467px;}
+
+.previewAddedListingBannerspan{position:absolute; left:0px; top:108px;}
+
+.previewAddedListingTitleSpan{position:absolute; left:15px; top:104px;}
+
+.previewimgspan{position:absolute; left:0px; top:162px;}
+
+.mylistingbuttonspan{position:absolute; left:20px;}
+/*
+.editcamerabutton{position:absolute; left:40px;}
+
+.editlibrarybutton{position:absolute; left:185px;}
+*/
+.camerapicture{position:absolute; left:112px; top:135px;}
+
+.camerabutton{position:absolute; left:20px; width:280px; top:233px;}
+
+.librarypicture{position:absolute; left:112px; top:297px;}
+
+.librarybutton{position:absolute; left:20px; width:280px; top:396px;}
+
+.informationspan{position:absolute; left:0px; top:54px;}
 

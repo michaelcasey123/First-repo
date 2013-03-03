@@ -3,6 +3,7 @@
 <head> 
 	<title>Pets.ie</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+<!--<link rel="stylesheet" href="themes/Fi_A B C.min.css" /> <!--Fiona's Themeroller-->
 	<link rel="stylesheet" href="jquery.mobile-1.1.1.min.css" />
 	<link rel="stylesheet" href="petsie.css" />
 	<script src="jquery-1.8.0.js"></script>
@@ -18,7 +19,7 @@
 <!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /><!--Associated with map-->
 	
 <script type="text/javascript" charset="utf-8">
-// preload images for home screen:
+// preload images:
 img1=new Image();
 img1.src="LostScaled.png";
 img1d=new Image();
@@ -48,17 +49,6 @@ img6=new Image();
 img6.src="InfoScaled.png";
 img6d=new Image();
 img6d.src="InfoDepressedScaled.png";
-
-// Pre-load images for Rehome Pets Graphics page:
-img14=new Image();
-img14.src="backScaled.png";
-img14d=new Image();
-img14d.src="backDepressedScaled.png";
-
-img15=new Image();
-img15.src="homeScaled.png";
-img15d=new Image();
-img15d.src="homeDepressedScaled.png";
 
 img7=new Image();
 img7.src="birdsScaled.png";
@@ -95,6 +85,61 @@ img13.src="aquaticScaled.png";
 img13d=new Image();
 img13d.src="aquaticDepressedScaled.png";
 
+img14=new Image();
+img14.src="backScaled.png";
+img14d=new Image();
+img14d.src="backDepressedScaled.png";
+
+img15=new Image();
+img15.src="homeScaled.png";
+img15d=new Image();
+img15d.src="homeDepressedScaled.png";
+
+img16=new Image();
+img16.src="fetchPetsUpScaled.png";
+img16d=new Image();
+img16d.src="fetchPetsDownScaled.png";
+
+img17=new Image();
+img17.src="ButtonPhoneUpScaled.png";
+img17d=new Image();
+img17d.src="ButtonPhoneDownScaled.png";
+
+img18=new Image();
+img18.src="ButtonEmailUpScaled.png";
+img18d=new Image();
+img18d.src="ButtonEmailDownScaled.png";
+
+img19=new Image();
+img19.src="LoginButtonUpScaled.png";
+img19d=new Image();
+img19d.src="LoginButtonDownScaled.png";
+
+img20=new Image();
+img20.src="RegisterButtonUpScaled.png";
+img20d=new Image();
+img20d.src="RegisterButtonDownScaled.png";
+
+img22=new Image();
+img22.src="TermsConditionsButtonUpScaled.png";
+img22d=new Image();
+img22d.src="TermsConditionsButtonDownScaled.png";
+
+img23=new Image();
+img23.src="NextButtonUpScaled.png";
+img23d=new Image();
+img23d.src="NextButtonDownScaled.png";
+
+img26=new Image();
+img26.src="PreviewYourAdButtonUpScaled.png";
+img26d=new Image();
+img26d.src="PreviewYourAdButtonDownScaled.png";
+
+img27=new Image();
+img27.src="SaveButtonUpScaled.png";
+img27d=new Image();
+img27d.src="SaveButtonDownScaled.png";
+
 
 function downImg1(x) {x.src=img1d.src;}
 function upImg1(x) {x.src=img1.src;}
@@ -129,9 +174,6 @@ function upImg10(x) {x.src=img10.src;}
 function downImg11(x) {x.src=img11d.src;}
 function upImg11(x) {x.src=img11.src;}
 
-function downImg11(x) {x.src=img11d.src;}
-function upImg11(x) {x.src=img11.src;}
-
 function downImg12(x) {x.src=img12d.src;}
 function upImg12(x) {x.src=img12.src;}
 
@@ -143,6 +185,34 @@ function upImg14(x) {x.src=img14.src;}
 
 function downImg15(x) {x.src=img15d.src;}
 function upImg15(x) {x.src=img15.src;}
+
+function downImg16(x) {x.src=img16d.src;}
+function upImg16(x) {x.src=img16.src;}
+
+function downImg17(x) {x.src=img17d.src;}
+function upImg17(x) {x.src=img17.src;}
+
+function downImg18(x) {x.src=img18d.src;}
+function upImg18(x) {x.src=img18.src;}
+
+function downImg19(x) {x.src=img19d.src;}
+function upImg19(x) {x.src=img19.src;}
+
+function downImg20(x) {x.src=img20d.src;}
+function upImg20(x) {x.src=img20.src;}
+
+function downImg22(x) {x.src=img22d.src;}
+function upImg22(x) {x.src=img22.src;}
+
+function downImg23(x) {x.src=img23d.src;}
+function upImg23(x) {x.src=img23.src;}
+
+function downImg26(x) {x.src=img26d.src;}
+function upImg26(x) {x.src=img26.src;}
+
+function downImg27(x) {x.src=img27d.src;}
+function upImg27(x) {x.src=img27.src;}
+
 
 </script> 
 </head> 
@@ -169,12 +239,9 @@ var $geolatitude;
 
 
 
-
-
-
 <!-- Start of Home page -->
-<div data-role="page" id="home">
 
+<div data-role="page" id="home">
 
 	<div id="content" data-role="content">	
 
@@ -218,29 +285,30 @@ var $geolatitude;
 
 
 
-<!-- Start of Information Dialog box -->
-<div data-role="dialog" id="about" data-close-btn-text="Close">
-
-	<div data-role="header">
-		<h1>Information</h1>
-    </div><!-- /header -->
+<!-- Start of Information page -->
+<div data-role="page" id="about" >
 
 	<div data-role="content">
-	<p style="text-align: center;"><strong>Press 'Lost Pets' to see pets reported lost.</strong></p>
-	<p style="text-align: center;"><strong>Press 'Found Pets' to see pets reported found.</strong></p>
-	<p style="text-align: center;"><strong>Press 'Get a New Pet' for available pets.</strong></p>
-	<p style="text-align: center;"><strong>Press 'Place an Ad' to advertise pets or report a lost or found pet.</strong></p>
-	<p style="text-align: center;"><strong>Press 'My Ads' to review your current ads.</strong></p>
 
-	<p style="text-align: center;"><a href="#home" data-role="button" data-theme="a" data-inline="true" data-icon="home" data-rel="back">OK</a></p>
+<span class="backspan">
+<a href="#home"><img id="infoBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
 
-		<!-- data-iconpos="notext" - use this above without OK to just get a home icon -->
+<span class="headerspan">
+<img src="InformationHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="#home"><img id="infoHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="informationspan">
+<img src="InfoScreenScaled.png"/>
+</span>
+
 	</div><!-- /content -->
 
-	<div data-role="footer">
-		<h4>Information</h4>
-	</div><!-- /footer -->
-</div><!-- End of About page -->
+</div><!-- End of Information page -->
 
 
 
@@ -258,7 +326,7 @@ var $geolatitude;
 
 
 <span class="backspan">
-<a href="#home"><img id="backTile" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="backTile" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -266,7 +334,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="homeTile" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="homeTile" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -330,7 +398,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="rehomeHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="rehomeHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -342,10 +410,12 @@ var $geolatitude;
 <!-- A span here ruins the layout of the page below which is under the control of jQuery Mobile. -->
 
 <form>
-<label for="rehomeKeyword"></label> 
-<input type="text" name="rehomeKeyword" id="rehomeKeyword" value="" placeholder="Add keyword here" data-mini="true" />
+<!--
+<label for="rehomeKeyword">Add keyword here</label> 
+<input type="text" name="rehomeKeyword" id="rehomeKeyword" value="" data-mini="true" />
 <br/>
-	<label for="rehomeCounty" class="select">County of Ireland:</label>
+-->
+	<label for="rehomeCounty" class="select">County of Ireland</label>
 	<select name="rehomeCounty" id="rehomeCounty">
 		<option value="" selected>County</option>
 		<option value="Antrim">Antrim</option>
@@ -392,11 +462,9 @@ var $geolatitude;
 	
 	<div style="text-align: center;" id="rehomeDdmenuResults"><br/></div>
 
-<!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
-
-
-
-	<p style="text-align: center;"><a href="#rehome2" data-role="button" id="searchButtonRehome" data-icon="pets" data-theme="a" data-inline="true">Fetch</a></p> <!-- end button -->	
+<span class="buttonspan">
+<a href="#rehome2"><img id="searchButtonRehome" onMousedown="downImg16(this)" onMouseup="upImg16(this)" src="fetchPetsUpScaled.png"/></a>
+</span>
 
 
     </div><!-- /content -->
@@ -431,17 +499,15 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="rehome2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="rehome2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/><br/>
-
-	<div style="text-align: center;"><a data-role="button" id="toggleButtonRehome" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Toggle List/Gallery</a></div> <!-- end button -->	
+<br/><br/>
 
 	<div style="text-align: center;" id="rehome2searchText"><br/></div>
-<br/>
+<!--<br/>-->
 <ul data-role='listview' id='rehomedblist'> 
-	<li>Server Response Below:</li> 
+	<li><h2>Search Results</h2></li> 
 </ul>
 
 
@@ -473,17 +539,52 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="rehome3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="rehome3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
+<span class="bannerspan">
+<img src="blankBannerScaled.png">
+</span>
 
-<br/><br/><br/>
+<span class="watermarkspan">
+<img src="ChosenAdLogoWatermarkScaled.png">
+</span>
 
-<div id="rehomeChosenListing"></div>
+<span class="chosenListingTitleSpan">
+<div id="rehomeChosenListingTitle"></div>
+</span>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<img height="240" width="320" class="imgspan" id="rehomeChosenPhotoFromServer" src="" />
+
+<p><strong>For Good Home</strong></p>
+
+<span class="chosenListingPhone">
+<div id=rehomeChosenListingPhoneDiv></div>
+</span>
+
+<div id="rehomeChosenListingLocation"></div>
+<div id="rehomeChosenListingAdded"></div>
+<div id="rehomeChosenListingContact"></div>
+<br/>
+<div id="rehomeChosenListingEmailDiv"></div>
+
+
+<div id="rehomeChosenListingPrice"></div>
+
+
+
+<div id="rehomeChosenListingPhone"></div>
+<div id="rehomeChosenListingEmail"></div>
+<br/>
+<div id="rehomeChosenListingDescription"></div>
+
+
 
 
 <div style="text-align: center;" id="rehomeChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" />
+<!--	<img style="width:290px;" id="rehomeChosenPhotoFromServer" src="" /> -->
 
 
     </div><!-- /content -->
@@ -498,7 +599,38 @@ var $geolatitude;
 
 
 
-<!--If a page is needed for the toggle to the gallery it will appear here.-->
+
+<!-- Start of Rehome No Results page -->
+<div data-role="page" id="rehome4">
+
+    <div data-role="content">	
+
+<span class="backspan">
+<a href="#rehome"><img id="rehome4back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
+
+<span class="headerspan">
+<img src="headerScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="rehome4Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="noResultSpan">
+<img src="IconNoResultsScaled.png">
+</span>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h5>Sorry.<br/>No results were found<br/>for your search.<br/><br/>Please try again.</h5>
+    </div><!-- /content -->
+
+
+</div><!-- End of Rehome No Results page -->
+
+
+
+
+
 
 
 
@@ -510,7 +642,7 @@ var $geolatitude;
 
 
 <span class="backspan">
-<a href="#home"><img id="lostGraphicsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="lostGraphicsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -518,7 +650,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="lostGraphicsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="lostGraphicsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -579,7 +711,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="lostHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="lostHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -589,11 +721,12 @@ var $geolatitude;
 <br/><br/><br/><br/><br/>
 
 <form>
-<label for="lostKeyword"></label>
-<input type="text" name="lostKeyword" id="lostKeyword" value="" placeholder="Add keyword here" data-mini="true" />
-
+<!--
+<label for="lostKeyword">Add keyword here</label>
+<input type="text" name="lostKeyword" id="lostKeyword" value="" data-mini="true" />
 	<br/>
-	<label for="lostCounty" class="select">County of Ireland:</label>
+-->
+	<label for="lostCounty" class="select">County of Ireland</label>
 	<select name="lostCounty" id="lostCounty">
 		<option value="" selected>County</option>
 		<option value="Antrim">Antrim</option>
@@ -633,11 +766,13 @@ var $geolatitude;
 </form>
 		
 	<div style="text-align: center;" id="lostSearchText"></div>
-	<div style="text-align: center;" id="lostDdmenuResults"><br/></div>
-<!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
-	
-	<p style="text-align: center;"><a href="#lost2" data-role="button" id="searchButtonLost" data-icon="pets" data-theme="a" data-inline="true">Fetch</a></p> <!-- end button -->	
 
+	<div style="text-align: center;" id="lostDdmenuResults"><br/></div>
+
+
+<span class="buttonspan">
+<a href="#lost2"><img id="searchButtonLost" onMousedown="downImg16(this)" onMouseup="upImg16(this)" src="fetchPetsUpScaled.png"/></a>
+</span>
 
     </div><!-- /content -->
 
@@ -665,20 +800,21 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="lost2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="lost2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/><br/>
+<span class="bannerspan">
+<a href="#lostMap1"><img id="toggleButtonLost2" src="searchResultsListBannerScaled.png"/></a>
+</span>
 
-	<div style="text-align: center;"><a href="#lostMap1" data-role="button" id="toggleButtonLost2" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->	
-
+<br/><br/><br/><br/><br/>
 
 	<div style="text-align: center;" id="lost2SearchText"><br/></div>
 
 
 <ul data-role='listview' id='lost2dblist'> 
 	
-	<li>Server Response Below:</li> 
+	<li><h2>Search Results</h2></li> 
 </ul>
 
 
@@ -708,15 +844,45 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="lost3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="lost3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/><br/>
+<span class="bannerspan">
+<img src="blankBannerScaled.png">
+</span>
 
-<div id="lostChosenListing"></div>
+<span class="watermarkspan">
+<img src="ChosenAdLogoWatermarkScaled.png">
+</span>
+
+<span class="chosenListingTitleSpan">
+<div id="lostChosenListingTitle"></div>
+</span>
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<img height="240" width="320" class="imgspan" id="lostChosenPhotoFromServer" src="" />
+
+<p id="lostDate"></p>
+<span class="chosenListingPhone">
+<div id=lostChosenListingPhoneDiv></div>
+</span>
+<div id="lostChosenListingLocation"></div>
+<div id="lostChosenListingAdded"></div>
+<div id="lostChosenListingContact"></div>
+<br/>
+
+<div id="lostChosenListingEmailDiv"></div>
+
+<div id="lostChosenListingPhone"></div>
+<div id="lostChosenListingEmail"></div>
+<br/>
+<div id="lostChosenListingDescription"></div>
+
 
 <div style="text-align: center;" id="lostChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="lostChosenPhotoFromServer" src="" />
+	
 
 
     </div><!-- /content -->
@@ -730,6 +896,37 @@ var $geolatitude;
 
 
 
+<!-- Start of Lost No Results page -->
+<div data-role="page" id="lost4">
+
+    <div data-role="content">	
+
+<span class="backspan">
+<a href="#lost"><img id="lost4Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
+
+<span class="headerspan">
+<img src="lostHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="lost4Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="noResultSpan">
+<img src="IconNoResultsScaled.png">
+</span>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h5>Sorry.<br/>No results were found<br/>for your search.<br/><br/>Please try again.</h5>
+    </div><!-- /content -->
+
+
+</div><!-- End of Lost No Results page -->
+
+
+
+
+
 
 
 
@@ -738,9 +935,25 @@ var $geolatitude;
 
     <div data-role="content" style="width:100%; height:100%; padding:0;">
 
-	<div style="text-align: center;"><a href="#lost2" data-role="button" id="toggleButtonLostMap1" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
+<span class="backspan">
+<a href="#lost2"><img id="lostMap1Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
 
-	<div id="map_canvasLost" style="width:320px; height:470px;"></div>
+<span class="headerspan">
+<img src="lostHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="lostMap1Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="mapbannerspan">
+<a href="#lost2"><img id="toggleButtonLostMap1" src="searchResultsMapBannerScaled.png"/></a>
+</span>
+
+<br/><br/><br/><br/><br/><br/>
+
+	<div id="map_canvasLost" style="width:320px; height:416px;"></div>
     </div><!-- /content -->
 
 </div><!-- End of Lost Map1 page -->
@@ -761,7 +974,7 @@ var $geolatitude;
 
 
 <span class="backspan">
-<a href="#home"><img id="foundGraphicsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="foundGraphicsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -769,7 +982,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="foundGraphicsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="foundGraphicsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -830,7 +1043,7 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="foundHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="foundHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -840,10 +1053,12 @@ var $geolatitude;
 <br/><br/><br/><br/><br/>
 
 <form>
-<label for="foundKeyword"></label>
-<input type="text" name="foundKeyword" id="foundKeyword" value="" placeholder="Add keyword here" data-mini="true" />
+<!--
+<label for="foundKeyword">Add keyword here</label>
+<input type="text" name="foundKeyword" id="foundKeyword" value="" data-mini="true" />
 	<br/>
-	<label for="foundCounty" class="select">County of Ireland:</label>
+-->
+	<label for="foundCounty" class="select">County of Ireland</label>
 	<select name="foundCounty" id="foundCounty">
 		<option value="" selected>County</option>
 		<option value="Antrim">Antrim</option>
@@ -882,12 +1097,13 @@ var $geolatitude;
 	
 </form>
 
-	<div style="text-align: center;" id="foundSearchText"></div>	
-	<div style="text-align: center;" id="foundDdmenuResults"><br/></div>
-<!-- In the line above, the </br> is replaced by the text from the function without adding a line-->
-	
-	<p style="text-align: center;"><a href="#found2" data-role="button" id="searchButtonFound" data-icon="pets" data-theme="a" data-inline="true">Fetch</a></p> <!-- end button -->	
+	<div style="text-align: center;" id="foundSearchText"></div>
 
+	<div style="text-align: center;" id="foundDdmenuResults"><br/></div>
+
+<span class="buttonspan">
+<a href="#found2"><img id="searchButtonFound" onMousedown="downImg16(this)" onMouseup="upImg16(this)" src="fetchPetsUpScaled.png"/></a>
+</span>
 
     </div><!-- /content -->
 
@@ -915,17 +1131,21 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="found2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="found2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/><br/>
-	<div style="text-align: center;"><a href="#foundMap1" data-role="button" id="toggleButtonFound2" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->	
+<span class="bannerspan">
+<a href="#foundMap1"><img id="toggleButtonFound2" src="searchResultsListBannerScaled.png"/></a>
+</span>
+
+<br/><br/><br/><br/><br/>
+
 
 	<div style="text-align: center;" id="foundPetsSearchText"><br/></div>
 
 
 <ul data-role='listview' id='foundPetsdblist'> 
-	<li>Server Response Below:</li> 
+	<li><h2>Search Results</h2></li> 
 </ul>
 
     </div><!-- /content -->
@@ -956,16 +1176,42 @@ var $geolatitude;
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="found3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="found3Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
+<span class="bannerspan">
+<img src="blankBannerScaled.png">
+</span>
 
-<br/><br/><br/>
-<div id="foundChosenListing"></div>
+<span class="watermarkspan">
+<img src="ChosenAdLogoWatermarkScaled.png">
+</span>
+
+<span class="chosenListingTitleSpan">
+<div id="foundChosenListingTitle"></div>
+</span>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<img height="240" width="320" class="imgspan" id="foundChosenPhotoFromServer" src="" />
+
+<p id="foundDate"></p>
+<span class="chosenListingPhone">
+<div id=foundChosenListingPhoneDiv></div>
+</span>
+<div id="foundChosenListingLocation"></div>
+<div id="foundChosenListingAdded"></div>
+<div id="foundChosenListingContact"></div>
+<br/>
+<div id="foundChosenListingEmailDiv"></div>
+
+<div id="foundChosenListingPhone"></div>
+<div id="foundChosenListingEmail"></div>
+<br/>
+<div id="foundChosenListingDescription"></div>
+
 
 <div style="text-align: center;" id="foundChosenPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="foundChosenPhotoFromServer" src="" />
-
 
     </div><!-- /content -->
 
@@ -982,15 +1228,68 @@ var $geolatitude;
 
 
 
+<!-- Start of Lost No Results page -->
+<div data-role="page" id="found4">
+
+    <div data-role="content">	
+
+<span class="backspan">
+<a href="#found"><img id="found4Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
+
+<span class="headerspan">
+<img src="foundHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="found4Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="noResultSpan">
+<img src="IconNoResultsScaled.png">
+</span>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h5>Sorry.<br/>No results were found<br/>for your search.<br/><br/>Please try again.</h5>
+    </div><!-- /content -->
+
+
+</div><!-- End of Found No Results page -->
+
+
+
+
+
+
+
+
+
 
 <!-- Start of Found Map1 page -->
 <div data-role="page" id="foundMap1" class="page-mapFound1">
 
     <div data-role="content" style="width:100%; height:100%; padding:0;">
 
-	<div style="text-align: center;"><a href="#found2" data-role="button" id="toggleButtonFoundMap1" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Toggle List/Map</a></div> <!-- end button -->
+<span class="backspan">
+<a href="#found2"><img id="foundMap1Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
 
-	<div id="map_canvasFound" style="width:320px; height:470px;"></div>
+<span class="headerspan">
+<img src="foundHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="foundMap1Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+
+<span class="mapbannerspan">
+<a href="#found2"><img id="toggleButtonFoundMap1" src="searchResultsMapBannerScaled.png"/></a>
+</span>
+
+<br/><br/><br/><br/><br/><br/>
+
+
+	<div id="map_canvasFound" style="width:320px; height:416px;"></div>
 
     </div><!-- /content -->
 
@@ -1013,58 +1312,62 @@ var $geolatitude;
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img id="loginBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="loginBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
-<img src="loginHeaderScaled.png"/>
+<img src="placeAnAdHeaderScaled.png"/>
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="loginHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="loginHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/><br/>
+<span class="bannerspan">
+<img src="loginRegisterBannerScaled.png"/>
+</span>
 
 
-Please sign in or register
+<br/><br/><br/><br/>
+
+
+<p>Login</p>
 
 <form>
-<label for="storedEmailAddress" class="ui-hidden-accessible">Email Address:</label>
-<input type="text" name="storedEmailAddress" id="storedEmailAddress" value="" placeholder="Email Address:" data-mini="true" />
+<label for="storedEmailAddress" class="ui-hidden-accessible">Email Address</label>
+<input type="text" name="storedEmailAddress" id="storedEmailAddress" value="" placeholder="Email Address"/>
 
-<label for="storedPassword" class="ui-hidden-accessible">Password:</label>
-<input type="password" name="storedPassword" id="storedPassword" value="" placeholder="Password:" data-mini="true" />
-
-<!--  <input type="submit" id="loginButton" value="Login"> -->
+<label for="storedPassword" class="ui-hidden-accessible">Password</label>
+<input type="password" name="storedPassword" id="storedPassword" value="" placeholder="Password"/>
 
 </form>
 
-<div style="text-align: center;"><a data-role="button" id="loginButton" data-inline="true" data-theme="a" data-mini="true">Login</a></div>
-
-
+<span class="buttonspan">
+<a><img id="loginButton" onMousedown="downImg19(this)" onMouseup="upImg19(this)" src="LoginButtonUpScaled.png"/></a>
+</span>
+<br/><br/>
 <div id="loginButtonfeedback"></div>
 
-First time? Then please Register:
+<p>First time? Then please Register</p>
 
 
 
 <form>
 	<label for="nameTitle" class="select"></label>
-	<select name="nameTitle" id="nameTitle" data-mini="true">
+	<select name="nameTitle" id="nameTitle">
 		<option value="ms" selected>Ms</option>
 		<option value="mrs">Mrs</option>
 		<option value="mr">Mr</option>
 	</select>
 
-<label for="firstName" class="ui-hidden-accessible">First Name:</label>
-<input type="text" name="firstName" id="firstName" value="" placeholder="First Name:" data-mini="true" />
+<label for="firstName" class="ui-hidden-accessible">First Name</label>
+<input type="text" name="firstName" id="firstName" value="" placeholder="First Name"/>
 
-<label for="secondName" class="ui-hidden-accessible">Surname:</label>
-<input type="text" name="secondName" id="secondName" value="" placeholder="Surname:" data-mini="true" />
+<label for="secondName" class="ui-hidden-accessible">Surname</label>
+<input type="text" name="secondName" id="secondName" value="" placeholder="Surname"/>
 
 	<label for="registerCounty" class="select"></label>
-	<select name="registerCounty" id="registerCounty" data-mini="true">
+	<select name="registerCounty" id="registerCounty">
 		<option value="27" selected>Dublin</option>
 		<option value="32">Antrim</option>
 		<option value="33">Armagh</option>
@@ -1099,19 +1402,23 @@ First time? Then please Register:
 		<option value="29">Wicklow</option>
 	</select>
 
-<label for="contactPhoneNumber" class="ui-hidden-accessible">Phone Number:</label>
-<input type="text" name="contactPhoneNumber" id="contactPhoneNumber" value="" placeholder="Phone Number:" data-mini="true" />
+<label for="contactPhoneNumber" class="ui-hidden-accessible">Phone Number</label>
+<input type="text" name="contactPhoneNumber" id="contactPhoneNumber" value="" placeholder="Phone Number"/>
 
-<label for="contactEmail" class="ui-hidden-accessible">Email Address:</label>
-<input type="text" name="contactEmail" id="contactEmail" value="" placeholder="Email Address:" data-mini="true" />
+<label for="contactEmail" class="ui-hidden-accessible">Email Address</label>
+<input type="text" name="contactEmail" id="contactEmail" value="" placeholder="Email Address"/>
 
-<label for="password" class="ui-hidden-accessible">Password:</label>
-<input type="password" name="password" id="password" value="" placeholder="Password: (min. 6 characters)" data-mini="true" />
-<!-- <input type="submit" id="registerButton" value="Register"> -->
+<label for="password" class="ui-hidden-accessible">Password</label>
+<input type="password" name="password" id="password" value="" placeholder="Password (minimum of 6 characters)"/>
 
 </form>
+<!--
+<div style="text-align: center;"><a data-role="button" id="registerButton" data-inline="true" data-theme="a">Register</a></div>
+-->
+<span class="buttonspan">
+<a><img id="registerButton" onMousedown="downImg20(this)" onMouseup="upImg20(this)" src="RegisterButtonUpScaled.png"/></a>
+</span>
 
-<div style="text-align: center;"><a data-role="button" id="registerButton" data-inline="true" data-theme="a" data-mini="true">Register</a></div>
 
 <div id="registerButtonfeedback"></div>
 
@@ -1135,33 +1442,42 @@ First time? Then please Register:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img id="login2Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="login2Back" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
-<img src="loginHeaderScaled.png"/>
+<img src="myAdsHeaderScaled.png"/>
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="login2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="login2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/><br/>
+<span class="bannerspan">
+<img src="loginBannerScaled.png"/>
+</span>
 
 
+<br/><br/><br/><br/>
 
-Please sign in
+
+<p>Login</p>
 
 <form>
-<label for="storedEmailAddress2" class="ui-hidden-accessible">Email Address:</label>
-<input type="text" name="storedEmailAddress2" id="storedEmailAddress2" value="" placeholder="Email Address:" data-mini="true" />
+<label for="storedEmailAddress2" class="ui-hidden-accessible">Email Address</label>
+<input type="text" name="storedEmailAddress2" id="storedEmailAddress2" value="" placeholder="Email Address"/>
 
-<label for="storedPassword2" class="ui-hidden-accessible">Password:</label>
-<input type="password" name="storedPassword2" id="storedPassword2" value="" placeholder="Password:" data-mini="true" />
+<label for="storedPassword2" class="ui-hidden-accessible">Password</label>
+<input type="password" name="storedPassword2" id="storedPassword2" value="" placeholder="Password"/>
 
 </form>
 
-<div style="text-align: center;"><a data-role="button" id="login2Button" data-inline="true" data-theme="a" data-mini="true">Login</a></div>
+
+<span class="buttonspan">
+<a><img id="login2Button" onMousedown="downImg19(this)" onMouseup="upImg19(this)" src="LoginButtonUpScaled.png"/></a>
+</span>
+
+
 
 <div id="login2Buttonfeedback"></div>
 
@@ -1185,7 +1501,7 @@ Please sign in
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img id="addalistingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="addalistingBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1193,7 +1509,7 @@ Please sign in
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="addalistingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="addalistingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1203,9 +1519,9 @@ Please sign in
 <br/><br/><br/><br/><br/>
 
 <form>
-	<label for="listingType" class="select">Listing Type:</label>
-	<select name="listingType" id="listingType" data-mini="true">
-		<option value="">Choose Listing Type:</option>
+	<label for="listingType" class="select"></label>
+	<select name="listingType" id="listingType">
+		<option value="">Choose type of Ad</option>
 		<option value="2">I Have Lost A Pet</option>
 		<option value="2">I Have Found A Pet</option>
 		<option value="1">My Pet Needs a New Home</option>
@@ -1213,9 +1529,9 @@ Please sign in
 	</select>
 	
 
-	<label for="addAnimal" class="select">Pet Type:</label>
-	<select name="addAnimal" id="addAnimal" data-mini="true">
-		<option value="">Choose Animal</option> <!--old_pet_type_id's-->
+	<label for="addAnimal" class="select"></label>
+	<select name="addAnimal" id="addAnimal">
+		<option value="">What type of pet is it?</option> <!--old_pet_type_id's-->
 		<option value="67">Dogs</option>
 		<option value="68">Cats</option>
 		<option value="71">Equine</option>
@@ -1226,9 +1542,9 @@ Please sign in
 	</select>
 	
 	
-	<label for="addCounty" class="select">County of Ireland:</label>
-	<select name="addCounty" id="addCounty" data-mini="true">
-		<option value="" selected>Choose County</option>
+	<label for="addCounty" class="select"></label>
+	<select name="addCounty" id="addCounty">
+		<option value="" selected>Where is your location?</option>
 		<option value="27">Dublin</option>
 		<option value="32">Antrim</option>
 		<option value="33">Armagh</option>
@@ -1266,23 +1582,17 @@ Please sign in
 <div style="text-align: center;" id="addalistingDdmenuResults"><br/></div>
 
 
-<label for="advertTitle" class="ui-hidden-accessible">Advert Title:</label>
-<input type="text" name="advertTitle" id="advertTitle" value="" placeholder="Advert Title:" data-mini="true"/>
+<label for="advertTitle">Advert Title</label>
+<input type="text" name="advertTitle" id="advertTitle" value=""/>
 
-<label for="description" class="ui-hidden-accessible">Description:</label>
-<textarea name="description" id="description" data-mini="true"/>Description:</textarea>
-
-<div id="priceDiv">
-
-<label for="price" class="ui-hidden-accessible">Price: EUR</label>
-<input type="number" name="price" id="price" value="" placeholder="Price: EUR (default free of charge)" data-mini="true" />
-
-</div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
+<label for="description">Description</label>
+<textarea name="description" id="description"/></textarea>
 
 <div id="addAListingCalendarDiv">
-Date Lost/Found:
+<p><strong>For Lost and Found Ads</strong><br/>Date pet was Lost/Found</p>
 <div data-role="fieldcontain">
-  <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+<!-- <fieldset data-role="controlgroup" data-type="horizontal"> -->
 <!--    <legend></legend> -->
     <label for="addAListingSelectDay">Day</label>
     <select name="addAListingSelectDay" id="addAListingSelectDay">
@@ -1348,29 +1658,38 @@ Date Lost/Found:
 </div> <!--end div fieldcontain-->
 </div> <!--end div calendarDiv-->
 
+<div id="priceDiv">
+<p><strong>For Get a New Pet Ads</strong><br/>If you would like to charge for the Pet</p>
+<label for="price" class="ui-hidden-accessible">Price EUR</label>
+<input type="number" name="price" id="price" value="" placeholder="Price EUR (default is free of charge)"/>
+
+</div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
+
 
 	<label for="addAListingEmailAgree" class="select"></label>
-	<select name="addAListingEmailAgree" id="addAListingEmailAgree" data-mini="true">
+	<select name="addAListingEmailAgree" id="addAListingEmailAgree">
 		<option value="1" selected>I Allow contact by email</option>
 		<option value="0">I Do not allow contact by email</option>
 	</select>
 
 
+<span class="buttonspan">
+
+<a href="#termsandconditions"><img id="viewTermsButton" onMousedown="downImg22(this)" onMouseup="upImg22(this)" src="TermsConditionsButtonUpScaled.png"/></a>
+
+
+
 	<label for="addAListingTandCsAgree" class="select"></label>
-	<select name="addAListingTandCsAgree" id="addAListingTandCsAgree" data-mini="true">
-		<option value="1" selected>I Agree to Advert Terms & Conditions</option>
-		<option value="0">I Do not agree to Advert Terms & Conditions</option>
+	<select name="addAListingTandCsAgree" id="addAListingTandCsAgree">
+		<option value="1" selected>I Agree to Terms and Conditions</option>
+		<option value="0">I Do Not Agree to Terms and Conditions</option>
 	</select>
+
+<a href="#addalisting2"><img id="addListing2Button" onMousedown="downImg23(this)" onMouseup="upImg23(this)" src="NextButtonUpScaled.png"/></a>
+</span>
 
 </form>
 
-	<div style="text-align: center;"><a href="#termsandconditions" data-role="button" id="t&csbutton" data-icon="pets" data-theme="a" data-inline="true" data-mini="true">Terms & Conditions</a></div>  <!-- end of terms and conditions button -->
-
-	<div style="text-align: center;"><a data-role="button" id="geolocationButton" data-inline="true" data-mini="true" data-theme="a">Use my location</a></div>
-
-	<div style="text-align: center;"><a href="#addalisting2" data-role="button" id="addListing2Button" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-mini="true" data-theme="a">Next</a></div>
-
-<!--If petWanted then <a href="#addalisting4"> above. -->
 
    </div><!-- /content -->
 
@@ -1395,36 +1714,45 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="addalisting2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="addalisting2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
 <img src="addYourDetails2Scaled.png"/>
 </span>
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
-
-
-	<div id="addAListingFeedback"></div>
-
-	<button id="addAListingCapture">Take Photo</button>
-
+	<div id="addAListingFeedback"></div> <!--Geolocation message here-->
 
 
 <!-- These are button/s to fetch a photo from the phone's album/library
      They fire functions in camera.js -->
 
-	<button id="addAListingGetImage">Select Library Animal Photo</button> 
-	
+<span class="camerapicture">
+<img src="TakePhotoButtonUpScaled.png"/>
+</span>
+<!-- <br/><br/><br/><br/><br/> -->
+<span class="camerabutton">
+<button id="addAListingCapture">Take Photo (Landscape)</button>
+</span>
+<span class="librarypicture">
+<img src="UploadPhotoButtonUpScaled.png"/>
+</span>
+<!-- <br/><br/><br/><br/><br/><br/> -->
+<span class="librarybutton">
+<button id="addAListingGetImage">Upload Photo you have on file</button>
+</span>
 
-	<img style="display:none;width:290px;" id="addAListingAnimalImage" src="" />
+<!-- <img style="display:none;width:290px;" id="addAListingAnimalImage" src="" /> -->
 
 
 	<div style="text-align: center;" id="addAListingUploadText"><br/></div>
-	
 
-	<div style="text-align: center;"><a href="#previewAddedListing" data-role="button" id="reviewAdButton" data-iconpos="right" data-icon="arrow-r" data-theme="a" data-inline="true" data-mini="true">Review advert now</a></div>  <!-- end button -->	
+
+<span class="previewbuttonspan">
+<a href="#previewAddedListing"><img id="reviewAdButton" onMousedown="downImg26(this)" onMouseup="upImg26(this)" src="PreviewYourAdButtonUpScaled.png"/></a>
+</span>
 
 <div id ="TempReview"></div>
 
@@ -1453,31 +1781,42 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="previewAddedListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="previewAddedListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
 <img src="addYourDetails3Scaled.png"/>
 </span>
 
-<br/><br/><br/><br/><br/>
+<span class="previewAddedListingBannerspan">
+<img src="blankBannerScaled.png">
+</span>
 
 
-<div id="addedListing">
+<span class="previewAddedListingTitleSpan">
+<div id="previewAddedListingTitle"></div>
+</span>
 
-</div>
+<!--	<img style="display:none;width:290px;" id="previewAddedListingAnimalImage" src="" /> -->
 
-	<img style="display:none;width:290px;" id="previewAddedListingAnimalImage" src="" />
 
-<div style="text-align: center;"><a href="javascript:uploadlisting()" data-role="button" id="uploadAddedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Save</a></div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+<img style="width:320px;" class="previewimgspan" id="previewAddedListingAnimalImage" src="sorrynophoto.jpg" /> <!--For web only-->
+<!--
+<img style="display:none;width:320px;" class="previewimgspan" id="previewAddedListingAnimalImage" src="" /> <!--For phone only-->
+
+
+<div id="addedListing"></div>
+
+
+<a href="javascript:uploadlisting()"><img id="uploadAddedListingButton" onMousedown="downImg27(this)" onMouseup="upImg27(this)" src="SaveButtonUpScaled.png"/></a>
+
 
 <div id="uploadFeedback"></div>
 
 <div id="photoUploadFeedback"></div>
-
-<div id="loopText"></div>
-
-<div id="loopButton"></div>
 
    </div><!-- /content -->
 
@@ -1496,7 +1835,7 @@ Date Lost/Found:
     <div data-role="content">	
 
 <span class="backspan">
-<a href="#home"><img id="myListingsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="myListingsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
 </span>
 
 <span class="headerspan">
@@ -1504,7 +1843,7 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="myListingsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="myListingsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1518,21 +1857,48 @@ Date Lost/Found:
 
 <ul data-role='listview' id='myListingsdblist'> 
 <br/>	
-	<li>Server Response Below:</li> 
+	<li><h2>Search Results</h2></li> 
 </ul>
-
-
-<div style="text-align: center;" id="myListingsPhotoText"><br/></div><!--space for error message-->
-	<img style="width:290px;" id="myListingsPhotoFromServer" src="" />
-
-
-
-<div id="myListingsButtonDiv"></div>
-
 
   </div><!-- /content -->
 
 </div><!-- End of My Listings page -->
+
+
+
+
+
+
+
+
+<!-- Start of My Listings No Results page -->
+<div data-role="page" id="mylistingsNoResults">
+
+    <div data-role="content">	
+
+<span class="backspan">
+<a href="#login2"><img id="myListingsNoResultsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
+
+<span class="headerspan">
+<img src="myAdsHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="myListingsNoResultsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="noResultSpan">
+<img src="IconNoResultsScaled.png"/>
+</span>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h5>Sorry.<br/>No results were found<br/>for your search.<br/><br/>Please try again.</h5>
+    </div><!-- /content -->
+
+
+</div><!-- End of Rehome No Results page -->
+
+
 
 
 
@@ -1554,28 +1920,54 @@ Date Lost/Found:
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="chosenPetListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="chosenPetListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
-<img src="myAdsReviewAdScaled.png"/>
+<img src="blankBannerScaled.png"/>
 </span>
 
-<br/><br/><br/><br/><br/>
+<span class="chosenListingTitleSpan">
+<div id="ChosenPetListingTitle"></div>
+</span>
 
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
+<img height="240" width="320" class="imgspan" id="chosenPetListingPhotoFromServer" src="" />
 
-	<div id="chosenPetListingDiv"></div>
+<p id="subtitle"></p>
 
-<img style="width:290px;" id="chosenPetListingPhotoFromServer" src="" />
+<span class="chosenListingPhone">
+<div id=chosenPetListingPhoneDiv></div>
+</span>
 
-
-<div style="text-align: center;"><a data-role="button"
-id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" data-mini="true">Delete Listing</a></div>
+<div id="chosenPetListingLocation"></div>
+<div id="chosenPetListingAdded"></div>
+<div id="chosenPetListingContact"></div>
 <br/>
+<div id="chosenPetListingEmailDiv"></div>
+<div id="chosenPetListingPrice"></div>
+<div id="chosenPetListingPhone"></div>
+<div id="chosenPetListingEmail"></div>
+<br/>
+<div id="chosenPetListingDescription"></div>
+
+
 <div id="deleteListingFeedback"></div>
 
-<div style="text-align: center;"><a href="#editUpdateListing" data-role="button"  id="editMyListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Edit Listing</a></div>
+
+<!--The edit and delete buttons cannot be inserted directly here due a jQueryMobile fault-->
+<div id="editbuttondiv"></div>
+<div id="deletebuttondiv"></div>
+
+
+<a href="#editUpdateListing" data-role="button" id="editMyListingButton" data-iconpos="right" data-icon="arrow-r" data-theme="a">Edit Your Ad</a>
+
+<a data-role="button" id="deleteMyListingButton" data-iconpos="right" data-icon="delete" data-theme="a">Delete Ad</a>
+
+
+
+
 
   </div><!-- /content -->
 
@@ -1601,7 +1993,7 @@ id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" 
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="editUpdateListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="editUpdateListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
@@ -1611,34 +2003,44 @@ id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" 
 <br/><br/><br/><br/><br/>
 
 <div id="editListingFeedback"></div>
+<div id="listingTypeDiv"></div>
 <div id="editListingFeedbackAnimalDiv"></div>
 <div id="editListingFeedbackCountyDiv"></div>
+
 <!--Form with values from the server:-->
 <form>
 
-<label for="editUpdateListingAdvertTitle">Advert Title:</label>
+	<label for="editlistingType" class="select"></label>
+	<select name="editlistingType" id="editlistingType">
+		<option value="1" selected>My Pet Needs a New Home</option>
+		<option value="2">I Have Lost A Pet</option>
+		<option value="2">I Have Found A Pet</option>
+		
+	</select>
+	
+<label for="editUpdateListingAdvertTitle">Advert Title</label>
 <input type="text" name="editUpdateListingAdvertTitle" id="editUpdateListingAdvertTitle" value="" data-mini="true"/>
 
-<label for="editUpdateListingDescription">Description:</label>
+<label for="editUpdateListingDescription">Description</label>
 <textarea name="editUpdateListingDescription" id="editUpdateListingDescription"/></textarea>
 
 <div id="editUpdateListingPriceDiv">
-<label for="editUpdateListingPrice">Price:</label>
+<label for="editUpdateListingPrice">Price</label>
 <input type="text" name="editUpdateListingPrice" id="editUpdateListingPrice" value="" data-mini="true" />
 </div> <!-- End of price div. Price not displayed if Lost Found or Wanted. -->
 
 <div id="editUpdateListingCalendarDiv">
 
-<label for="editUpdateListingDate">Date Lost/Found: (yyyy-mm-dd)</label>
+<label for="editUpdateListingDate">Date Lost/Found (yyyy-mm-dd)</label>
 <input type="text" name="editUpdateListingDate" id="editUpdateListingDate" value="" data-mini="true" />
 
 </div> <!--end div editUpdateListingCalendarDiv-->
 
-<label for="editUpdateListingContactPhoneNumber">Phone Number:</label>
+<label for="editUpdateListingContactPhoneNumber">Phone Number</label>
 <input type="text" name="editUpdateListingContactPhoneNumber" id="editUpdateListingContactPhoneNumber" value="" data-mini="true" />
 
 
-<label for="editUpdateListingContactEmail">Email Address:</label>
+<label for="editUpdateListingContactEmail">Email Address</label>
 <input type="text" name="editUpdateListingContactEmail" id="editUpdateListingContactEmail" value="" data-mini="true" />
 
 
@@ -1653,24 +2055,29 @@ id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" 
 <img style="width:290px;" id="editUpdateListingPhotoFromServer" src="" />
 
 
-	<button id="editUpdateListingCapture">Take New Photo</button>
 
 
+
+<button id="editUpdateListingCapture">Take New Photo</button>
 
 <!-- These are button/s to fetch a photo from the phone's album/library
-     They fire functions in cameraPets.js -->
-
-	<button id="editUpdateListingGetImage">Get new library animal photo</button> 
-	
-
-	<img style="display:none;width:290px;" id="editUpdateListingAnimalImage" src="" />
+     They fire functions in camera.js -->
 
 
-<div style="text-align: center;"><a href="#previewEditedListing" data-role="button"  id="editMyListingPreviewButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Preview Listing</a></div>
+<button id="editUpdateListingGetImage">Upload New<br/> Gallery Photo</button>
+
+
+
+
+<a href="#previewEditedListing" data-role="button" id="editMyListingPreviewButton" data-iconpos="right" data-icon="arrow-r" data-theme="a">Preview Your Ad</a>
+
 
   </div><!-- /content -->
 
 </div><!-- End of Chosen Edit/Update Pet Listing page -->
+
+
+
 
 
 
@@ -1691,31 +2098,58 @@ id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" 
 </span>
 
 <span class="homespan">
-<a href="#home"><img id="previewEditedListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+<a href="javascript:reloadHome()"><img id="previewEditedListingHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
 <span class="choosepettypespan">
-<img src="myAdsReviewEditedAdScaled.png"/>
+<img src="blankBannerScaled.png"/>
 </span>
 
-<br/><br/><br/><br/><br/>
+<span class="chosenListingTitleSpan">
+<div id="editedListingTitleDiv"></div>
+</span>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+
+<!-- If there is a new image, this tag configuration is written into the div below by cameraPets.js <img style="display:none;width:320px;" class="imgspan" id="previewEditedListingAnimalImage" src=""/> -->
+
+<div id="previewEditedListingAnimalImageDiv">
+<img height="240" width="320" class="imgspan" id="previewEditedListingAnimalImage" src="" />
+</div>
+
+<div id="previewButtonFeedback"></div> <!--debug code-->
+
 
 <!--The Edited listing will be displayed here.-->
 
-<div id="previewEditedListingDiv"></div>
 
-<!-- If there is a new image, this tag configuration is written into the div below by cameraPets.js <img style="display:none;width:290px;" id="previewEditedListingAnimalImage" src=""/> -->
+<p id="editedsubtitle"></p>
 
-<div id="previewEditedListingAnimalImageDiv">
-<img style="width:290px;" id="previewEditedListingAnimalImage" src="" />
-</div>
+<span class="chosenListingPhone">
+<div id=editedListingPhoneDiv></div>
+</span>
 
+<div id="editedListingLocation"></div>
+<div id="editedListingAdded"></div>
+<div id="editedListingContact"></div>
+<br/>
+<div id="editedListingEmailDiv"></div>
+<div id="editedListingPrice"></div>
+<div id="editedListingPhone"></div>
+<div id="editedListingEmail"></div>
+<br/>
+<div id="editedListingDescription"></div>
 
-<!--The Upload button will need the id of the chosen pet listing -->
-
-<div style="text-align: center;"><a data-role="button" id="uploadEditedListingButton" data-iconpos="right" data-icon="arrow-r" data-inline="true" data-theme="a" data-mini="true">Upload Listing</a></div>
 
 <div id="updateFeedback"></div>
+
+
+<a data-role="button" id="uploadEditedListingButton" data-iconpos="right" data-icon="arrow-r" data-theme="a">Upload Your Ad</a>
+
+
+
 
 <div id="photoUpdateFeedback"></div>
 
@@ -1728,47 +2162,35 @@ id="deleteMyListingButton" data-icon="delete" data-inline="true" data-theme="a" 
 
 
 
-<!-- Start of Terms & Conditions Dialog box -->
-<div data-role="dialog" id="termsandconditions" data-close-btn-text="Close">
 
-	<div data-role="header">
-		<h1>T & Cs</h1>
 
-    </div><!-- /header -->
+
+
+<!-- Start of Terms & Conditions page -->
+<!-- <div data-role="dialog" id="termsandconditions" data-close-btn-text="Close"> -->
+<div data-role="page" id="termsandconditions">
 
 	<div data-role="content">
-<p>Advertising Terms & Conditions</p>
-<p>
-Pets.ie may take any action with respect to user submitted information that it deems necessary or appropriate in its sole discretion if it believes it may create liability for Pets.ie. In accordance with Pets.ie's advertising guidelines, Pets.ie will not tolerate any advertisements that:
-</p><p>
-Are of an illegal, abusive or of an offending nature<br/>
-May cause disruption to the service provided on the Pets.ie website<br/>
-Do not relate to the categories or sections on the Pets.ie website<br/>
-Are submitted by so called 'Puppy Farms' or by persons involved in illegal activities<br/>
-Encourage seasonal breeding; such as 'pets for Christmas'<br/>
-Advertise rare, dangerous, wild, endangered or protected species<br/>
-Offer a shipping service for animals<br/>
-Contradict ISPCA recommendations
-</p><p>
-Pets.ie does not accept any responsibility for the animals, goods or services advertised on this website.
-</p><p>
-Pets.ie can review ads for the purpose of ensuring that all ads placed on the Pets.ie website conform to Pets.ie's Advertising Terms & Conditions. If Pets.ie itself finds, or is notified by a user of this website, that certain communications do not conform to these Advertising Terms & Conditions, Pets.ie may investigate the allegation and determine in good faith and at its sole discretion whether to remove the advertisement or contact local authorities.
-</p><p>
-Pets.ie reserves the right to remove any advertisements that are deemed, at Pets.ie's sole discretion, to breach Pets.ie's Advertising Terms & Conditions guidelines. Pets.ie accepts no liability or responsibility to users for the performance or non-performance of such activity. Pets.ie reserves the right to expel users and to prevent their further access to this website for violations of these Terms or the law. Pets.ie does not accept any responsibility for failure to contact an advertiser or to notify the advertisers of rejection of advertisements on the Pets.ie website. Pets.ie accepts no liability or responsibility to users for the performance or non-performance of such activity.
-</p><p>
-Advertisers agree to indemnify and hold Pets.ie, its officers, directors, employees, agents, licensors and suppliers, harmless from and against any claims, actions or demands, liabilities and settlements, including without limitation, reasonable legal and accounting fees resulting from, or alleged to result from, their use of this website and its content, in a manner that breaches or is alleged to breach these terms and conditions.
-</p>
 
-	<p style="text-align: center;"><a href="#addalisting" data-role="button" data-theme="a" data-inline="true" data-rel="back">Close</a></p>
-		<br/>
-		<br/>
+<span class="backspan">
+<a href="#addalisting"><img id="termsandconditionsBack" onMousedown="downImg14(this)" onMouseup="upImg14(this)" src="backScaled.png"/></a>
+</span>
+
+<span class="headerspan">
+<img src="termsAndConditionsHeaderScaled.png"/>
+</span>
+
+<span class="homespan">
+<a href="javascript:reloadHome()"><img id="termsandconditionsHome" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
+</span>
+
+<span class="informationspan">
+<img src="termsAndConditionsScaled.png"/>
+</span>
 
 	</div><!-- /content -->
 
-	<div data-role="footer">
-		<h4>T & Cs</h4>
-	</div><!-- /footer -->
-</div><!-- End of Terms and Conditions dialog page -->
+</div><!-- End of Terms and Conditions page -->
 
 
 

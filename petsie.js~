@@ -7,8 +7,8 @@
 var $animal;
 var $county;
 var $photoID;
-var $listingType;
 var $keyword;
+
 // Mapping variables for Google Maps
 var $lat;
 var $lng;
@@ -37,15 +37,17 @@ var $geolatitude; //This is taken from phone's geolocation
 var $ads_id; // 'ads' id retrieved by uploadlisting() and addalisting.php
 
 
+
+function reloadHome()
+{
+window.location = 'index.html#home';
+//location.reload(); // this line to be included for phone version
+}
+
+
+
+
 // PhoneGap Geolocation functions below:
-
-    // Wait for Cordova to load
-    //
-//    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // Cordova is ready
-    //
-
 
     function onDeviceReady() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -292,7 +294,7 @@ $('#getNewAquaticTile').bind("click", function(){
 $(document).ready(function(){
 $('#rehomeCounty').bind("change", function(){// use change rather than click here
 	$county=$('#rehomeCounty').val();//store county menu item in county variable
-	$('#rehomeDdmenuResults').html("You chose: " + $animal + " in " + $county);
+	$('#rehomeDdmenuResults').html("<p>Your choice: " + $animal + " in " + $county+"</p>");
    });//close bind function
 });//close document ready function
 
@@ -356,7 +358,7 @@ $('#lostAquaticTile').bind("click", function(){
 $(document).ready(function(){
 $('#lostCounty').bind("change", function(){// use change rather than click here
 	$county=$('#lostCounty').val();//store county menu item in county variable
-	$('#lostDdmenuResults').html("You chose: " + $animal + " in " + $county);
+	$('#lostDdmenuResults').html("<p>Your choice: " + $animal + " in " + $county+"</p>");
 	
 });//close bind function
 });//close document ready function
@@ -421,7 +423,7 @@ $('#foundAquaticTile').bind("click", function(){
 $(document).ready(function(){
 $('#foundCounty').bind("change", function(){// use change rather than click here
 	$county=$('#foundCounty').val();//store county menu item in county variable
-	$('#foundDdmenuResults').html("You chose: " + $animal + " in " + $county);
+	$('#foundDdmenuResults').html("<p>Your choice: " + $animal + " in " + $county+"</p>");
 	
 });//close bind function
 });//close document ready function
@@ -463,8 +465,16 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    $('#rehomedblist').append(xmlhttp.responseText);// append the list from searchLocalDB.php to dblist
-    $('#rehomedblist').listview('refresh');
+		if (xmlhttp.responseText == "Sorry")
+			{
+			window.location = 'index.html#rehome4';
+			}
+		else
+			{
+			// append the list from rehomeSearchDB.php to dblist
+			$('#rehomedblist').append(xmlhttp.responseText);
+			$('#rehomedblist').listview('refresh');
+			}
     }
   };
 xmlhttp.open("GET",useurl+"rehomeSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
@@ -492,8 +502,46 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    // write the response from the server into the listing div:
-    document.getElementById("rehomeChosenListing").innerHTML=xmlhttp.responseText; 
+	var jsonString = xmlhttp.responseText;
+	var jsonObject = eval("("+jsonString+")");
+
+	$county = jsonObject.county;
+	$title = jsonObject.title;
+	$description = jsonObject.description;
+	$price = jsonObject.price;
+	$dateAdded = jsonObject.day+"/"+jsonObject.month+"/"+jsonObject.year;
+	$telephone = jsonObject.telephone;
+	$email = jsonObject.email;
+	$contact = jsonObject.ownersName;
+
+	document.getElementById("rehomeChosenListingTitle").innerHTML="<p id='rehomeTitle'>"+$title+"</p>";
+
+	document.getElementById("rehomeChosenListingLocation").innerHTML="Location&nbsp&nbsp Co. "+$county;
+	document.getElementById("rehomeChosenListingAdded").innerHTML="Added&nbsp&nbsp&nbsp&nbsp&nbsp "+$dateAdded;
+	document.getElementById("rehomeChosenListingContact").innerHTML="Contact&nbsp&nbsp&nbsp "+$contact;
+	document.getElementById("rehomeChosenListingPrice").innerHTML= "Price&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$price;
+	document.getElementById("rehomeChosenListingPhone").innerHTML="Phone&nbsp&nbsp&nbsp&nbsp&nbsp "+$telephone;
+
+	if ($email == "")
+	{
+	document.getElementById("rehomeChosenListingEmail").innerHTML="";
+	document.getElementById("rehomeChosenListingEmailDiv").innerHTML=""; // clear any previous icon
+	}
+	else
+	{
+	document.getElementById("rehomeChosenListingEmail").innerHTML= "Email&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$email;
+	document.getElementById("rehomeChosenListingEmailDiv").innerHTML='<a href="mailto:'+$email+'" ><img id=rehomeEmailIcon class="emailIcon" onMousedown="downImg18(this)" onMouseup="upImg18(this)" src="ButtonEmailUpScaled.png"></a>';
+	}
+
+	document.getElementById("rehomeChosenListingPhoneDiv").innerHTML='<a href="tel:'+$telephone+'"><img id="rehome3phone" onMousedown="downImg17(this)" onMouseup="upImg17(this)" src="ButtonPhoneUpScaled.png"></a>';
+
+
+// the line below to include the a href with $email address written into the div (if it works like a telephone number)
+
+
+	document.getElementById("rehomeChosenListingDescription").innerHTML=$description;
+	
+
     }
   };
 xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$ads_id,true);
@@ -501,6 +549,7 @@ xmlhttp.send();
 // call a function to fetch the photo:
 showChosenRehomePetPhoto($photoID, $ads_id);
 }
+
 
 
 
@@ -566,8 +615,16 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    $('#lost2dblist').append(xmlhttp.responseText);// append the list from searchLocalDB.php to dblist
-    $('#lost2dblist').listview('refresh');
+		if (xmlhttp.responseText == "Sorry")
+			{
+			window.location = 'index.html#lost4';
+			}
+		else
+			{
+			// append the list from lostSearchDB.php to dblist
+			$('#lost2dblist').append(xmlhttp.responseText);
+			$('#lost2dblist').listview('refresh');
+			}
     }
   };
 xmlhttp.open("GET",useurl+"lostSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
@@ -594,8 +651,44 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    // write the response from the server into the listing div:
-    document.getElementById("lostChosenListing").innerHTML=xmlhttp.responseText; 
+	var jsonString = xmlhttp.responseText;
+	var jsonObject = eval("("+jsonString+")");
+
+	$county = jsonObject.county;
+	$title = jsonObject.title;
+	$description = jsonObject.description;
+	$price = jsonObject.price;
+	$dateAdded = jsonObject.day+"/"+jsonObject.month+"/"+jsonObject.year;
+	$dateLost = jsonObject.lfday+"/"+jsonObject.lfmonth+"/"+jsonObject.lfyear;
+	$telephone = jsonObject.telephone;
+	$email = jsonObject.email;
+	$contact = jsonObject.ownersName;
+
+	document.getElementById("lostChosenListingTitle").innerHTML="<p id='lostTitle'>"+$title+"</p>";
+	document.getElementById("lostDate").innerHTML="<strong>Lost "+$dateLost+"</strong>";
+	document.getElementById("lostChosenListingLocation").innerHTML="Location&nbsp&nbsp Co. "+$county;
+	document.getElementById("lostChosenListingAdded").innerHTML="Added&nbsp&nbsp&nbsp&nbsp&nbsp "+$dateAdded;
+	document.getElementById("lostChosenListingContact").innerHTML="Contact&nbsp&nbsp&nbsp "+$contact;
+
+	document.getElementById("lostChosenListingPhone").innerHTML="Phone&nbsp&nbsp&nbsp&nbsp&nbsp "+$telephone;
+
+	document.getElementById("lostChosenListingPhoneDiv").innerHTML='<a href="tel:'+$telephone+'"><img id="lost3phone" onMousedown="downImg17(this)" onMouseup="upImg17(this)" src="ButtonPhoneUpScaled.png"></a>';
+
+	if ($email == "")
+	{
+	document.getElementById("lostChosenListingEmail").innerHTML="";
+	document.getElementById("lostChosenListingEmailDiv").innerHTML=""; // clear any previous icon
+	}
+	else
+	{
+	document.getElementById("lostChosenListingEmail").innerHTML= "Email&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$email;
+	document.getElementById("lostChosenListingEmailDiv").innerHTML='<a href="mailto:'+$email+'"><img id=lostEmailIcon class="emailIcon" onMousedown="downImg18(this)" onMouseup="upImg18(this)" src="ButtonEmailUpScaled.png"></a>';
+	}
+
+
+// the line below to include the a href with $email address written into the div (if it works like a telephone number)
+	document.getElementById("lostChosenListingDescription").innerHTML=$description;
+
     }
   };
 xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$ads_id,true);
@@ -669,8 +762,16 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    $('#foundPetsdblist').append(xmlhttp.responseText);// append the list from searchLocalDB.php to dblist
-    $('#foundPetsdblist').listview('refresh');
+		if (xmlhttp.responseText == "Sorry")
+			{
+			window.location = 'index.html#found4';
+			}
+		else
+			{
+			// append the list from foundSearchDB.php to dblist
+			$('#foundPetsdblist').append(xmlhttp.responseText);
+			$('#foundPetsdblist').listview('refresh');
+			}
     }
   };
 xmlhttp.open("GET",useurl+"foundSearchDB.php?pettype="+$animal+"&theCounty="+$county,true);
@@ -697,8 +798,40 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    // write the response from the server into the listing div:
-    document.getElementById("foundChosenListing").innerHTML=xmlhttp.responseText; 
+	var jsonString = xmlhttp.responseText;
+	var jsonObject = eval("("+jsonString+")");
+
+	$county = jsonObject.county;
+	$title = jsonObject.title;
+	$description = jsonObject.description;
+	$price = jsonObject.price;
+	$dateAdded = jsonObject.day+"/"+jsonObject.month+"/"+jsonObject.year;
+	$dateFound = jsonObject.lfday+"/"+jsonObject.lfmonth+"/"+jsonObject.lfyear;
+	$telephone = jsonObject.telephone;
+	$email = jsonObject.email;
+	$contact = jsonObject.ownersName;
+
+	document.getElementById("foundChosenListingTitle").innerHTML="<p id='foundTitle'>"+$title+"</p>";
+	document.getElementById("foundDate").innerHTML="<strong>Found "+$dateFound+"</strong>";
+	document.getElementById("foundChosenListingLocation").innerHTML="Location&nbsp&nbsp Co. "+$county;
+	document.getElementById("foundChosenListingAdded").innerHTML="Added&nbsp&nbsp&nbsp&nbsp&nbsp "+$dateAdded;
+	document.getElementById("foundChosenListingContact").innerHTML="Contact&nbsp&nbsp&nbsp "+$contact;
+	document.getElementById("foundChosenListingPhone").innerHTML="Phone&nbsp&nbsp&nbsp&nbsp&nbsp "+$telephone;
+	document.getElementById("foundChosenListingPhoneDiv").innerHTML='<a href="tel:'+$telephone+'"><img id="found3phone" onMousedown="downImg17(this)" onMouseup="upImg17(this)" src="ButtonPhoneUpScaled.png"></a>';
+
+
+	if ($email == "")
+	{
+	document.getElementById("foundChosenListingEmail").innerHTML="";
+	document.getElementById("foundChosenListingEmailDiv").innerHTML=""; // clear any previous icon
+	}
+	else
+	{
+	document.getElementById("foundChosenListingEmail").innerHTML= "Email&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$email;
+	document.getElementById("foundChosenListingEmailDiv").innerHTML='<a href="mailto:'+$email+'"><img id=foundEmailIcon class="emailIcon" onMousedown="downImg18(this)" onMouseup="upImg18(this)" src="ButtonEmailUpScaled.png"></a>';
+	}
+
+	document.getElementById("foundChosenListingDescription").innerHTML=$description;
     }
   };
 xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$ads_id,true);
@@ -741,6 +874,7 @@ xmlhttp.send();
 
 
 // The function below collects data and fires the login function when the login button from "Place an Ad" is pressed. 
+
 
 $(document).ready(function(){
 $('#loginButton').bind("click", function(){
@@ -946,20 +1080,25 @@ $('#addAnimal').bind("change", function(){// use change rather than click here
 $(document).ready(function(){
 $('#addCounty').bind("change", function(){// use change rather than click here
 	$county=$('#addCounty').val();//store county menu item in county variable
-//	$('#addalistingDdmenuResults').html("You chose: "+ $listingType+" and " + $animal + " in " + $county); // debug code
+//	$('#addalistingDdmenuResults').html("Your choice: "+ $listingType+" and " + $animal + " in " + $county); // debug code
 //	mapCounty(); // Don't think we need this here
 });//close bind function
 });//close document ready function
 
 
 
-// the function below gets the user location (if button pressed) and sets the $geolatitude and $geolongitude global variables.
+// the function below gets the user location and sets the $geolatitude and $geolongitude global variables.
 
 $(document).ready(function(){
-$('#geolocationButton').bind("click", function(){
-document.addEventListener("deviceready", onDeviceReady, false);
+$('#listingType').bind("change", function(){
+if ($('#listingType').val()=="2")
+	{
+	onDeviceReady();
+	}
 });//close bind function
 });//close document ready function
+
+
 
 
 // $listingType, $animal, $id, $county, $geolatitude and $geolongitude are global and are not gathered in the next function which collects data from the addalisting page
@@ -989,7 +1128,7 @@ function addAListingPreview($id,$listingType,$animal,$county,$advertTitle,$descr
 // deal with the case where T&Cs are not agreed to:
 if ($agree_to_terms=="0")
 	{
-	$('#addAListingFeedback').html("You must agree to the Terms & Conditions in order to place an advertisement.");
+	$('#addAListingFeedback').html("<p>You must agree to the Terms & Conditions in order to place an advertisement.</p>");
 	}
 else
 	{
@@ -997,15 +1136,14 @@ else
 
 // feedback on geolocation:
 
-	$('#addAListingFeedback').html("Geolocation: "+$geolatitude+" & "+$geolongitude); // debug code
+if ($listingType == "2")
+	{
+	$('#addAListingFeedback').html("<p>Geolocation: "+$geolatitude+" & "+$geolongitude+"</p>"); // debug code
+	}
 
 	if ($price==undefined)
 	{
-	$price = "Price not relevant";
-	}
-	else
-	{
-	$price = "EUR"+$price;
+	$price = 0;
 	}
 
 	var xmlhttp;
@@ -1025,12 +1163,13 @@ else
 
 		$previewText = xmlhttp.responseText;
 
-		$('#addedListing').html($previewText); // test code
+		$('#addedListing').html($previewText);
+		$('#previewAddedListingTitle').html("<p id='addalistingTitle'>"+$advertTitle+"</p>");
 
 		}
 	  };
 // addAListingPreview.php receives the raw information and adds information from the database tables users, pet_type, location_counties and sends it back in order.
-	xmlhttp.open("GET",useurl+"addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price,true);
+	xmlhttp.open("GET",useurl+"addAListingPreview.php?userid="+$id+"&allowEmail="+$contact_by_email+"&animal="+$animal+"&county="+$county+"&advertTitle="+$advertTitle+"&description="+$description+"&price="+$price+"&listingType="+$listingType+"&day="+$day+"&month="+$month+"&year="+$year,true);
 	xmlhttp.send();
 
 	}
@@ -1060,14 +1199,14 @@ xmlhttp.onreadystatechange=function()
 	$ads_id = xmlhttp.responseText; // test code
 		if (parseInt($ads_id) > 4491)
 			{
-			$('#uploadFeedback').html("Ad upload successful "+$ads_id); // remove $ads_id later
+			$('#uploadFeedback').html("<p>Ad upload successful "+$ads_id+"</p>"); // remove $ads_id later
 
 			photoUploads($ads_id,$animal);
 
 			}
 		else
 			{
-			$('#uploadFeedback').html($ads_id); // test code		
+			$('#uploadFeedback').html("<p>"+$ads_id+"</p>"); // test code		
 			}
 	}
   };
@@ -1096,11 +1235,11 @@ xmlhttp.onreadystatechange=function()
 	$photo_id = xmlhttp.responseText; // test code
 		if (parseInt($photo_id) > 6795)
 			{
-			$('#photoUploadFeedback').html("Photo upload successful "+$photo_id+"<br/>"); // remove $photo_id later
+			$('#photoUploadFeedback').html("<p>Photo upload successful "+$photo_id+"</p>"); // remove $photo_id later
 			}
 		else
 			{
-			$('#photoUploadFeedback').html($photo_id); // test code		
+			$('#photoUploadFeedback').html("<p>"+$photo_id+"</p>"); // test code		
 			}
 	}
   };
@@ -1130,8 +1269,16 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    $('#myListingsdblist').append(xmlhttp.responseText);// append the list from myListings.php to myListingsdblistdblist
-    $('#myListingsdblist').listview('refresh');
+		if (xmlhttp.responseText == "Sorry")
+			{
+			window.location = 'index.html#mylistingsNoResults';
+			}
+		else
+			{
+			// append the list from myListings.php to myListingsdblistdblist
+			$('#myListingsdblist').append(xmlhttp.responseText);
+			$('#myListingsdblist').listview('refresh');
+			}
     }
   };
 xmlhttp.open("GET",useurl+"myListings.php?id="+$id,true);
@@ -1158,8 +1305,55 @@ xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    // write the response from the server into the listing div:
-    document.getElementById("chosenPetListingDiv").innerHTML=xmlhttp.responseText; 
+	var jsonString = xmlhttp.responseText;
+	var jsonObject = eval("("+jsonString+")");
+
+	$county = jsonObject.county;
+	$title = jsonObject.title;
+	$description = jsonObject.description;
+	$price = jsonObject.price;
+	$dateAdded = jsonObject.day+"/"+jsonObject.month+"/"+jsonObject.year;
+	$dateLostFound = jsonObject.lfday+"/"+jsonObject.lfmonth+"/"+jsonObject.lfyear;
+	$adType = jsonObject.adType;
+	$telephone = jsonObject.telephone;
+	$email = jsonObject.email;
+	$contact = jsonObject.ownersName;
+
+	document.getElementById("ChosenPetListingTitle").innerHTML="<p id='myListingTitle'>"+$title+"</p>";
+	if ($adType == 1)
+		{
+		document.getElementById("subtitle").innerHTML="<strong>For Good Home</strong>";
+		}
+	else
+		{
+		document.getElementById("subtitle").innerHTML="<strong>Lost/Found "+$dateLostFound+"</strong>";
+		}
+	document.getElementById("chosenPetListingLocation").innerHTML="Location&nbsp&nbsp Co. "+$county;
+	document.getElementById("chosenPetListingAdded").innerHTML="Added&nbsp&nbsp&nbsp&nbsp&nbsp "+$dateAdded;
+	document.getElementById("chosenPetListingContact").innerHTML="Contact&nbsp&nbsp&nbsp "+$contact;
+	
+	document.getElementById("chosenPetListingPrice").innerHTML= "Price&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$price;
+
+	document.getElementById("chosenPetListingPhone").innerHTML="Phone&nbsp&nbsp&nbsp&nbsp&nbsp "+$telephone;
+	document.getElementById("chosenPetListingPhoneDiv").innerHTML='<a href="tel:'+$telephone+'"><img id="mylisting3phone" onMousedown="downImg17(this)" onMouseup="upImg17(this)" src="ButtonPhoneUpScaled.png"></a>';
+
+
+	if ($email == "")
+		{
+		document.getElementById("chosenPetListingEmail").innerHTML="";
+		document.getElementById("chosenPetListingEmailDiv").innerHTML=""; // clear any previous icon
+		}
+	else
+		{
+		document.getElementById("chosenPetListingEmail").innerHTML= "Email&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$email;
+		document.getElementById("chosenPetListingEmailDiv").innerHTML='<a href="mailto:'+$email+'"><img id=mylistingEmailIcon class="emailIcon" onMousedown="downImg18(this)" onMouseup="upImg18(this)" src="ButtonEmailUpScaled.png"></a>';
+		}
+	document.getElementById("chosenPetListingDescription").innerHTML=$description;
+
+	// these two lines are necessary to render the edit and delete buttons correctly due to a jQueryMobile fault.
+/*	document.getElementById("editbuttondiv").innerHTML='<a href="javascript:editListing()"><img id="editMyListingButton" onMousedown="downImg29(this)" onMouseup="upImg29(this)" src="MyAdsEditButtonUpScaled.png"/></a>';
+	document.getElementById("deletebuttondiv").innerHTML='<a href="javascript:deleteListing()"><img id="deleteMyListingButton" onMousedown="downImg28(this)" onMouseup="upImg28(this)" src="MyAdsDeleteButtonUpScaled.png"/></a>';
+*/
     }
   };
 xmlhttp.open("GET",useurl+"getChosenListing.php?theID="+$ads_id,true);
@@ -1201,11 +1395,13 @@ myPetListingButtons($photoID,$ads_id);
 
 function myPetListingButtons($photoID,$ads_id)
 {
-$('#deleteMyListingButton').button().bind("click", function(){
-deleteListing($photoID, $ads_id);
-});
 $('#editMyListingButton').button().bind("click", function(){
+//$('#editListingFeedback').html('edit button clicked!'); // debug code
 editListing($photoID,$ads_id);
+});
+$('#deleteMyListingButton').button().bind("click", function(){
+//$('#deleteListingFeedback').html('Delete button clicked!'); // debug code
+deleteListing($photoID, $ads_id);
 });
 }
 
@@ -1214,6 +1410,7 @@ editListing($photoID,$ads_id);
 
 function deleteListing($photoID,$ads_id)
 {
+
 var xmlhttp;
 
 if (window.XMLHttpRequest)
@@ -1241,6 +1438,9 @@ xmlhttp.send();
 
 function editListing($photoID,$ads_id)
 {
+
+//window.location = 'index.html#editUpdateListing';
+
 var xmlhttp;
 
 if (window.XMLHttpRequest)
@@ -1258,6 +1458,7 @@ xmlhttp.onreadystatechange=function()
 	var jsonString = xmlhttp.responseText;
 	var jsonObject = eval("("+jsonString+")");
 
+	$servererrors = jsonObject.errors;
 	$animal = jsonObject.animal;
 	$county = jsonObject.county;
 	$advertTitle = jsonObject.title;
@@ -1269,10 +1470,10 @@ xmlhttp.onreadystatechange=function()
 	$email = jsonObject.email;
 	$contact_by_email = jsonObject.contact_by_email;
 
+//$('#editListingFeedback').html('Server errors are: '+$servererrors); // debug code
 
 	$('#editListingFeedbackAnimalDiv').html($animal);
 	$('#editListingFeedbackCountyDiv').html($county);
-
 	$('#editUpdateListingAdvertTitle').val($advertTitle);
 	$('#editUpdateListingDescription').val($description);
 	$('#editUpdateListingPrice').val($price);
@@ -1294,6 +1495,8 @@ xmlhttp.onreadystatechange=function()
   };
 xmlhttp.open("GET",useurl+"editListing.php?adID="+$ads_id,true);
 xmlhttp.send();
+
+
 editListingPetPhoto($photoID,$ads_id,$animal,$county);
 }
 
@@ -1312,6 +1515,7 @@ else
   {
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");// code for IE6, IE5
   };
+
 xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
@@ -1324,6 +1528,14 @@ xmlhttp.onreadystatechange=function()
   };
 xmlhttp.open("GET",useurl+"getPetPhoto.php?theID="+$photoID,true);
 xmlhttp.send();
+
+// the buttons below are written from here due to a jQueryMobile fault
+//$('#editUpdateListingCaptureButtonDiv').html('<button id="editUpdateListingCapture"><img src="TakePhotoButtonUpScaled"/></button>');
+
+//$('#editUpdateListingGetImageButtonDiv').html('<button id="editUpdateListingGetImage"><img src="UploadPhotoButtonUpScaled"/></button>');
+
+//$('#editMyListingPreviewButtonDiv').html('<a href="#previewEditedListing"><img id="editMyListingPreviewButton" onMousedown="downImg26(this)" onMouseup="upImg26(this)" src="PreviewYourAdButtonUpScaled.png"/></a>')
+
 updateListingPreviewData($photoID,$ads_id,$animal,$county);
 }
 
@@ -1332,12 +1544,14 @@ updateListingPreviewData($photoID,$ads_id,$animal,$county);
 
 function updateListingPreviewData($photoID,$ads_id,$animal,$county)
 {
+// window.location = 'index.html#previewEditedListing';
+
 $(document).ready(function(){
 $('#editMyListingPreviewButton').bind("click", function(){
 
+	$listingType = $('#editlistingType').val();
 	$animal = $('#editListingFeedbackAnimalDiv').html();
 	$county = $('#editListingFeedbackCountyDiv').html();
-
 	$advertTitle = $('#editUpdateListingAdvertTitle').val();
 	$description = $('#editUpdateListingDescription').val();
 	$price = $('#editUpdateListingPrice').val();
@@ -1345,7 +1559,7 @@ $('#editMyListingPreviewButton').bind("click", function(){
 	$phone = $('#editUpdateListingContactPhoneNumber').val();
 	$email = $('#editUpdateListingContactEmail').val();
 	$contact_by_email = $('#editUpdateListingEmailAgree').val();
-	updateListingPreviewDataCheck($photoID,$ads_id,$animal,$county,$advertTitle,$description,$price,$date,$phone,$email,$contact_by_email);
+	updateListingPreviewDataCheck($photoID,$ads_id,$animal,$county,$listingType,$advertTitle,$description,$price,$date,$phone,$email,$contact_by_email);
 });//close bind function
 });//close document ready function
 }
@@ -1353,27 +1567,47 @@ $('#editMyListingPreviewButton').bind("click", function(){
 
 
 
-function updateListingPreviewDataCheck($photoID,$ads_id,$animal,$county,$advertTitle,$description,$price,$date,$phone,$email,$contact_by_email)
+function updateListingPreviewDataCheck($photoID,$ads_id,$animal,$county,$listingType,$advertTitle,$description,$price,$date,$phone,$email,$contact_by_email)
 {
+	window.location = 'index.html#previewEditedListing';
+
 	if ($price==undefined || $price=='Null' )
 	{
-	$price = "Price not relevant";
+	$price = "";
 	}
+
+	document.getElementById("editedListingTitleDiv").innerHTML="<p id='editedListingTitle'>"+$title+"</p>";
+	if ($listingType == "1")
+		{
+		document.getElementById("editedsubtitle").innerHTML="<strong>For Good Home</strong>";
+		}
+	if ($listingType == "2")
+		{
+		document.getElementById("editedsubtitle").innerHTML="<strong>Lost/Found "+$dateLostFound+"</strong>";
+		}
+	document.getElementById("editedListingLocation").innerHTML="Location&nbsp&nbsp Co. "+$county;
+	document.getElementById("editedListingAdded").innerHTML="Added&nbsp&nbsp&nbsp&nbsp&nbsp "+$dateAdded;
+	document.getElementById("editedListingContact").innerHTML="Contact&nbsp&nbsp&nbsp "+$contact;
+	if ($listingType == "1")
+		{
+		document.getElementById("editedListingPrice").innerHTML= "Price&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp EUR"+$price;
+		}
+
+	document.getElementById("editedListingPhone").innerHTML="Phone&nbsp&nbsp&nbsp&nbsp&nbsp "+$telephone;
+	document.getElementById("editedListingPhoneDiv").innerHTML='<a href="tel:'+$telephone+'"><img id="editedlisting3phone" onMousedown="downImg17(this)" onMouseup="upImg17(this)" src="ButtonPhoneUpScaled.png"></a>';
+
+
+	if ($contact_by_email == "0")
+		{
+		document.getElementById("editedListingEmail").innerHTML="";
+		document.getElementById("editedListingEmailDiv").innerHTML=""; // clear any previous icon
+		}
 	else
-	{
-	$price = "EUR"+$price;
-	}
-
-if ($contact_by_email==1)
-	{
-	$previewText = $photoID+"<br/>"+$ads_id+"<br/>"+$animal+"<br/>"+$advertTitle+"<br/>"+$description+"<br/>"+$price+"<br/>"+$county+"<br/>"+$phone+"<br/>"+$email;
-	}
-else
-	{
-	$previewText = $animal+"<br/>"+$advertTitle+"<br/>"+$description+"<br/>"+$price+"<br/>"+$county+"<br/>"+$phone;
-	}
-
- $('#previewEditedListingDiv').html($previewText);
+		{
+		document.getElementById("editedListingEmail").innerHTML= "Email&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp "+$email;
+		document.getElementById("editedListingEmailDiv").innerHTML='<a href="mailto:'+$email+'"><img id=editedlistingEmailIcon class="emailIcon" onMousedown="downImg18(this)" onMouseup="upImg18(this)" src="ButtonEmailUpScaled.png"></a>';
+		}
+	document.getElementById("editedListingDescription").innerHTML=$description;
 
 
 $(document).ready(function(){
@@ -1408,11 +1642,11 @@ xmlhttp.onreadystatechange=function()
 	{
 
 	$animal_id = xmlhttp.responseText; // test code
-// $animal_id must be between 68 and 75 inc.
-		if (parseInt($animal_id) > 67 && parseInt($animal_id) < 76)
+// $animal_id must be between 67 and 75 inc.
+		if (parseInt($animal_id) > 66 && parseInt($animal_id) < 76)
 			{
-			$('#updateFeedback').html("Ad update successful "+$animal_id); // remove $animal_id later
-			$('#photoUpdateFeedback').html("replacePicture = "+replacePicture);// debug code
+			$('#updateFeedback').html("Ad update successful");
+
 			if (replacePicture == 1) // globally set in cameraPets.js
 				{
 				editedPhotoUploads($photoID,$ads_id,$animal_id);

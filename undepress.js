@@ -1,6 +1,6 @@
 <!--
 
-// These functions are to replace the depressed button images with the original versions on the phone browser.
+// These functions are to replace the button images with depressed versions on the phone.
 
 $(document).ready(function(){
 $('#lostTile').bind("vmouseup", function(){
@@ -94,6 +94,20 @@ $('#getNewAquaticTile').bind("vmouseup", function(){
 
 
 $(document).ready(function(){
+$('#infoBack').bind("vmouseup", function(){
+	$('#infoBack').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#infoHome').bind("vmouseup", function(){
+	$('#infoHome').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
 $('#backTile').bind("vmouseup", function(){
 	$('#backTile').attr('src',img14.src);
 });
@@ -107,10 +121,6 @@ $('#homeTile').bind("vmouseup", function(){
 });
 
 
-
-
-
-
 $(document).ready(function(){
 $('#rehomeBack').bind("vmouseup", function(){
 	$('#rehomeBack').attr('src',img14.src);
@@ -121,6 +131,13 @@ $('#rehomeBack').bind("vmouseup", function(){
 $(document).ready(function(){
 $('#rehomeHome').bind("vmouseup", function(){
 	$('#rehomeHome').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#searchButtonRehome').bind("vmouseup", function(){
+	$('#searchButtonRehome').attr('src',img16.src);
 });
 });
 
@@ -149,6 +166,34 @@ $('#rehome3back').bind("vmouseup", function(){
 $(document).ready(function(){
 $('#rehome3Home').bind("vmouseup", function(){
 	$('#rehome3Home').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#rehome3phone').bind("vmouseup", function(){
+	$('#rehome3phone').attr('src',img17.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#rehomeEmailIcon').bind("vmouseup", function(){
+	$('#rehomeEmailIcon').attr('src',img18.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#rehome4back').bind("vmouseup", function(){
+	$('#rehome4back').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#rehome4Home').bind("vmouseup", function(){
+	$('#rehome4Home').attr('src',img15.src);
 });
 });
 
@@ -231,6 +276,13 @@ $('#lostHome').bind("vmouseup", function(){
 
 
 $(document).ready(function(){
+$('#searchButtonLost').bind("vmouseup", function(){
+	$('#searchButtonLost').attr('src',img16.src);
+});
+});
+
+
+$(document).ready(function(){
 $('#lost2back').bind("vmouseup", function(){
 	$('#lost2Back').attr('src',img14.src);
 });
@@ -254,6 +306,48 @@ $('#lost3Back').bind("vmouseup", function(){
 $(document).ready(function(){
 $('#lost3Home').bind("vmouseup", function(){
 	$('#lost3Home').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#lost3phone').bind("vmouseup", function(){
+	$('#lost3phone').attr('src',img17.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#lostEmailIcon').bind("vmouseup", function(){
+	$('#lostEmailIcon').attr('src',img18.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#lost4Back').bind("vmouseup", function(){
+	$('#lost4Back').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#lost4Home').bind("vmouseup", function(){
+	$('#lost4Home').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#lostMap1Back').bind("vmouseup", function(){
+	$('#lostMap1Back').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#lostMap1Home').bind("vmouseup", function(){
+	$('#lostMap1Home').attr('src',img15.src);
 });
 });
 
@@ -337,6 +431,13 @@ $('#foundHome').bind("vmouseup", function(){
 
 
 $(document).ready(function(){
+$('#searchButtonFound').bind("vmouseup", function(){
+	$('#searchButtonFound').attr('src',img16.src);
+});
+});
+
+
+$(document).ready(function(){
 $('#found2Back').bind("vmouseup", function(){
 	$('#found2Back').attr('src',img14.src);
 });
@@ -358,8 +459,50 @@ $('#found3Back').bind("vmouseup", function(){
 
 
 $(document).ready(function(){
-$('#found3Back').bind("vmouseup", function(){
+$('#found3Home').bind("vmouseup", function(){
 	$('#found3Home').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#found3phone').bind("vmouseup", function(){
+	$('#found3phone').attr('src',img17.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#foundEmailIcon').bind("vmouseup", function(){
+	$('#foundEmailIcon').attr('src',img18.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#found4Back').bind("vmouseup", function(){
+	$('#found4Back').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#found4Home').bind("vmouseup", function(){
+	$('#found4Home').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#foundMap1Back').bind("vmouseup", function(){
+	$('#foundMap1Back').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#foundMap1Home').bind("vmouseup", function(){
+	$('#foundMap1Home').attr('src',img15.src);
 });
 });
 
@@ -374,6 +517,27 @@ $('#loginBack').bind("vmouseup", function(){
 $(document).ready(function(){
 $('#loginHome').bind("vmouseup", function(){
 	$('#loginHome').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#loginButton').bind("vmouseup", function(){
+	$('#loginButton').attr('src',img19.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#registerButton').bind("vmouseup", function(){
+	$('#registerButton').attr('src',img20.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#login2Button').bind("vmouseup", function(){
+	$('#login2Button').attr('src',img19.src);
 });
 });
 
@@ -407,6 +571,20 @@ $('#addalistingHome').bind("vmouseup", function(){
 
 
 $(document).ready(function(){
+$('#viewTermsButton').bind("vmouseup", function(){
+	$('#viewTermsButton').attr('src',img22.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#addListing2Button').bind("vmouseup", function(){
+	$('#addListing2Button').attr('src',img23.src);
+});
+});
+
+
+$(document).ready(function(){
 $('#addalisting2Back').bind("vmouseup", function(){
 	$('#addalisting2Back').attr('src',img14.src);
 });
@@ -416,6 +594,13 @@ $('#addalisting2Back').bind("vmouseup", function(){
 $(document).ready(function(){
 $('#addalisting2Home').bind("vmouseup", function(){
 	$('#addalisting2Home').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#reviewAdButton').bind("vmouseup", function(){
+	$('#reviewAdButton').attr('src',img26.src);
 });
 });
 
@@ -435,6 +620,13 @@ $('#previewAddedListingHome').bind("vmouseup", function(){
 
 
 $(document).ready(function(){
+$('#uploadAddedListingButton').bind("vmouseup", function(){
+	$('#uploadAddedListingButton').attr('src',img27.src);
+});
+});
+
+
+$(document).ready(function(){
 $('#myListingsBack').bind("vmouseup", function(){
 	$('#myListingsBack').attr('src',img14.src);
 });
@@ -444,6 +636,20 @@ $('#myListingsBack').bind("vmouseup", function(){
 $(document).ready(function(){
 $('#myListingsHome').bind("vmouseup", function(){
 	$('#myListingsHome').attr('src',img15.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#myListingsNoResultsBack').bind("vmouseup", function(){
+	$('#myListingsNoResultsBack').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#myListingsNoResultsHome').bind("vmouseup", function(){
+	$('#myListingsNoResultsHome').attr('src',img15.src);
 });
 });
 
@@ -489,4 +695,17 @@ $('#previewEditedListingHome').bind("vmouseup", function(){
 });
 });
 
+
+$(document).ready(function(){
+$('#termsandconditionsBack').bind("vmouseup", function(){
+	$('#termsandconditionsBack').attr('src',img14.src);
+});
+});
+
+
+$(document).ready(function(){
+$('#termsandconditionsHome').bind("vmouseup", function(){
+	$('#termsandconditionsHome').attr('src',img15.src);
+});
+});
 -->
