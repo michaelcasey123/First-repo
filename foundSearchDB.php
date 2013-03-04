@@ -28,6 +28,8 @@ if ($result) {
 		$htmlString .=  ", "; // comma and space
 		$htmlString .=  $pet["name_plural"];
 		$htmlString .=  ", ";
+		$htmlString .=  $pet["name"];
+		$htmlString .=  ", ";
 		$htmlString .=  $pet["title"];
 		$htmlString .=  ", Press to get photo.";
 		$htmlString .=  "</a></li>"; // closing anchor tag  and list item

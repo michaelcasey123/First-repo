@@ -9,7 +9,7 @@ include "dbconfig.php";
 
 $sqlQuery = "SELECT a.id, p.name_plural, c.name, a.title, ap.photo_id
 FROM ads AS a INNER JOIN users AS u ON a.user_id = u.id INNER JOIN pet_type AS p ON a.pet_type_id = p.old_pet_type_id INNER JOIN location_counties AS c ON a.location_county_id = c.old_county_id INNER JOIN ad_type AS t ON a.ad_type_id = t.id LEFT JOIN ad_photos AS ap ON a.id = ap.ad_id
-WHERE a.date_created > '2012-06' AND a.status = 'active' AND p.name = '".$pettype."' AND c.name = '".$theCounty."' AND t.name = 'Lost & Found' AND (a.title LIKE '%found%' OR a.description LIKE '%found%');";
+WHERE a.date_created > '2012-06' AND a.status = 'active' AND p.name = '".$pettype."' AND c.name = '".$theCounty."' AND t.name = 'Lost & Found' AND (a.title LIKE '%found%' OR a.description LIKE '%found%') ORDER BY a.date_created DESC;";
 
 $result = mysql_query($sqlQuery);
 
