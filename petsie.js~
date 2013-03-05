@@ -294,7 +294,7 @@ $('#getNewAquaticTile').bind("click", function(){
 $(document).ready(function(){
 $('#rehomeCounty').bind("change", function(){// use change rather than click here
 	$county=$('#rehomeCounty').val();//store county menu item in county variable
-	$('#rehomeDdmenuResults').html("<p>Your choice: " + $animal + " in " + $county+"</p>");
+	$('#rehomeDdmenuResults').html("<p>Your choice " + $animal + " in " + $county+"</p>");
    });//close bind function
 });//close document ready function
 
@@ -358,7 +358,7 @@ $('#lostAquaticTile').bind("click", function(){
 $(document).ready(function(){
 $('#lostCounty').bind("change", function(){// use change rather than click here
 	$county=$('#lostCounty').val();//store county menu item in county variable
-	$('#lostDdmenuResults').html("<p>Your choice: " + $animal + " in " + $county+"</p>");
+	$('#lostDdmenuResults').html("<p>Your choice " + $animal + " in " + $county+"</p>");
 	
 });//close bind function
 });//close document ready function
@@ -423,7 +423,7 @@ $('#foundAquaticTile').bind("click", function(){
 $(document).ready(function(){
 $('#foundCounty').bind("change", function(){// use change rather than click here
 	$county=$('#foundCounty').val();//store county menu item in county variable
-	$('#foundDdmenuResults').html("<p>Your choice: " + $animal + " in " + $county+"</p>");
+	$('#foundDdmenuResults').html("<p>Your choice " + $animal + " in " + $county+"</p>");
 	
 });//close bind function
 });//close document ready function
@@ -1138,7 +1138,7 @@ else
 
 if ($listingType == "2")
 	{
-	$('#addAListingFeedback').html("<p>Geolocation: "+$geolatitude+" & "+$geolongitude+"</p>"); // debug code
+	$('#addAListingFeedback').html("<p>Geolocation "+$geolatitude+" & "+$geolongitude+"</p>"); // debug code
 	}
 
 	if ($price==undefined)

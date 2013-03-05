@@ -502,12 +502,15 @@ var $geolatitude;
 <a href="javascript:reloadHome()"><img id="rehome2Home" onMousedown="downImg15(this)" onMouseup="upImg15(this)" src="homeScaled.png"/></a>
 </span>
 
-<br/><br/>
+<span class="bannerspan">
+<img src="newPetSearchResultsBannerScaled.png"/>
+</span>
+<br/><br/><br/><br/>
 
 	<div style="text-align: center;" id="rehome2searchText"><br/></div>
 <!--<br/>-->
 <ul data-role='listview' id='rehomedblist'> 
-	<li><h2>Search Results</h2></li> 
+	<li></li> <!--The information from the server appends to this list item-->
 </ul>
 
 
@@ -807,14 +810,14 @@ var $geolatitude;
 <a href="#lostMap1"><img id="toggleButtonLost2" src="searchResultsListBannerScaled.png"/></a>
 </span>
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 	<div style="text-align: center;" id="lost2SearchText"><br/></div>
 
 
 <ul data-role='listview' id='lost2dblist'> 
 	
-	<li><h2>Search Results</h2></li> 
+	<li></li> <!--The information from the server appends to this list item-->
 </ul>
 
 
@@ -1138,14 +1141,14 @@ var $geolatitude;
 <a href="#foundMap1"><img id="toggleButtonFound2" src="searchResultsListBannerScaled.png"/></a>
 </span>
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 
 	<div style="text-align: center;" id="foundPetsSearchText"><br/></div>
 
 
 <ul data-role='listview' id='foundPetsdblist'> 
-	<li><h2>Search Results</h2></li> 
+	<li></li> <!--The information from the server appends to this list item-->
 </ul>
 
     </div><!-- /content -->
@@ -1802,9 +1805,9 @@ var $geolatitude;
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-
-<img style="width:320px;" class="previewimgspan" id="previewAddedListingAnimalImage" src="sorrynophoto.jpg" /> <!--For web only-->
 <!--
+<img style="width:320px;" class="previewimgspan" id="previewAddedListingAnimalImage" src="sorrynophoto.jpg" /> <!--For web only-->
+
 <img style="display:none;width:320px;" class="previewimgspan" id="previewAddedListingAnimalImage" src="" /> <!--For phone only-->
 
 
@@ -1857,7 +1860,7 @@ var $geolatitude;
 
 <ul data-role='listview' id='myListingsdblist'> 
 <br/>	
-	<li><h2>Search Results</h2></li> 
+	<li></li> <!--The information from the server appends to this list item-->
 </ul>
 
   </div><!-- /content -->
